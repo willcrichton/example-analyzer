@@ -3,7 +3,7 @@
 ## Setup
 
 ```bash
-git clone https://github.com/willcrichton/rust
+git clone -b linked-examples https://github.com/willcrichton/rust
 cd rust
 ./x.py --stage 1 build
 export CUSTOM_RUSTDOC=$(pwd)/build/x86_64-apple-darwin/stage1/bin/rustdoc
