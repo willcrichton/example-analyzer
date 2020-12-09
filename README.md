@@ -15,7 +15,7 @@ rustup override set nightly
 cargo build
 ```
 
-## Exapmle
+## Example
 
 ```bash
 cd doctest
