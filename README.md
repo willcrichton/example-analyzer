@@ -27,3 +27,20 @@ cargo clean && cargo doc -vv
 # 3. run the command
 open target/doc/doctest/index.html
 ```
+
+## Development
+
+If you change the Rust repo (ie rustdoc) then run:
+
+```
+./x.py --stage 1 build
+# also re-run the $CUSTOM_RUSTDOC command
+```
+
+If you change example-analyzer then run:
+
+```
+cargo build
+../target/debug/example-analyzer
+# also the $CUSTOM_RUSTDOC command
+```
