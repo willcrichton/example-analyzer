@@ -1,5 +1,6 @@
 #![feature(rustc_private)]
 
+use std::env;
 use std::collections::HashMap;
 use rustc_hir::{intravisit::{self, Visitor}, self as hir};
 use rustc_middle::ty::{TyKind, TyCtxt};
@@ -31,6 +32,7 @@ impl<'a, 'tcx> Visitor<'tcx> for FindCalls<'a, 'tcx> where 'tcx: 'a {
     }
 
     fn visit_expr(&mut self, ex: &'tcx hir::Expr<'tcx>) {
+        println!("Visiting expression {:?}", ex);
         let types = self.tcx.typeck(ex.hir_id.owner);
         let ty = match ex.kind {
             hir::ExprKind::Call(f, _) => Some(types.node_type(f.hir_id)),
@@ -59,7 +61,8 @@ struct Callbacks<'a> {
 }
 
 impl<'a> rustc_driver::Callbacks for Callbacks<'a> {
-    fn after_analysis<'tcx>(&mut self, _compiler: &rustc_interface::interface::Compiler, queries: &'tcx rustc_interface::Queries<'tcx>) -> rustc_driver::Compilation {        
+    fn after_analysis<'tcx>(&mut self, _compiler: &rustc_interface::interface::Compiler, queries: &'tcx rustc_interface::Queries<'tcx>) -> rustc_driver::Compilation {
+        println!("analysis done!");
         queries.global_ctxt().unwrap().take().enter(|tcx| {
             let krate = tcx.hir().krate();
             let map = tcx.hir();
@@ -89,24 +92,46 @@ fn main() {
 
     let re = Regex::new(r"^\s*Running `(.*)`").unwrap();
     let mut calls = HashMap::new();
-    stderr
-        .split("\n")
-        .filter_map(|line| {
-            re.captures(line).map(|cap| cap.get(1).unwrap().as_str().to_string())
-        })
-        .for_each(|command| {
-            let args: Vec<_> = command
-                .split(" ")
-                .chain(vec!["--sysroot", "/Users/will/.rustup/toolchains/nightly-x86_64-apple-darwin"].into_iter())
-                .map(|s| s.to_string())
-                .collect();
-            let file_name = args[4].to_string();     
-                   
-            let mut callbacks = Callbacks { calls: &mut calls, file_name };
-            let runner = rustc_driver::RunCompiler::new(&args, &mut callbacks);
-            runner.run().unwrap();
-        });
+    let toolchain_path = env::var("HOME").unwrap() + "/.rustup/toolchains/nightly-x86_64-apple-darwin";
+
+    let command_lines = stderr.split("\n").filter_map(|line| {
+      println!("processing {}", line);
+      re.captures(line).map(|cap| cap.get(1).unwrap().as_str().to_string())      
+    });
+    // println!("found {} commands!", command_lines.len());
+
+    command_lines.for_each(|command| {
+      println!("found a command!\n$ {}\n", command);
+      let args: Vec<_> = command
+          .split(" ")
+          .chain(vec!["--sysroot", &toolchain_path].into_iter())
+          .map(|s| s.to_string())
+          .collect();
+      let file_name = match command.split(" ").find(|s| s.starts_with("examples/") || s.starts_with("src/")) {
+          Some(s) => s.to_string(),
+          None => return
+      };
+      println!("file name is {}", file_name);
+
+      let mut callbacks = Callbacks { calls: &mut calls, file_name };
+
+      println!("running compiler");
+      let runner = rustc_driver::RunCompiler::new(&args, &mut callbacks);
+      println!("compiler made");
+      match runner.run() {
+          Ok(_) => println!("run complete!"),
+          Err(e) => eprintln!("error running compiler:\n{:?}", e)
+      }
+      println!("compiler 'run'");
+    });
+
+    println!("done running unwrapped commands! N = {}", calls.len());
 
     let json = rustc_serialize::json::encode(&calls).unwrap();
+    
+    println!("json generated");
+    
     fs::write(".call_locations.json", json).unwrap();
+    
+    println!("file written");
 }
