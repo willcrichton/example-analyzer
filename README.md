@@ -5,44 +5,39 @@
 ```bash
 git clone -b linked-examples https://github.com/willcrichton/rust
 cd rust
-./x.py --stage 1 build
-export CUSTOM_RUSTDOC=$(pwd)/build/x86_64-apple-darwin/stage1/bin/rustdoc
+./x.py build
+# replace `apple-darwin` with your current target as appropriate
+rustup toolchain link custom-rustdoc build/x86_64-apple-darwin/stage1
 cd ..
 git clone https://github.com/willcrichton/example-analyzer
-cd example_analyzer
-rustup toolchain install nightly --profile default --component rustc-dev
-rustup override set nightly
+cd example-analyzer
 cargo build
 ```
 
 ## Example
 
-
 ```bash
+# NOTE: the directory you run this from is important since the project uses
+# `rust-toolchain`
+export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib
 cd doctest
-export DYLD_LIBRARY_PATH=$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin/lib:$DYLD_LIBRARY_PATH
 ../target/debug/example-analyzer
-cargo clean && cargo doc -vv
-# copy the command within Running `...` and:
-# 1. replace rustdoc with $CUSTOM_RUSTDOC
-# 2. add the flag "--call-locations .call_locations.json" to the end
-# 3. run the command
-open target/doc/doctest/index.html
+cargo +custom-rustdoc rustdoc --open -- --call-locations .call_locations.json
 ```
 
 ## Development
 
-If you change the Rust repo (ie rustdoc) then run:
+If you change the Rust repo (i.e. rustdoc) then run:
 
 ```
-./x.py --stage 1 build
-# also re-run the $CUSTOM_RUSTDOC command
+(cd ../../rust && ./x.py build)
+# also re-run `cargo rustdoc`
 ```
 
 If you change example-analyzer then run:
 
 ```
-cargo build
+(cd .. && cargo build)
 ../target/debug/example-analyzer
-# also the $CUSTOM_RUSTDOC command
+# also re-run `cargo rustdoc`
 ```
