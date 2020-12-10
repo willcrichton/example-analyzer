@@ -17,8 +17,10 @@ cargo build
 
 ## Example
 
+
 ```bash
 cd doctest
+export DYLD_LIBRARY_PATH=$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin/lib:$DYLD_LIBRARY_PATH
 ../target/debug/example-analyzer
 cargo clean && cargo doc -vv
 # copy the command within Running `...` and:
