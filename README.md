@@ -10,7 +10,7 @@ export CUSTOM_RUSTDOC=$(pwd)/build/x86_64-apple-darwin/stage1/bin/rustdoc
 cd ..
 git clone https://github.com/willcrichton/example-analyzer
 cd example_analyzer
-rustup toolchain install nightly
+rustup toolchain install nightly --profile default --component rustc-dev
 rustup override set nightly
 cargo build
 ```
