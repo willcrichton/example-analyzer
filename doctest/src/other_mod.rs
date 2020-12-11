@@ -1,2 +1,4 @@
 /// doc comment
-pub fn bar() -> i32 { 2 }
+pub fn bar() -> i32 {
+    2
+}

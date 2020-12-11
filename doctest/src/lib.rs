@@ -1,5 +1,7 @@
 pub mod other_mod;
-pub fn foo() -> i32 { 1 }
+pub fn foo() -> i32 {
+    1
+}
 
 #[cfg(test)]
 mod tests {

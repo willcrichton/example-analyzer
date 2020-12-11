@@ -1,5 +1,5 @@
 use doctest::foo;
 
 fn main() {
-  assert_eq!(foo(), 1);
+    assert_eq!(foo(), 1);
 }
