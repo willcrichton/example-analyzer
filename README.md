@@ -19,6 +19,7 @@ cargo build
 ```bash
 # NOTE: the directory you run this from is important since the project uses
 # `rust-toolchain`
+# On MacOS, use `DYLD_LIBRARY_PATH` instead.
 export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib
 cd doctest
 ../target/debug/example-analyzer
