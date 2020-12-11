@@ -8,7 +8,6 @@ use rustc_hir::{
 use rustc_middle::hir::map::Map;
 use rustc_middle::ty::{TyCtxt, TyKind};
 use std::collections::HashMap;
-use std::env;
 use std::fs;
 use std::process::Command;
 
@@ -93,7 +92,37 @@ impl<'a> rustc_driver::Callbacks for Callbacks<'a> {
     }
 }
 
+// absolutely awful hack to fix the sysroot when running out-of-tree
+// Taken from #78926, which took it from src/bin/miri.rs, which in turn took it from clippy ... rustc is a mess.
+// FIXME(jyn514): implement https://github.com/rust-lang/rust/pull/78926#issuecomment-726653035 instead
+// FIXME(jyn514): Why is this a compile-time constant? Won't that break when this is distributed?
+// maybe use `rustc --print sysroot` instead?
+
+/// Returns the "default sysroot" that will be used if no `--sysroot` flag is set.
+/// Should be a compile-time constant.
+fn compile_time_sysroot() -> String {
+    /* NOTE: this doesn't matter for example-analyzer, which is always built out-of-tree,
+     * but might matter if it's ever incorporated into rustdoc.
+    if option_env!("RUSTC_STAGE").is_some() {
+        // This is being built as part of rustc, and gets shipped with rustup.
+        // We can rely on the sysroot computation in librustc_session.
+        return None;
+    }
+    */
+    // For builds outside rustc, we need to ensure that we got a sysroot
+    // that gets used as a default.  The sysroot computation in librustc_session would
+    // end up somewhere in the build dir (see `get_or_default_sysroot`).
+    // Taken from PR <https://github.com/Manishearth/rust-clippy/pull/911>.
+    let home = option_env!("RUSTUP_HOME").or(option_env!("MULTIRUST_HOME"));
+    let toolchain = option_env!("RUSTUP_TOOLCHAIN").or(option_env!("MULTIRUST_TOOLCHAIN"));
+    match (home, toolchain) {
+        (Some(home), Some(toolchain)) => format!("{}/toolchains/{}", home, toolchain),
+        _ => option_env!("RUST_SYSROOT").expect("to build example-analyzer without rustup, set RUST_SYSROOT to `rustc --print sysroot`").into(),
+    }
+}
+
 fn main() {
+    let sysroot = compile_time_sysroot();
     // Run Cargo to get the `rustc` commands used to check each example.
     // This gives us all the necessary flags (eg --extern) to get the example to compile.
     let cargo_output = {
@@ -129,6 +158,7 @@ fn main() {
         let mut args: Vec<_> = command
             .split(" ")
             .filter(|s| *s != "--error-format=json" && *s != "--json=diagnostic-rendered-ansi")
+            .chain(vec!["--sysroot", &sysroot])
             .collect();
 
         // FIXME(willcrichton): when compiling warp, for some reason the --cfg flags
@@ -144,11 +174,6 @@ fn main() {
             args.remove(*i + 1);
             args.remove(*i);
         }
-
-        // Add sysroot to compiler args
-        let toolchain_path = env::var("HOME").unwrap()
-            + "/.rustup/toolchains/nightly-2020-12-09-x86_64-apple-darwin";
-        args.extend(vec!["--sysroot", &toolchain_path]);
 
         let args: Vec<_> = args.into_iter().map(|arg| arg.to_string()).collect();
 
