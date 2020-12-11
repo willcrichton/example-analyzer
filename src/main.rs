@@ -32,7 +32,6 @@ impl<'a, 'tcx> Visitor<'tcx> for FindCalls<'a, 'tcx> where 'tcx: 'a {
     }
 
     fn visit_expr(&mut self, ex: &'tcx hir::Expr<'tcx>) {
-        println!("Visiting expression {:?}", ex);
         let types = self.tcx.typeck(ex.hir_id.owner);
         let ty = match ex.kind {
             hir::ExprKind::Call(f, _) => Some(types.node_type(f.hir_id)),
@@ -62,7 +61,6 @@ struct Callbacks<'a> {
 
 impl<'a> rustc_driver::Callbacks for Callbacks<'a> {
     fn after_analysis<'tcx>(&mut self, _compiler: &rustc_interface::interface::Compiler, queries: &'tcx rustc_interface::Queries<'tcx>) -> rustc_driver::Compilation {
-        println!("analysis done!");
         queries.global_ctxt().unwrap().take().enter(|tcx| {
             let krate = tcx.hir().krate();
             let map = tcx.hir();
@@ -95,43 +93,36 @@ fn main() {
     let toolchain_path = env::var("HOME").unwrap() + "/.rustup/toolchains/nightly-x86_64-apple-darwin";
 
     let command_lines = stderr.split("\n").filter_map(|line| {
-      println!("processing {}", line);
       re.captures(line).map(|cap| cap.get(1).unwrap().as_str().to_string())      
     });
-    // println!("found {} commands!", command_lines.len());
 
     command_lines.for_each(|command| {
-      println!("found a command!\n$ {}\n", command);
-      let args: Vec<_> = command
+      let mut args: Vec<_> = command
           .split(" ")
-          .chain(vec!["--sysroot", &toolchain_path].into_iter())
-          .map(|s| s.to_string())
           .collect();
+
+      let cfg_flags: Vec<_> = args.iter().enumerate().filter(|(_, s)| **s == "--cfg").map(|(i, _)| i).collect();
+      for i in cfg_flags.iter().rev() {
+        args.remove(*i + 1);
+        args.remove(*i);
+      }
+      args.extend(vec!["--sysroot", &toolchain_path]);
+      
+      let args: Vec<_> = args.into_iter().map(|arg| arg.to_string()).collect();
+
       let file_name = match command.split(" ").find(|s| s.starts_with("examples/") || s.starts_with("src/")) {
           Some(s) => s.to_string(),
           None => return
       };
-      println!("file name is {}", file_name);
 
       let mut callbacks = Callbacks { calls: &mut calls, file_name };
 
-      println!("running compiler");
-      let runner = rustc_driver::RunCompiler::new(&args, &mut callbacks);
-      println!("compiler made");
-      match runner.run() {
-          Ok(_) => println!("run complete!"),
-          Err(e) => eprintln!("error running compiler:\n{:?}", e)
-      }
-      println!("compiler 'run'");
+      rustc_driver::install_ice_hook();
+      rustc_driver::catch_fatal_errors(|| {
+        rustc_driver::RunCompiler::new(&args, &mut callbacks).run().unwrap();
+      }).unwrap();
     });
 
-    println!("done running unwrapped commands! N = {}", calls.len());
-
     let json = rustc_serialize::json::encode(&calls).unwrap();
-    
-    println!("json generated");
-    
     fs::write(".call_locations.json", json).unwrap();
-    
-    println!("file written");
 }
