@@ -1,4 +1,8 @@
 pub mod other_mod;
+mod private;
+
+pub use private::quux;
+
 pub fn foo() -> i32 {
     1
 }

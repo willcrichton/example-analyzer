@@ -53,7 +53,11 @@ where
 
         if let Some(ty) = ty {
             if let TyKind::FnDef(def_id, _) = ty.kind() {
-                let key = self.tcx.def_path_str(*def_id);
+                let key = format!(
+                    "{}{}",
+                    self.tcx.crate_name(def_id.krate),
+                    self.tcx.def_path(*def_id).to_string_no_crate_verbose()
+                );
                 let entries = self.calls.entry(key).or_insert(HashMap::new());
                 entries
                     .entry(self.file_name.clone())
