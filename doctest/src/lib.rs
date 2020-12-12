@@ -7,6 +7,12 @@ pub fn foo() -> i32 {
     1
 }
 
+pub struct A;
+
+impl A {
+    pub fn b(&self) -> i32 { 0 }
+}
+
 #[cfg(test)]
 mod tests {
     #[test]
