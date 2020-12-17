@@ -23,7 +23,9 @@ cargo build
 export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib
 cd doctest
 ../target/debug/example-analyzer
-cargo +custom-rustdoc rustdoc --open -- --call-locations .call_locations.json
+cargo +custom-rustdoc rustdoc --open -- -Z unstable-options \
+    --repository-url $(git remote get-url origin)/tree/$(git rev-parse HEAD) \
+    --call-locations .call_locations.json
 ```
 
 ## Development
