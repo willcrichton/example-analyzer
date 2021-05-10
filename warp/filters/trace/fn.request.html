@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Create a wrapping filter that instruments every request with a `tracing` `Span` at the `INFO` level, containing a summary of the request. Additionally, if the `DEBUG` level is enabled, the span will contain an event recording the request’s headers."><meta name="keywords" content="rust, rustlang, rust-lang, request"><title>request in warp::filters::trace - Rust</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class="location"><a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">trace</a></p><div id="sidebar-vars" data-name="request" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
+                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">trace</a>::<wbr><a class="fn" href="">request</a><button id="copy-path" onclick="copy_path(this)">⎘</button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../../src/warp/filters/trace.rs.html#42-67" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn request() -&gt; <a class="struct" href="struct.Trace.html" title="struct warp::filters::trace::Trace">Trace</a>&lt;impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="struct" href="struct.Info.html" title="struct warp::filters::trace::Info">Info</a>&lt;'_&gt;) -&gt; <a class="struct" href="https://docs.rs/tracing/0.1.26/tracing/span/struct.Span.html" title="struct tracing::span::Span">Span</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>&gt;</pre><div class="docblock"><p>Create a wrapping filter that instruments every request with a <code>tracing</code>
+<a href="https://docs.rs/tracing/latest/tracing/#spans"><code>Span</code></a> at the <a href="https://docs.rs/tracing/0.1.16/tracing/struct.Level.html#associatedconstant.INFO"><code>INFO</code></a> level, containing a summary of the request.
+Additionally, if the <a href="https://docs.rs/tracing/0.1.16/tracing/struct.Level.html#associatedconstant.DEBUG"><code>DEBUG</code></a> level is enabled, the span will contain an
+event recording the request’s headers.</p>
+<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<div class="example-wrap"><pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">warp::Filter</span>;
+
+<span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">warp::any</span>()
+    .<span class="ident">map</span>(<span class="ident">warp::reply</span>)
+    .<span class="ident">with</span>(<span class="ident">warp::trace::request</span>());</pre></div>
+</div><div class="docblock found-example-list"><h1 id="found-examples" class="section-header"><a href="#found-examples">Uses found in <code>examples/</code></a></h1><div class="found-example" data-code="//! [`tracing`] is a framework for instrumenting Rust programs to
+//! collect scoped, structured, and async-aware diagnostics. This example
+//! demonstrates how the `warp::trace` module can be used to instrument `warp`
+//! applications with `tracing`.
+//!
+//! [`tracing`]: https://crates.io/crates/tracing
+#![deny(warnings)]
+use tracing_subscriber::fmt::format::FmtSpan;
+use warp::Filter;
+
+#[tokio::main]
+async fn main() {
+    // Filter traces based on the RUST_LOG env var, or, if it's not set,
+    // default to show the output of the example.
+    let filter = std::env::var(&quot;RUST_LOG&quot;).unwrap_or_else(|_| &quot;tracing=info,warp=debug&quot;.to_owned());
+
+    // Configure the default `tracing` subscriber.
+    // The `fmt` subscriber from the `tracing-subscriber` crate logs `tracing`
+    // events to stdout. Other subscribers are available for integrating with
+    // distributed tracing systems such as OpenTelemetry.
+    tracing_subscriber::fmt()
+        // Use the filter we built above to determine which traces to record.
+        .with_env_filter(filter)
+        // Record an event when each span closes. This can be used to time our
+        // routes' durations!
+        .with_span_events(FmtSpan::CLOSE)
+        .init();
+
+    let hello = warp::path(&quot;hello&quot;)
+        .and(warp::get())
+        // When the `hello` route is called, emit a `tracing` event.
+        .map(|| {
+            tracing::info!(&quot;saying hello...&quot;);
+            &quot;Hello, World!&quot;
+        })
+        // Wrap the route in a `tracing` span to add the route's name as context
+        // to any events that occur inside it.
+        .with(warp::trace::named(&quot;hello&quot;));
+
+    let goodbye = warp::path(&quot;goodbye&quot;)
+        .and(warp::get())
+        .map(|| {
+            tracing::info!(&quot;saying goodbye...&quot;);
+            &quot;So long and thanks for all the fish!&quot;
+        })
+        // We can also provide our own custom `tracing` spans to wrap a route.
+        .with(warp::trace(|info| {
+            // Construct our own custom span for this route.
+            tracing::info_span!(&quot;goodbye&quot;, req.path = ?info.path())
+        }));
+
+    let routes = hello
+        .or(goodbye)
+        // Wrap all the routes with a filter that creates a `tracing` span for
+        // each request we receive, including data about the request.
+        .with(warp::trace::request());
+
+    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
+}
+" data-locs="[[2291,2313]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/tracing.rs">examples/tracing.rs</a></strong></p>
+<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+</pre><div class="example-wrap"><pre class="rust ">
+<span class="doccomment">//! [`tracing`] is a framework for instrumenting Rust programs to</span>
+<span class="doccomment">//! collect scoped, structured, and async-aware diagnostics. This example</span>
+<span class="doccomment">//! demonstrates how the `warp::trace` module can be used to instrument `warp`</span>
+<span class="doccomment">//! applications with `tracing`.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! [`tracing`]: https://crates.io/crates/tracing</span>
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
+<span class="kw">use</span> <span class="ident">tracing_subscriber::fmt::format::FmtSpan</span>;
+<span class="kw">use</span> <span class="ident">warp::Filter</span>;
+
+<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="comment">// Filter traces based on the RUST_LOG env var, or, if it&#39;s not set,</span>
+    <span class="comment">// default to show the output of the example.</span>
+    <span class="kw">let</span> <span class="ident">filter</span> <span class="op">=</span> <span class="ident">std::env::var</span>(<span class="string">&quot;RUST_LOG&quot;</span>).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="string">&quot;tracing=info,warp=debug&quot;</span>.<span class="ident">to_owned</span>());
+
+    <span class="comment">// Configure the default `tracing` subscriber.</span>
+    <span class="comment">// The `fmt` subscriber from the `tracing-subscriber` crate logs `tracing`</span>
+    <span class="comment">// events to stdout. Other subscribers are available for integrating with</span>
+    <span class="comment">// distributed tracing systems such as OpenTelemetry.</span>
+    <span class="ident">tracing_subscriber::fmt</span>()
+        <span class="comment">// Use the filter we built above to determine which traces to record.</span>
+        .<span class="ident">with_env_filter</span>(<span class="ident">filter</span>)
+        <span class="comment">// Record an event when each span closes. This can be used to time our</span>
+        <span class="comment">// routes&#39; durations!</span>
+        .<span class="ident">with_span_events</span>(<span class="ident">FmtSpan::CLOSE</span>)
+        .<span class="ident">init</span>();
+
+    <span class="kw">let</span> <span class="ident">hello</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;hello&quot;</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::get</span>())
+        <span class="comment">// When the `hello` route is called, emit a `tracing` event.</span>
+        .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
+            <span class="macro">tracing::info!</span>(<span class="string">&quot;saying hello...&quot;</span>);
+            <span class="string">&quot;Hello, World!&quot;</span>
+        })
+        <span class="comment">// Wrap the route in a `tracing` span to add the route&#39;s name as context</span>
+        <span class="comment">// to any events that occur inside it.</span>
+        .<span class="ident">with</span>(<span class="ident">warp::trace::named</span>(<span class="string">&quot;hello&quot;</span>));
+
+    <span class="kw">let</span> <span class="ident">goodbye</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;goodbye&quot;</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::get</span>())
+        .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
+            <span class="macro">tracing::info!</span>(<span class="string">&quot;saying goodbye...&quot;</span>);
+            <span class="string">&quot;So long and thanks for all the fish!&quot;</span>
+        })
+        <span class="comment">// We can also provide our own custom `tracing` spans to wrap a route.</span>
+        .<span class="ident">with</span>(<span class="ident">warp::trace</span>(<span class="op">|</span><span class="ident">info</span><span class="op">|</span> {
+            <span class="comment">// Construct our own custom span for this route.</span>
+            <span class="macro">tracing::info_span!</span>(<span class="string">&quot;goodbye&quot;</span>, <span class="ident">req</span>.<span class="ident">path</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">info</span>.<span class="ident">path</span>())
+        }));
+
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">hello</span>
+        .<span class="ident">or</span>(<span class="ident">goodbye</span>)
+        <span class="comment">// Wrap all the routes with a filter that creates a `tracing` span for</span>
+        <span class="comment">// each request we receive, including data about the request.</span>
+        .<span class="ident">with</span>(<span class="ident">warp::trace::request</span>());
+
+    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
+}
+</pre></div>
+</div></div></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
+    <script src="../../../main.js"></script></body></html>
