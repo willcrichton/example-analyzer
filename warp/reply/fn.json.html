@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Convert the value into a `Reply` with the value encoded as JSON."><meta name="keywords" content="rust, rustlang, rust-lang, json"><title>json in warp::reply - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
 <link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../warp/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class="location"><a href="../index.html">warp</a>::<wbr><a href="index.html">reply</a></p><div id="sidebar-vars" data-name="json" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
-                <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../index.html">warp</a>::<wbr><a href="index.html">reply</a>::<wbr><a class="fn" href="">json</a><button id="copy-path" onclick="copy_path(this)">⎘</button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../src/warp/reply.rs.html#102-111" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn json&lt;T&gt;(val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; <a class="struct" href="struct.Json.html" title="struct warp::reply::Json">Json</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://docs.rs/serde/1.0.125/serde/ser/trait.Serialize.html" title="trait serde::ser::Serialize">Serialize</a>,&nbsp;</span></pre><div class="docblock"><p>Convert the value into a <code>Reply</code> with the value encoded as JSON.</p>
+                <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../index.html">warp</a>::<wbr><a href="index.html">reply</a>::<wbr><a class="fn" href="">json</a><button id="copy-path" onclick="copy_path(this)">⎘</button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../src/warp/reply.rs.html#102-111" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn json&lt;T&gt;(val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; <a class="struct" href="struct.Json.html" title="struct warp::reply::Json">Json</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../serde/ser/trait.Serialize.html" title="trait serde::ser::Serialize">Serialize</a>,&nbsp;</span></pre><div class="docblock"><p>Convert the value into a <code>Reply</code> with the value encoded as JSON.</p>
 <p>The passed value must implement <a href="https://serde.rs"><code>Serialize</code></a>. Many
 collections do, and custom domain types can have <code>Serialize</code> derived.</p>
 <h1 id="example" class="section-header"><a href="#example">Example</a></h1>
@@ -19,7 +19,7 @@ collections do, and custom domain types can have <code>Serialize</code> derived.
 <p>If a type fails to be serialized into JSON, the error is logged at the
 <code>error</code> level, and the returned <code>impl Reply</code> will be an empty
 <code>500 Internal Server Error</code> response.</p>
-</div><div class="docblock found-example-list"><h1 id="found-examples" class="section-header"><a href="#found-examples">Uses found in <code>examples/</code></a></h1><div class="found-example" data-code="#![deny(warnings)]
+</div><div class="docblock scraped-example-list"><h1 id="scraped-examples" class="small-section-header"><a href="#scraped-examples">Uses found in <code>examples/</code></a></h1><div class="scraped-example" data-code="#![deny(warnings)]
 
 use std::env;
 use warp::Filter;
@@ -314,7 +314,7 @@ mod tests {
         }
     }
 }
-" data-locs="[[4374,4399]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/todos.rs">examples/todos.rs</a></strong></p>
+" data-locs="[[4374,4399]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/todos.rs">examples/todos.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -907,7 +907,7 @@ mod tests {
     }
 }
 </pre></div>
-</div></div><div class="more-found-examples hidden"><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="more-scraped-examples hidden"><div class="scraped-example" data-code="#![deny(warnings)]
 
 use std::convert::Infallible;
 use std::error::Error;
@@ -1029,7 +1029,7 @@ async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
 
     Ok(warp::reply::with_status(json, code))
 }
-" data-locs="[[3536,3638],[568,703],[875,1032]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/rejections.rs">examples/rejections.rs</a></strong></p>
+" data-locs="[[3536,3638],[568,703],[875,1032]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/rejections.rs">examples/rejections.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -1276,7 +1276,7 @@ async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
     <span class="prelude-val">Ok</span>(<span class="ident">warp::reply::with_status</span>(<span class="ident">json</span>, <span class="ident">code</span>))
 }
 </pre></div>
-</div></div><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
 
 use serde_derive::{Deserialize, Serialize};
 
@@ -1306,7 +1306,7 @@ async fn main() {
 
     warp::serve(promote).run(([127, 0, 0, 1], 3030)).await
 }
-" data-locs="[[636,664]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/body.rs">examples/body.rs</a></strong></p>
+" data-locs="[[636,664]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/body.rs">examples/body.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>

@@ -11,7 +11,7 @@
 <span class="comment">// Matches &#39;/&#39;</span>
 <span class="kw">let</span> <span class="ident">hello</span> <span class="op">=</span> <span class="ident">warp::path::end</span>()
     .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>);</pre></div>
-</div><div class="docblock found-example-list"><h1 id="found-examples" class="section-header"><a href="#found-examples">Uses found in <code>examples/</code></a></h1><div class="found-example" data-code="#![deny(warnings)]
+</div><div class="docblock scraped-example-list"><h1 id="scraped-examples" class="small-section-header"><a href="#scraped-examples">Uses found in <code>examples/</code></a></h1><div class="scraped-example" data-code="#![deny(warnings)]
 
 use warp::Filter;
 
@@ -32,7 +32,7 @@ async fn main() {
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[146,163]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/file.rs">examples/file.rs</a></strong></p>
+" data-locs="[[146,163]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/file.rs">examples/file.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
@@ -77,7 +77,7 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </pre></div>
-</div></div><div class="more-found-examples hidden"><div class="found-example" data-code="// #![deny(warnings)]
+</div></div><div class="more-scraped-examples hidden"><div class="scraped-example" data-code="// #![deny(warnings)]
 use std::collections::HashMap;
 use std::sync::{
     atomic::{AtomicUsize, Ordering},
@@ -249,7 +249,7 @@ static INDEX_HTML: &str = r#&quot;<!DOCTYPE html>
     </body>
 </html>
 &quot;#;
-" data-locs="[[1320,1337]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/websockets_chat.rs">examples/websockets_chat.rs</a></strong></p>
+" data-locs="[[1320,1337]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/websockets_chat.rs">examples/websockets_chat.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -596,7 +596,7 @@ static INDEX_HTML: &str = r#&quot;<!DOCTYPE html>
 &lt;/html&gt;
 &quot;#</span>;
 </pre></div>
-</div></div><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
 
 use warp::Filter;
 
@@ -700,7 +700,7 @@ async fn main() {
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[241,258],[2302,2319]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/routing.rs">examples/routing.rs</a></strong></p>
+" data-locs="[[241,258],[2302,2319]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/routing.rs">examples/routing.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -911,7 +911,7 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </pre></div>
-</div></div><div class="found-example" data-code="use futures::{Stream, StreamExt};
+</div></div><div class="scraped-example" data-code="use futures::{Stream, StreamExt};
 use std::collections::HashMap;
 use std::sync::{
     atomic::{AtomicUsize, Ordering},
@@ -1074,7 +1074,7 @@ static INDEX_HTML: &str = r#&quot;
     </body>
 </html>
 &quot;#;
-" data-locs="[[1489,1506]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/sse_chat.rs">examples/sse_chat.rs</a></strong></p>
+" data-locs="[[1489,1506]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/sse_chat.rs">examples/sse_chat.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -1403,7 +1403,7 @@ static INDEX_HTML: &str = r#&quot;
 &lt;/html&gt;
 &quot;#</span>;
 </pre></div>
-</div></div><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
 use std::sync::Arc;
 
 use handlebars::Handlebars;
@@ -1461,7 +1461,7 @@ async fn main() {
 
     warp::serve(route).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[1283,1300]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/handlebars_template.rs">examples/handlebars_template.rs</a></strong></p>
+" data-locs="[[1283,1300]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/handlebars_template.rs">examples/handlebars_template.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
@@ -1580,7 +1580,7 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">route</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </pre></div>
-</div></div><div class="found-example" data-code="use warp::{filters::BoxedFilter, Filter, Rejection, Reply};
+</div></div><div class="scraped-example" data-code="use warp::{filters::BoxedFilter, Filter, Rejection, Reply};
 
 // Option 1: BoxedFilter
 // Note that this may be useful for shortening compile times when you are composing many filters.
@@ -1600,7 +1600,7 @@ async fn main() {
     let routes = index_filter().or(assets_filter());
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[556,573]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/returning.rs">examples/returning.rs</a></strong></p>
+" data-locs="[[556,573]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/returning.rs">examples/returning.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>

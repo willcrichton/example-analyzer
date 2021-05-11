@@ -16,7 +16,7 @@ parse to a <code>T</code>, otherwise rejects the request.</p>
 
 <span class="comment">// Parse `foo: bar` into a `String`</span>
 <span class="kw">let</span> <span class="ident">foo</span> <span class="op">=</span> <span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>(<span class="string">&quot;foo&quot;</span>);</pre></div>
-</div><div class="docblock found-example-list"><h1 id="found-examples" class="section-header"><a href="#found-examples">Uses found in <code>examples/</code></a></h1><div class="found-example" data-code="#![deny(warnings)]
+</div><div class="docblock scraped-example-list"><h1 id="scraped-examples" class="small-section-header"><a href="#scraped-examples">Uses found in <code>examples/</code></a></h1><div class="scraped-example" data-code="#![deny(warnings)]
 
 use std::convert::Infallible;
 use std::error::Error;
@@ -138,7 +138,7 @@ async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
 
     Ok(warp::reply::with_status(json, code))
 }
-" data-locs="[[1354,1383]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/rejections.rs">examples/rejections.rs</a></strong></p>
+" data-locs="[[1354,1383]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/rejections.rs">examples/rejections.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -385,7 +385,7 @@ async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
     <span class="prelude-val">Ok</span>(<span class="ident">warp::reply::with_status</span>(<span class="ident">json</span>, <span class="ident">code</span>))
 }
 </pre></div>
-</div></div><div class="more-found-examples hidden"><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="more-scraped-examples hidden"><div class="scraped-example" data-code="#![deny(warnings)]
 use std::net::SocketAddr;
 use warp::Filter;
 
@@ -412,7 +412,7 @@ async fn main() {
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[424,458]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/headers.rs">examples/headers.rs</a></strong></p>
+" data-locs="[[424,458]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/headers.rs">examples/headers.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>

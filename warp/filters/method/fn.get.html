@@ -7,7 +7,7 @@
 <span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
 <span class="kw">let</span> <span class="ident">get_only</span> <span class="op">=</span> <span class="ident">warp::get</span>().<span class="ident">map</span>(<span class="ident">warp::reply</span>);</pre></div>
-</div><div class="docblock found-example-list"><h1 id="found-examples" class="section-header"><a href="#found-examples">Uses found in <code>examples/</code></a></h1><div class="found-example" data-code="#![deny(warnings)]
+</div><div class="docblock scraped-example-list"><h1 id="scraped-examples" class="small-section-header"><a href="#scraped-examples">Uses found in <code>examples/</code></a></h1><div class="scraped-example" data-code="#![deny(warnings)]
 
 use std::convert::Infallible;
 use std::error::Error;
@@ -129,7 +129,7 @@ async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
 
     Ok(warp::reply::with_status(json, code))
 }
-" data-locs="[[475,486]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/rejections.rs">examples/rejections.rs</a></strong></p>
+" data-locs="[[475,486]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/rejections.rs">examples/rejections.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -376,7 +376,7 @@ async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
     <span class="prelude-val">Ok</span>(<span class="ident">warp::reply::with_status</span>(<span class="ident">json</span>, <span class="ident">code</span>))
 }
 </pre></div>
-</div></div><div class="more-found-examples hidden"><div class="found-example" data-code="use serde_derive::{Deserialize, Serialize};
+</div></div><div class="more-scraped-examples hidden"><div class="scraped-example" data-code="use serde_derive::{Deserialize, Serialize};
 use std::collections::HashMap;
 use warp::{
     http::{Response, StatusCode},
@@ -435,7 +435,7 @@ async fn main() {
         .run(([127, 0, 0, 1], 3030))
         .await
 }
-" data-locs="[[383,394],[846,857],[1347,1358]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/query_string.rs">examples/query_string.rs</a></strong></p>
+" data-locs="[[383,394],[846,857],[1347,1358]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/query_string.rs">examples/query_string.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
@@ -556,7 +556,73 @@ async fn main() {
         .<span class="kw">await</span>
 }
 </pre></div>
-</div></div><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
+
+use warp::Filter;
+
+#[tokio::main]
+async fn main() {
+    pretty_env_logger::init();
+
+    let readme = warp::get()
+        .and(warp::path::end())
+        .and(warp::fs::file(&quot;./README.md&quot;));
+
+    // dir already requires GET...
+    let examples = warp::path(&quot;ex&quot;).and(warp::fs::dir(&quot;./examples/&quot;));
+
+    // GET / => README.md
+    // GET /ex/... => ./examples/..
+    let routes = readme.or(examples);
+
+    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
+}
+" data-locs="[[121,132]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/file.rs">examples/file.rs</a></strong></p>
+<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+</pre><div class="example-wrap"><pre class="rust ">
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
+
+<span class="kw">use</span> <span class="ident">warp::Filter</span>;
+
+<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="ident">pretty_env_logger::init</span>();
+
+    <span class="kw">let</span> <span class="ident">readme</span> <span class="op">=</span> <span class="ident">warp::get</span>()
+        .<span class="ident">and</span>(<span class="ident">warp::path::end</span>())
+        .<span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>));
+
+    <span class="comment">// dir already requires GET...</span>
+    <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./examples/&quot;</span>));
+
+    <span class="comment">// GET / =&gt; README.md</span>
+    <span class="comment">// GET /ex/... =&gt; ./examples/..</span>
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">readme</span>.<span class="ident">or</span>(<span class="ident">examples</span>);
+
+    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
+}
+</pre></div>
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
 
 use std::env;
 use warp::Filter;
@@ -851,7 +917,7 @@ mod tests {
         }
     }
 }
-" data-locs="[[1468,1479]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/todos.rs">examples/todos.rs</a></strong></p>
+" data-locs="[[1468,1479]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/todos.rs">examples/todos.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -1444,73 +1510,7 @@ mod tests {
     }
 }
 </pre></div>
-</div></div><div class="found-example" data-code="#![deny(warnings)]
-
-use warp::Filter;
-
-#[tokio::main]
-async fn main() {
-    pretty_env_logger::init();
-
-    let readme = warp::get()
-        .and(warp::path::end())
-        .and(warp::fs::file(&quot;./README.md&quot;));
-
-    // dir already requires GET...
-    let examples = warp::path(&quot;ex&quot;).and(warp::fs::dir(&quot;./examples/&quot;));
-
-    // GET / => README.md
-    // GET /ex/... => ./examples/..
-    let routes = readme.or(examples);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}
-" data-locs="[[121,132]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/file.rs">examples/file.rs</a></strong></p>
-<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-</pre><div class="example-wrap"><pre class="rust ">
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
-
-<span class="kw">use</span> <span class="ident">warp::Filter</span>;
-
-<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="ident">pretty_env_logger::init</span>();
-
-    <span class="kw">let</span> <span class="ident">readme</span> <span class="op">=</span> <span class="ident">warp::get</span>()
-        .<span class="ident">and</span>(<span class="ident">warp::path::end</span>())
-        .<span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>));
-
-    <span class="comment">// dir already requires GET...</span>
-    <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./examples/&quot;</span>));
-
-    <span class="comment">// GET / =&gt; README.md</span>
-    <span class="comment">// GET /ex/... =&gt; ./examples/..</span>
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">readme</span>.<span class="ident">or</span>(<span class="ident">examples</span>);
-
-    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
-}
-</pre></div>
-</div></div><div class="found-example" data-code="//! [`tracing`] is a framework for instrumenting Rust programs to
+</div></div><div class="scraped-example" data-code="//! [`tracing`] is a framework for instrumenting Rust programs to
 //! collect scoped, structured, and async-aware diagnostics. This example
 //! demonstrates how the `warp::trace` module can be used to instrument `warp`
 //! applications with `tracing`.
@@ -1569,7 +1569,7 @@ async fn main() {
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[1273,1284],[1685,1696]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/tracing.rs">examples/tracing.rs</a></strong></p>
+" data-locs="[[1273,1284],[1685,1696]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/tracing.rs">examples/tracing.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
@@ -1690,7 +1690,7 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </pre></div>
-</div></div><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
 
 use warp::Filter;
 
@@ -1794,7 +1794,7 @@ async fn main() {
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[3110,3121]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/routing.rs">examples/routing.rs</a></strong></p>
+" data-locs="[[3110,3121]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/routing.rs">examples/routing.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -2005,7 +2005,7 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </pre></div>
-</div></div><div class="found-example" data-code="use futures::{Stream, StreamExt};
+</div></div><div class="scraped-example" data-code="use futures::{Stream, StreamExt};
 use std::collections::HashMap;
 use std::sync::{
     atomic::{AtomicUsize, Ordering},
@@ -2168,7 +2168,7 @@ static INDEX_HTML: &str = r#&quot;
     </body>
 </html>
 &quot;#;
-" data-locs="[[1248,1259]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/sse_chat.rs">examples/sse_chat.rs</a></strong></p>
+" data-locs="[[1248,1259]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/sse_chat.rs">examples/sse_chat.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -2497,7 +2497,7 @@ static INDEX_HTML: &str = r#&quot;
 &lt;/html&gt;
 &quot;#</span>;
 </pre></div>
-</div></div><div class="found-example" data-code="use futures::StreamExt;
+</div></div><div class="scraped-example" data-code="use futures::StreamExt;
 use std::convert::Infallible;
 use std::time::Duration;
 use tokio::time::interval;
@@ -2528,7 +2528,7 @@ async fn main() {
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[442,453]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/sse.rs">examples/sse.rs</a></strong></p>
+" data-locs="[[442,453]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/sse.rs">examples/sse.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
@@ -2593,7 +2593,7 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </pre></div>
-</div></div><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
 use std::sync::Arc;
 
 use handlebars::Handlebars;
@@ -2651,7 +2651,7 @@ async fn main() {
 
     warp::serve(route).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[1258,1269]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/handlebars_template.rs">examples/handlebars_template.rs</a></strong></p>
+" data-locs="[[1258,1269]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/handlebars_template.rs">examples/handlebars_template.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>

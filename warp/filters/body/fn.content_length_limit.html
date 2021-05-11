@@ -11,7 +11,7 @@ larger than the limit provided.</p>
 <span class="comment">// Limit the upload to 4kb...</span>
 <span class="kw">let</span> <span class="ident">upload</span> <span class="op">=</span> <span class="ident">warp::body::content_length_limit</span>(<span class="number">4096</span>)
     .<span class="ident">and</span>(<span class="ident">warp::body::aggregate</span>());</pre></div>
-</div><div class="docblock found-example-list"><h1 id="found-examples" class="section-header"><a href="#found-examples">Uses found in <code>examples/</code></a></h1><div class="found-example" data-code="#![deny(warnings)]
+</div><div class="docblock scraped-example-list"><h1 id="scraped-examples" class="small-section-header"><a href="#scraped-examples">Uses found in <code>examples/</code></a></h1><div class="scraped-example" data-code="#![deny(warnings)]
 
 use std::env;
 use warp::Filter;
@@ -306,7 +306,7 @@ mod tests {
         }
     }
 }
-" data-locs="[[3466,3509]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/todos.rs">examples/todos.rs</a></strong></p>
+" data-locs="[[3466,3509]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/todos.rs">examples/todos.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -899,7 +899,7 @@ mod tests {
     }
 }
 </pre></div>
-</div></div><div class="more-found-examples hidden"><div class="found-example" data-code="#![deny(warnings)]
+</div></div><div class="more-scraped-examples hidden"><div class="scraped-example" data-code="#![deny(warnings)]
 
 use serde_derive::{Deserialize, Serialize};
 
@@ -929,7 +929,7 @@ async fn main() {
 
     warp::serve(promote).run(([127, 0, 0, 1], 3030)).await
 }
-" data-locs="[[466,509]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/body.rs">examples/body.rs</a></strong></p>
+" data-locs="[[466,509]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/body.rs">examples/body.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
@@ -992,7 +992,7 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
 }
 </pre></div>
-</div></div><div class="found-example" data-code="use futures::{Stream, StreamExt};
+</div></div><div class="scraped-example" data-code="use futures::{Stream, StreamExt};
 use std::collections::HashMap;
 use std::sync::{
     atomic::{AtomicUsize, Ordering},
@@ -1155,7 +1155,7 @@ static INDEX_HTML: &str = r#&quot;
     </body>
 </html>
 &quot;#;
-" data-locs="[[720,757]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/bf8bfc4134035dbff882f9b26cb9d1aa57f2c338/examples/sse_chat.rs">examples/sse_chat.rs</a></strong></p>
+" data-locs="[[720,757]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/sse_chat.rs">examples/sse_chat.rs</a></strong></p>
 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
