@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Translate from a pointer type by borrowing, without affecting the refcount."><meta name="keywords" content="rust, rustlang, rust-lang, FromGlibPtrBorrow"><title>FromGlibPtrBorrow in glib::translate - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../glib/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a><p class="location">Trait FromGlibPtrBorrow</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.from_glib_borrow">from_glib_borrow</a></div><a class="sidebar-title" href="#foreign-impls">Implementations on Foreign Types</a><div class="sidebar-links"><a href="#impl-FromGlibPtrBorrow%3CP%3E-for-Option%3CT%3E">Option&lt;T&gt;</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class="location"><a href="../index.html">glib</a>::<wbr><a href="index.html">translate</a></p><div id="sidebar-vars" data-name="FromGlibPtrBorrow" data-ty="trait" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button">?</button>
+                <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Trait <a href="../index.html">glib</a>::<wbr><a href="index.html">translate</a>::<wbr><a class="trait" href="">FromGlibPtrBorrow</a><button id="copy-path" onclick="copy_path(this)"><img src="../../clipboard.svg" width="19" height="18" alt="Copy item import"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../src/glib/translate.rs.html#1342-1349" title="goto source code">[src]</a></span></h1><div class="docblock type-decl"><pre class="rust trait">pub trait FromGlibPtrBorrow&lt;P:&nbsp;<a class="trait" href="trait.Ptr.html" title="trait glib::translate::Ptr">Ptr</a>&gt;: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> {
+    unsafe fn <a href="#method.from_glib_borrow" class="fnname">from_glib_borrow</a>(_ptr: P) -&gt; <a class="struct" href="struct.Borrowed.html" title="struct glib::translate::Borrowed">Borrowed</a>&lt;Self&gt; { ... }
+}</pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Translate from a pointer type by borrowing, without affecting the refcount.</p>
+<p>The purpose of this trait is to access values inside callbacks
+without changing their reference status.
+The obtained borrow must not be accessed outside of the scope of the callback,
+and called procedures must not store any references to the underlying data.
+Safe Rust code must never obtain a mutable Rust reference.</p>
+<p><a name="safety_points"></a></p>
+<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<p>The implementation of this trait as well as the returned type
+must satisfy the same constraints together.
+They must not take ownership of the underlying value, copy it,
+and should not change its rerefence count.
+If it does, it must properly release obtained references.</p>
+<p>The returned value, when dropped,
+must leave the underlying value in the same state
+as before from_glib_borrow was called:</p>
+<ul>
+<li>it must not be dropped,</li>
+<li>it must be the same type of reference, e.g. still floating.</li>
+</ul>
+<p>For more information, refer to module level documentation.</p>
+</div></details><h2 id="provided-methods" class="small-section-header">Provided methods<a href="#provided-methods" class="anchor"></a></h2><div class="methods"><details class="rustdoc-toggle" open><summary><h3 id="method.from_glib_borrow" class="method"><code>unsafe fn <a href="#method.from_glib_borrow" class="fnname">from_glib_borrow</a>(_ptr: P) -&gt; <a class="struct" href="struct.Borrowed.html" title="struct glib::translate::Borrowed">Borrowed</a>&lt;Self&gt;</code><a class="srclink" href="../../src/glib/translate.rs.html#1346-1348" title="goto source code">[src]</a></h3></summary><div class="docblock"><h1 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h1>
+<p>See trait level <a href="#safety_points">notes on safety</a></p>
+</div><div class="docblock scraped-example-list">
+          <h1 id="scraped-examples" class="small-section-header">
+             <a href="#scraped-examples">Uses found in <code>examples/</code></a>
+          </h1><div class="scraped-example" data-code="mod file_size;
+
+use futures_channel::oneshot;
+use glib::clone;
+use gtk::glib::translate::*;
+use gtk::{gio, glib};
+
+use file_size::FileSize;
+
+fn main() {
+    let main_context = glib::MainContext::default();
+    let main_loop = glib::MainLoop::new(Some(&main_context), false);
+    let (send_safe, recv_safe) = oneshot::channel();
+    let (send_unsafe, recv_unsafe) = oneshot::channel();
+
+    main_context.push_thread_default();
+    main_context.invoke_local(move || {
+        run_unsafe(send_unsafe);
+    });
+    main_context.invoke_local(move || {
+        run_safe(send_safe);
+    });
+
+    main_context.spawn_local(clone!(@strong main_loop => async move {
+        recv_safe.await.unwrap();
+        recv_unsafe.await.unwrap();
+        main_loop.quit();
+    }));
+    main_loop.run();
+    main_context.pop_thread_default();
+}
+
+// This function mimicks what the C code using the exported async/finish API would do. It first defines a
+// callback of type GAsyncResult that internally calls get_file_size_finish to retrieve the Task
+// result, and simply prints it out. Then it invokes the my_file_size_get_file_size_async method, passing the
+// callback to it as parameter.
+fn run_unsafe(send: oneshot::Sender<()>) {
+    let simple_object = FileSize::new();
+    let cancellable = gio::Cancellable::new();
+
+    // The callback to be passed to my_file_size_get_file_size_async
+    unsafe extern &quot;C&quot; fn c_callback(
+        source_object: *mut glib::object::GObject,
+        result: *mut gio::ffi::GAsyncResult,
+        user_data: glib::ffi::gpointer,
+    ) {
+        let mut error = std::ptr::null_mut();
+        let ret = file_size::ffi::my_file_size_get_file_size_finish(
+            source_object as *mut file_size::ffi::FileSize,
+            result,
+            &mut error,
+        );
+        if !error.is_null() {
+            eprintln!(&quot;Task returned error!&quot;);
+            return;
+        }
+
+        println!(&quot;Unsafe callback - Returned value from task: {}&quot;, ret);
+        println!(
+            &quot;Unsafe callback - FileSize::size: {}&quot;,
+            file_size::ffi::my_file_size_get_retrieved_size(
+                source_object as *mut file_size::ffi::FileSize
+            )
+        );
+
+        Box::from_raw(user_data as *mut oneshot::Sender<()>)
+            .send(())
+            .unwrap();
+    }
+
+    // The actual call to my_file_size_get_file_size_async
+    unsafe {
+        file_size::ffi::my_file_size_get_file_size_async(
+            simple_object.to_glib_none().0,
+            cancellable.to_glib_none().0,
+            Some(c_callback),
+            Box::into_raw(Box::new(send)) as glib::ffi::gpointer,
+        );
+    }
+}
+
+// This function is the &quot;safe&quot; counterpart of &quot;run_unsafe&quot;, using only safe rust
+// bindings to accomplish the same task
+fn run_safe(send: oneshot::Sender<()>) {
+    let simple_object = FileSize::new();
+    let cancellable = gio::Cancellable::new();
+
+    let closure = move |value: i64, source_object: &FileSize| {
+        println!(&quot;Safe callback - Returned value from task: {}&quot;, value);
+        println!(
+            &quot;Safe callback - FileSize::size: {}&quot;,
+            source_object.retrieved_size().unwrap()
+        );
+
+        send.send(()).unwrap();
+    };
+
+    simple_object.file_size_async(Some(&cancellable), closure);
+}
+" data-locs="[[6080,6127],[6476,6515],[7680,7722],[8025,8064]]">
+           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/gio_task/main.rs" target="_blank">examples/gio_task/main.rs</a></strong>
+           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
+<span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
+<span id="85">85</span>
+<span id="86">86</span>
+<span id="87">87</span>
+<span id="88">88</span>
+<span id="89">89</span>
+<span id="90">90</span>
+<span id="91">91</span>
+<span id="92">92</span>
+<span id="93">93</span>
+<span id="94">94</span>
+<span id="95">95</span>
+<span id="96">96</span>
+<span id="97">97</span>
+<span id="98">98</span>
+<span id="99">99</span>
+</pre><pre class="rust">
+<span class="kw">mod</span> <span class="ident">file_size</span>;
+
+<span class="kw">use</span> <span class="ident">futures_channel::oneshot</span>;
+<span class="kw">use</span> <span class="ident">glib::clone</span>;
+<span class="kw">use</span> <span class="ident">gtk::glib::translate</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">gio</span>, <span class="ident">glib</span>};
+
+<span class="kw">use</span> <span class="ident">file_size::FileSize</span>;
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">main_context</span> <span class="op">=</span> <span class="ident">glib::MainContext::default</span>();
+    <span class="kw">let</span> <span class="ident">main_loop</span> <span class="op">=</span> <span class="ident">glib::MainLoop::new</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">main_context</span>), <span class="bool-val">false</span>);
+    <span class="kw">let</span> (<span class="ident">send_safe</span>, <span class="ident">recv_safe</span>) <span class="op">=</span> <span class="ident">oneshot::channel</span>();
+    <span class="kw">let</span> (<span class="ident">send_unsafe</span>, <span class="ident">recv_unsafe</span>) <span class="op">=</span> <span class="ident">oneshot::channel</span>();
+
+    <span class="ident">main_context</span>.<span class="ident">push_thread_default</span>();
+    <span class="ident">main_context</span>.<span class="ident">invoke_local</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
+        <span class="ident">run_unsafe</span>(<span class="ident">send_unsafe</span>);
+    });
+    <span class="ident">main_context</span>.<span class="ident">invoke_local</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
+        <span class="ident">run_safe</span>(<span class="ident">send_safe</span>);
+    });
+
+    <span class="ident">main_context</span>.<span class="ident">spawn_local</span>(<span class="macro">clone!</span>(@<span class="ident">strong</span> <span class="ident">main_loop</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">async</span> <span class="kw">move</span> {
+        <span class="ident">recv_safe</span>.<span class="kw">await</span>.<span class="ident">unwrap</span>();
+        <span class="ident">recv_unsafe</span>.<span class="kw">await</span>.<span class="ident">unwrap</span>();
+        <span class="ident">main_loop</span>.<span class="ident">quit</span>();
+    }));
+    <span class="ident">main_loop</span>.<span class="ident">run</span>();
+    <span class="ident">main_context</span>.<span class="ident">pop_thread_default</span>();
+}
+
+<span class="comment">// This function mimicks what the C code using the exported async/finish API would do. It first defines a</span>
+<span class="comment">// callback of type GAsyncResult that internally calls get_file_size_finish to retrieve the Task</span>
+<span class="comment">// result, and simply prints it out. Then it invokes the my_file_size_get_file_size_async method, passing the</span>
+<span class="comment">// callback to it as parameter.</span>
+<span class="kw">fn</span> <span class="ident">run_unsafe</span>(<span class="ident">send</span>: <span class="ident">oneshot::Sender</span><span class="op">&lt;</span>()<span class="op">&gt;</span>) {
+    <span class="kw">let</span> <span class="ident">simple_object</span> <span class="op">=</span> <span class="ident">FileSize::new</span>();
+    <span class="kw">let</span> <span class="ident">cancellable</span> <span class="op">=</span> <span class="ident">gio::Cancellable::new</span>();
+
+    <span class="comment">// The callback to be passed to my_file_size_get_file_size_async</span>
+    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">c_callback</span>(
+        <span class="ident">source_object</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">glib::object::GObject</span>,
+        <span class="ident">result</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">gio::ffi::GAsyncResult</span>,
+        <span class="ident">user_data</span>: <span class="ident">glib::ffi::gpointer</span>,
+    ) {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">std::ptr::null_mut</span>();
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">file_size::ffi::my_file_size_get_file_size_finish</span>(
+            <span class="ident">source_object</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">file_size::ffi::FileSize</span>,
+            <span class="ident">result</span>,
+            <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">error</span>,
+        );
+        <span class="kw">if</span> <span class="op">!</span><span class="ident">error</span>.<span class="ident">is_null</span>() {
+            <span class="macro">eprintln!</span>(<span class="string">&quot;Task returned error!&quot;</span>);
+            <span class="kw">return</span>;
+        }
+
+        <span class="macro">println!</span>(<span class="string">&quot;Unsafe callback - Returned value from task: {}&quot;</span>, <span class="ident">ret</span>);
+        <span class="macro">println!</span>(
+            <span class="string">&quot;Unsafe callback - FileSize::size: {}&quot;</span>,
+            <span class="ident">file_size::ffi::my_file_size_get_retrieved_size</span>(
+                <span class="ident">source_object</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">file_size::ffi::FileSize</span>
+            )
+        );
+
+        <span class="ident">Box::from_raw</span>(<span class="ident">user_data</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">oneshot::Sender</span><span class="op">&lt;</span>()<span class="op">&gt;</span>)
+            .<span class="ident">send</span>(())
+            .<span class="ident">unwrap</span>();
+    }
+
+    <span class="comment">// The actual call to my_file_size_get_file_size_async</span>
+    <span class="kw">unsafe</span> {
+        <span class="ident">file_size::ffi::my_file_size_get_file_size_async</span>(
+            <span class="ident">simple_object</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            <span class="ident">cancellable</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">c_callback</span>),
+            <span class="ident">Box::into_raw</span>(<span class="ident">Box::new</span>(<span class="ident">send</span>)) <span class="kw">as</span> <span class="ident">glib::ffi::gpointer</span>,
+        );
+    }
+}
+
+<span class="comment">// This function is the &quot;safe&quot; counterpart of &quot;run_unsafe&quot;, using only safe rust</span>
+<span class="comment">// bindings to accomplish the same task</span>
+<span class="kw">fn</span> <span class="ident">run_safe</span>(<span class="ident">send</span>: <span class="ident">oneshot::Sender</span><span class="op">&lt;</span>()<span class="op">&gt;</span>) {
+    <span class="kw">let</span> <span class="ident">simple_object</span> <span class="op">=</span> <span class="ident">FileSize::new</span>();
+    <span class="kw">let</span> <span class="ident">cancellable</span> <span class="op">=</span> <span class="ident">gio::Cancellable::new</span>();
+
+    <span class="kw">let</span> <span class="ident">closure</span> <span class="op">=</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">value</span>: <span class="ident">i64</span>, <span class="ident">source_object</span>: <span class="kw-2">&amp;</span><span class="ident">FileSize</span><span class="op">|</span> {
+        <span class="macro">println!</span>(<span class="string">&quot;Safe callback - Returned value from task: {}&quot;</span>, <span class="ident">value</span>);
+        <span class="macro">println!</span>(
+            <span class="string">&quot;Safe callback - FileSize::size: {}&quot;</span>,
+            <span class="ident">source_object</span>.<span class="ident">retrieved_size</span>().<span class="ident">unwrap</span>()
+        );
+
+        <span class="ident">send</span>.<span class="ident">send</span>(()).<span class="ident">unwrap</span>();
+    };
+
+    <span class="ident">simple_object</span>.<span class="ident">file_size_async</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>), <span class="ident">closure</span>);
+}
+</pre></div>
+</div></div></div></details></div><h2 id="foreign-impls" class="small-section-header">Implementations on Foreign Types<a href="#foreign-impls" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle"><summary><h3 id="impl-FromGlibPtrBorrow%3CP%3E-for-Option%3CT%3E" class="impl"><code class="in-band">impl&lt;P:&nbsp;<a class="trait" href="trait.Ptr.html" title="trait glib::translate::Ptr">Ptr</a>, T:&nbsp;<a class="trait" href="trait.FromGlibPtrBorrow.html" title="trait glib::translate::FromGlibPtrBorrow">FromGlibPtrBorrow</a>&lt;P&gt;&gt; <a class="trait" href="trait.FromGlibPtrBorrow.html" title="trait glib::translate::FromGlibPtrBorrow">FromGlibPtrBorrow</a>&lt;P&gt; for <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;</code><a href="#impl-FromGlibPtrBorrow%3CP%3E-for-Option%3CT%3E" class="anchor"></a><a class="srclink" href="../../src/glib/translate.rs.html#1386-1396" title="goto source code">[src]</a></h3></summary><div class="impl-items"><details class="undocumented"><summary></summary><h4 id="method.from_glib_borrow-1" class="method trait-impl"><code>unsafe fn <a href="#method.from_glib_borrow" class="fnname">from_glib_borrow</a>(ptr: P) -&gt; <a class="struct" href="struct.Borrowed.html" title="struct glib::translate::Borrowed">Borrowed</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;&gt;</code><a href="#method.from_glib_borrow-1" class="anchor"></a><a class="srclink" href="../../src/glib/translate.rs.html#1388-1395" title="goto source code">[src]</a></h4></div></details></details><h2 id="implementors" class="small-section-header">Implementors<a href="#implementors" class="anchor"></a></h2><div class="item-list" id="implementors-list"><details class="rustdoc-toggle implementors-toggle"><summary><h3 id="impl-FromGlibPtrBorrow%3C*mut%20T%3E" class="impl"><code class="in-band">impl&lt;T:&nbsp;'static, MM:&nbsp;<a class="trait" href="../boxed/trait.BoxedMemoryManager.html" title="trait glib::boxed::BoxedMemoryManager">BoxedMemoryManager</a>&lt;T&gt;&gt; <a class="trait" href="trait.FromGlibPtrBorrow.html" title="trait glib::translate::FromGlibPtrBorrow">FromGlibPtrBorrow</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut T</a>&gt; for <a class="struct" href="../boxed/struct.Boxed.html" title="struct glib::boxed::Boxed">Boxed</a>&lt;T, MM&gt;</code><a href="#impl-FromGlibPtrBorrow%3C*mut%20T%3E" class="anchor"></a><a class="srclink" href="../../src/glib/boxed.rs.html#490-499" title="goto source code">[src]</a></h3></summary><div class="impl-items"><details class="undocumented"><summary></summary><h4 id="method.from_glib_borrow-2" class="method trait-impl"><code>unsafe fn <a href="#method.from_glib_borrow" class="fnname">from_glib_borrow</a>(ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut T</a>) -&gt; <a class="struct" href="struct.Borrowed.html" title="struct glib::translate::Borrowed">Borrowed</a>&lt;Self&gt;</code><a href="#method.from_glib_borrow-2" class="anchor"></a><a class="srclink" href="../../src/glib/boxed.rs.html#492-498" title="goto source code">[src]</a></h4></div></details></details><details class="rustdoc-toggle implementors-toggle"><summary><h3 id="impl-FromGlibPtrBorrow%3C*mut%20T%3E-1" class="impl"><code class="in-band">impl&lt;T:&nbsp;'static, MM:&nbsp;<a class="trait" href="../shared/trait.SharedMemoryManager.html" title="trait glib::shared::SharedMemoryManager">SharedMemoryManager</a>&lt;T&gt;&gt; <a class="trait" href="trait.FromGlibPtrBorrow.html" title="trait glib::translate::FromGlibPtrBorrow">FromGlibPtrBorrow</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut T</a>&gt; for <a class="struct" href="../shared/struct.Shared.html" title="struct glib::shared::Shared">Shared</a>&lt;T, MM&gt;</code><a href="#impl-FromGlibPtrBorrow%3C*mut%20T%3E-1" class="anchor"></a><a class="srclink" href="../../src/glib/shared.rs.html#441-450" title="goto source code">[src]</a></h3></summary><div class="impl-items"><details class="undocumented"><summary></summary><h4 id="method.from_glib_borrow-3" class="method trait-impl"><code>unsafe fn <a href="#method.from_glib_borrow" class="fnname">from_glib_borrow</a>(ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut T</a>) -&gt; <a class="struct" href="struct.Borrowed.html" title="struct glib::translate::Borrowed">Borrowed</a>&lt;Self&gt;</code><a href="#method.from_glib_borrow-3" class="anchor"></a><a class="srclink" href="../../src/glib/shared.rs.html#443-449" title="goto source code">[src]</a></h4></div></details></details></div><script type="text/javascript" src="../../implementors/glib/translate/trait.FromGlibPtrBorrow.js" async></script></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
+    <script src="../../main.js"></script></body></html>
