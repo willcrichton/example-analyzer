@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Creates a Websocket Filter."><meta name="keywords" content="rust, rustlang, rust-lang, ws"><title>ws in warp::filters::ws - Rust</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class="location"><a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">ws</a></p><div id="sidebar-vars" data-name="ws" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
-                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">ws</a>::<wbr><a class="fn" href="">ws</a><button id="copy-path" onclick="copy_path(this)">⎘</button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../../src/warp/filters/ws.rs.html#43-69" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn ws() -&gt; impl <a class="trait" href="../../trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Ws.html" title="struct warp::filters::ws::Ws">Ws</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a></pre><div class="docblock"><p>Creates a Websocket Filter.</p>
+<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class="location"><a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">ws</a></p><div id="sidebar-vars" data-name="ws" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button">?</button>
+                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">ws</a>::<wbr><a class="fn" href="">ws</a><button id="copy-path" onclick="copy_path(this)"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item import"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../../src/warp/filters/ws.rs.html#43-69" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn ws() -&gt; impl <a class="trait" href="../../trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Ws.html" title="struct warp::filters::ws::Ws">Ws</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a></pre><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Creates a Websocket Filter.</p>
 <p>The yielded <code>Ws</code> is used to finish the websocket upgrade.</p>
 <h1 id="note" class="section-header"><a href="#note">Note</a></h1>
 <p>This filter combines multiple filters internally, so you don’t need them:</p>
@@ -20,7 +20,10 @@ return a reply with:</p>
 <li>Header <code>upgrade: websocket</code></li>
 <li>Header <code>sec-websocket-accept</code> with the hash value of the received key.</li>
 </ul>
-</div><div class="docblock scraped-example-list"><h1 id="scraped-examples" class="small-section-header"><a href="#scraped-examples">Uses found in <code>examples/</code></a></h1><div class="scraped-example" data-code="// #![deny(warnings)]
+</div></details><div class="docblock scraped-example-list">
+          <h1 id="scraped-examples" class="small-section-header">
+             <a href="#scraped-examples">Uses found in <code>examples/</code></a>
+          </h1><div class="scraped-example" data-code="// #![deny(warnings)]
 use std::collections::HashMap;
 use std::sync::{
     atomic::{AtomicUsize, Ordering},
@@ -192,8 +195,9 @@ static INDEX_HTML: &str = r#&quot;<!DOCTYPE html>
     </body>
 </html>
 &quot;#;
-" data-locs="[[1050,1060]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/websockets_chat.rs">examples/websockets_chat.rs</a></strong></p>
-<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
+" data-locs="[[1050,1060]]">
+                <strong><a href="../../../src/websockets_chat/websockets_chat.rs.html" target="_blank">examples/websockets_chat.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -365,7 +369,7 @@ static INDEX_HTML: &str = r#&quot;<!DOCTYPE html>
 <span id="170">170</span>
 <span id="171">171</span>
 <span id="172">172</span>
-</pre><div class="example-wrap"><pre class="rust ">
+</pre><pre class="rust">
 <span class="comment">// #![deny(warnings)]</span>
 <span class="kw">use</span> <span class="ident">std::collections::HashMap</span>;
 <span class="kw">use</span> <span class="ident">std::sync</span>::{
@@ -539,7 +543,11 @@ static INDEX_HTML: &str = r#&quot;<!DOCTYPE html>
 &lt;/html&gt;
 &quot;#</span>;
 </pre></div>
-</div></div><div class="more-scraped-examples hidden"><div class="scraped-example" data-code="#![deny(warnings)]
+</div></div><details class="rustdoc-toggle more-examples-toggle">
+                  <summary class="hideme">
+                     <span>More examples</span>
+                  </summary>
+                  <div class="more-scraped-examples"><div class="scraped-example" data-code="#![deny(warnings)]
 
 use futures::{FutureExt, StreamExt};
 use warp::Filter;
@@ -566,8 +574,9 @@ async fn main() {
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[257,267]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/websockets.rs">examples/websockets.rs</a></strong></p>
-<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
+" data-locs="[[257,267]]">
+                <strong><a href="../../../src/websockets/websockets.rs.html" target="_blank">examples/websockets.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -594,7 +603,7 @@ async fn main() {
 <span id="25">25</span>
 <span id="26">26</span>
 <span id="27">27</span>
-</pre><div class="example-wrap"><pre class="rust ">
+</pre><pre class="rust">
 <span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
 
 <span class="kw">use</span> <span class="ident">futures</span>::{<span class="ident">FutureExt</span>, <span class="ident">StreamExt</span>};
@@ -623,5 +632,5 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </pre></div>
-</div></div></div></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
+</div></div></div></details></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
     <script src="../../../main.js"></script></body></html>

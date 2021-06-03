@@ -5,302 +5,6 @@
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Uses found in <code>examples/</code></a>
           </h1><div class="scraped-example" data-code="use gtk::prelude::*;
-use gtk::{gio, glib};
-
-fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.gtk-rs.examples.entry-completion&quot;),
-        Default::default(),
-    );
-    application.connect_activate(build_ui);
-
-    // When activated, shuts down the application
-    let quit = gio::SimpleAction::new(&quot;quit&quot;, None);
-    quit.connect_activate(
-        glib::clone!(@weak application => move |_action, _parameter| {
-            application.quit();
-        }),
-    );
-    application.connect_startup(|application| {
-        application.set_accels_for_action(&quot;app.quit&quot;, &[&quot;<Primary>Q&quot;]);
-    });
-    application.add_action(&quit);
-
-    // Run the application
-    application.run();
-}
-
-fn build_ui(application: &gtk::Application) {
-    // create the main window
-    let window = gtk::ApplicationWindow::new(application);
-    window.set_title(&quot;Entry with autocompletion&quot;);
-    window.set_border_width(5);
-    window.set_position(gtk::WindowPosition::Center);
-    window.set_default_size(840, 480);
-
-    // Create a title label
-    let win_title = gtk::Label::new(None);
-    win_title.set_markup(&quot;<big>Which country would you like to spend a holiday in?</big>&quot;);
-
-    // Create an EntryCompletion widget
-    let completion_countries = gtk::EntryCompletion::new();
-    // Use the first (and only) column available to set the autocompletion text
-    completion_countries.set_text_column(0);
-    // how many keystrokes to wait before attempting to autocomplete?
-    completion_countries.set_minimum_key_length(1);
-    // whether the completions should be presented in a popup window
-    completion_countries.set_popup_completion(true);
-
-    // Create a ListStore of items
-    // These will be the source for the autocompletion
-    // as the user types into the field
-    // For a more evolved example of ListStore see src/bin/list_store.rs
-    let ls = create_list_model();
-    completion_countries.set_model(Some(&ls));
-
-    let input_field = gtk::Entry::new();
-    input_field.set_completion(Some(&completion_countries));
-
-    let row = gtk::Box::new(gtk::Orientation::Vertical, 5);
-    row.add(&win_title);
-    row.pack_start(&input_field, false, false, 10);
-
-    // window.add(&win_title);
-    window.add(&row);
-
-    // show everything
-    window.show_all();
-}
-
-struct Data {
-    description: String,
-}
-
-fn create_list_model() -> gtk::ListStore {
-    let col_types: [glib::Type; 1] = [glib::Type::STRING];
-
-    let data: [Data; 4] = [
-        Data {
-            description: &quot;France&quot;.to_string(),
-        },
-        Data {
-            description: &quot;Italy&quot;.to_string(),
-        },
-        Data {
-            description: &quot;Sweden&quot;.to_string(),
-        },
-        Data {
-            description: &quot;Switzerland&quot;.to_string(),
-        },
-    ];
-    let store = gtk::ListStore::new(&col_types);
-    for d in data.iter() {
-        let values: [(u32, &dyn ToValue); 1] = [(0, &d.description)];
-        store.set(&store.append(), &values);
-    }
-    store
-}
-" data-locs="[[307,343]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/entry_completion/main.rs" target="_blank">examples/entry_completion/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
-<span id="49">49</span>
-<span id="50">50</span>
-<span id="51">51</span>
-<span id="52">52</span>
-<span id="53">53</span>
-<span id="54">54</span>
-<span id="55">55</span>
-<span id="56">56</span>
-<span id="57">57</span>
-<span id="58">58</span>
-<span id="59">59</span>
-<span id="60">60</span>
-<span id="61">61</span>
-<span id="62">62</span>
-<span id="63">63</span>
-<span id="64">64</span>
-<span id="65">65</span>
-<span id="66">66</span>
-<span id="67">67</span>
-<span id="68">68</span>
-<span id="69">69</span>
-<span id="70">70</span>
-<span id="71">71</span>
-<span id="72">72</span>
-<span id="73">73</span>
-<span id="74">74</span>
-<span id="75">75</span>
-<span id="76">76</span>
-<span id="77">77</span>
-<span id="78">78</span>
-<span id="79">79</span>
-<span id="80">80</span>
-<span id="81">81</span>
-<span id="82">82</span>
-<span id="83">83</span>
-<span id="84">84</span>
-<span id="85">85</span>
-<span id="86">86</span>
-<span id="87">87</span>
-<span id="88">88</span>
-<span id="89">89</span>
-<span id="90">90</span>
-<span id="91">91</span>
-<span id="92">92</span>
-<span id="93">93</span>
-<span id="94">94</span>
-<span id="95">95</span>
-<span id="96">96</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">gio</span>, <span class="ident">glib</span>};
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.entry-completion&quot;</span>),
-        <span class="ident">Default::default</span>(),
-    );
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
-
-    <span class="comment">// When activated, shuts down the application</span>
-    <span class="kw">let</span> <span class="ident">quit</span> <span class="op">=</span> <span class="ident">gio::SimpleAction::new</span>(<span class="string">&quot;quit&quot;</span>, <span class="prelude-val">None</span>);
-    <span class="ident">quit</span>.<span class="ident">connect_activate</span>(
-        <span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">application</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">_action</span>, <span class="ident">_parameter</span><span class="op">|</span> {
-            <span class="ident">application</span>.<span class="ident">quit</span>();
-        }),
-    );
-    <span class="ident">application</span>.<span class="ident">connect_startup</span>(<span class="op">|</span><span class="ident">application</span><span class="op">|</span> {
-        <span class="ident">application</span>.<span class="ident">set_accels_for_action</span>(<span class="string">&quot;app.quit&quot;</span>, <span class="kw-2">&amp;</span>[<span class="string">&quot;&lt;Primary&gt;Q&quot;</span>]);
-    });
-    <span class="ident">application</span>.<span class="ident">add_action</span>(<span class="kw-2">&amp;</span><span class="ident">quit</span>);
-
-    <span class="comment">// Run the application</span>
-    <span class="ident">application</span>.<span class="ident">run</span>();
-}
-
-<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
-    <span class="comment">// create the main window</span>
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Entry with autocompletion&quot;</span>);
-    <span class="ident">window</span>.<span class="ident">set_border_width</span>(<span class="number">5</span>);
-    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
-    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">840</span>, <span class="number">480</span>);
-
-    <span class="comment">// Create a title label</span>
-    <span class="kw">let</span> <span class="ident">win_title</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">None</span>);
-    <span class="ident">win_title</span>.<span class="ident">set_markup</span>(<span class="string">&quot;&lt;big&gt;Which country would you like to spend a holiday in?&lt;/big&gt;&quot;</span>);
-
-    <span class="comment">// Create an EntryCompletion widget</span>
-    <span class="kw">let</span> <span class="ident">completion_countries</span> <span class="op">=</span> <span class="ident">gtk::EntryCompletion::new</span>();
-    <span class="comment">// Use the first (and only) column available to set the autocompletion text</span>
-    <span class="ident">completion_countries</span>.<span class="ident">set_text_column</span>(<span class="number">0</span>);
-    <span class="comment">// how many keystrokes to wait before attempting to autocomplete?</span>
-    <span class="ident">completion_countries</span>.<span class="ident">set_minimum_key_length</span>(<span class="number">1</span>);
-    <span class="comment">// whether the completions should be presented in a popup window</span>
-    <span class="ident">completion_countries</span>.<span class="ident">set_popup_completion</span>(<span class="bool-val">true</span>);
-
-    <span class="comment">// Create a ListStore of items</span>
-    <span class="comment">// These will be the source for the autocompletion</span>
-    <span class="comment">// as the user types into the field</span>
-    <span class="comment">// For a more evolved example of ListStore see src/bin/list_store.rs</span>
-    <span class="kw">let</span> <span class="ident">ls</span> <span class="op">=</span> <span class="ident">create_list_model</span>();
-    <span class="ident">completion_countries</span>.<span class="ident">set_model</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">ls</span>));
-
-    <span class="kw">let</span> <span class="ident">input_field</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
-    <span class="ident">input_field</span>.<span class="ident">set_completion</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">completion_countries</span>));
-
-    <span class="kw">let</span> <span class="ident">row</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">5</span>);
-    <span class="ident">row</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">win_title</span>);
-    <span class="ident">row</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">input_field</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>, <span class="number">10</span>);
-
-    <span class="comment">// window.add(&amp;win_title);</span>
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">row</span>);
-
-    <span class="comment">// show everything</span>
-    <span class="ident">window</span>.<span class="ident">show_all</span>();
-}
-
-<span class="kw">struct</span> <span class="ident">Data</span> {
-    <span class="ident">description</span>: <span class="ident">String</span>,
-}
-
-<span class="kw">fn</span> <span class="ident">create_list_model</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">gtk::ListStore</span> {
-    <span class="kw">let</span> <span class="ident">col_types</span>: [<span class="ident">glib::Type</span>; <span class="number">1</span>] <span class="op">=</span> [<span class="ident">glib::Type::STRING</span>];
-
-    <span class="kw">let</span> <span class="ident">data</span>: [<span class="ident">Data</span>; <span class="number">4</span>] <span class="op">=</span> [
-        <span class="ident">Data</span> {
-            <span class="ident">description</span>: <span class="string">&quot;France&quot;</span>.<span class="ident">to_string</span>(),
-        },
-        <span class="ident">Data</span> {
-            <span class="ident">description</span>: <span class="string">&quot;Italy&quot;</span>.<span class="ident">to_string</span>(),
-        },
-        <span class="ident">Data</span> {
-            <span class="ident">description</span>: <span class="string">&quot;Sweden&quot;</span>.<span class="ident">to_string</span>(),
-        },
-        <span class="ident">Data</span> {
-            <span class="ident">description</span>: <span class="string">&quot;Switzerland&quot;</span>.<span class="ident">to_string</span>(),
-        },
-    ];
-    <span class="kw">let</span> <span class="ident">store</span> <span class="op">=</span> <span class="ident">gtk::ListStore::new</span>(<span class="kw-2">&amp;</span><span class="ident">col_types</span>);
-    <span class="kw">for</span> <span class="ident">d</span> <span class="kw">in</span> <span class="ident">data</span>.<span class="ident">iter</span>() {
-        <span class="kw">let</span> <span class="ident">values</span>: [(<span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>); <span class="number">1</span>] <span class="op">=</span> [(<span class="number">0</span>, <span class="kw-2">&amp;</span><span class="ident">d</span>.<span class="ident">description</span>)];
-        <span class="ident">store</span>.<span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="ident">store</span>.<span class="ident">append</span>(), <span class="kw-2">&amp;</span><span class="ident">values</span>);
-    }
-    <span class="ident">store</span>
-}
-</pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle">
-                  <summary class="hideme">
-                     <span>More examples</span>
-                  </summary>
-                  <div class="more-scraped-examples"><div class="scraped-example" data-code="use gtk::prelude::*;
 use gtk::AboutDialog;
 use gtk::{gio, glib};
 
@@ -441,8 +145,8 @@ fn add_actions(
     application.add_action(&switch_action);
 }
 " data-locs="[[3739,3782],[3951,3998],[4176,4224],[4393,4429],[4550,4587]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/menu_bar_system/main.rs" target="_blank">examples/menu_bar_system/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+                <strong><a href="../src/menu_bar_system/main.rs.html" target="_blank">examples/menu_bar_system/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -724,6 +428,302 @@ fn add_actions(
     <span class="ident">application</span>.<span class="ident">add_action</span>(<span class="kw-2">&amp;</span><span class="ident">switch_action</span>);
 }
 </pre></div>
+</div></div><details class="rustdoc-toggle more-examples-toggle">
+                  <summary class="hideme">
+                     <span>More examples</span>
+                  </summary>
+                  <div class="more-scraped-examples"><div class="scraped-example" data-code="use gtk::prelude::*;
+use gtk::{gio, glib};
+
+fn main() {
+    let application = gtk::Application::new(
+        Some(&quot;com.github.gtk-rs.examples.entry-completion&quot;),
+        Default::default(),
+    );
+    application.connect_activate(build_ui);
+
+    // When activated, shuts down the application
+    let quit = gio::SimpleAction::new(&quot;quit&quot;, None);
+    quit.connect_activate(
+        glib::clone!(@weak application => move |_action, _parameter| {
+            application.quit();
+        }),
+    );
+    application.connect_startup(|application| {
+        application.set_accels_for_action(&quot;app.quit&quot;, &[&quot;<Primary>Q&quot;]);
+    });
+    application.add_action(&quit);
+
+    // Run the application
+    application.run();
+}
+
+fn build_ui(application: &gtk::Application) {
+    // create the main window
+    let window = gtk::ApplicationWindow::new(application);
+    window.set_title(&quot;Entry with autocompletion&quot;);
+    window.set_border_width(5);
+    window.set_position(gtk::WindowPosition::Center);
+    window.set_default_size(840, 480);
+
+    // Create a title label
+    let win_title = gtk::Label::new(None);
+    win_title.set_markup(&quot;<big>Which country would you like to spend a holiday in?</big>&quot;);
+
+    // Create an EntryCompletion widget
+    let completion_countries = gtk::EntryCompletion::new();
+    // Use the first (and only) column available to set the autocompletion text
+    completion_countries.set_text_column(0);
+    // how many keystrokes to wait before attempting to autocomplete?
+    completion_countries.set_minimum_key_length(1);
+    // whether the completions should be presented in a popup window
+    completion_countries.set_popup_completion(true);
+
+    // Create a ListStore of items
+    // These will be the source for the autocompletion
+    // as the user types into the field
+    // For a more evolved example of ListStore see src/bin/list_store.rs
+    let ls = create_list_model();
+    completion_countries.set_model(Some(&ls));
+
+    let input_field = gtk::Entry::new();
+    input_field.set_completion(Some(&completion_countries));
+
+    let row = gtk::Box::new(gtk::Orientation::Vertical, 5);
+    row.add(&win_title);
+    row.pack_start(&input_field, false, false, 10);
+
+    // window.add(&win_title);
+    window.add(&row);
+
+    // show everything
+    window.show_all();
+}
+
+struct Data {
+    description: String,
+}
+
+fn create_list_model() -> gtk::ListStore {
+    let col_types: [glib::Type; 1] = [glib::Type::STRING];
+
+    let data: [Data; 4] = [
+        Data {
+            description: &quot;France&quot;.to_string(),
+        },
+        Data {
+            description: &quot;Italy&quot;.to_string(),
+        },
+        Data {
+            description: &quot;Sweden&quot;.to_string(),
+        },
+        Data {
+            description: &quot;Switzerland&quot;.to_string(),
+        },
+    ];
+    let store = gtk::ListStore::new(&col_types);
+    for d in data.iter() {
+        let values: [(u32, &dyn ToValue); 1] = [(0, &d.description)];
+        store.set(&store.append(), &values);
+    }
+    store
+}
+" data-locs="[[307,343]]">
+                <strong><a href="../src/entry_completion/main.rs.html" target="_blank">examples/entry_completion/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
+<span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
+<span id="85">85</span>
+<span id="86">86</span>
+<span id="87">87</span>
+<span id="88">88</span>
+<span id="89">89</span>
+<span id="90">90</span>
+<span id="91">91</span>
+<span id="92">92</span>
+<span id="93">93</span>
+<span id="94">94</span>
+<span id="95">95</span>
+<span id="96">96</span>
+</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">gio</span>, <span class="ident">glib</span>};
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
+        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.entry-completion&quot;</span>),
+        <span class="ident">Default::default</span>(),
+    );
+    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
+
+    <span class="comment">// When activated, shuts down the application</span>
+    <span class="kw">let</span> <span class="ident">quit</span> <span class="op">=</span> <span class="ident">gio::SimpleAction::new</span>(<span class="string">&quot;quit&quot;</span>, <span class="prelude-val">None</span>);
+    <span class="ident">quit</span>.<span class="ident">connect_activate</span>(
+        <span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">application</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">_action</span>, <span class="ident">_parameter</span><span class="op">|</span> {
+            <span class="ident">application</span>.<span class="ident">quit</span>();
+        }),
+    );
+    <span class="ident">application</span>.<span class="ident">connect_startup</span>(<span class="op">|</span><span class="ident">application</span><span class="op">|</span> {
+        <span class="ident">application</span>.<span class="ident">set_accels_for_action</span>(<span class="string">&quot;app.quit&quot;</span>, <span class="kw-2">&amp;</span>[<span class="string">&quot;&lt;Primary&gt;Q&quot;</span>]);
+    });
+    <span class="ident">application</span>.<span class="ident">add_action</span>(<span class="kw-2">&amp;</span><span class="ident">quit</span>);
+
+    <span class="comment">// Run the application</span>
+    <span class="ident">application</span>.<span class="ident">run</span>();
+}
+
+<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
+    <span class="comment">// create the main window</span>
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Entry with autocompletion&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_border_width</span>(<span class="number">5</span>);
+    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
+    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">840</span>, <span class="number">480</span>);
+
+    <span class="comment">// Create a title label</span>
+    <span class="kw">let</span> <span class="ident">win_title</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">None</span>);
+    <span class="ident">win_title</span>.<span class="ident">set_markup</span>(<span class="string">&quot;&lt;big&gt;Which country would you like to spend a holiday in?&lt;/big&gt;&quot;</span>);
+
+    <span class="comment">// Create an EntryCompletion widget</span>
+    <span class="kw">let</span> <span class="ident">completion_countries</span> <span class="op">=</span> <span class="ident">gtk::EntryCompletion::new</span>();
+    <span class="comment">// Use the first (and only) column available to set the autocompletion text</span>
+    <span class="ident">completion_countries</span>.<span class="ident">set_text_column</span>(<span class="number">0</span>);
+    <span class="comment">// how many keystrokes to wait before attempting to autocomplete?</span>
+    <span class="ident">completion_countries</span>.<span class="ident">set_minimum_key_length</span>(<span class="number">1</span>);
+    <span class="comment">// whether the completions should be presented in a popup window</span>
+    <span class="ident">completion_countries</span>.<span class="ident">set_popup_completion</span>(<span class="bool-val">true</span>);
+
+    <span class="comment">// Create a ListStore of items</span>
+    <span class="comment">// These will be the source for the autocompletion</span>
+    <span class="comment">// as the user types into the field</span>
+    <span class="comment">// For a more evolved example of ListStore see src/bin/list_store.rs</span>
+    <span class="kw">let</span> <span class="ident">ls</span> <span class="op">=</span> <span class="ident">create_list_model</span>();
+    <span class="ident">completion_countries</span>.<span class="ident">set_model</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">ls</span>));
+
+    <span class="kw">let</span> <span class="ident">input_field</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
+    <span class="ident">input_field</span>.<span class="ident">set_completion</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">completion_countries</span>));
+
+    <span class="kw">let</span> <span class="ident">row</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">5</span>);
+    <span class="ident">row</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">win_title</span>);
+    <span class="ident">row</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">input_field</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>, <span class="number">10</span>);
+
+    <span class="comment">// window.add(&amp;win_title);</span>
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">row</span>);
+
+    <span class="comment">// show everything</span>
+    <span class="ident">window</span>.<span class="ident">show_all</span>();
+}
+
+<span class="kw">struct</span> <span class="ident">Data</span> {
+    <span class="ident">description</span>: <span class="ident">String</span>,
+}
+
+<span class="kw">fn</span> <span class="ident">create_list_model</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">gtk::ListStore</span> {
+    <span class="kw">let</span> <span class="ident">col_types</span>: [<span class="ident">glib::Type</span>; <span class="number">1</span>] <span class="op">=</span> [<span class="ident">glib::Type::STRING</span>];
+
+    <span class="kw">let</span> <span class="ident">data</span>: [<span class="ident">Data</span>; <span class="number">4</span>] <span class="op">=</span> [
+        <span class="ident">Data</span> {
+            <span class="ident">description</span>: <span class="string">&quot;France&quot;</span>.<span class="ident">to_string</span>(),
+        },
+        <span class="ident">Data</span> {
+            <span class="ident">description</span>: <span class="string">&quot;Italy&quot;</span>.<span class="ident">to_string</span>(),
+        },
+        <span class="ident">Data</span> {
+            <span class="ident">description</span>: <span class="string">&quot;Sweden&quot;</span>.<span class="ident">to_string</span>(),
+        },
+        <span class="ident">Data</span> {
+            <span class="ident">description</span>: <span class="string">&quot;Switzerland&quot;</span>.<span class="ident">to_string</span>(),
+        },
+    ];
+    <span class="kw">let</span> <span class="ident">store</span> <span class="op">=</span> <span class="ident">gtk::ListStore::new</span>(<span class="kw-2">&amp;</span><span class="ident">col_types</span>);
+    <span class="kw">for</span> <span class="ident">d</span> <span class="kw">in</span> <span class="ident">data</span>.<span class="ident">iter</span>() {
+        <span class="kw">let</span> <span class="ident">values</span>: [(<span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>); <span class="number">1</span>] <span class="op">=</span> [(<span class="number">0</span>, <span class="kw-2">&amp;</span><span class="ident">d</span>.<span class="ident">description</span>)];
+        <span class="ident">store</span>.<span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="ident">store</span>.<span class="ident">append</span>(), <span class="kw-2">&amp;</span><span class="ident">values</span>);
+    }
+    <span class="ident">store</span>
+}
+</pre></div>
 </div></div></div></details></div></details><details class="rustdoc-toggle method-toggle" open><summary><h4 id="method.new_stateful" class="method"><code>pub fn <a href="#method.new_stateful" class="fnname">new_stateful</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;parameter_type: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../glib/variant_type/struct.VariantTy.html" title="struct glib::variant_type::VariantTy">VariantTy</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;state: &amp;<a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a><br>) -&gt; <a class="struct" href="struct.SimpleAction.html" title="struct gio::SimpleAction">SimpleAction</a></code><a href="#method.new_stateful" class="anchor"></a><a class="srclink" href="../src/gio/auto/simple_action.rs.html#34-46" title="goto source code">[src]</a></h4></summary><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples-1">Uses found in <code>examples/</code></a>
@@ -868,8 +868,8 @@ fn add_actions(
     application.add_action(&switch_action);
 }
 " data-locs="[[2925,2993]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/menu_bar_system/main.rs" target="_blank">examples/menu_bar_system/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+                <strong><a href="../src/menu_bar_system/main.rs.html" target="_blank">examples/menu_bar_system/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -1155,302 +1155,6 @@ fn add_actions(
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples-2">Uses found in <code>examples/</code></a>
           </h1><div class="scraped-example" data-code="use gtk::prelude::*;
-use gtk::{gio, glib};
-
-fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.gtk-rs.examples.entry-completion&quot;),
-        Default::default(),
-    );
-    application.connect_activate(build_ui);
-
-    // When activated, shuts down the application
-    let quit = gio::SimpleAction::new(&quot;quit&quot;, None);
-    quit.connect_activate(
-        glib::clone!(@weak application => move |_action, _parameter| {
-            application.quit();
-        }),
-    );
-    application.connect_startup(|application| {
-        application.set_accels_for_action(&quot;app.quit&quot;, &[&quot;<Primary>Q&quot;]);
-    });
-    application.add_action(&quit);
-
-    // Run the application
-    application.run();
-}
-
-fn build_ui(application: &gtk::Application) {
-    // create the main window
-    let window = gtk::ApplicationWindow::new(application);
-    window.set_title(&quot;Entry with autocompletion&quot;);
-    window.set_border_width(5);
-    window.set_position(gtk::WindowPosition::Center);
-    window.set_default_size(840, 480);
-
-    // Create a title label
-    let win_title = gtk::Label::new(None);
-    win_title.set_markup(&quot;<big>Which country would you like to spend a holiday in?</big>&quot;);
-
-    // Create an EntryCompletion widget
-    let completion_countries = gtk::EntryCompletion::new();
-    // Use the first (and only) column available to set the autocompletion text
-    completion_countries.set_text_column(0);
-    // how many keystrokes to wait before attempting to autocomplete?
-    completion_countries.set_minimum_key_length(1);
-    // whether the completions should be presented in a popup window
-    completion_countries.set_popup_completion(true);
-
-    // Create a ListStore of items
-    // These will be the source for the autocompletion
-    // as the user types into the field
-    // For a more evolved example of ListStore see src/bin/list_store.rs
-    let ls = create_list_model();
-    completion_countries.set_model(Some(&ls));
-
-    let input_field = gtk::Entry::new();
-    input_field.set_completion(Some(&completion_countries));
-
-    let row = gtk::Box::new(gtk::Orientation::Vertical, 5);
-    row.add(&win_title);
-    row.pack_start(&input_field, false, false, 10);
-
-    // window.add(&win_title);
-    window.add(&row);
-
-    // show everything
-    window.show_all();
-}
-
-struct Data {
-    description: String,
-}
-
-fn create_list_model() -> gtk::ListStore {
-    let col_types: [glib::Type; 1] = [glib::Type::STRING];
-
-    let data: [Data; 4] = [
-        Data {
-            description: &quot;France&quot;.to_string(),
-        },
-        Data {
-            description: &quot;Italy&quot;.to_string(),
-        },
-        Data {
-            description: &quot;Sweden&quot;.to_string(),
-        },
-        Data {
-            description: &quot;Switzerland&quot;.to_string(),
-        },
-    ];
-    let store = gtk::ListStore::new(&col_types);
-    for d in data.iter() {
-        let values: [(u32, &dyn ToValue); 1] = [(0, &d.description)];
-        store.set(&store.append(), &values);
-    }
-    store
-}
-" data-locs="[[354,492]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/entry_completion/main.rs" target="_blank">examples/entry_completion/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
-<span id="49">49</span>
-<span id="50">50</span>
-<span id="51">51</span>
-<span id="52">52</span>
-<span id="53">53</span>
-<span id="54">54</span>
-<span id="55">55</span>
-<span id="56">56</span>
-<span id="57">57</span>
-<span id="58">58</span>
-<span id="59">59</span>
-<span id="60">60</span>
-<span id="61">61</span>
-<span id="62">62</span>
-<span id="63">63</span>
-<span id="64">64</span>
-<span id="65">65</span>
-<span id="66">66</span>
-<span id="67">67</span>
-<span id="68">68</span>
-<span id="69">69</span>
-<span id="70">70</span>
-<span id="71">71</span>
-<span id="72">72</span>
-<span id="73">73</span>
-<span id="74">74</span>
-<span id="75">75</span>
-<span id="76">76</span>
-<span id="77">77</span>
-<span id="78">78</span>
-<span id="79">79</span>
-<span id="80">80</span>
-<span id="81">81</span>
-<span id="82">82</span>
-<span id="83">83</span>
-<span id="84">84</span>
-<span id="85">85</span>
-<span id="86">86</span>
-<span id="87">87</span>
-<span id="88">88</span>
-<span id="89">89</span>
-<span id="90">90</span>
-<span id="91">91</span>
-<span id="92">92</span>
-<span id="93">93</span>
-<span id="94">94</span>
-<span id="95">95</span>
-<span id="96">96</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">gio</span>, <span class="ident">glib</span>};
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.entry-completion&quot;</span>),
-        <span class="ident">Default::default</span>(),
-    );
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
-
-    <span class="comment">// When activated, shuts down the application</span>
-    <span class="kw">let</span> <span class="ident">quit</span> <span class="op">=</span> <span class="ident">gio::SimpleAction::new</span>(<span class="string">&quot;quit&quot;</span>, <span class="prelude-val">None</span>);
-    <span class="ident">quit</span>.<span class="ident">connect_activate</span>(
-        <span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">application</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">_action</span>, <span class="ident">_parameter</span><span class="op">|</span> {
-            <span class="ident">application</span>.<span class="ident">quit</span>();
-        }),
-    );
-    <span class="ident">application</span>.<span class="ident">connect_startup</span>(<span class="op">|</span><span class="ident">application</span><span class="op">|</span> {
-        <span class="ident">application</span>.<span class="ident">set_accels_for_action</span>(<span class="string">&quot;app.quit&quot;</span>, <span class="kw-2">&amp;</span>[<span class="string">&quot;&lt;Primary&gt;Q&quot;</span>]);
-    });
-    <span class="ident">application</span>.<span class="ident">add_action</span>(<span class="kw-2">&amp;</span><span class="ident">quit</span>);
-
-    <span class="comment">// Run the application</span>
-    <span class="ident">application</span>.<span class="ident">run</span>();
-}
-
-<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
-    <span class="comment">// create the main window</span>
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Entry with autocompletion&quot;</span>);
-    <span class="ident">window</span>.<span class="ident">set_border_width</span>(<span class="number">5</span>);
-    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
-    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">840</span>, <span class="number">480</span>);
-
-    <span class="comment">// Create a title label</span>
-    <span class="kw">let</span> <span class="ident">win_title</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">None</span>);
-    <span class="ident">win_title</span>.<span class="ident">set_markup</span>(<span class="string">&quot;&lt;big&gt;Which country would you like to spend a holiday in?&lt;/big&gt;&quot;</span>);
-
-    <span class="comment">// Create an EntryCompletion widget</span>
-    <span class="kw">let</span> <span class="ident">completion_countries</span> <span class="op">=</span> <span class="ident">gtk::EntryCompletion::new</span>();
-    <span class="comment">// Use the first (and only) column available to set the autocompletion text</span>
-    <span class="ident">completion_countries</span>.<span class="ident">set_text_column</span>(<span class="number">0</span>);
-    <span class="comment">// how many keystrokes to wait before attempting to autocomplete?</span>
-    <span class="ident">completion_countries</span>.<span class="ident">set_minimum_key_length</span>(<span class="number">1</span>);
-    <span class="comment">// whether the completions should be presented in a popup window</span>
-    <span class="ident">completion_countries</span>.<span class="ident">set_popup_completion</span>(<span class="bool-val">true</span>);
-
-    <span class="comment">// Create a ListStore of items</span>
-    <span class="comment">// These will be the source for the autocompletion</span>
-    <span class="comment">// as the user types into the field</span>
-    <span class="comment">// For a more evolved example of ListStore see src/bin/list_store.rs</span>
-    <span class="kw">let</span> <span class="ident">ls</span> <span class="op">=</span> <span class="ident">create_list_model</span>();
-    <span class="ident">completion_countries</span>.<span class="ident">set_model</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">ls</span>));
-
-    <span class="kw">let</span> <span class="ident">input_field</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
-    <span class="ident">input_field</span>.<span class="ident">set_completion</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">completion_countries</span>));
-
-    <span class="kw">let</span> <span class="ident">row</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">5</span>);
-    <span class="ident">row</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">win_title</span>);
-    <span class="ident">row</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">input_field</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>, <span class="number">10</span>);
-
-    <span class="comment">// window.add(&amp;win_title);</span>
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">row</span>);
-
-    <span class="comment">// show everything</span>
-    <span class="ident">window</span>.<span class="ident">show_all</span>();
-}
-
-<span class="kw">struct</span> <span class="ident">Data</span> {
-    <span class="ident">description</span>: <span class="ident">String</span>,
-}
-
-<span class="kw">fn</span> <span class="ident">create_list_model</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">gtk::ListStore</span> {
-    <span class="kw">let</span> <span class="ident">col_types</span>: [<span class="ident">glib::Type</span>; <span class="number">1</span>] <span class="op">=</span> [<span class="ident">glib::Type::STRING</span>];
-
-    <span class="kw">let</span> <span class="ident">data</span>: [<span class="ident">Data</span>; <span class="number">4</span>] <span class="op">=</span> [
-        <span class="ident">Data</span> {
-            <span class="ident">description</span>: <span class="string">&quot;France&quot;</span>.<span class="ident">to_string</span>(),
-        },
-        <span class="ident">Data</span> {
-            <span class="ident">description</span>: <span class="string">&quot;Italy&quot;</span>.<span class="ident">to_string</span>(),
-        },
-        <span class="ident">Data</span> {
-            <span class="ident">description</span>: <span class="string">&quot;Sweden&quot;</span>.<span class="ident">to_string</span>(),
-        },
-        <span class="ident">Data</span> {
-            <span class="ident">description</span>: <span class="string">&quot;Switzerland&quot;</span>.<span class="ident">to_string</span>(),
-        },
-    ];
-    <span class="kw">let</span> <span class="ident">store</span> <span class="op">=</span> <span class="ident">gtk::ListStore::new</span>(<span class="kw-2">&amp;</span><span class="ident">col_types</span>);
-    <span class="kw">for</span> <span class="ident">d</span> <span class="kw">in</span> <span class="ident">data</span>.<span class="ident">iter</span>() {
-        <span class="kw">let</span> <span class="ident">values</span>: [(<span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>); <span class="number">1</span>] <span class="op">=</span> [(<span class="number">0</span>, <span class="kw-2">&amp;</span><span class="ident">d</span>.<span class="ident">description</span>)];
-        <span class="ident">store</span>.<span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="ident">store</span>.<span class="ident">append</span>(), <span class="kw-2">&amp;</span><span class="ident">values</span>);
-    }
-    <span class="ident">store</span>
-}
-</pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle">
-                  <summary class="hideme">
-                     <span>More examples</span>
-                  </summary>
-                  <div class="more-scraped-examples"><div class="scraped-example" data-code="use gtk::prelude::*;
 use gtk::AboutDialog;
 use gtk::{gio, glib};
 
@@ -1591,8 +1295,8 @@ fn add_actions(
     application.add_action(&switch_action);
 }
 " data-locs="[[3013,3443],[3800,3923],[4020,4147],[4247,4375],[4440,4531],[4599,4941]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/menu_bar_system/main.rs" target="_blank">examples/menu_bar_system/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+                <strong><a href="../src/menu_bar_system/main.rs.html" target="_blank">examples/menu_bar_system/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -1872,6 +1576,302 @@ fn add_actions(
     <span class="ident">application</span>.<span class="ident">add_action</span>(<span class="kw-2">&amp;</span><span class="ident">sub_sub_another</span>);
     <span class="ident">application</span>.<span class="ident">add_action</span>(<span class="kw-2">&amp;</span><span class="ident">sub_sub_another2</span>);
     <span class="ident">application</span>.<span class="ident">add_action</span>(<span class="kw-2">&amp;</span><span class="ident">switch_action</span>);
+}
+</pre></div>
+</div></div><details class="rustdoc-toggle more-examples-toggle">
+                  <summary class="hideme">
+                     <span>More examples</span>
+                  </summary>
+                  <div class="more-scraped-examples"><div class="scraped-example" data-code="use gtk::prelude::*;
+use gtk::{gio, glib};
+
+fn main() {
+    let application = gtk::Application::new(
+        Some(&quot;com.github.gtk-rs.examples.entry-completion&quot;),
+        Default::default(),
+    );
+    application.connect_activate(build_ui);
+
+    // When activated, shuts down the application
+    let quit = gio::SimpleAction::new(&quot;quit&quot;, None);
+    quit.connect_activate(
+        glib::clone!(@weak application => move |_action, _parameter| {
+            application.quit();
+        }),
+    );
+    application.connect_startup(|application| {
+        application.set_accels_for_action(&quot;app.quit&quot;, &[&quot;<Primary>Q&quot;]);
+    });
+    application.add_action(&quit);
+
+    // Run the application
+    application.run();
+}
+
+fn build_ui(application: &gtk::Application) {
+    // create the main window
+    let window = gtk::ApplicationWindow::new(application);
+    window.set_title(&quot;Entry with autocompletion&quot;);
+    window.set_border_width(5);
+    window.set_position(gtk::WindowPosition::Center);
+    window.set_default_size(840, 480);
+
+    // Create a title label
+    let win_title = gtk::Label::new(None);
+    win_title.set_markup(&quot;<big>Which country would you like to spend a holiday in?</big>&quot;);
+
+    // Create an EntryCompletion widget
+    let completion_countries = gtk::EntryCompletion::new();
+    // Use the first (and only) column available to set the autocompletion text
+    completion_countries.set_text_column(0);
+    // how many keystrokes to wait before attempting to autocomplete?
+    completion_countries.set_minimum_key_length(1);
+    // whether the completions should be presented in a popup window
+    completion_countries.set_popup_completion(true);
+
+    // Create a ListStore of items
+    // These will be the source for the autocompletion
+    // as the user types into the field
+    // For a more evolved example of ListStore see src/bin/list_store.rs
+    let ls = create_list_model();
+    completion_countries.set_model(Some(&ls));
+
+    let input_field = gtk::Entry::new();
+    input_field.set_completion(Some(&completion_countries));
+
+    let row = gtk::Box::new(gtk::Orientation::Vertical, 5);
+    row.add(&win_title);
+    row.pack_start(&input_field, false, false, 10);
+
+    // window.add(&win_title);
+    window.add(&row);
+
+    // show everything
+    window.show_all();
+}
+
+struct Data {
+    description: String,
+}
+
+fn create_list_model() -> gtk::ListStore {
+    let col_types: [glib::Type; 1] = [glib::Type::STRING];
+
+    let data: [Data; 4] = [
+        Data {
+            description: &quot;France&quot;.to_string(),
+        },
+        Data {
+            description: &quot;Italy&quot;.to_string(),
+        },
+        Data {
+            description: &quot;Sweden&quot;.to_string(),
+        },
+        Data {
+            description: &quot;Switzerland&quot;.to_string(),
+        },
+    ];
+    let store = gtk::ListStore::new(&col_types);
+    for d in data.iter() {
+        let values: [(u32, &dyn ToValue); 1] = [(0, &d.description)];
+        store.set(&store.append(), &values);
+    }
+    store
+}
+" data-locs="[[354,492]]">
+                <strong><a href="../src/entry_completion/main.rs.html" target="_blank">examples/entry_completion/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
+<span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
+<span id="85">85</span>
+<span id="86">86</span>
+<span id="87">87</span>
+<span id="88">88</span>
+<span id="89">89</span>
+<span id="90">90</span>
+<span id="91">91</span>
+<span id="92">92</span>
+<span id="93">93</span>
+<span id="94">94</span>
+<span id="95">95</span>
+<span id="96">96</span>
+</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">gio</span>, <span class="ident">glib</span>};
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
+        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.entry-completion&quot;</span>),
+        <span class="ident">Default::default</span>(),
+    );
+    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
+
+    <span class="comment">// When activated, shuts down the application</span>
+    <span class="kw">let</span> <span class="ident">quit</span> <span class="op">=</span> <span class="ident">gio::SimpleAction::new</span>(<span class="string">&quot;quit&quot;</span>, <span class="prelude-val">None</span>);
+    <span class="ident">quit</span>.<span class="ident">connect_activate</span>(
+        <span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">application</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">_action</span>, <span class="ident">_parameter</span><span class="op">|</span> {
+            <span class="ident">application</span>.<span class="ident">quit</span>();
+        }),
+    );
+    <span class="ident">application</span>.<span class="ident">connect_startup</span>(<span class="op">|</span><span class="ident">application</span><span class="op">|</span> {
+        <span class="ident">application</span>.<span class="ident">set_accels_for_action</span>(<span class="string">&quot;app.quit&quot;</span>, <span class="kw-2">&amp;</span>[<span class="string">&quot;&lt;Primary&gt;Q&quot;</span>]);
+    });
+    <span class="ident">application</span>.<span class="ident">add_action</span>(<span class="kw-2">&amp;</span><span class="ident">quit</span>);
+
+    <span class="comment">// Run the application</span>
+    <span class="ident">application</span>.<span class="ident">run</span>();
+}
+
+<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
+    <span class="comment">// create the main window</span>
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Entry with autocompletion&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_border_width</span>(<span class="number">5</span>);
+    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
+    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">840</span>, <span class="number">480</span>);
+
+    <span class="comment">// Create a title label</span>
+    <span class="kw">let</span> <span class="ident">win_title</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">None</span>);
+    <span class="ident">win_title</span>.<span class="ident">set_markup</span>(<span class="string">&quot;&lt;big&gt;Which country would you like to spend a holiday in?&lt;/big&gt;&quot;</span>);
+
+    <span class="comment">// Create an EntryCompletion widget</span>
+    <span class="kw">let</span> <span class="ident">completion_countries</span> <span class="op">=</span> <span class="ident">gtk::EntryCompletion::new</span>();
+    <span class="comment">// Use the first (and only) column available to set the autocompletion text</span>
+    <span class="ident">completion_countries</span>.<span class="ident">set_text_column</span>(<span class="number">0</span>);
+    <span class="comment">// how many keystrokes to wait before attempting to autocomplete?</span>
+    <span class="ident">completion_countries</span>.<span class="ident">set_minimum_key_length</span>(<span class="number">1</span>);
+    <span class="comment">// whether the completions should be presented in a popup window</span>
+    <span class="ident">completion_countries</span>.<span class="ident">set_popup_completion</span>(<span class="bool-val">true</span>);
+
+    <span class="comment">// Create a ListStore of items</span>
+    <span class="comment">// These will be the source for the autocompletion</span>
+    <span class="comment">// as the user types into the field</span>
+    <span class="comment">// For a more evolved example of ListStore see src/bin/list_store.rs</span>
+    <span class="kw">let</span> <span class="ident">ls</span> <span class="op">=</span> <span class="ident">create_list_model</span>();
+    <span class="ident">completion_countries</span>.<span class="ident">set_model</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">ls</span>));
+
+    <span class="kw">let</span> <span class="ident">input_field</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
+    <span class="ident">input_field</span>.<span class="ident">set_completion</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">completion_countries</span>));
+
+    <span class="kw">let</span> <span class="ident">row</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">5</span>);
+    <span class="ident">row</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">win_title</span>);
+    <span class="ident">row</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">input_field</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>, <span class="number">10</span>);
+
+    <span class="comment">// window.add(&amp;win_title);</span>
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">row</span>);
+
+    <span class="comment">// show everything</span>
+    <span class="ident">window</span>.<span class="ident">show_all</span>();
+}
+
+<span class="kw">struct</span> <span class="ident">Data</span> {
+    <span class="ident">description</span>: <span class="ident">String</span>,
+}
+
+<span class="kw">fn</span> <span class="ident">create_list_model</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">gtk::ListStore</span> {
+    <span class="kw">let</span> <span class="ident">col_types</span>: [<span class="ident">glib::Type</span>; <span class="number">1</span>] <span class="op">=</span> [<span class="ident">glib::Type::STRING</span>];
+
+    <span class="kw">let</span> <span class="ident">data</span>: [<span class="ident">Data</span>; <span class="number">4</span>] <span class="op">=</span> [
+        <span class="ident">Data</span> {
+            <span class="ident">description</span>: <span class="string">&quot;France&quot;</span>.<span class="ident">to_string</span>(),
+        },
+        <span class="ident">Data</span> {
+            <span class="ident">description</span>: <span class="string">&quot;Italy&quot;</span>.<span class="ident">to_string</span>(),
+        },
+        <span class="ident">Data</span> {
+            <span class="ident">description</span>: <span class="string">&quot;Sweden&quot;</span>.<span class="ident">to_string</span>(),
+        },
+        <span class="ident">Data</span> {
+            <span class="ident">description</span>: <span class="string">&quot;Switzerland&quot;</span>.<span class="ident">to_string</span>(),
+        },
+    ];
+    <span class="kw">let</span> <span class="ident">store</span> <span class="op">=</span> <span class="ident">gtk::ListStore::new</span>(<span class="kw-2">&amp;</span><span class="ident">col_types</span>);
+    <span class="kw">for</span> <span class="ident">d</span> <span class="kw">in</span> <span class="ident">data</span>.<span class="ident">iter</span>() {
+        <span class="kw">let</span> <span class="ident">values</span>: [(<span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>); <span class="number">1</span>] <span class="op">=</span> [(<span class="number">0</span>, <span class="kw-2">&amp;</span><span class="ident">d</span>.<span class="ident">description</span>)];
+        <span class="ident">store</span>.<span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="ident">store</span>.<span class="ident">append</span>(), <span class="kw-2">&amp;</span><span class="ident">values</span>);
+    }
+    <span class="ident">store</span>
 }
 </pre></div>
 </div></div></div></details></div></details><h4 id="method.connect_change_state" class="method"><code>pub fn <a href="#method.connect_change_state" class="fnname">connect_change_state</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(&amp;<a class="struct" href="struct.SimpleAction.html" title="struct gio::SimpleAction">SimpleAction</a>, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>&gt;) + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>) -&gt; <a class="struct" href="../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></code><a href="#method.connect_change_state" class="anchor"></a><a class="srclink" href="../src/gio/auto/simple_action.rs.html#103-133" title="goto source code">[src]</a></h4><h4 id="method.connect_enabled_notify" class="method"><code>pub fn <a href="#method.connect_enabled_notify" class="fnname">connect_enabled_notify</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(&amp;<a class="struct" href="struct.SimpleAction.html" title="struct gio::SimpleAction">SimpleAction</a>) + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>) -&gt; <a class="struct" href="../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></code><a href="#method.connect_enabled_notify" class="anchor"></a><a class="srclink" href="../src/gio/auto/simple_action.rs.html#136-156" title="goto source code">[src]</a></h4><h4 id="method.connect_state_type_notify" class="method"><code>pub fn <a href="#method.connect_state_type_notify" class="fnname">connect_state_type_notify</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(&amp;<a class="struct" href="struct.SimpleAction.html" title="struct gio::SimpleAction">SimpleAction</a>) + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>) -&gt; <a class="struct" href="../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></code><a href="#method.connect_state_type_notify" class="anchor"></a><a class="srclink" href="../src/gio/auto/simple_action.rs.html#159-182" title="goto source code">[src]</a></h4></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle"><summary><h3 id="impl-Clone" class="impl"><code class="in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.SimpleAction.html" title="struct gio::SimpleAction">SimpleAction</a></code><a href="#impl-Clone" class="anchor"></a><a class="srclink" href="../src/gio/auto/simple_action.rs.html#14-20" title="goto source code">[src]</a></h3></summary><div class="impl-items"><details class="undocumented"><summary></summary><details class="rustdoc-toggle method-toggle" open><summary><h4 id="method.clone" class="method trait-impl"><code>fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.SimpleAction.html" title="struct gio::SimpleAction">SimpleAction</a></code><a href="#method.clone" class="anchor"></a><a class="srclink" href="../src/gio/auto/simple_action.rs.html#14-20" title="goto source code">[src]</a></h4></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>

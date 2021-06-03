@@ -12,28 +12,60 @@
 }</pre></div><h2 id="provided-methods" class="small-section-header">Provided methods<a href="#provided-methods" class="anchor"></a></h2><div class="methods"><h3 id="method.set_template_bytes" class="method"><code>fn <a href="#method.set_template_bytes" class="fnname">set_template_bytes</a>(&amp;mut self, template: &amp;<a class="struct" href="../../../glib/bytes/struct.Bytes.html" title="struct glib::bytes::Bytes">Bytes</a>)</code><a class="srclink" href="../../../src/gtk/subclass/widget.rs.html#1650-1655" title="goto source code">[src]</a></h3><details class="rustdoc-toggle" open><summary><h3 id="method.set_template" class="method"><code>fn <a href="#method.set_template" class="fnname">set_template</a>(&amp;mut self, template: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>)</code><a class="srclink" href="../../../src/gtk/subclass/widget.rs.html#1657-1660" title="goto source code">[src]</a></h3></summary><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Uses found in <code>examples/</code></a>
-          </h1><div class="scraped-example" data-code="mod example_application_window;
+          </h1><div class="scraped-example" data-code="use gtk::glib;
+use gtk::subclass::prelude::*;
+use gtk::{prelude::*, CompositeTemplate};
 
-use gtk::prelude::*;
-
-use example_application_window::ExampleApplicationWindow;
-
-fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.gtk-rs.examples.composite_template&quot;),
-        Default::default(),
-    );
-
-    application.connect_activate(|app| {
-        let win = ExampleApplicationWindow::new(app);
-        win.show();
-    });
-
-    application.run();
+/// The private struct, which can hold widgets and other data.
+#[derive(Debug, Default, CompositeTemplate)]
+#[template(file = &quot;composite_template.ui&quot;)]
+pub struct ExampleApplicationWindow {
+    // The #[template_child] attribute tells the CompositeTemplate macro
+    // that a field is meant to be a child within the template.
+    #[template_child]
+    pub headerbar: TemplateChild<gtk::HeaderBar>,
+    #[template_child]
+    pub label: TemplateChild<gtk::Label>,
+    // You can specify the optional `id` argument if the id is not the same
+    // as the identifier
+    #[template_child(id = &quot;subtitle_label&quot;)]
+    pub subtitle: TemplateChild<gtk::Label>,
 }
+
+#[glib::object_subclass]
+impl ObjectSubclass for ExampleApplicationWindow {
+    const NAME: &'static str = &quot;ExampleApplicationWindow&quot;;
+    type Type = super::ExampleApplicationWindow;
+    type ParentType = gtk::ApplicationWindow;
+
+    // Within class_init() you must set the template.
+    // The CompositeTemplate derive macro provides a convenience function
+    // bind_template() to set the template and bind all children at once.
+    fn class_init(klass: &mut Self::Class) {
+        Self::bind_template(klass);
+    }
+
+    // You must call `Widget`'s `init_template()` within `instance_init()`.
+    fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
+        obj.init_template();
+    }
+}
+
+impl ObjectImpl for ExampleApplicationWindow {
+    fn constructed(&self, obj: &Self::Type) {
+        obj.init_label();
+        self.parent_constructed(obj);
+    }
+}
+
+impl WidgetImpl for ExampleApplicationWindow {}
+impl ContainerImpl for ExampleApplicationWindow {}
+impl BinImpl for ExampleApplicationWindow {}
+impl WindowImpl for ExampleApplicationWindow {}
+impl ApplicationWindowImpl for ExampleApplicationWindow {}
 " data-locs="[[1450,1467]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/composite_template/main.rs" target="_blank">examples/composite_template/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+                <strong><a href="../../../src/composite_template/example_application_window/imp.rs.html" target="_blank">examples/composite_template/example_application_window/imp.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -52,52 +84,148 @@ fn main() {
 <span id="17">17</span>
 <span id="18">18</span>
 <span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
 </pre><pre class="rust">
-<span class="kw">mod</span> <span class="ident">example_application_window</span>;
+<span class="kw">use</span> <span class="ident">gtk::glib</span>;
+<span class="kw">use</span> <span class="ident">gtk::subclass::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">prelude</span>::<span class="kw-2">*</span>, <span class="ident">CompositeTemplate</span>};
 
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-
-<span class="kw">use</span> <span class="ident">example_application_window::ExampleApplicationWindow</span>;
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.composite_template&quot;</span>),
-        <span class="ident">Default::default</span>(),
-    );
-
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="op">|</span><span class="ident">app</span><span class="op">|</span> {
-        <span class="kw">let</span> <span class="ident">win</span> <span class="op">=</span> <span class="ident">ExampleApplicationWindow::new</span>(<span class="ident">app</span>);
-        <span class="ident">win</span>.<span class="ident">show</span>();
-    });
-
-    <span class="ident">application</span>.<span class="ident">run</span>();
+<span class="doccomment">/// The private struct, which can hold widgets and other data.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Default</span>, <span class="ident">CompositeTemplate</span>)]</span>
+<span class="attribute">#[<span class="ident">template</span>(<span class="ident">file</span> <span class="op">=</span> <span class="string">&quot;composite_template.ui&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExampleApplicationWindow</span> {
+    <span class="comment">// The #[template_child] attribute tells the CompositeTemplate macro</span>
+    <span class="comment">// that a field is meant to be a child within the template.</span>
+    <span class="attribute">#[<span class="ident">template_child</span>]</span>
+    <span class="kw">pub</span> <span class="ident">headerbar</span>: <span class="ident">TemplateChild</span><span class="op">&lt;</span><span class="ident">gtk::HeaderBar</span><span class="op">&gt;</span>,
+    <span class="attribute">#[<span class="ident">template_child</span>]</span>
+    <span class="kw">pub</span> <span class="ident">label</span>: <span class="ident">TemplateChild</span><span class="op">&lt;</span><span class="ident">gtk::Label</span><span class="op">&gt;</span>,
+    <span class="comment">// You can specify the optional `id` argument if the id is not the same</span>
+    <span class="comment">// as the identifier</span>
+    <span class="attribute">#[<span class="ident">template_child</span>(<span class="ident">id</span> <span class="op">=</span> <span class="string">&quot;subtitle_label&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="ident">subtitle</span>: <span class="ident">TemplateChild</span><span class="op">&lt;</span><span class="ident">gtk::Label</span><span class="op">&gt;</span>,
 }
+
+<span class="attribute">#[<span class="ident">glib::object_subclass</span>]</span>
+<span class="kw">impl</span> <span class="ident">ObjectSubclass</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {
+    <span class="kw">const</span> <span class="ident">NAME</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;ExampleApplicationWindow&quot;</span>;
+    <span class="kw">type</span> <span class="ident">Type</span> <span class="op">=</span> <span class="kw">super</span><span class="ident">::ExampleApplicationWindow</span>;
+    <span class="kw">type</span> <span class="ident">ParentType</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow</span>;
+
+    <span class="comment">// Within class_init() you must set the template.</span>
+    <span class="comment">// The CompositeTemplate derive macro provides a convenience function</span>
+    <span class="comment">// bind_template() to set the template and bind all children at once.</span>
+    <span class="kw">fn</span> <span class="ident">class_init</span>(<span class="ident">klass</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="ident">::Class</span>) {
+        <span class="self">Self</span><span class="ident">::bind_template</span>(<span class="ident">klass</span>);
+    }
+
+    <span class="comment">// You must call `Widget`&#39;s `init_template()` within `instance_init()`.</span>
+    <span class="kw">fn</span> <span class="ident">instance_init</span>(<span class="ident">obj</span>: <span class="kw-2">&amp;</span><span class="ident">glib::subclass::InitializingObject</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>) {
+        <span class="ident">obj</span>.<span class="ident">init_template</span>();
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">ObjectImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {
+    <span class="kw">fn</span> <span class="ident">constructed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">obj</span>: <span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Type</span>) {
+        <span class="ident">obj</span>.<span class="ident">init_label</span>();
+        <span class="self">self</span>.<span class="ident">parent_constructed</span>(<span class="ident">obj</span>);
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">WidgetImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
+<span class="kw">impl</span> <span class="ident">ContainerImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
+<span class="kw">impl</span> <span class="ident">BinImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
+<span class="kw">impl</span> <span class="ident">WindowImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
+<span class="kw">impl</span> <span class="ident">ApplicationWindowImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
 </pre></div>
 </div></div></div></details><h3 id="method.set_template_static" class="method"><code>fn <a href="#method.set_template_static" class="fnname">set_template_static</a>(&amp;mut self, template: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'static [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>)</code><a class="srclink" href="../../../src/gtk/subclass/widget.rs.html#1662-1665" title="goto source code">[src]</a></h3><h3 id="method.set_template_from_resource" class="method"><code>fn <a href="#method.set_template_from_resource" class="fnname">set_template_from_resource</a>(&amp;mut self, resource_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code><a class="srclink" href="../../../src/gtk/subclass/widget.rs.html#1667-1675" title="goto source code">[src]</a></h3><h3 id="method.bind_template_child" class="method"><code>fn <a href="#method.bind_template_child" class="fnname">bind_template_child</a>(&amp;mut self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code><a class="srclink" href="../../../src/gtk/subclass/widget.rs.html#1677-1687" title="goto source code">[src]</a></h3><details class="rustdoc-toggle" open><summary><h3 id="method.bind_template_child_with_offset" class="method"><code>unsafe fn <a href="#method.bind_template_child_with_offset" class="fnname">bind_template_child_with_offset</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;offset: <a class="struct" href="../../../field_offset/struct.FieldOffset.html" title="struct field_offset::FieldOffset">FieldOffset</a>&lt;Self::<a class="type" href="../../../glib/subclass/types/trait.ClassStruct.html#associatedtype.Type" title="type glib::subclass::types::ClassStruct::Type">Type</a>, <a class="struct" href="struct.TemplateChild.html" title="struct gtk::subclass::widget::TemplateChild">TemplateChild</a>&lt;T&gt;&gt;<br>) <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../../glib/object/trait.ObjectType.html" title="trait glib::object::ObjectType">ObjectType</a> + <a class="trait" href="../../../glib/translate/trait.FromGlibPtrNone.html" title="trait glib::translate::FromGlibPtrNone">FromGlibPtrNone</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a>&lt;T as <a class="trait" href="../../../glib/object/trait.ObjectType.html" title="trait glib::object::ObjectType">ObjectType</a>&gt;::<a class="type" href="../../../glib/object/trait.ObjectType.html#associatedtype.GlibType" title="type glib::object::ObjectType::GlibType">GlibType</a>&gt;,&nbsp;</span></code><a class="srclink" href="../../../src/gtk/subclass/widget.rs.html#1690-1707" title="goto source code">[src]</a></h3></summary><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples-1">Uses found in <code>examples/</code></a>
-          </h1><div class="scraped-example" data-code="mod example_application_window;
+          </h1><div class="scraped-example" data-code="use gtk::glib;
+use gtk::subclass::prelude::*;
+use gtk::{prelude::*, CompositeTemplate};
 
-use gtk::prelude::*;
-
-use example_application_window::ExampleApplicationWindow;
-
-fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.gtk-rs.examples.composite_template&quot;),
-        Default::default(),
-    );
-
-    application.connect_activate(|app| {
-        let win = ExampleApplicationWindow::new(app);
-        win.show();
-    });
-
-    application.run();
+/// The private struct, which can hold widgets and other data.
+#[derive(Debug, Default, CompositeTemplate)]
+#[template(file = &quot;composite_template.ui&quot;)]
+pub struct ExampleApplicationWindow {
+    // The #[template_child] attribute tells the CompositeTemplate macro
+    // that a field is meant to be a child within the template.
+    #[template_child]
+    pub headerbar: TemplateChild<gtk::HeaderBar>,
+    #[template_child]
+    pub label: TemplateChild<gtk::Label>,
+    // You can specify the optional `id` argument if the id is not the same
+    // as the identifier
+    #[template_child(id = &quot;subtitle_label&quot;)]
+    pub subtitle: TemplateChild<gtk::Label>,
 }
+
+#[glib::object_subclass]
+impl ObjectSubclass for ExampleApplicationWindow {
+    const NAME: &'static str = &quot;ExampleApplicationWindow&quot;;
+    type Type = super::ExampleApplicationWindow;
+    type ParentType = gtk::ApplicationWindow;
+
+    // Within class_init() you must set the template.
+    // The CompositeTemplate derive macro provides a convenience function
+    // bind_template() to set the template and bind all children at once.
+    fn class_init(klass: &mut Self::Class) {
+        Self::bind_template(klass);
+    }
+
+    // You must call `Widget`'s `init_template()` within `instance_init()`.
+    fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
+        obj.init_template();
+    }
+}
+
+impl ObjectImpl for ExampleApplicationWindow {
+    fn constructed(&self, obj: &Self::Type) {
+        obj.init_label();
+        self.parent_constructed(obj);
+    }
+}
+
+impl WidgetImpl for ExampleApplicationWindow {}
+impl ContainerImpl for ExampleApplicationWindow {}
+impl BinImpl for ExampleApplicationWindow {}
+impl WindowImpl for ExampleApplicationWindow {}
+impl ApplicationWindowImpl for ExampleApplicationWindow {}
 " data-locs="[[1450,1467],[1450,1467],[1450,1467]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/composite_template/main.rs" target="_blank">examples/composite_template/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+                <strong><a href="../../../src/composite_template/example_application_window/imp.rs.html" target="_blank">examples/composite_template/example_application_window/imp.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -116,26 +244,90 @@ fn main() {
 <span id="17">17</span>
 <span id="18">18</span>
 <span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
 </pre><pre class="rust">
-<span class="kw">mod</span> <span class="ident">example_application_window</span>;
+<span class="kw">use</span> <span class="ident">gtk::glib</span>;
+<span class="kw">use</span> <span class="ident">gtk::subclass::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">prelude</span>::<span class="kw-2">*</span>, <span class="ident">CompositeTemplate</span>};
 
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-
-<span class="kw">use</span> <span class="ident">example_application_window::ExampleApplicationWindow</span>;
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.composite_template&quot;</span>),
-        <span class="ident">Default::default</span>(),
-    );
-
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="op">|</span><span class="ident">app</span><span class="op">|</span> {
-        <span class="kw">let</span> <span class="ident">win</span> <span class="op">=</span> <span class="ident">ExampleApplicationWindow::new</span>(<span class="ident">app</span>);
-        <span class="ident">win</span>.<span class="ident">show</span>();
-    });
-
-    <span class="ident">application</span>.<span class="ident">run</span>();
+<span class="doccomment">/// The private struct, which can hold widgets and other data.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Default</span>, <span class="ident">CompositeTemplate</span>)]</span>
+<span class="attribute">#[<span class="ident">template</span>(<span class="ident">file</span> <span class="op">=</span> <span class="string">&quot;composite_template.ui&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExampleApplicationWindow</span> {
+    <span class="comment">// The #[template_child] attribute tells the CompositeTemplate macro</span>
+    <span class="comment">// that a field is meant to be a child within the template.</span>
+    <span class="attribute">#[<span class="ident">template_child</span>]</span>
+    <span class="kw">pub</span> <span class="ident">headerbar</span>: <span class="ident">TemplateChild</span><span class="op">&lt;</span><span class="ident">gtk::HeaderBar</span><span class="op">&gt;</span>,
+    <span class="attribute">#[<span class="ident">template_child</span>]</span>
+    <span class="kw">pub</span> <span class="ident">label</span>: <span class="ident">TemplateChild</span><span class="op">&lt;</span><span class="ident">gtk::Label</span><span class="op">&gt;</span>,
+    <span class="comment">// You can specify the optional `id` argument if the id is not the same</span>
+    <span class="comment">// as the identifier</span>
+    <span class="attribute">#[<span class="ident">template_child</span>(<span class="ident">id</span> <span class="op">=</span> <span class="string">&quot;subtitle_label&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="ident">subtitle</span>: <span class="ident">TemplateChild</span><span class="op">&lt;</span><span class="ident">gtk::Label</span><span class="op">&gt;</span>,
 }
+
+<span class="attribute">#[<span class="ident">glib::object_subclass</span>]</span>
+<span class="kw">impl</span> <span class="ident">ObjectSubclass</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {
+    <span class="kw">const</span> <span class="ident">NAME</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;ExampleApplicationWindow&quot;</span>;
+    <span class="kw">type</span> <span class="ident">Type</span> <span class="op">=</span> <span class="kw">super</span><span class="ident">::ExampleApplicationWindow</span>;
+    <span class="kw">type</span> <span class="ident">ParentType</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow</span>;
+
+    <span class="comment">// Within class_init() you must set the template.</span>
+    <span class="comment">// The CompositeTemplate derive macro provides a convenience function</span>
+    <span class="comment">// bind_template() to set the template and bind all children at once.</span>
+    <span class="kw">fn</span> <span class="ident">class_init</span>(<span class="ident">klass</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="ident">::Class</span>) {
+        <span class="self">Self</span><span class="ident">::bind_template</span>(<span class="ident">klass</span>);
+    }
+
+    <span class="comment">// You must call `Widget`&#39;s `init_template()` within `instance_init()`.</span>
+    <span class="kw">fn</span> <span class="ident">instance_init</span>(<span class="ident">obj</span>: <span class="kw-2">&amp;</span><span class="ident">glib::subclass::InitializingObject</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>) {
+        <span class="ident">obj</span>.<span class="ident">init_template</span>();
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">ObjectImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {
+    <span class="kw">fn</span> <span class="ident">constructed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">obj</span>: <span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Type</span>) {
+        <span class="ident">obj</span>.<span class="ident">init_label</span>();
+        <span class="self">self</span>.<span class="ident">parent_constructed</span>(<span class="ident">obj</span>);
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">WidgetImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
+<span class="kw">impl</span> <span class="ident">ContainerImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
+<span class="kw">impl</span> <span class="ident">BinImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
+<span class="kw">impl</span> <span class="ident">WindowImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
+<span class="kw">impl</span> <span class="ident">ApplicationWindowImpl</span> <span class="kw">for</span> <span class="ident">ExampleApplicationWindow</span> {}
 </pre></div>
 </div></div></div></details></div><h2 id="implementors" class="small-section-header">Implementors<a href="#implementors" class="anchor"></a></h2><div class="item-list" id="implementors-list"><h3 id="impl-WidgetClassSubclassExt" class="impl"><code class="in-band">impl&lt;T:&nbsp;<a class="trait" href="../../../glib/subclass/types/trait.ClassStruct.html" title="trait glib::subclass::types::ClassStruct">ClassStruct</a>&gt; <a class="trait" href="trait.WidgetClassSubclassExt.html" title="trait gtk::subclass::widget::WidgetClassSubclassExt">WidgetClassSubclassExt</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T::<a class="type" href="../../../glib/subclass/types/trait.ClassStruct.html#associatedtype.Type" title="type glib::subclass::types::ClassStruct::Type">Type</a>: <a class="trait" href="trait.WidgetImpl.html" title="trait gtk::subclass::widget::WidgetImpl">WidgetImpl</a>,&nbsp;</span></code><a href="#impl-WidgetClassSubclassExt" class="anchor"></a><a class="srclink" href="../../../src/gtk/subclass/widget.rs.html#1730" title="goto source code">[src]</a></h3></div><script type="text/javascript" src="../../../implementors/gtk/subclass/widget/trait.WidgetClassSubclassExt.js" async></script></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gtk" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
     <script src="../../../main.js"></script></body></html>

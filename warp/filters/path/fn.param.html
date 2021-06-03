@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Extract a parameter from a path segment."><meta name="keywords" content="rust, rustlang, rust-lang, param"><title>param in warp::filters::path - Rust</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class="location"><a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">path</a></p><div id="sidebar-vars" data-name="param" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
-                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">path</a>::<wbr><a class="fn" href="">param</a><button id="copy-path" onclick="copy_path(this)">⎘</button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../../src/warp/filters/path.rs.html#266-275" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn param&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="trait core::str::traits::FromStr">FromStr</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'static&gt;(<br>) -&gt; impl <a class="trait" href="../../trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>T<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a></pre><div class="docblock"><p>Extract a parameter from a path segment.</p>
+<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class="location"><a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">path</a></p><div id="sidebar-vars" data-name="param" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button">?</button>
+                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">path</a>::<wbr><a class="fn" href="">param</a><button id="copy-path" onclick="copy_path(this)"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item import"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../../src/warp/filters/path.rs.html#266-275" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn param&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="trait core::str::traits::FromStr">FromStr</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'static&gt;(<br>) -&gt; impl <a class="trait" href="../../trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>T<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a></pre><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Extract a parameter from a path segment.</p>
 <p>This will try to parse a value from the current request path
 segment, and if successful, the value is returned as the <code>Filter</code>’s
 “extracted” value.</p>
@@ -14,25 +14,49 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">id</span>: <span class="ident">u32</span><span class="op">|</span> {
         <span class="macro">format!</span>(<span class="string">&quot;You asked for /{}&quot;</span>, <span class="ident">id</span>)
     });</pre></div>
-</div><div class="docblock scraped-example-list"><h1 id="scraped-examples" class="small-section-header"><a href="#scraped-examples">Uses found in <code>examples/</code></a></h1><div class="scraped-example" data-code="#![deny(warnings)]
-use warp::{http::StatusCode, Filter};
+</div></details><div class="docblock scraped-example-list">
+          <h1 id="scraped-examples" class="small-section-header">
+             <a href="#scraped-examples">Uses found in <code>examples/</code></a>
+          </h1><div class="scraped-example" data-code="#![deny(warnings)]
 
-async fn dyn_reply(word: String) -> Result<Box<dyn warp::Reply>, warp::Rejection> {
-    if &word == &quot;hello&quot; {
-        Ok(Box::new(&quot;world&quot;))
-    } else {
-        Ok(Box::new(StatusCode::BAD_REQUEST))
-    }
-}
+use std::convert::Infallible;
+use std::str::FromStr;
+use std::time::Duration;
+use warp::Filter;
 
 #[tokio::main]
 async fn main() {
-    let routes = warp::path::param().and_then(dyn_reply);
+    // Match `/:Seconds`...
+    let routes = warp::path::param()
+        // and_then create a `Future` that will simply wait N seconds...
+        .and_then(sleepy);
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-" data-locs="[[316,335]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/dyn_reply.rs">examples/dyn_reply.rs</a></strong></p>
-<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
+
+async fn sleepy(Seconds(seconds): Seconds) -> Result<impl warp::Reply, Infallible> {
+    tokio::time::sleep(Duration::from_secs(seconds)).await;
+    Ok(format!(&quot;I waited {} seconds!&quot;, seconds))
+}
+
+/// A newtype to enforce our maximum allowed seconds.
+struct Seconds(u64);
+
+impl FromStr for Seconds {
+    type Err = ();
+    fn from_str(src: &str) -> Result<Self, Self::Err> {
+        src.parse::<u64>().map_err(|_| ()).and_then(|num| {
+            if num <= 5 {
+                Ok(Seconds(num))
+            } else {
+                Err(())
+            }
+        })
+    }
+}
+" data-locs="[[195,214]]">
+                <strong><a href="../../../src/futures/futures.rs.html" target="_blank">examples/futures.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -49,7 +73,106 @@ async fn main() {
 <span id="15">15</span>
 <span id="16">16</span>
 <span id="17">17</span>
-</pre><div class="example-wrap"><pre class="rust ">
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+</pre><pre class="rust">
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
+
+<span class="kw">use</span> <span class="ident">std::convert::Infallible</span>;
+<span class="kw">use</span> <span class="ident">std::str::FromStr</span>;
+<span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+<span class="kw">use</span> <span class="ident">warp::Filter</span>;
+
+<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="comment">// Match `/:Seconds`...</span>
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path::param</span>()
+        <span class="comment">// and_then create a `Future` that will simply wait N seconds...</span>
+        .<span class="ident">and_then</span>(<span class="ident">sleepy</span>);
+
+    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
+}
+
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">sleepy</span>(<span class="ident">Seconds</span>(<span class="ident">seconds</span>): <span class="ident">Seconds</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Infallible</span><span class="op">&gt;</span> {
+    <span class="ident">tokio::time::sleep</span>(<span class="ident">Duration::from_secs</span>(<span class="ident">seconds</span>)).<span class="kw">await</span>;
+    <span class="prelude-val">Ok</span>(<span class="macro">format!</span>(<span class="string">&quot;I waited {} seconds!&quot;</span>, <span class="ident">seconds</span>))
+}
+
+<span class="doccomment">/// A newtype to enforce our maximum allowed seconds.</span>
+<span class="kw">struct</span> <span class="ident">Seconds</span>(<span class="ident">u64</span>);
+
+<span class="kw">impl</span> <span class="ident">FromStr</span> <span class="kw">for</span> <span class="ident">Seconds</span> {
+    <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> ();
+    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">src</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="self">Self</span><span class="ident">::Err</span><span class="op">&gt;</span> {
+        <span class="ident">src</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>().<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()).<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">num</span><span class="op">|</span> {
+            <span class="kw">if</span> <span class="ident">num</span> <span class="op">&lt;</span><span class="op">=</span> <span class="number">5</span> {
+                <span class="prelude-val">Ok</span>(<span class="ident">Seconds</span>(<span class="ident">num</span>))
+            } <span class="kw">else</span> {
+                <span class="prelude-val">Err</span>(())
+            }
+        })
+    }
+}
+</pre></div>
+</div></div><details class="rustdoc-toggle more-examples-toggle">
+                  <summary class="hideme">
+                     <span>More examples</span>
+                  </summary>
+                  <div class="more-scraped-examples"><div class="scraped-example" data-code="#![deny(warnings)]
+use warp::{http::StatusCode, Filter};
+
+async fn dyn_reply(word: String) -> Result<Box<dyn warp::Reply>, warp::Rejection> {
+    if &word == &quot;hello&quot; {
+        Ok(Box::new(&quot;world&quot;))
+    } else {
+        Ok(Box::new(StatusCode::BAD_REQUEST))
+    }
+}
+
+#[tokio::main]
+async fn main() {
+    let routes = warp::path::param().and_then(dyn_reply);
+
+    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
+}
+" data-locs="[[316,335]]">
+                <strong><a href="../../../src/dyn_reply/dyn_reply.rs.html" target="_blank">examples/dyn_reply.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+</pre><pre class="rust">
 <span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
 <span class="kw">use</span> <span class="ident">warp</span>::{<span class="ident">http::StatusCode</span>, <span class="ident">Filter</span>};
 
@@ -68,171 +191,658 @@ async fn main() {
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </pre></div>
-</div></div><div class="more-scraped-examples hidden"><div class="scraped-example" data-code="use futures::{Stream, StreamExt};
-use std::collections::HashMap;
-use std::sync::{
-    atomic::{AtomicUsize, Ordering},
-    Arc, Mutex,
-};
-use tokio::sync::mpsc;
-use tokio_stream::wrappers::UnboundedReceiverStream;
-use warp::{sse::Event, Filter};
+</div></div><div class="scraped-example" data-code="//! Path Filters
+//!
+//! The filters here work on the &quot;path&quot; of requests.
+//!
+//! - [`path`](./fn.path.html) matches a specific segment, like `/foo`.
+//! - [`param`](./fn.param.html) tries to parse a segment into a type, like `/:u16`.
+//! - [`end`](./fn.end.html) matches when the path end is found.
+//! - [`path!`](../../macro.path.html) eases combining multiple `path` and `param` filters.
+//!
+//! # Routing
+//!
+//! Routing in warp is simple yet powerful.
+//!
+//! First up, matching a single segment:
+//!
+//! ```
+//! use warp::Filter;
+//!
+//! // GET /hi
+//! let hi = warp::path(&quot;hi&quot;).map(|| {
+//!     &quot;Hello, World!&quot;
+//! });
+//! ```
+//!
+//! How about multiple segments? It's easiest with the `path!` macro:
+//!
+//! ```
+//! # use warp::Filter;
+//! // GET /hello/from/warp
+//! let hello_from_warp = warp::path!(&quot;hello&quot; / &quot;from&quot; / &quot;warp&quot;).map(|| {
+//!     &quot;Hello from warp!&quot;
+//! });
+//! ```
+//!
+//! Neat! But how do I handle **parameters** in paths?
+//!
+//! ```
+//! # use warp::Filter;
+//! // GET /sum/:u32/:u32
+//! let sum = warp::path!(&quot;sum&quot; / u32 / u32).map(|a, b| {
+//!     format!(&quot;{} + {} = {}&quot;, a, b, a + b)
+//! });
+//! ```
+//!
+//! In fact, any type that implements `FromStr` can be used, in any order:
+//!
+//! ```
+//! # use warp::Filter;
+//! // GET /:u16/times/:u16
+//! let times = warp::path!(u16 / &quot;times&quot; / u16).map(|a, b| {
+//!     format!(&quot;{} times {} = {}&quot;, a, b, a * b)
+//! });
+//! ```
+//!
+//! Oh shoot, those math routes should be **mounted** at a different path,
+//! is that possible? Yep!
+//!
+//! ```
+//! # use warp::Filter;
+//! # let sum = warp::any().map(warp::reply);
+//! # let times = sum.clone();
+//! // GET /math/sum/:u32/:u32
+//! // GET /math/:u16/times/:u16
+//! let math = warp::path(&quot;math&quot;);
+//! let math_sum = math.and(sum);
+//! let math_times = math.and(times);
+//! ```
+//!
+//! What! `and`? What's that do?
+//!
+//! It combines the filters in a sort of &quot;this and then that&quot; order. In fact,
+//! it's exactly what the `path!` macro has been doing internally.
+//!
+//! ```
+//! # use warp::Filter;
+//! // GET /bye/:string
+//! let bye = warp::path(&quot;bye&quot;)
+//!     .and(warp::path::param())
+//!     .map(|name: String| {
+//!         format!(&quot;Good bye, {}!&quot;, name)
+//!     });
+//! ```
+//!
+//! Ah, so, can filters do things besides `and`?
+//!
+//! Why, yes they can! They can also `or`! As you might expect, `or` creates a
+//! &quot;this or else that&quot; chain of filters. If the first doesn't succeed, then
+//! it tries the other.
+//!
+//! So, those `math` routes could have been **mounted** all as one, with `or`.
+//!
+//!
+//! ```
+//! # use warp::Filter;
+//! # let sum = warp::path(&quot;sum&quot;);
+//! # let times = warp::path(&quot;times&quot;);
+//! // GET /math/sum/:u32/:u32
+//! // GET /math/:u16/times/:u16
+//! let math = warp::path(&quot;math&quot;)
+//!     .and(sum.or(times));
+//! ```
+//!
+//! It turns out, using `or` is how you combine everything together into a
+//! single API.
+//!
+//! ```
+//! # use warp::Filter;
+//! # let hi = warp::path(&quot;hi&quot;);
+//! # let hello_from_warp = hi.clone();
+//! # let bye = hi.clone();
+//! # let math = hi.clone();
+//! // GET /hi
+//! // GET /hello/from/warp
+//! // GET /bye/:string
+//! // GET /math/sum/:u32/:u32
+//! // GET /math/:u16/times/:u16
+//! let routes = hi
+//!     .or(hello_from_warp)
+//!     .or(bye)
+//!     .or(math);
+//! ```
+//!
+//! Note that you will generally want path filters to come **before** other filters
+//! like `body` or `headers`. If a different type of filter comes first, a request
+//! with an invalid body for route `/right-path-wrong-body` may try matching against `/wrong-path`
+//! and return the error from `/wrong-path` instead of the correct body-related error.
 
-#[tokio::main]
-async fn main() {
-    pretty_env_logger::init();
+use std::convert::Infallible;
+use std::fmt;
+use std::str::FromStr;
 
-    // Keep track of all connected users, key is usize, value
-    // is an event stream sender.
-    let users = Arc::new(Mutex::new(HashMap::new()));
-    // Turn our &quot;state&quot; into a new Filter...
-    let users = warp::any().map(move || users.clone());
+use futures::future;
+use http::uri::PathAndQuery;
 
-    // POST /chat -> send message
-    let chat_send = warp::path(&quot;chat&quot;)
-        .and(warp::post())
-        .and(warp::path::param::<usize>())
-        .and(warp::body::content_length_limit(500))
-        .and(
-            warp::body::bytes().and_then(|body: bytes::Bytes| async move {
-                std::str::from_utf8(&body)
-                    .map(String::from)
-                    .map_err(|_e| warp::reject::custom(NotUtf8))
-            }),
-        )
-        .and(users.clone())
-        .map(|my_id, msg, users| {
-            user_message(my_id, msg, &users);
-            warp::reply()
-        });
+use self::internal::Opaque;
+use crate::filter::{filter_fn, one, Filter, FilterBase, Internal, One, Tuple};
+use crate::reject::{self, Rejection};
+use crate::route::{self, Route};
 
-    // GET /chat -> messages stream
-    let chat_recv = warp::path(&quot;chat&quot;).and(warp::get()).and(users).map(|users| {
-        // reply using server-sent events
-        let stream = user_connected(users);
-        warp::sse::reply(warp::sse::keep_alive().stream(stream))
-    });
-
-    // GET / -> index html
-    let index = warp::path::end().map(|| {
-        warp::http::Response::builder()
-            .header(&quot;content-type&quot;, &quot;text/html; charset=utf-8&quot;)
-            .body(INDEX_HTML)
-    });
-
-    let routes = index.or(chat_recv).or(chat_send);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}
-
-/// Our global unique user id counter.
-static NEXT_USER_ID: AtomicUsize = AtomicUsize::new(1);
-
-/// Message variants.
-#[derive(Debug)]
-enum Message {
-    UserId(usize),
-    Reply(String),
-}
-
-#[derive(Debug)]
-struct NotUtf8;
-impl warp::reject::Reject for NotUtf8 {}
-
-/// Our state of currently connected users.
+/// Create an exact match path segment `Filter`.
 ///
-/// - Key is their id
-/// - Value is a sender of `Message`
-type Users = Arc<Mutex<HashMap<usize, mpsc::UnboundedSender<Message>>>>;
+/// This will try to match exactly to the current request path segment.
+///
+/// # Note
+///
+/// - [`end()`](./fn.end.html) should be used to match the end of a path to avoid having
+///   filters for shorter paths like `/math` unintentionally match a longer
+///   path such as `/math/sum`
+/// - Path-related filters should generally come **before** other types of filters, such
+///   as those checking headers or body types. Including those other filters before
+///   the path checks may result in strange errors being returned because a given request
+///   does not match the parameters for a completely separate route.
+///
+/// # Panics
+///
+/// Exact path filters cannot be empty, or contain slashes.
+///
+/// # Example
+///
+/// ```
+/// use warp::Filter;
+///
+/// // Matches '/hello'
+/// let hello = warp::path(&quot;hello&quot;)
+///     .map(|| &quot;Hello, World!&quot;);
+/// ```
+pub fn path<P>(p: P) -> Exact<Opaque<P>>
+where
+    P: AsRef<str>,
+{
+    let s = p.as_ref();
+    assert!(!s.is_empty(), &quot;exact path segments should not be empty&quot;);
+    assert!(
+        !s.contains('/'),
+        &quot;exact path segments should not contain a slash: {:?}&quot;,
+        s
+    );
 
-fn user_connected(users: Users) -> impl Stream<Item = Result<Event, warp::Error>> + Send + 'static {
-    // Use a counter to assign a new unique ID for this user.
-    let my_id = NEXT_USER_ID.fetch_add(1, Ordering::Relaxed);
+    Exact(Opaque(p))
+    /*
+    segment(move |seg| {
+        tracing::trace!(&quot;{:?}?: {:?}&quot;, p, seg);
+        if seg == p {
+            Ok(())
+        } else {
+            Err(reject::not_found())
+        }
+    })
+    */
+}
 
-    eprintln!(&quot;new chat user: {}&quot;, my_id);
+/// A `Filter` matching an exact path segment.
+///
+/// Constructed from `path()` or `path!()`.
+#[allow(missing_debug_implementations)]
+#[derive(Clone, Copy)]
+pub struct Exact<P>(P);
 
-    // Use an unbounded channel to handle buffering and flushing of messages
-    // to the event source...
-    let (tx, rx) = mpsc::unbounded_channel();
-    let rx = UnboundedReceiverStream::new(rx);
+impl<P> FilterBase for Exact<P>
+where
+    P: AsRef<str>,
+{
+    type Extract = ();
+    type Error = Rejection;
+    type Future = future::Ready<Result<Self::Extract, Self::Error>>;
 
-    tx.send(Message::UserId(my_id))
-        // rx is right above, so this cannot fail
-        .unwrap();
+    #[inline]
+    fn filter(&self, _: Internal) -> Self::Future {
+        route::with(|route| {
+            let p = self.0.as_ref();
+            future::ready(with_segment(route, |seg| {
+                tracing::trace!(&quot;{:?}?: {:?}&quot;, p, seg);
 
-    // Save the sender in our list of connected users.
-    users.lock().unwrap().insert(my_id, tx);
+                if seg == p {
+                    Ok(())
+                } else {
+                    Err(reject::not_found())
+                }
+            }))
+        })
+    }
+}
 
-    // Convert messages into Server-Sent Events and return resulting stream.
-    rx.map(|msg| match msg {
-        Message::UserId(my_id) => Ok(Event::default().event(&quot;user&quot;).data(my_id.to_string())),
-        Message::Reply(reply) => Ok(Event::default().data(reply)),
+/// Matches the end of a route.
+///
+/// Note that _not_ including `end()` may result in shorter paths like
+/// `/math` unintentionally matching `/math/sum`.
+///
+/// # Example
+///
+/// ```
+/// use warp::Filter;
+///
+/// // Matches '/'
+/// let hello = warp::path::end()
+///     .map(|| &quot;Hello, World!&quot;);
+/// ```
+pub fn end() -> impl Filter<Extract = (), Error = Rejection> + Copy {
+    filter_fn(move |route| {
+        if route.path().is_empty() {
+            future::ok(())
+        } else {
+            future::err(reject::not_found())
+        }
     })
 }
 
-fn user_message(my_id: usize, msg: String, users: &Users) {
-    let new_msg = format!(&quot;<User#{}>: {}&quot;, my_id, msg);
-
-    // New message from this user, send it to everyone else (except same uid)...
-    //
-    // We use `retain` instead of a for loop so that we can reap any user that
-    // appears to have disconnected.
-    users.lock().unwrap().retain(|uid, tx| {
-        if my_id == *uid {
-            // don't send to same user, but do retain
-            true
-        } else {
-            // If not `is_ok`, the SSE stream is gone, and so don't retain
-            tx.send(Message::Reply(new_msg.clone())).is_ok()
+/// Extract a parameter from a path segment.
+///
+/// This will try to parse a value from the current request path
+/// segment, and if successful, the value is returned as the `Filter`'s
+/// &quot;extracted&quot; value.
+///
+/// If the value could not be parsed, rejects with a `404 Not Found`.
+///
+/// # Example
+///
+/// ```
+/// use warp::Filter;
+///
+/// let route = warp::path::param()
+///     .map(|id: u32| {
+///         format!(&quot;You asked for /{}&quot;, id)
+///     });
+/// ```
+pub fn param<T: FromStr + Send + 'static>(
+) -> impl Filter<Extract = One<T>, Error = Rejection> + Copy {
+    filter_segment(|seg| {
+        tracing::trace!(&quot;param?: {:?}&quot;, seg);
+        if seg.is_empty() {
+            return Err(reject::not_found());
         }
+        T::from_str(seg).map(one).map_err(|_| reject::not_found())
+    })
+}
+
+/// Extract the unmatched tail of the path.
+///
+/// This will return a `Tail`, which allows access to the rest of the path
+/// that previous filters have not already matched.
+///
+/// # Example
+///
+/// ```
+/// use warp::Filter;
+///
+/// let route = warp::path(&quot;foo&quot;)
+///     .and(warp::path::tail())
+///     .map(|tail| {
+///         // GET /foo/bar/baz would return &quot;bar/baz&quot;.
+///         format!(&quot;The tail after foo is {:?}&quot;, tail)
+///     });
+/// ```
+pub fn tail() -> impl Filter<Extract = One<Tail>, Error = Infallible> + Copy {
+    filter_fn(move |route| {
+        let path = path_and_query(&route);
+        let idx = route.matched_path_index();
+
+        // Giving the user the full tail means we assume the full path
+        // has been matched now.
+        let end = path.path().len() - idx;
+        route.set_unmatched_path(end);
+
+        future::ok(one(Tail {
+            path,
+            start_index: idx,
+        }))
+    })
+}
+
+/// Represents that tail part of a request path, returned by the `tail()` filter.
+pub struct Tail {
+    path: PathAndQuery,
+    start_index: usize,
+}
+
+impl Tail {
+    /// Get the `&str` representation of the remaining path.
+    pub fn as_str(&self) -> &str {
+        &self.path.path()[self.start_index..]
+    }
+}
+
+impl fmt::Debug for Tail {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        fmt::Debug::fmt(self.as_str(), f)
+    }
+}
+
+/// Peek at the unmatched tail of the path, without affecting the matched path.
+///
+/// This will return a `Peek`, which allows access to the rest of the path
+/// that previous filters have not already matched. This differs from `tail`
+/// in that `peek` will **not** set the entire path as matched.
+///
+/// # Example
+///
+/// ```
+/// use warp::Filter;
+///
+/// let route = warp::path(&quot;foo&quot;)
+///     .and(warp::path::peek())
+///     .map(|peek| {
+///         // GET /foo/bar/baz would return &quot;bar/baz&quot;.
+///         format!(&quot;The path after foo is {:?}&quot;, peek)
+///     });
+/// ```
+pub fn peek() -> impl Filter<Extract = One<Peek>, Error = Infallible> + Copy {
+    filter_fn(move |route| {
+        let path = path_and_query(&route);
+        let idx = route.matched_path_index();
+
+        future::ok(one(Peek {
+            path,
+            start_index: idx,
+        }))
+    })
+}
+
+/// Represents that tail part of a request path, returned by the `tail()` filter.
+pub struct Peek {
+    path: PathAndQuery,
+    start_index: usize,
+}
+
+impl Peek {
+    /// Get the `&str` representation of the remaining path.
+    pub fn as_str(&self) -> &str {
+        &self.path.path()[self.start_index..]
+    }
+
+    /// Get an iterator over the segments of the peeked path.
+    pub fn segments(&self) -> impl Iterator<Item = &str> {
+        self.as_str().split('/').filter(|seg| !seg.is_empty())
+    }
+}
+
+impl fmt::Debug for Peek {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        fmt::Debug::fmt(self.as_str(), f)
+    }
+}
+
+/// Returns the full request path, irrespective of other filters.
+///
+/// This will return a `FullPath`, which can be stringified to return the
+/// full path of the request.
+///
+/// This is more useful in generic pre/post-processing filters, and should
+/// probably not be used for request matching/routing.
+///
+/// # Example
+///
+/// ```
+/// use warp::{Filter, path::FullPath};
+/// use std::{collections::HashMap, sync::{Arc, Mutex}};
+///
+/// let counts = Arc::new(Mutex::new(HashMap::new()));
+/// let access_counter = warp::path::full()
+///     .map(move |path: FullPath| {
+///         let mut counts = counts.lock().unwrap();
+///
+///         *counts.entry(path.as_str().to_string())
+///             .and_modify(|c| *c += 1)
+///             .or_insert(0)
+///     });
+///
+/// let route = warp::path(&quot;foo&quot;)
+///     .and(warp::path(&quot;bar&quot;))
+///     .and(access_counter)
+///     .map(|count| {
+///         format!(&quot;This is the {}th visit to this URL!&quot;, count)
+///     });
+/// ```
+pub fn full() -> impl Filter<Extract = One<FullPath>, Error = Infallible> + Copy {
+    filter_fn(move |route| future::ok(one(FullPath(path_and_query(&route)))))
+}
+
+/// Represents the full request path, returned by the `full()` filter.
+pub struct FullPath(PathAndQuery);
+
+impl FullPath {
+    /// Get the `&str` representation of the request path.
+    pub fn as_str(&self) -> &str {
+        &self.0.path()
+    }
+}
+
+impl fmt::Debug for FullPath {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        fmt::Debug::fmt(self.as_str(), f)
+    }
+}
+
+fn filter_segment<F, U>(func: F) -> impl Filter<Extract = U, Error = Rejection> + Copy
+where
+    F: Fn(&str) -> Result<U, Rejection> + Copy,
+    U: Tuple + Send + 'static,
+{
+    filter_fn(move |route| future::ready(with_segment(route, func)))
+}
+
+fn with_segment<F, U>(route: &mut Route, func: F) -> Result<U, Rejection>
+where
+    F: Fn(&str) -> Result<U, Rejection>,
+{
+    let seg = segment(route);
+    let ret = func(seg);
+    if ret.is_ok() {
+        let idx = seg.len();
+        route.set_unmatched_path(idx);
+    }
+    ret
+}
+
+fn segment(route: &Route) -> &str {
+    route
+        .path()
+        .splitn(2, '/')
+        .next()
+        .expect(&quot;split always has at least 1&quot;)
+}
+
+fn path_and_query(route: &Route) -> PathAndQuery {
+    route
+        .uri()
+        .path_and_query()
+        .cloned()
+        .unwrap_or_else(|| PathAndQuery::from_static(&quot;&quot;))
+}
+
+/// Convenient way to chain multiple path filters together.
+///
+/// Any number of either type identifiers or string expressions can be passed,
+/// each separated by a forward slash (`/`). Strings will be used to match
+/// path segments exactly, and type identifiers are used just like
+/// [`param`](crate::path::param) filters.
+///
+/// # Example
+///
+/// ```
+/// use warp::Filter;
+///
+/// // Match `/sum/:a/:b`
+/// let route = warp::path!(&quot;sum&quot; / u32 / u32)
+///     .map(|a, b| {
+///         format!(&quot;{} + {} = {}&quot;, a, b, a + b)
+///     });
+/// ```
+///
+/// The equivalent filter chain without using the `path!` macro looks this:
+///
+/// ```
+/// use warp::Filter;
+///
+/// let route = warp::path(&quot;sum&quot;)
+///     .and(warp::path::param::<u32>())
+///     .and(warp::path::param::<u32>())
+///     .and(warp::path::end())
+///     .map(|a, b| {
+///         format!(&quot;{} + {} = {}&quot;, a, b, a + b)
+///     });
+/// ```
+///
+/// # Path Prefixes
+///
+/// The `path!` macro automatically assumes the path should include an `end()`
+/// filter. To build up a path filter *prefix*, such that the `end()` isn't
+/// included, use the `/ ..` syntax.
+///
+///
+/// ```
+/// use warp::Filter;
+///
+/// let prefix = warp::path!(&quot;math&quot; / &quot;sum&quot; / ..);
+///
+/// let sum = warp::path!(u32 / u32)
+///     .map(|a, b| {
+///         format!(&quot;{} + {} = {}&quot;, a, b, a + b)
+///     });
+///
+/// let help = warp::path::end()
+///     .map(|| &quot;This API returns the sum of two u32's&quot;);
+///
+/// let api = prefix.and(sum.or(help));
+/// ```
+#[macro_export]
+macro_rules! path {
+    ($($pieces:tt)*) => ({
+        $crate::__internal_path!(@start $($pieces)*)
     });
 }
 
-static INDEX_HTML: &str = r#&quot;
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Warp Chat</title>
-    </head>
-    <body>
-        <h1>warp chat</h1>
-        <div id=&quot;chat&quot;>
-            <p><em>Connecting...</em></p>
-        </div>
-        <input type=&quot;text&quot; id=&quot;text&quot; />
-        <button type=&quot;button&quot; id=&quot;send&quot;>Send</button>
-        <script type=&quot;text/javascript&quot;>
-        var uri = 'http://' + location.host + '/chat';
-        var sse = new EventSource(uri);
-        function message(data) {
-            var line = document.createElement('p');
-            line.innerText = data;
-            chat.appendChild(line);
+#[doc(hidden)]
+#[macro_export]
+// not public API
+macro_rules! __internal_path {
+    (@start ..) => ({
+        compile_error!(&quot;'..' cannot be the only segment&quot;)
+    });
+    (@start $first:tt $(/ $tail:tt)*) => ({
+        $crate::__internal_path!(@munch $crate::any(); [$first] [$(/ $tail)*])
+    });
+
+    (@munch $sum:expr; [$cur:tt] [/ $next:tt $(/ $tail:tt)*]) => ({
+        $crate::__internal_path!(@munch $crate::Filter::and($sum, $crate::__internal_path!(@segment $cur)); [$next] [$(/ $tail)*])
+    });
+    (@munch $sum:expr; [$cur:tt] []) => ({
+        $crate::__internal_path!(@last $sum; $cur)
+    });
+
+    (@last $sum:expr; ..) => (
+        $sum
+    );
+    (@last $sum:expr; $end:tt) => (
+        $crate::Filter::and(
+            $crate::Filter::and($sum, $crate::__internal_path!(@segment $end)),
+            $crate::path::end()
+        )
+    );
+
+    (@segment ..) => (
+        compile_error!(&quot;'..' must be the last segment&quot;)
+    );
+    (@segment $param:ty) => (
+        $crate::path::param::<$param>()
+    );
+    // Constructs a unique ZST so the &'static str pointer doesn't need to
+    // be carried around.
+    (@segment $s:literal) => ({
+        #[derive(Clone, Copy)]
+        struct __StaticPath;
+        impl ::std::convert::AsRef<str> for __StaticPath {
+            fn as_ref(&self) -> &str {
+                static S: &str = $s;
+                S
+            }
         }
-        sse.onopen = function() {
-            chat.innerHTML = &quot;<p><em>Connected!</em></p>&quot;;
+        $crate::path(__StaticPath)
+    });
+}
+
+// path! compile fail tests
+
+/// ```compile_fail
+/// warp::path!(&quot;foo&quot; / .. / &quot;bar&quot;);
+/// ```
+///
+/// ```compile_fail
+/// warp::path!(.. / &quot;bar&quot;);
+/// ```
+///
+/// ```compile_fail
+/// warp::path!(&quot;foo&quot; ..);
+/// ```
+///
+/// ```compile_fail
+/// warp::path!(&quot;foo&quot; / .. /);
+/// ```
+///
+/// ```compile_fail
+/// warp::path!(..);
+/// ```
+fn _path_macro_compile_fail() {}
+
+mod internal {
+    // Used to prevent users from naming this type.
+    //
+    // For instance, `Exact<Opaque<String>>` means a user cannot depend
+    // on it being `Exact<String>`.
+    #[allow(missing_debug_implementations)]
+    #[derive(Clone, Copy)]
+    pub struct Opaque<T>(pub(super) T);
+
+    impl<T: AsRef<str>> AsRef<str> for Opaque<T> {
+        #[inline]
+        fn as_ref(&self) -> &str {
+            self.0.as_ref()
         }
-        var user_id;
-        sse.addEventListener(&quot;user&quot;, function(msg) {
-            user_id = msg.data;
-        });
-        sse.onmessage = function(msg) {
-            message(msg.data);
-        };
-        send.onclick = function() {
-            var msg = text.value;
-            var xhr = new XMLHttpRequest();
-            xhr.open(&quot;POST&quot;, uri + '/' + user_id, true);
-            xhr.send(msg);
-            text.value = '';
-            message('<You>: ' + msg);
-        };
-        </script>
-    </body>
-</html>
-&quot;#;
-" data-locs="[[677,705]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/sse_chat.rs">examples/sse_chat.rs</a></strong></p>
-<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_path_exact_size() {
+        use std::mem::{size_of, size_of_val};
+
+        assert_eq!(
+            size_of_val(&path(&quot;hello&quot;)),
+            size_of::<&str>(),
+            &quot;exact(&str) is size of &str&quot;
+        );
+
+        assert_eq!(
+            size_of_val(&path(String::from(&quot;world&quot;))),
+            size_of::<String>(),
+            &quot;exact(String) is size of String&quot;
+        );
+
+        assert_eq!(
+            size_of_val(&path!(&quot;zst&quot;)),
+            size_of::<()>(),
+            &quot;path!(&str) is ZST&quot;
+        );
+    }
+}
+" data-locs="[[12067493,12067524]]">
+                <strong><a href="../../../src/rejections/rejections.rs.html" target="_blank">/raid/wcrichto/warp/src/filters/path.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -395,7 +1005,1882 @@ static INDEX_HTML: &str = r#&quot;
 <span id="161">161</span>
 <span id="162">162</span>
 <span id="163">163</span>
-</pre><div class="example-wrap"><pre class="rust ">
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
+<span id="421">421</span>
+<span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
+<span id="429">429</span>
+<span id="430">430</span>
+<span id="431">431</span>
+<span id="432">432</span>
+<span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
+<span id="440">440</span>
+<span id="441">441</span>
+<span id="442">442</span>
+<span id="443">443</span>
+<span id="444">444</span>
+<span id="445">445</span>
+<span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
+<span id="453">453</span>
+<span id="454">454</span>
+<span id="455">455</span>
+<span id="456">456</span>
+<span id="457">457</span>
+<span id="458">458</span>
+<span id="459">459</span>
+<span id="460">460</span>
+<span id="461">461</span>
+<span id="462">462</span>
+<span id="463">463</span>
+<span id="464">464</span>
+<span id="465">465</span>
+<span id="466">466</span>
+<span id="467">467</span>
+<span id="468">468</span>
+<span id="469">469</span>
+<span id="470">470</span>
+<span id="471">471</span>
+<span id="472">472</span>
+<span id="473">473</span>
+<span id="474">474</span>
+<span id="475">475</span>
+<span id="476">476</span>
+<span id="477">477</span>
+<span id="478">478</span>
+<span id="479">479</span>
+<span id="480">480</span>
+<span id="481">481</span>
+<span id="482">482</span>
+<span id="483">483</span>
+<span id="484">484</span>
+<span id="485">485</span>
+<span id="486">486</span>
+<span id="487">487</span>
+<span id="488">488</span>
+<span id="489">489</span>
+<span id="490">490</span>
+<span id="491">491</span>
+<span id="492">492</span>
+<span id="493">493</span>
+<span id="494">494</span>
+<span id="495">495</span>
+<span id="496">496</span>
+<span id="497">497</span>
+<span id="498">498</span>
+<span id="499">499</span>
+<span id="500">500</span>
+<span id="501">501</span>
+<span id="502">502</span>
+<span id="503">503</span>
+<span id="504">504</span>
+<span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
+<span id="512">512</span>
+<span id="513">513</span>
+<span id="514">514</span>
+<span id="515">515</span>
+<span id="516">516</span>
+<span id="517">517</span>
+<span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
+<span id="582">582</span>
+<span id="583">583</span>
+<span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
+<span id="587">587</span>
+<span id="588">588</span>
+<span id="589">589</span>
+<span id="590">590</span>
+<span id="591">591</span>
+<span id="592">592</span>
+<span id="593">593</span>
+<span id="594">594</span>
+<span id="595">595</span>
+<span id="596">596</span>
+<span id="597">597</span>
+<span id="598">598</span>
+<span id="599">599</span>
+<span id="600">600</span>
+<span id="601">601</span>
+<span id="602">602</span>
+<span id="603">603</span>
+<span id="604">604</span>
+<span id="605">605</span>
+<span id="606">606</span>
+<span id="607">607</span>
+<span id="608">608</span>
+<span id="609">609</span>
+<span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
+<span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
+<span id="616">616</span>
+<span id="617">617</span>
+<span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
+<span id="622">622</span>
+<span id="623">623</span>
+<span id="624">624</span>
+<span id="625">625</span>
+<span id="626">626</span>
+<span id="627">627</span>
+<span id="628">628</span>
+<span id="629">629</span>
+<span id="630">630</span>
+<span id="631">631</span>
+<span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
+<span id="639">639</span>
+<span id="640">640</span>
+<span id="641">641</span>
+<span id="642">642</span>
+<span id="643">643</span>
+<span id="644">644</span>
+<span id="645">645</span>
+<span id="646">646</span>
+<span id="647">647</span>
+<span id="648">648</span>
+<span id="649">649</span>
+</pre><pre class="rust">
+<span class="doccomment">//! Path Filters</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! The filters here work on the &quot;path&quot; of requests.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! - [`path`](./fn.path.html) matches a specific segment, like `/foo`.</span>
+<span class="doccomment">//! - [`param`](./fn.param.html) tries to parse a segment into a type, like `/:u16`.</span>
+<span class="doccomment">//! - [`end`](./fn.end.html) matches when the path end is found.</span>
+<span class="doccomment">//! - [`path!`](../../macro.path.html) eases combining multiple `path` and `param` filters.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Routing</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Routing in warp is simple yet powerful.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! First up, matching a single segment:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! use warp::Filter;</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! // GET /hi</span>
+<span class="doccomment">//! let hi = warp::path(&quot;hi&quot;).map(|| {</span>
+<span class="doccomment">//!     &quot;Hello, World!&quot;</span>
+<span class="doccomment">//! });</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! How about multiple segments? It&#39;s easiest with the `path!` macro:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! # use warp::Filter;</span>
+<span class="doccomment">//! // GET /hello/from/warp</span>
+<span class="doccomment">//! let hello_from_warp = warp::path!(&quot;hello&quot; / &quot;from&quot; / &quot;warp&quot;).map(|| {</span>
+<span class="doccomment">//!     &quot;Hello from warp!&quot;</span>
+<span class="doccomment">//! });</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Neat! But how do I handle **parameters** in paths?</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! # use warp::Filter;</span>
+<span class="doccomment">//! // GET /sum/:u32/:u32</span>
+<span class="doccomment">//! let sum = warp::path!(&quot;sum&quot; / u32 / u32).map(|a, b| {</span>
+<span class="doccomment">//!     format!(&quot;{} + {} = {}&quot;, a, b, a + b)</span>
+<span class="doccomment">//! });</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! In fact, any type that implements `FromStr` can be used, in any order:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! # use warp::Filter;</span>
+<span class="doccomment">//! // GET /:u16/times/:u16</span>
+<span class="doccomment">//! let times = warp::path!(u16 / &quot;times&quot; / u16).map(|a, b| {</span>
+<span class="doccomment">//!     format!(&quot;{} times {} = {}&quot;, a, b, a * b)</span>
+<span class="doccomment">//! });</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Oh shoot, those math routes should be **mounted** at a different path,</span>
+<span class="doccomment">//! is that possible? Yep!</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! # use warp::Filter;</span>
+<span class="doccomment">//! # let sum = warp::any().map(warp::reply);</span>
+<span class="doccomment">//! # let times = sum.clone();</span>
+<span class="doccomment">//! // GET /math/sum/:u32/:u32</span>
+<span class="doccomment">//! // GET /math/:u16/times/:u16</span>
+<span class="doccomment">//! let math = warp::path(&quot;math&quot;);</span>
+<span class="doccomment">//! let math_sum = math.and(sum);</span>
+<span class="doccomment">//! let math_times = math.and(times);</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! What! `and`? What&#39;s that do?</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! It combines the filters in a sort of &quot;this and then that&quot; order. In fact,</span>
+<span class="doccomment">//! it&#39;s exactly what the `path!` macro has been doing internally.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! # use warp::Filter;</span>
+<span class="doccomment">//! // GET /bye/:string</span>
+<span class="doccomment">//! let bye = warp::path(&quot;bye&quot;)</span>
+<span class="doccomment">//!     .and(warp::path::param())</span>
+<span class="doccomment">//!     .map(|name: String| {</span>
+<span class="doccomment">//!         format!(&quot;Good bye, {}!&quot;, name)</span>
+<span class="doccomment">//!     });</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Ah, so, can filters do things besides `and`?</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Why, yes they can! They can also `or`! As you might expect, `or` creates a</span>
+<span class="doccomment">//! &quot;this or else that&quot; chain of filters. If the first doesn&#39;t succeed, then</span>
+<span class="doccomment">//! it tries the other.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! So, those `math` routes could have been **mounted** all as one, with `or`.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! # use warp::Filter;</span>
+<span class="doccomment">//! # let sum = warp::path(&quot;sum&quot;);</span>
+<span class="doccomment">//! # let times = warp::path(&quot;times&quot;);</span>
+<span class="doccomment">//! // GET /math/sum/:u32/:u32</span>
+<span class="doccomment">//! // GET /math/:u16/times/:u16</span>
+<span class="doccomment">//! let math = warp::path(&quot;math&quot;)</span>
+<span class="doccomment">//!     .and(sum.or(times));</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! It turns out, using `or` is how you combine everything together into a</span>
+<span class="doccomment">//! single API.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! # use warp::Filter;</span>
+<span class="doccomment">//! # let hi = warp::path(&quot;hi&quot;);</span>
+<span class="doccomment">//! # let hello_from_warp = hi.clone();</span>
+<span class="doccomment">//! # let bye = hi.clone();</span>
+<span class="doccomment">//! # let math = hi.clone();</span>
+<span class="doccomment">//! // GET /hi</span>
+<span class="doccomment">//! // GET /hello/from/warp</span>
+<span class="doccomment">//! // GET /bye/:string</span>
+<span class="doccomment">//! // GET /math/sum/:u32/:u32</span>
+<span class="doccomment">//! // GET /math/:u16/times/:u16</span>
+<span class="doccomment">//! let routes = hi</span>
+<span class="doccomment">//!     .or(hello_from_warp)</span>
+<span class="doccomment">//!     .or(bye)</span>
+<span class="doccomment">//!     .or(math);</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Note that you will generally want path filters to come **before** other filters</span>
+<span class="doccomment">//! like `body` or `headers`. If a different type of filter comes first, a request</span>
+<span class="doccomment">//! with an invalid body for route `/right-path-wrong-body` may try matching against `/wrong-path`</span>
+<span class="doccomment">//! and return the error from `/wrong-path` instead of the correct body-related error.</span>
+
+<span class="kw">use</span> <span class="ident">std::convert::Infallible</span>;
+<span class="kw">use</span> <span class="ident">std::fmt</span>;
+<span class="kw">use</span> <span class="ident">std::str::FromStr</span>;
+
+<span class="kw">use</span> <span class="ident">futures::future</span>;
+<span class="kw">use</span> <span class="ident">http::uri::PathAndQuery</span>;
+
+<span class="kw">use</span> <span class="self">self</span><span class="ident">::internal::Opaque</span>;
+<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::filter</span>::{<span class="ident">filter_fn</span>, <span class="ident">one</span>, <span class="ident">Filter</span>, <span class="ident">FilterBase</span>, <span class="ident">Internal</span>, <span class="ident">One</span>, <span class="ident">Tuple</span>};
+<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::reject</span>::{<span class="self">self</span>, <span class="ident">Rejection</span>};
+<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::route</span>::{<span class="self">self</span>, <span class="ident">Route</span>};
+
+<span class="doccomment">/// Create an exact match path segment `Filter`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This will try to match exactly to the current request path segment.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Note</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// - [`end()`](./fn.end.html) should be used to match the end of a path to avoid having</span>
+<span class="doccomment">///   filters for shorter paths like `/math` unintentionally match a longer</span>
+<span class="doccomment">///   path such as `/math/sum`</span>
+<span class="doccomment">/// - Path-related filters should generally come **before** other types of filters, such</span>
+<span class="doccomment">///   as those checking headers or body types. Including those other filters before</span>
+<span class="doccomment">///   the path checks may result in strange errors being returned because a given request</span>
+<span class="doccomment">///   does not match the parameters for a completely separate route.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Panics</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Exact path filters cannot be empty, or contain slashes.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::Filter;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// // Matches &#39;/hello&#39;</span>
+<span class="doccomment">/// let hello = warp::path(&quot;hello&quot;)</span>
+<span class="doccomment">///     .map(|| &quot;Hello, World!&quot;);</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">path</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">p</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Exact</span><span class="op">&lt;</span><span class="ident">Opaque</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span><span class="op">&gt;</span>
+<span class="kw">where</span>
+    <span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
+{
+    <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">p</span>.<span class="ident">as_ref</span>();
+    <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">s</span>.<span class="ident">is_empty</span>(), <span class="string">&quot;exact path segments should not be empty&quot;</span>);
+    <span class="macro">assert!</span>(
+        <span class="op">!</span><span class="ident">s</span>.<span class="ident">contains</span>(<span class="string">&#39;/&#39;</span>),
+        <span class="string">&quot;exact path segments should not contain a slash: {:?}&quot;</span>,
+        <span class="ident">s</span>
+    );
+
+    <span class="ident">Exact</span>(<span class="ident">Opaque</span>(<span class="ident">p</span>))
+    <span class="comment">/*
+    segment(move |seg| {
+        tracing::trace!(&quot;{:?}?: {:?}&quot;, p, seg);
+        if seg == p {
+            Ok(())
+        } else {
+            Err(reject::not_found())
+        }
+    })
+    */</span>
+}
+
+<span class="doccomment">/// A `Filter` matching an exact path segment.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Constructed from `path()` or `path!()`.</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_debug_implementations</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Exact</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">P</span>);
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="ident">FilterBase</span> <span class="kw">for</span> <span class="ident">Exact</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>
+<span class="kw">where</span>
+    <span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
+{
+    <span class="kw">type</span> <span class="ident">Extract</span> <span class="op">=</span> ();
+    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span>;
+    <span class="kw">type</span> <span class="ident">Future</span> <span class="op">=</span> <span class="ident">future::Ready</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Extract</span>, <span class="self">Self</span><span class="ident">::Error</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">filter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw">_</span>: <span class="ident">Internal</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Future</span> {
+        <span class="ident">route::with</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ref</span>();
+            <span class="ident">future::ready</span>(<span class="ident">with_segment</span>(<span class="ident">route</span>, <span class="op">|</span><span class="ident">seg</span><span class="op">|</span> {
+                <span class="macro">tracing::trace!</span>(<span class="string">&quot;{:?}?: {:?}&quot;</span>, <span class="ident">p</span>, <span class="ident">seg</span>);
+
+                <span class="kw">if</span> <span class="ident">seg</span> <span class="op">=</span><span class="op">=</span> <span class="ident">p</span> {
+                    <span class="prelude-val">Ok</span>(())
+                } <span class="kw">else</span> {
+                    <span class="prelude-val">Err</span>(<span class="ident">reject::not_found</span>())
+                }
+            }))
+        })
+    }
+}
+
+<span class="doccomment">/// Matches the end of a route.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that _not_ including `end()` may result in shorter paths like</span>
+<span class="doccomment">/// `/math` unintentionally matching `/math/sum`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::Filter;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// // Matches &#39;/&#39;</span>
+<span class="doccomment">/// let hello = warp::path::end()</span>
+<span class="doccomment">///     .map(|| &quot;Hello, World!&quot;);</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">end</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
+    <span class="ident">filter_fn</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
+        <span class="kw">if</span> <span class="ident">route</span>.<span class="ident">path</span>().<span class="ident">is_empty</span>() {
+            <span class="ident">future::ok</span>(())
+        } <span class="kw">else</span> {
+            <span class="ident">future::err</span>(<span class="ident">reject::not_found</span>())
+        }
+    })
+}
+
+<span class="doccomment">/// Extract a parameter from a path segment.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This will try to parse a value from the current request path</span>
+<span class="doccomment">/// segment, and if successful, the value is returned as the `Filter`&#39;s</span>
+<span class="doccomment">/// &quot;extracted&quot; value.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If the value could not be parsed, rejects with a `404 Not Found`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::Filter;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let route = warp::path::param()</span>
+<span class="doccomment">///     .map(|id: u32| {</span>
+<span class="doccomment">///         format!(&quot;You asked for /{}&quot;, id)</span>
+<span class="doccomment">///     });</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">param</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromStr</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
+) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="ident">One</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
+    <span class="ident">filter_segment</span>(<span class="op">|</span><span class="ident">seg</span><span class="op">|</span> {
+        <span class="macro">tracing::trace!</span>(<span class="string">&quot;param?: {:?}&quot;</span>, <span class="ident">seg</span>);
+        <span class="kw">if</span> <span class="ident">seg</span>.<span class="ident">is_empty</span>() {
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">reject::not_found</span>());
+        }
+        <span class="ident">T::from_str</span>(<span class="ident">seg</span>).<span class="ident">map</span>(<span class="ident">one</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">reject::not_found</span>())
+    })
+}
+
+<span class="doccomment">/// Extract the unmatched tail of the path.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This will return a `Tail`, which allows access to the rest of the path</span>
+<span class="doccomment">/// that previous filters have not already matched.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::Filter;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let route = warp::path(&quot;foo&quot;)</span>
+<span class="doccomment">///     .and(warp::path::tail())</span>
+<span class="doccomment">///     .map(|tail| {</span>
+<span class="doccomment">///         // GET /foo/bar/baz would return &quot;bar/baz&quot;.</span>
+<span class="doccomment">///         format!(&quot;The tail after foo is {:?}&quot;, tail)</span>
+<span class="doccomment">///     });</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tail</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="ident">One</span><span class="op">&lt;</span><span class="ident">Tail</span><span class="op">&gt;</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Infallible</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
+    <span class="ident">filter_fn</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
+        <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">path_and_query</span>(<span class="kw-2">&amp;</span><span class="ident">route</span>);
+        <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="ident">route</span>.<span class="ident">matched_path_index</span>();
+
+        <span class="comment">// Giving the user the full tail means we assume the full path</span>
+        <span class="comment">// has been matched now.</span>
+        <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="ident">path</span>.<span class="ident">path</span>().<span class="ident">len</span>() <span class="op">-</span> <span class="ident">idx</span>;
+        <span class="ident">route</span>.<span class="ident">set_unmatched_path</span>(<span class="ident">end</span>);
+
+        <span class="ident">future::ok</span>(<span class="ident">one</span>(<span class="ident">Tail</span> {
+            <span class="ident">path</span>,
+            <span class="ident">start_index</span>: <span class="ident">idx</span>,
+        }))
+    })
+}
+
+<span class="doccomment">/// Represents that tail part of a request path, returned by the `tail()` filter.</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Tail</span> {
+    <span class="ident">path</span>: <span class="ident">PathAndQuery</span>,
+    <span class="ident">start_index</span>: <span class="ident">usize</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">Tail</span> {
+    <span class="doccomment">/// Get the `&amp;str` representation of the remaining path.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">path</span>.<span class="ident">path</span>()[<span class="self">self</span>.<span class="ident">start_index</span>..]
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Tail</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+        <span class="ident">fmt::Debug::fmt</span>(<span class="self">self</span>.<span class="ident">as_str</span>(), <span class="ident">f</span>)
+    }
+}
+
+<span class="doccomment">/// Peek at the unmatched tail of the path, without affecting the matched path.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This will return a `Peek`, which allows access to the rest of the path</span>
+<span class="doccomment">/// that previous filters have not already matched. This differs from `tail`</span>
+<span class="doccomment">/// in that `peek` will **not** set the entire path as matched.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::Filter;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let route = warp::path(&quot;foo&quot;)</span>
+<span class="doccomment">///     .and(warp::path::peek())</span>
+<span class="doccomment">///     .map(|peek| {</span>
+<span class="doccomment">///         // GET /foo/bar/baz would return &quot;bar/baz&quot;.</span>
+<span class="doccomment">///         format!(&quot;The path after foo is {:?}&quot;, peek)</span>
+<span class="doccomment">///     });</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">peek</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="ident">One</span><span class="op">&lt;</span><span class="ident">Peek</span><span class="op">&gt;</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Infallible</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
+    <span class="ident">filter_fn</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
+        <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">path_and_query</span>(<span class="kw-2">&amp;</span><span class="ident">route</span>);
+        <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="ident">route</span>.<span class="ident">matched_path_index</span>();
+
+        <span class="ident">future::ok</span>(<span class="ident">one</span>(<span class="ident">Peek</span> {
+            <span class="ident">path</span>,
+            <span class="ident">start_index</span>: <span class="ident">idx</span>,
+        }))
+    })
+}
+
+<span class="doccomment">/// Represents that tail part of a request path, returned by the `tail()` filter.</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Peek</span> {
+    <span class="ident">path</span>: <span class="ident">PathAndQuery</span>,
+    <span class="ident">start_index</span>: <span class="ident">usize</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">Peek</span> {
+    <span class="doccomment">/// Get the `&amp;str` representation of the remaining path.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">path</span>.<span class="ident">path</span>()[<span class="self">self</span>.<span class="ident">start_index</span>..]
+    }
+
+    <span class="doccomment">/// Get an iterator over the segments of the peeked path.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">segments</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">as_str</span>().<span class="ident">split</span>(<span class="string">&#39;/&#39;</span>).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">seg</span><span class="op">|</span> <span class="op">!</span><span class="ident">seg</span>.<span class="ident">is_empty</span>())
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Peek</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+        <span class="ident">fmt::Debug::fmt</span>(<span class="self">self</span>.<span class="ident">as_str</span>(), <span class="ident">f</span>)
+    }
+}
+
+<span class="doccomment">/// Returns the full request path, irrespective of other filters.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This will return a `FullPath`, which can be stringified to return the</span>
+<span class="doccomment">/// full path of the request.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is more useful in generic pre/post-processing filters, and should</span>
+<span class="doccomment">/// probably not be used for request matching/routing.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::{Filter, path::FullPath};</span>
+<span class="doccomment">/// use std::{collections::HashMap, sync::{Arc, Mutex}};</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let counts = Arc::new(Mutex::new(HashMap::new()));</span>
+<span class="doccomment">/// let access_counter = warp::path::full()</span>
+<span class="doccomment">///     .map(move |path: FullPath| {</span>
+<span class="doccomment">///         let mut counts = counts.lock().unwrap();</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///         *counts.entry(path.as_str().to_string())</span>
+<span class="doccomment">///             .and_modify(|c| *c += 1)</span>
+<span class="doccomment">///             .or_insert(0)</span>
+<span class="doccomment">///     });</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let route = warp::path(&quot;foo&quot;)</span>
+<span class="doccomment">///     .and(warp::path(&quot;bar&quot;))</span>
+<span class="doccomment">///     .and(access_counter)</span>
+<span class="doccomment">///     .map(|count| {</span>
+<span class="doccomment">///         format!(&quot;This is the {}th visit to this URL!&quot;, count)</span>
+<span class="doccomment">///     });</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">full</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="ident">One</span><span class="op">&lt;</span><span class="ident">FullPath</span><span class="op">&gt;</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Infallible</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
+    <span class="ident">filter_fn</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">route</span><span class="op">|</span> <span class="ident">future::ok</span>(<span class="ident">one</span>(<span class="ident">FullPath</span>(<span class="ident">path_and_query</span>(<span class="kw-2">&amp;</span><span class="ident">route</span>)))))
+}
+
+<span class="doccomment">/// Represents the full request path, returned by the `full()` filter.</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FullPath</span>(<span class="ident">PathAndQuery</span>);
+
+<span class="kw">impl</span> <span class="ident">FullPath</span> {
+    <span class="doccomment">/// Get the `&amp;str` representation of the request path.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">path</span>()
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">FullPath</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+        <span class="ident">fmt::Debug::fmt</span>(<span class="self">self</span>.<span class="ident">as_str</span>(), <span class="ident">f</span>)
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">filter_segment</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">U</span><span class="op">&gt;</span>(<span class="ident">func</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="ident">U</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span>
+<span class="kw">where</span>
+    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">U</span>, <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span>,
+    <span class="ident">U</span>: <span class="ident">Tuple</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+{
+    <span class="ident">filter_fn</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">route</span><span class="op">|</span> <span class="ident">future::ready</span>(<span class="ident">with_segment</span>(<span class="ident">route</span>, <span class="ident">func</span>)))
+}
+
+<span class="kw">fn</span> <span class="ident">with_segment</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">U</span><span class="op">&gt;</span>(<span class="ident">route</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Route</span>, <span class="ident">func</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">U</span>, <span class="ident">Rejection</span><span class="op">&gt;</span>
+<span class="kw">where</span>
+    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">U</span>, <span class="ident">Rejection</span><span class="op">&gt;</span>,
+{
+    <span class="kw">let</span> <span class="ident">seg</span> <span class="op">=</span> <span class="ident">segment</span>(<span class="ident">route</span>);
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">func</span>(<span class="ident">seg</span>);
+    <span class="kw">if</span> <span class="ident">ret</span>.<span class="ident">is_ok</span>() {
+        <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="ident">seg</span>.<span class="ident">len</span>();
+        <span class="ident">route</span>.<span class="ident">set_unmatched_path</span>(<span class="ident">idx</span>);
+    }
+    <span class="ident">ret</span>
+}
+
+<span class="kw">fn</span> <span class="ident">segment</span>(<span class="ident">route</span>: <span class="kw-2">&amp;</span><span class="ident">Route</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+    <span class="ident">route</span>
+        .<span class="ident">path</span>()
+        .<span class="ident">splitn</span>(<span class="number">2</span>, <span class="string">&#39;/&#39;</span>)
+        .<span class="ident">next</span>()
+        .<span class="ident">expect</span>(<span class="string">&quot;split always has at least 1&quot;</span>)
+}
+
+<span class="kw">fn</span> <span class="ident">path_and_query</span>(<span class="ident">route</span>: <span class="kw-2">&amp;</span><span class="ident">Route</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PathAndQuery</span> {
+    <span class="ident">route</span>
+        .<span class="ident">uri</span>()
+        .<span class="ident">path_and_query</span>()
+        .<span class="ident">cloned</span>()
+        .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">PathAndQuery::from_static</span>(<span class="string">&quot;&quot;</span>))
+}
+
+<span class="doccomment">/// Convenient way to chain multiple path filters together.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Any number of either type identifiers or string expressions can be passed,</span>
+<span class="doccomment">/// each separated by a forward slash (`/`). Strings will be used to match</span>
+<span class="doccomment">/// path segments exactly, and type identifiers are used just like</span>
+<span class="doccomment">/// [`param`](crate::path::param) filters.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::Filter;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// // Match `/sum/:a/:b`</span>
+<span class="doccomment">/// let route = warp::path!(&quot;sum&quot; / u32 / u32)</span>
+<span class="doccomment">///     .map(|a, b| {</span>
+<span class="doccomment">///         format!(&quot;{} + {} = {}&quot;, a, b, a + b)</span>
+<span class="doccomment">///     });</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The equivalent filter chain without using the `path!` macro looks this:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::Filter;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let route = warp::path(&quot;sum&quot;)</span>
+<span class="doccomment">///     .and(warp::path::param::&lt;u32&gt;())</span>
+<span class="doccomment">///     .and(warp::path::param::&lt;u32&gt;())</span>
+<span class="doccomment">///     .and(warp::path::end())</span>
+<span class="doccomment">///     .map(|a, b| {</span>
+<span class="doccomment">///         format!(&quot;{} + {} = {}&quot;, a, b, a + b)</span>
+<span class="doccomment">///     });</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Path Prefixes</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The `path!` macro automatically assumes the path should include an `end()`</span>
+<span class="doccomment">/// filter. To build up a path filter *prefix*, such that the `end()` isn&#39;t</span>
+<span class="doccomment">/// included, use the `/ ..` syntax.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use warp::Filter;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let prefix = warp::path!(&quot;math&quot; / &quot;sum&quot; / ..);</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let sum = warp::path!(u32 / u32)</span>
+<span class="doccomment">///     .map(|a, b| {</span>
+<span class="doccomment">///         format!(&quot;{} + {} = {}&quot;, a, b, a + b)</span>
+<span class="doccomment">///     });</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let help = warp::path::end()</span>
+<span class="doccomment">///     .map(|| &quot;This API returns the sum of two u32&#39;s&quot;);</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let api = prefix.and(sum.or(help));</span>
+<span class="doccomment">/// ```</span>
+<span class="attribute">#[<span class="ident">macro_export</span>]</span>
+<span class="macro">macro_rules!</span> <span class="ident">path</span> {
+    ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">pieces</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> ({
+        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::__internal_path!</span>(@<span class="macro-nonterminal">start</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">pieces</span>)<span class="kw-2">*</span>)
+    });
+}
+
+<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+<span class="attribute">#[<span class="ident">macro_export</span>]</span>
+<span class="comment">// not public API</span>
+<span class="macro">macro_rules!</span> <span class="ident">__internal_path</span> {
+    (@<span class="ident">start</span> ..) <span class="op">=</span><span class="op">&gt;</span> ({
+        <span class="macro">compile_error!</span>(<span class="string">&quot;&#39;..&#39; cannot be the only segment&quot;</span>)
+    });
+    (@<span class="ident">start</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">first</span>:<span class="ident">tt</span> $(<span class="op">/</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tail</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> ({
+        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::__internal_path!</span>(@<span class="macro-nonterminal">munch</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::any</span>(); [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">first</span>] [$(<span class="op">/</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tail</span>)<span class="kw-2">*</span>])
+    });
+
+    (@<span class="ident">munch</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">sum</span>:<span class="ident">expr</span>; [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">cur</span>:<span class="ident">tt</span>] [<span class="op">/</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">next</span>:<span class="ident">tt</span> $(<span class="op">/</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tail</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) <span class="op">=</span><span class="op">&gt;</span> ({
+        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::__internal_path!</span>(@<span class="macro-nonterminal">munch</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::Filter::and</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">sum</span>, <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::__internal_path!</span>(@<span class="macro-nonterminal">segment</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">cur</span>)); [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">next</span>] [$(<span class="op">/</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tail</span>)<span class="kw-2">*</span>])
+    });
+    (@<span class="ident">munch</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">sum</span>:<span class="ident">expr</span>; [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">cur</span>:<span class="ident">tt</span>] []) <span class="op">=</span><span class="op">&gt;</span> ({
+        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::__internal_path!</span>(@<span class="macro-nonterminal">last</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">sum</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">cur</span>)
+    });
+
+    (@<span class="ident">last</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">sum</span>:<span class="ident">expr</span>; ..) <span class="op">=</span><span class="op">&gt;</span> (
+        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">sum</span>
+    );
+    (@<span class="ident">last</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">sum</span>:<span class="ident">expr</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">tt</span>) <span class="op">=</span><span class="op">&gt;</span> (
+        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::Filter::and</span>(
+            <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::Filter::and</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">sum</span>, <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::__internal_path!</span>(@<span class="macro-nonterminal">segment</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>)),
+            <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::path::end</span>()
+        )
+    );
+
+    (@<span class="ident">segment</span> ..) <span class="op">=</span><span class="op">&gt;</span> (
+        <span class="macro">compile_error!</span>(<span class="string">&quot;&#39;..&#39; must be the last segment&quot;</span>)
+    );
+    (@<span class="ident">segment</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>:<span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> (
+        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::path::param</span>::<span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span><span class="op">&gt;</span>()
+    );
+    <span class="comment">// Constructs a unique ZST so the &amp;&#39;static str pointer doesn&#39;t need to</span>
+    <span class="comment">// be carried around.</span>
+    (@<span class="ident">segment</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">s</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> ({
+        <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
+        <span class="kw">struct</span> <span class="ident">__StaticPath</span>;
+        <span class="kw">impl</span> <span class="ident">::std::convert::AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">__StaticPath</span> {
+            <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+                <span class="kw">static</span> <span class="ident">S</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">s</span>;
+                <span class="ident">S</span>
+            }
+        }
+        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::path</span>(<span class="ident">__StaticPath</span>)
+    });
+}
+
+<span class="comment">// path! compile fail tests</span>
+
+<span class="doccomment">/// ```compile_fail</span>
+<span class="doccomment">/// warp::path!(&quot;foo&quot; / .. / &quot;bar&quot;);</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```compile_fail</span>
+<span class="doccomment">/// warp::path!(.. / &quot;bar&quot;);</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```compile_fail</span>
+<span class="doccomment">/// warp::path!(&quot;foo&quot; ..);</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```compile_fail</span>
+<span class="doccomment">/// warp::path!(&quot;foo&quot; / .. /);</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```compile_fail</span>
+<span class="doccomment">/// warp::path!(..);</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">fn</span> <span class="ident">_path_macro_compile_fail</span>() {}
+
+<span class="kw">mod</span> <span class="ident">internal</span> {
+    <span class="comment">// Used to prevent users from naming this type.</span>
+    <span class="comment">//</span>
+    <span class="comment">// For instance, `Exact&lt;Opaque&lt;String&gt;&gt;` means a user cannot depend</span>
+    <span class="comment">// on it being `Exact&lt;String&gt;`.</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_debug_implementations</span>)]</span>
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Opaque</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">T</span>);
+
+    <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Opaque</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+        <span class="attribute">#[<span class="ident">inline</span>]</span>
+        <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+            <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ref</span>()
+        }
+    }
+}
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
+<span class="kw">mod</span> <span class="ident">tests</span> {
+    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">test_path_exact_size</span>() {
+        <span class="kw">use</span> <span class="ident">std::mem</span>::{<span class="ident">size_of</span>, <span class="ident">size_of_val</span>};
+
+        <span class="macro">assert_eq!</span>(
+            <span class="ident">size_of_val</span>(<span class="kw-2">&amp;</span><span class="ident">path</span>(<span class="string">&quot;hello&quot;</span>)),
+            <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>(),
+            <span class="string">&quot;exact(&amp;str) is size of &amp;str&quot;</span>
+        );
+
+        <span class="macro">assert_eq!</span>(
+            <span class="ident">size_of_val</span>(<span class="kw-2">&amp;</span><span class="ident">path</span>(<span class="ident">String::from</span>(<span class="string">&quot;world&quot;</span>))),
+            <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>(),
+            <span class="string">&quot;exact(String) is size of String&quot;</span>
+        );
+
+        <span class="macro">assert_eq!</span>(
+            <span class="ident">size_of_val</span>(<span class="kw-2">&amp;</span><span class="macro">path!</span>(<span class="string">&quot;zst&quot;</span>)),
+            <span class="ident">size_of</span>::<span class="op">&lt;</span>()<span class="op">&gt;</span>(),
+            <span class="string">&quot;path!(&amp;str) is ZST&quot;</span>
+        );
+    }
+}
+</pre></div>
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
+
+use serde_derive::{Deserialize, Serialize};
+
+use warp::Filter;
+
+#[derive(Deserialize, Serialize)]
+struct Employee {
+    name: String,
+    rate: u32,
+}
+
+#[tokio::main]
+async fn main() {
+    pretty_env_logger::init();
+
+    // POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}
+    let promote = warp::post()
+        .and(warp::path(&quot;employees&quot;))
+        .and(warp::path::param::<u32>())
+        // Only accept bodies smaller than 16kb...
+        .and(warp::body::content_length_limit(1024 * 16))
+        .and(warp::body::json())
+        .map(|rate, mut employee: Employee| {
+            employee.rate = rate;
+            warp::reply::json(&employee)
+        });
+
+    warp::serve(promote).run(([127, 0, 0, 1], 3030)).await
+}
+" data-locs="[[374,400]]">
+                <strong><a href="../../../src/body/body.rs.html" target="_blank">examples/body.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+</pre><pre class="rust">
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
+
+<span class="kw">use</span> <span class="ident">serde_derive</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+
+<span class="kw">use</span> <span class="ident">warp::Filter</span>;
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>)]</span>
+<span class="kw">struct</span> <span class="ident">Employee</span> {
+    <span class="ident">name</span>: <span class="ident">String</span>,
+    <span class="ident">rate</span>: <span class="ident">u32</span>,
+}
+
+<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="ident">pretty_env_logger::init</span>();
+
+    <span class="comment">// POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}</span>
+    <span class="kw">let</span> <span class="ident">promote</span> <span class="op">=</span> <span class="ident">warp::post</span>()
+        .<span class="ident">and</span>(<span class="ident">warp::path</span>(<span class="string">&quot;employees&quot;</span>))
+        .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>())
+        <span class="comment">// Only accept bodies smaller than 16kb...</span>
+        .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>))
+        .<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
+        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">rate</span>, <span class="kw-2">mut</span> <span class="ident">employee</span>: <span class="ident">Employee</span><span class="op">|</span> {
+            <span class="ident">employee</span>.<span class="ident">rate</span> <span class="op">=</span> <span class="ident">rate</span>;
+            <span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">employee</span>)
+        });
+
+    <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
+}
+</pre></div>
+</div></div><div class="scraped-example" data-code="#![deny(warnings)]
+
+use warp::Filter;
+
+#[tokio::main]
+async fn main() {
+    pretty_env_logger::init();
+
+    // We'll start simple, and gradually show how you combine these powers
+    // into super powers!
+
+    // GET /
+    let hello_world = warp::path::end().map(|| &quot;Hello, World at root!&quot;);
+
+    // GET /hi
+    let hi = warp::path(&quot;hi&quot;).map(|| &quot;Hello, World!&quot;);
+
+    // How about multiple segments? First, we could use the `path!` macro:
+    //
+    // GET /hello/from/warp
+    let hello_from_warp = warp::path!(&quot;hello&quot; / &quot;from&quot; / &quot;warp&quot;).map(|| &quot;Hello from warp!&quot;);
+
+    // Fine, but how do I handle parameters in paths?
+    //
+    // GET /sum/:u32/:u32
+    let sum = warp::path!(&quot;sum&quot; / u32 / u32).map(|a, b| format!(&quot;{} + {} = {}&quot;, a, b, a + b));
+
+    // Any type that implements FromStr can be used, and in any order:
+    //
+    // GET /:u16/times/:u16
+    let times =
+        warp::path!(u16 / &quot;times&quot; / u16).map(|a, b| format!(&quot;{} times {} = {}&quot;, a, b, a * b));
+
+    // Oh shoot, those math routes should be mounted at a different path,
+    // is that possible? Yep.
+    //
+    // GET /math/sum/:u32/:u32
+    // GET /math/:u16/times/:u16
+    let math = warp::path(&quot;math&quot;);
+    let _sum = math.and(sum);
+    let _times = math.and(times);
+
+    // What! And? What's that do?
+    //
+    // It combines the filters in a sort of &quot;this and then that&quot; order. In
+    // fact, it's exactly what the `path!` macro has been doing internally.
+    //
+    // GET /bye/:string
+    let bye = warp::path(&quot;bye&quot;)
+        .and(warp::path::param())
+        .map(|name: String| format!(&quot;Good bye, {}!&quot;, name));
+
+    // Ah, can filters do things besides `and`?
+    //
+    // Why, yes they can! They can also `or`! As you might expect, `or` creates
+    // a &quot;this or else that&quot; chain of filters. If the first doesn't succeed,
+    // then it tries the other.
+    //
+    // So, those `math` routes could have been mounted all as one, with `or`.
+    //
+    // GET /math/sum/:u32/:u32
+    // GET /math/:u16/times/:u16
+    let math = warp::path(&quot;math&quot;).and(sum.or(times));
+
+    // We can use the end() filter to match a shorter path
+    let help = warp::path(&quot;math&quot;)
+        // Careful! Omitting the following line would make this filter match
+        // requests to /math/sum/:u32/:u32 and /math/:u16/times/:u16
+        .and(warp::path::end())
+        .map(|| &quot;This is the Math API. Try calling /math/sum/:u32/:u32 or /math/:u16/times/:u16&quot;);
+    let math = help.or(math);
+
+    // Let's let people know that the `sum` and `times` routes are under `math`.
+    let sum = sum.map(|output| format!(&quot;(This route has moved to /math/sum/:u16/:u16) {}&quot;, output));
+    let times =
+        times.map(|output| format!(&quot;(This route has moved to /math/:u16/times/:u16) {}&quot;, output));
+
+    // It turns out, using `or` is how you combine everything together into
+    // a single API. (We also actually haven't been enforcing that the
+    // method is GET, so we'll do that too!)
+    //
+    // GET /
+    // GET /hi
+    // GET /hello/from/warp
+    // GET /bye/:string
+    // GET /math/sum/:u32/:u32
+    // GET /math/:u16/times/:u16
+
+    let routes = warp::get().and(
+        hello_world
+            .or(hi)
+            .or(hello_from_warp)
+            .or(bye)
+            .or(math)
+            .or(sum)
+            .or(times),
+    );
+
+    // Note that composing filters for many routes may increase compile times (because it uses a lot of generics).
+    // If you wish to use dynamic dispatch instead and speed up compile times while
+    // making it slightly slower at runtime, you can use Filter::boxed().
+
+    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
+}
+" data-locs="[[1512,1531]]">
+                <strong><a href="../../../src/routing/routing.rs.html" target="_blank">examples/routing.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+</pre><pre class="rust">
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
+
+<span class="kw">use</span> <span class="ident">warp::Filter</span>;
+
+<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="ident">pretty_env_logger::init</span>();
+
+    <span class="comment">// We&#39;ll start simple, and gradually show how you combine these powers</span>
+    <span class="comment">// into super powers!</span>
+
+    <span class="comment">// GET /</span>
+    <span class="kw">let</span> <span class="ident">hello_world</span> <span class="op">=</span> <span class="ident">warp::path::end</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World at root!&quot;</span>);
+
+    <span class="comment">// GET /hi</span>
+    <span class="kw">let</span> <span class="ident">hi</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;hi&quot;</span>).<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>);
+
+    <span class="comment">// How about multiple segments? First, we could use the `path!` macro:</span>
+    <span class="comment">//</span>
+    <span class="comment">// GET /hello/from/warp</span>
+    <span class="kw">let</span> <span class="ident">hello_from_warp</span> <span class="op">=</span> <span class="macro">warp::path!</span>(<span class="string">&quot;hello&quot;</span> <span class="op">/</span> <span class="string">&quot;from&quot;</span> <span class="op">/</span> <span class="string">&quot;warp&quot;</span>).<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello from warp!&quot;</span>);
+
+    <span class="comment">// Fine, but how do I handle parameters in paths?</span>
+    <span class="comment">//</span>
+    <span class="comment">// GET /sum/:u32/:u32</span>
+    <span class="kw">let</span> <span class="ident">sum</span> <span class="op">=</span> <span class="macro">warp::path!</span>(<span class="string">&quot;sum&quot;</span> <span class="op">/</span> <span class="ident">u32</span> <span class="op">/</span> <span class="ident">u32</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;{} + {} = {}&quot;</span>, <span class="ident">a</span>, <span class="ident">b</span>, <span class="ident">a</span> <span class="op">+</span> <span class="ident">b</span>));
+
+    <span class="comment">// Any type that implements FromStr can be used, and in any order:</span>
+    <span class="comment">//</span>
+    <span class="comment">// GET /:u16/times/:u16</span>
+    <span class="kw">let</span> <span class="ident">times</span> <span class="op">=</span>
+        <span class="macro">warp::path!</span>(<span class="ident">u16</span> <span class="op">/</span> <span class="string">&quot;times&quot;</span> <span class="op">/</span> <span class="ident">u16</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;{} times {} = {}&quot;</span>, <span class="ident">a</span>, <span class="ident">b</span>, <span class="ident">a</span> <span class="op">*</span> <span class="ident">b</span>));
+
+    <span class="comment">// Oh shoot, those math routes should be mounted at a different path,</span>
+    <span class="comment">// is that possible? Yep.</span>
+    <span class="comment">//</span>
+    <span class="comment">// GET /math/sum/:u32/:u32</span>
+    <span class="comment">// GET /math/:u16/times/:u16</span>
+    <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;math&quot;</span>);
+    <span class="kw">let</span> <span class="ident">_sum</span> <span class="op">=</span> <span class="ident">math</span>.<span class="ident">and</span>(<span class="ident">sum</span>);
+    <span class="kw">let</span> <span class="ident">_times</span> <span class="op">=</span> <span class="ident">math</span>.<span class="ident">and</span>(<span class="ident">times</span>);
+
+    <span class="comment">// What! And? What&#39;s that do?</span>
+    <span class="comment">//</span>
+    <span class="comment">// It combines the filters in a sort of &quot;this and then that&quot; order. In</span>
+    <span class="comment">// fact, it&#39;s exactly what the `path!` macro has been doing internally.</span>
+    <span class="comment">//</span>
+    <span class="comment">// GET /bye/:string</span>
+    <span class="kw">let</span> <span class="ident">bye</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;bye&quot;</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::path::param</span>())
+        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">name</span>: <span class="ident">String</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;Good bye, {}!&quot;</span>, <span class="ident">name</span>));
+
+    <span class="comment">// Ah, can filters do things besides `and`?</span>
+    <span class="comment">//</span>
+    <span class="comment">// Why, yes they can! They can also `or`! As you might expect, `or` creates</span>
+    <span class="comment">// a &quot;this or else that&quot; chain of filters. If the first doesn&#39;t succeed,</span>
+    <span class="comment">// then it tries the other.</span>
+    <span class="comment">//</span>
+    <span class="comment">// So, those `math` routes could have been mounted all as one, with `or`.</span>
+    <span class="comment">//</span>
+    <span class="comment">// GET /math/sum/:u32/:u32</span>
+    <span class="comment">// GET /math/:u16/times/:u16</span>
+    <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;math&quot;</span>).<span class="ident">and</span>(<span class="ident">sum</span>.<span class="ident">or</span>(<span class="ident">times</span>));
+
+    <span class="comment">// We can use the end() filter to match a shorter path</span>
+    <span class="kw">let</span> <span class="ident">help</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;math&quot;</span>)
+        <span class="comment">// Careful! Omitting the following line would make this filter match</span>
+        <span class="comment">// requests to /math/sum/:u32/:u32 and /math/:u16/times/:u16</span>
+        .<span class="ident">and</span>(<span class="ident">warp::path::end</span>())
+        .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;This is the Math API. Try calling /math/sum/:u32/:u32 or /math/:u16/times/:u16&quot;</span>);
+    <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="ident">help</span>.<span class="ident">or</span>(<span class="ident">math</span>);
+
+    <span class="comment">// Let&#39;s let people know that the `sum` and `times` routes are under `math`.</span>
+    <span class="kw">let</span> <span class="ident">sum</span> <span class="op">=</span> <span class="ident">sum</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">output</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;(This route has moved to /math/sum/:u16/:u16) {}&quot;</span>, <span class="ident">output</span>));
+    <span class="kw">let</span> <span class="ident">times</span> <span class="op">=</span>
+        <span class="ident">times</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">output</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;(This route has moved to /math/:u16/times/:u16) {}&quot;</span>, <span class="ident">output</span>));
+
+    <span class="comment">// It turns out, using `or` is how you combine everything together into</span>
+    <span class="comment">// a single API. (We also actually haven&#39;t been enforcing that the</span>
+    <span class="comment">// method is GET, so we&#39;ll do that too!)</span>
+    <span class="comment">//</span>
+    <span class="comment">// GET /</span>
+    <span class="comment">// GET /hi</span>
+    <span class="comment">// GET /hello/from/warp</span>
+    <span class="comment">// GET /bye/:string</span>
+    <span class="comment">// GET /math/sum/:u32/:u32</span>
+    <span class="comment">// GET /math/:u16/times/:u16</span>
+
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::get</span>().<span class="ident">and</span>(
+        <span class="ident">hello_world</span>
+            .<span class="ident">or</span>(<span class="ident">hi</span>)
+            .<span class="ident">or</span>(<span class="ident">hello_from_warp</span>)
+            .<span class="ident">or</span>(<span class="ident">bye</span>)
+            .<span class="ident">or</span>(<span class="ident">math</span>)
+            .<span class="ident">or</span>(<span class="ident">sum</span>)
+            .<span class="ident">or</span>(<span class="ident">times</span>),
+    );
+
+    <span class="comment">// Note that composing filters for many routes may increase compile times (because it uses a lot of generics).</span>
+    <span class="comment">// If you wish to use dynamic dispatch instead and speed up compile times while</span>
+    <span class="comment">// making it slightly slower at runtime, you can use Filter::boxed().</span>
+
+    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
+}
+</pre></div>
+</div></div><div class="scraped-example" data-code="use futures::{Stream, StreamExt};
+use std::collections::HashMap;
+use std::sync::{
+    atomic::{AtomicUsize, Ordering},
+    Arc, Mutex,
+};
+use tokio::sync::mpsc;
+use tokio_stream::wrappers::UnboundedReceiverStream;
+use warp::{sse::Event, Filter};
+
+#[tokio::main]
+async fn main() {
+    pretty_env_logger::init();
+
+    // Keep track of all connected users, key is usize, value
+    // is an event stream sender.
+    let users = Arc::new(Mutex::new(HashMap::new()));
+    // Turn our &quot;state&quot; into a new Filter...
+    let users = warp::any().map(move || users.clone());
+
+    // POST /chat -> send message
+    let chat_send = warp::path(&quot;chat&quot;)
+        .and(warp::post())
+        .and(warp::path::param::<usize>())
+        .and(warp::body::content_length_limit(500))
+        .and(
+            warp::body::bytes().and_then(|body: bytes::Bytes| async move {
+                std::str::from_utf8(&body)
+                    .map(String::from)
+                    .map_err(|_e| warp::reject::custom(NotUtf8))
+            }),
+        )
+        .and(users.clone())
+        .map(|my_id, msg, users| {
+            user_message(my_id, msg, &users);
+            warp::reply()
+        });
+
+    // GET /chat -> messages stream
+    let chat_recv = warp::path(&quot;chat&quot;).and(warp::get()).and(users).map(|users| {
+        // reply using server-sent events
+        let stream = user_connected(users);
+        warp::sse::reply(warp::sse::keep_alive().stream(stream))
+    });
+
+    // GET / -> index html
+    let index = warp::path::end().map(|| {
+        warp::http::Response::builder()
+            .header(&quot;content-type&quot;, &quot;text/html; charset=utf-8&quot;)
+            .body(INDEX_HTML)
+    });
+
+    let routes = index.or(chat_recv).or(chat_send);
+
+    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
+}
+
+/// Our global unique user id counter.
+static NEXT_USER_ID: AtomicUsize = AtomicUsize::new(1);
+
+/// Message variants.
+#[derive(Debug)]
+enum Message {
+    UserId(usize),
+    Reply(String),
+}
+
+#[derive(Debug)]
+struct NotUtf8;
+impl warp::reject::Reject for NotUtf8 {}
+
+/// Our state of currently connected users.
+///
+/// - Key is their id
+/// - Value is a sender of `Message`
+type Users = Arc<Mutex<HashMap<usize, mpsc::UnboundedSender<Message>>>>;
+
+fn user_connected(users: Users) -> impl Stream<Item = Result<Event, warp::Error>> + Send + 'static {
+    // Use a counter to assign a new unique ID for this user.
+    let my_id = NEXT_USER_ID.fetch_add(1, Ordering::Relaxed);
+
+    eprintln!(&quot;new chat user: {}&quot;, my_id);
+
+    // Use an unbounded channel to handle buffering and flushing of messages
+    // to the event source...
+    let (tx, rx) = mpsc::unbounded_channel();
+    let rx = UnboundedReceiverStream::new(rx);
+
+    tx.send(Message::UserId(my_id))
+        // rx is right above, so this cannot fail
+        .unwrap();
+
+    // Save the sender in our list of connected users.
+    users.lock().unwrap().insert(my_id, tx);
+
+    // Convert messages into Server-Sent Events and return resulting stream.
+    rx.map(|msg| match msg {
+        Message::UserId(my_id) => Ok(Event::default().event(&quot;user&quot;).data(my_id.to_string())),
+        Message::Reply(reply) => Ok(Event::default().data(reply)),
+    })
+}
+
+fn user_message(my_id: usize, msg: String, users: &Users) {
+    let new_msg = format!(&quot;<User#{}>: {}&quot;, my_id, msg);
+
+    // New message from this user, send it to everyone else (except same uid)...
+    //
+    // We use `retain` instead of a for loop so that we can reap any user that
+    // appears to have disconnected.
+    users.lock().unwrap().retain(|uid, tx| {
+        if my_id == *uid {
+            // don't send to same user, but do retain
+            true
+        } else {
+            // If not `is_ok`, the SSE stream is gone, and so don't retain
+            tx.send(Message::Reply(new_msg.clone())).is_ok()
+        }
+    });
+}
+
+static INDEX_HTML: &str = r#&quot;
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Warp Chat</title>
+    </head>
+    <body>
+        <h1>warp chat</h1>
+        <div id=&quot;chat&quot;>
+            <p><em>Connecting...</em></p>
+        </div>
+        <input type=&quot;text&quot; id=&quot;text&quot; />
+        <button type=&quot;button&quot; id=&quot;send&quot;>Send</button>
+        <script type=&quot;text/javascript&quot;>
+        var uri = 'http://' + location.host + '/chat';
+        var sse = new EventSource(uri);
+        function message(data) {
+            var line = document.createElement('p');
+            line.innerText = data;
+            chat.appendChild(line);
+        }
+        sse.onopen = function() {
+            chat.innerHTML = &quot;<p><em>Connected!</em></p>&quot;;
+        }
+        var user_id;
+        sse.addEventListener(&quot;user&quot;, function(msg) {
+            user_id = msg.data;
+        });
+        sse.onmessage = function(msg) {
+            message(msg.data);
+        };
+        send.onclick = function() {
+            var msg = text.value;
+            var xhr = new XMLHttpRequest();
+            xhr.open(&quot;POST&quot;, uri + '/' + user_id, true);
+            xhr.send(msg);
+            text.value = '';
+            message('<You>: ' + msg);
+        };
+        </script>
+    </body>
+</html>
+&quot;#;
+" data-locs="[[677,705]]">
+                <strong><a href="../../../src/sse_chat/sse_chat.rs.html" target="_blank">examples/sse_chat.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+</pre><pre class="rust">
 <span class="kw">use</span> <span class="ident">futures</span>::{<span class="ident">Stream</span>, <span class="ident">StreamExt</span>};
 <span class="kw">use</span> <span class="ident">std::collections::HashMap</span>;
 <span class="kw">use</span> <span class="ident">std::sync</span>::{
@@ -560,527 +3045,5 @@ static INDEX_HTML: &str = r#&quot;
 &lt;/html&gt;
 &quot;#</span>;
 </pre></div>
-</div></div><div class="scraped-example" data-code="#![deny(warnings)]
-
-use std::convert::Infallible;
-use std::str::FromStr;
-use std::time::Duration;
-use warp::Filter;
-
-#[tokio::main]
-async fn main() {
-    // Match `/:Seconds`...
-    let routes = warp::path::param()
-        // and_then create a `Future` that will simply wait N seconds...
-        .and_then(sleepy);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}
-
-async fn sleepy(Seconds(seconds): Seconds) -> Result<impl warp::Reply, Infallible> {
-    tokio::time::sleep(Duration::from_secs(seconds)).await;
-    Ok(format!(&quot;I waited {} seconds!&quot;, seconds))
-}
-
-/// A newtype to enforce our maximum allowed seconds.
-struct Seconds(u64);
-
-impl FromStr for Seconds {
-    type Err = ();
-    fn from_str(src: &str) -> Result<Self, Self::Err> {
-        src.parse::<u64>().map_err(|_| ()).and_then(|num| {
-            if num <= 5 {
-                Ok(Seconds(num))
-            } else {
-                Err(())
-            }
-        })
-    }
-}
-" data-locs="[[195,214]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/futures.rs">examples/futures.rs</a></strong></p>
-<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-</pre><div class="example-wrap"><pre class="rust ">
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
-
-<span class="kw">use</span> <span class="ident">std::convert::Infallible</span>;
-<span class="kw">use</span> <span class="ident">std::str::FromStr</span>;
-<span class="kw">use</span> <span class="ident">std::time::Duration</span>;
-<span class="kw">use</span> <span class="ident">warp::Filter</span>;
-
-<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="comment">// Match `/:Seconds`...</span>
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path::param</span>()
-        <span class="comment">// and_then create a `Future` that will simply wait N seconds...</span>
-        .<span class="ident">and_then</span>(<span class="ident">sleepy</span>);
-
-    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
-}
-
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">sleepy</span>(<span class="ident">Seconds</span>(<span class="ident">seconds</span>): <span class="ident">Seconds</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Infallible</span><span class="op">&gt;</span> {
-    <span class="ident">tokio::time::sleep</span>(<span class="ident">Duration::from_secs</span>(<span class="ident">seconds</span>)).<span class="kw">await</span>;
-    <span class="prelude-val">Ok</span>(<span class="macro">format!</span>(<span class="string">&quot;I waited {} seconds!&quot;</span>, <span class="ident">seconds</span>))
-}
-
-<span class="doccomment">/// A newtype to enforce our maximum allowed seconds.</span>
-<span class="kw">struct</span> <span class="ident">Seconds</span>(<span class="ident">u64</span>);
-
-<span class="kw">impl</span> <span class="ident">FromStr</span> <span class="kw">for</span> <span class="ident">Seconds</span> {
-    <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> ();
-    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">src</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="self">Self</span><span class="ident">::Err</span><span class="op">&gt;</span> {
-        <span class="ident">src</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>().<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()).<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">num</span><span class="op">|</span> {
-            <span class="kw">if</span> <span class="ident">num</span> <span class="op">&lt;</span><span class="op">=</span> <span class="number">5</span> {
-                <span class="prelude-val">Ok</span>(<span class="ident">Seconds</span>(<span class="ident">num</span>))
-            } <span class="kw">else</span> {
-                <span class="prelude-val">Err</span>(())
-            }
-        })
-    }
-}
-</pre></div>
-</div></div><div class="scraped-example" data-code="#![deny(warnings)]
-
-use serde_derive::{Deserialize, Serialize};
-
-use warp::Filter;
-
-#[derive(Deserialize, Serialize)]
-struct Employee {
-    name: String,
-    rate: u32,
-}
-
-#[tokio::main]
-async fn main() {
-    pretty_env_logger::init();
-
-    // POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}
-    let promote = warp::post()
-        .and(warp::path(&quot;employees&quot;))
-        .and(warp::path::param::<u32>())
-        // Only accept bodies smaller than 16kb...
-        .and(warp::body::content_length_limit(1024 * 16))
-        .and(warp::body::json())
-        .map(|rate, mut employee: Employee| {
-            employee.rate = rate;
-            warp::reply::json(&employee)
-        });
-
-    warp::serve(promote).run(([127, 0, 0, 1], 3030)).await
-}
-" data-locs="[[374,400]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/body.rs">examples/body.rs</a></strong></p>
-<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-</pre><div class="example-wrap"><pre class="rust ">
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
-
-<span class="kw">use</span> <span class="ident">serde_derive</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
-
-<span class="kw">use</span> <span class="ident">warp::Filter</span>;
-
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>)]</span>
-<span class="kw">struct</span> <span class="ident">Employee</span> {
-    <span class="ident">name</span>: <span class="ident">String</span>,
-    <span class="ident">rate</span>: <span class="ident">u32</span>,
-}
-
-<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="ident">pretty_env_logger::init</span>();
-
-    <span class="comment">// POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}</span>
-    <span class="kw">let</span> <span class="ident">promote</span> <span class="op">=</span> <span class="ident">warp::post</span>()
-        .<span class="ident">and</span>(<span class="ident">warp::path</span>(<span class="string">&quot;employees&quot;</span>))
-        .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>())
-        <span class="comment">// Only accept bodies smaller than 16kb...</span>
-        .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>))
-        .<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
-        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">rate</span>, <span class="kw-2">mut</span> <span class="ident">employee</span>: <span class="ident">Employee</span><span class="op">|</span> {
-            <span class="ident">employee</span>.<span class="ident">rate</span> <span class="op">=</span> <span class="ident">rate</span>;
-            <span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">employee</span>)
-        });
-
-    <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
-}
-</pre></div>
-</div></div><div class="scraped-example" data-code="#![deny(warnings)]
-
-use warp::Filter;
-
-#[tokio::main]
-async fn main() {
-    pretty_env_logger::init();
-
-    // We'll start simple, and gradually show how you combine these powers
-    // into super powers!
-
-    // GET /
-    let hello_world = warp::path::end().map(|| &quot;Hello, World at root!&quot;);
-
-    // GET /hi
-    let hi = warp::path(&quot;hi&quot;).map(|| &quot;Hello, World!&quot;);
-
-    // How about multiple segments? First, we could use the `path!` macro:
-    //
-    // GET /hello/from/warp
-    let hello_from_warp = warp::path!(&quot;hello&quot; / &quot;from&quot; / &quot;warp&quot;).map(|| &quot;Hello from warp!&quot;);
-
-    // Fine, but how do I handle parameters in paths?
-    //
-    // GET /sum/:u32/:u32
-    let sum = warp::path!(&quot;sum&quot; / u32 / u32).map(|a, b| format!(&quot;{} + {} = {}&quot;, a, b, a + b));
-
-    // Any type that implements FromStr can be used, and in any order:
-    //
-    // GET /:u16/times/:u16
-    let times =
-        warp::path!(u16 / &quot;times&quot; / u16).map(|a, b| format!(&quot;{} times {} = {}&quot;, a, b, a * b));
-
-    // Oh shoot, those math routes should be mounted at a different path,
-    // is that possible? Yep.
-    //
-    // GET /math/sum/:u32/:u32
-    // GET /math/:u16/times/:u16
-    let math = warp::path(&quot;math&quot;);
-    let _sum = math.and(sum);
-    let _times = math.and(times);
-
-    // What! And? What's that do?
-    //
-    // It combines the filters in a sort of &quot;this and then that&quot; order. In
-    // fact, it's exactly what the `path!` macro has been doing internally.
-    //
-    // GET /bye/:string
-    let bye = warp::path(&quot;bye&quot;)
-        .and(warp::path::param())
-        .map(|name: String| format!(&quot;Good bye, {}!&quot;, name));
-
-    // Ah, can filters do things besides `and`?
-    //
-    // Why, yes they can! They can also `or`! As you might expect, `or` creates
-    // a &quot;this or else that&quot; chain of filters. If the first doesn't succeed,
-    // then it tries the other.
-    //
-    // So, those `math` routes could have been mounted all as one, with `or`.
-    //
-    // GET /math/sum/:u32/:u32
-    // GET /math/:u16/times/:u16
-    let math = warp::path(&quot;math&quot;).and(sum.or(times));
-
-    // We can use the end() filter to match a shorter path
-    let help = warp::path(&quot;math&quot;)
-        // Careful! Omitting the following line would make this filter match
-        // requests to /math/sum/:u32/:u32 and /math/:u16/times/:u16
-        .and(warp::path::end())
-        .map(|| &quot;This is the Math API. Try calling /math/sum/:u32/:u32 or /math/:u16/times/:u16&quot;);
-    let math = help.or(math);
-
-    // Let's let people know that the `sum` and `times` routes are under `math`.
-    let sum = sum.map(|output| format!(&quot;(This route has moved to /math/sum/:u16/:u16) {}&quot;, output));
-    let times =
-        times.map(|output| format!(&quot;(This route has moved to /math/:u16/times/:u16) {}&quot;, output));
-
-    // It turns out, using `or` is how you combine everything together into
-    // a single API. (We also actually haven't been enforcing that the
-    // method is GET, so we'll do that too!)
-    //
-    // GET /
-    // GET /hi
-    // GET /hello/from/warp
-    // GET /bye/:string
-    // GET /math/sum/:u32/:u32
-    // GET /math/:u16/times/:u16
-
-    let routes = warp::get().and(
-        hello_world
-            .or(hi)
-            .or(hello_from_warp)
-            .or(bye)
-            .or(math)
-            .or(sum)
-            .or(times),
-    );
-
-    // Note that composing filters for many routes may increase compile times (because it uses a lot of generics).
-    // If you wish to use dynamic dispatch instead and speed up compile times while
-    // making it slightly slower at runtime, you can use Filter::boxed().
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}
-" data-locs="[[1512,1531]]"><p><strong><a href="https://github.com/seanmonstar/warp/tree/master/examples/routing.rs">examples/routing.rs</a></strong></p>
-<div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><pre class="line-numbers"><span id="1">  1</span>
-<span id="2">  2</span>
-<span id="3">  3</span>
-<span id="4">  4</span>
-<span id="5">  5</span>
-<span id="6">  6</span>
-<span id="7">  7</span>
-<span id="8">  8</span>
-<span id="9">  9</span>
-<span id="10"> 10</span>
-<span id="11"> 11</span>
-<span id="12"> 12</span>
-<span id="13"> 13</span>
-<span id="14"> 14</span>
-<span id="15"> 15</span>
-<span id="16"> 16</span>
-<span id="17"> 17</span>
-<span id="18"> 18</span>
-<span id="19"> 19</span>
-<span id="20"> 20</span>
-<span id="21"> 21</span>
-<span id="22"> 22</span>
-<span id="23"> 23</span>
-<span id="24"> 24</span>
-<span id="25"> 25</span>
-<span id="26"> 26</span>
-<span id="27"> 27</span>
-<span id="28"> 28</span>
-<span id="29"> 29</span>
-<span id="30"> 30</span>
-<span id="31"> 31</span>
-<span id="32"> 32</span>
-<span id="33"> 33</span>
-<span id="34"> 34</span>
-<span id="35"> 35</span>
-<span id="36"> 36</span>
-<span id="37"> 37</span>
-<span id="38"> 38</span>
-<span id="39"> 39</span>
-<span id="40"> 40</span>
-<span id="41"> 41</span>
-<span id="42"> 42</span>
-<span id="43"> 43</span>
-<span id="44"> 44</span>
-<span id="45"> 45</span>
-<span id="46"> 46</span>
-<span id="47"> 47</span>
-<span id="48"> 48</span>
-<span id="49"> 49</span>
-<span id="50"> 50</span>
-<span id="51"> 51</span>
-<span id="52"> 52</span>
-<span id="53"> 53</span>
-<span id="54"> 54</span>
-<span id="55"> 55</span>
-<span id="56"> 56</span>
-<span id="57"> 57</span>
-<span id="58"> 58</span>
-<span id="59"> 59</span>
-<span id="60"> 60</span>
-<span id="61"> 61</span>
-<span id="62"> 62</span>
-<span id="63"> 63</span>
-<span id="64"> 64</span>
-<span id="65"> 65</span>
-<span id="66"> 66</span>
-<span id="67"> 67</span>
-<span id="68"> 68</span>
-<span id="69"> 69</span>
-<span id="70"> 70</span>
-<span id="71"> 71</span>
-<span id="72"> 72</span>
-<span id="73"> 73</span>
-<span id="74"> 74</span>
-<span id="75"> 75</span>
-<span id="76"> 76</span>
-<span id="77"> 77</span>
-<span id="78"> 78</span>
-<span id="79"> 79</span>
-<span id="80"> 80</span>
-<span id="81"> 81</span>
-<span id="82"> 82</span>
-<span id="83"> 83</span>
-<span id="84"> 84</span>
-<span id="85"> 85</span>
-<span id="86"> 86</span>
-<span id="87"> 87</span>
-<span id="88"> 88</span>
-<span id="89"> 89</span>
-<span id="90"> 90</span>
-<span id="91"> 91</span>
-<span id="92"> 92</span>
-<span id="93"> 93</span>
-<span id="94"> 94</span>
-<span id="95"> 95</span>
-<span id="96"> 96</span>
-<span id="97"> 97</span>
-<span id="98"> 98</span>
-<span id="99"> 99</span>
-<span id="100">100</span>
-<span id="101">101</span>
-<span id="102">102</span>
-<span id="103">103</span>
-<span id="104">104</span>
-</pre><div class="example-wrap"><pre class="rust ">
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
-
-<span class="kw">use</span> <span class="ident">warp::Filter</span>;
-
-<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="ident">pretty_env_logger::init</span>();
-
-    <span class="comment">// We&#39;ll start simple, and gradually show how you combine these powers</span>
-    <span class="comment">// into super powers!</span>
-
-    <span class="comment">// GET /</span>
-    <span class="kw">let</span> <span class="ident">hello_world</span> <span class="op">=</span> <span class="ident">warp::path::end</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World at root!&quot;</span>);
-
-    <span class="comment">// GET /hi</span>
-    <span class="kw">let</span> <span class="ident">hi</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;hi&quot;</span>).<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>);
-
-    <span class="comment">// How about multiple segments? First, we could use the `path!` macro:</span>
-    <span class="comment">//</span>
-    <span class="comment">// GET /hello/from/warp</span>
-    <span class="kw">let</span> <span class="ident">hello_from_warp</span> <span class="op">=</span> <span class="macro">warp::path!</span>(<span class="string">&quot;hello&quot;</span> <span class="op">/</span> <span class="string">&quot;from&quot;</span> <span class="op">/</span> <span class="string">&quot;warp&quot;</span>).<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello from warp!&quot;</span>);
-
-    <span class="comment">// Fine, but how do I handle parameters in paths?</span>
-    <span class="comment">//</span>
-    <span class="comment">// GET /sum/:u32/:u32</span>
-    <span class="kw">let</span> <span class="ident">sum</span> <span class="op">=</span> <span class="macro">warp::path!</span>(<span class="string">&quot;sum&quot;</span> <span class="op">/</span> <span class="ident">u32</span> <span class="op">/</span> <span class="ident">u32</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;{} + {} = {}&quot;</span>, <span class="ident">a</span>, <span class="ident">b</span>, <span class="ident">a</span> <span class="op">+</span> <span class="ident">b</span>));
-
-    <span class="comment">// Any type that implements FromStr can be used, and in any order:</span>
-    <span class="comment">//</span>
-    <span class="comment">// GET /:u16/times/:u16</span>
-    <span class="kw">let</span> <span class="ident">times</span> <span class="op">=</span>
-        <span class="macro">warp::path!</span>(<span class="ident">u16</span> <span class="op">/</span> <span class="string">&quot;times&quot;</span> <span class="op">/</span> <span class="ident">u16</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;{} times {} = {}&quot;</span>, <span class="ident">a</span>, <span class="ident">b</span>, <span class="ident">a</span> <span class="op">*</span> <span class="ident">b</span>));
-
-    <span class="comment">// Oh shoot, those math routes should be mounted at a different path,</span>
-    <span class="comment">// is that possible? Yep.</span>
-    <span class="comment">//</span>
-    <span class="comment">// GET /math/sum/:u32/:u32</span>
-    <span class="comment">// GET /math/:u16/times/:u16</span>
-    <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;math&quot;</span>);
-    <span class="kw">let</span> <span class="ident">_sum</span> <span class="op">=</span> <span class="ident">math</span>.<span class="ident">and</span>(<span class="ident">sum</span>);
-    <span class="kw">let</span> <span class="ident">_times</span> <span class="op">=</span> <span class="ident">math</span>.<span class="ident">and</span>(<span class="ident">times</span>);
-
-    <span class="comment">// What! And? What&#39;s that do?</span>
-    <span class="comment">//</span>
-    <span class="comment">// It combines the filters in a sort of &quot;this and then that&quot; order. In</span>
-    <span class="comment">// fact, it&#39;s exactly what the `path!` macro has been doing internally.</span>
-    <span class="comment">//</span>
-    <span class="comment">// GET /bye/:string</span>
-    <span class="kw">let</span> <span class="ident">bye</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;bye&quot;</span>)
-        .<span class="ident">and</span>(<span class="ident">warp::path::param</span>())
-        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">name</span>: <span class="ident">String</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;Good bye, {}!&quot;</span>, <span class="ident">name</span>));
-
-    <span class="comment">// Ah, can filters do things besides `and`?</span>
-    <span class="comment">//</span>
-    <span class="comment">// Why, yes they can! They can also `or`! As you might expect, `or` creates</span>
-    <span class="comment">// a &quot;this or else that&quot; chain of filters. If the first doesn&#39;t succeed,</span>
-    <span class="comment">// then it tries the other.</span>
-    <span class="comment">//</span>
-    <span class="comment">// So, those `math` routes could have been mounted all as one, with `or`.</span>
-    <span class="comment">//</span>
-    <span class="comment">// GET /math/sum/:u32/:u32</span>
-    <span class="comment">// GET /math/:u16/times/:u16</span>
-    <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;math&quot;</span>).<span class="ident">and</span>(<span class="ident">sum</span>.<span class="ident">or</span>(<span class="ident">times</span>));
-
-    <span class="comment">// We can use the end() filter to match a shorter path</span>
-    <span class="kw">let</span> <span class="ident">help</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;math&quot;</span>)
-        <span class="comment">// Careful! Omitting the following line would make this filter match</span>
-        <span class="comment">// requests to /math/sum/:u32/:u32 and /math/:u16/times/:u16</span>
-        .<span class="ident">and</span>(<span class="ident">warp::path::end</span>())
-        .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;This is the Math API. Try calling /math/sum/:u32/:u32 or /math/:u16/times/:u16&quot;</span>);
-    <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="ident">help</span>.<span class="ident">or</span>(<span class="ident">math</span>);
-
-    <span class="comment">// Let&#39;s let people know that the `sum` and `times` routes are under `math`.</span>
-    <span class="kw">let</span> <span class="ident">sum</span> <span class="op">=</span> <span class="ident">sum</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">output</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;(This route has moved to /math/sum/:u16/:u16) {}&quot;</span>, <span class="ident">output</span>));
-    <span class="kw">let</span> <span class="ident">times</span> <span class="op">=</span>
-        <span class="ident">times</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">output</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;(This route has moved to /math/:u16/times/:u16) {}&quot;</span>, <span class="ident">output</span>));
-
-    <span class="comment">// It turns out, using `or` is how you combine everything together into</span>
-    <span class="comment">// a single API. (We also actually haven&#39;t been enforcing that the</span>
-    <span class="comment">// method is GET, so we&#39;ll do that too!)</span>
-    <span class="comment">//</span>
-    <span class="comment">// GET /</span>
-    <span class="comment">// GET /hi</span>
-    <span class="comment">// GET /hello/from/warp</span>
-    <span class="comment">// GET /bye/:string</span>
-    <span class="comment">// GET /math/sum/:u32/:u32</span>
-    <span class="comment">// GET /math/:u16/times/:u16</span>
-
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::get</span>().<span class="ident">and</span>(
-        <span class="ident">hello_world</span>
-            .<span class="ident">or</span>(<span class="ident">hi</span>)
-            .<span class="ident">or</span>(<span class="ident">hello_from_warp</span>)
-            .<span class="ident">or</span>(<span class="ident">bye</span>)
-            .<span class="ident">or</span>(<span class="ident">math</span>)
-            .<span class="ident">or</span>(<span class="ident">sum</span>)
-            .<span class="ident">or</span>(<span class="ident">times</span>),
-    );
-
-    <span class="comment">// Note that composing filters for many routes may increase compile times (because it uses a lot of generics).</span>
-    <span class="comment">// If you wish to use dynamic dispatch instead and speed up compile times while</span>
-    <span class="comment">// making it slightly slower at runtime, you can use Filter::boxed().</span>
-
-    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
-}
-</pre></div>
-</div></div></div></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
+</div></div></div></details></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
     <script src="../../../main.js"></script></body></html>

@@ -221,8 +221,8 @@ impl MainView {
     }
 }
 " data-locs="[[5767,5785]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/progress_tracker/main.rs" target="_blank">examples/progress_tracker/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+                <strong><a href="../src/progress_tracker/main.rs.html" target="_blank">examples/progress_tracker/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -660,44 +660,53 @@ impl MainView {
                   <summary class="hideme">
                      <span>More examples</span>
                   </summary>
-                  <div class="more-scraped-examples"><div class="scraped-example" data-code="mod notebook;
-
+                  <div class="more-scraped-examples"><div class="scraped-example" data-code="use gtk::glib;
 use gtk::prelude::*;
+use gtk::{IconSize, Orientation, ReliefStyle, Widget};
 
-use notebook::Notebook;
-
-fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.gtk-rs.examples.notebook&quot;),
-        Default::default(),
-    );
-
-    application.connect_activate(build_ui);
-
-    application.run();
+pub struct Notebook {
+    pub notebook: gtk::Notebook,
+    tabs: Vec<gtk::Box>,
 }
 
-fn build_ui(application: &gtk::Application) {
-    let window = gtk::ApplicationWindow::new(application);
-
-    window.set_title(&quot;Notebook&quot;);
-    window.set_position(gtk::WindowPosition::Center);
-    window.set_default_size(640, 480);
-
-    let mut notebook = Notebook::new();
-
-    for i in 1..4 {
-        let title = format!(&quot;sheet {}&quot;, i);
-        let label = gtk::Label::new(Some(&*title));
-        notebook.create_tab(&title, label.upcast());
+impl Notebook {
+    pub fn new() -> Self {
+        Self {
+            notebook: gtk::Notebook::new(),
+            tabs: Vec::new(),
+        }
     }
 
-    window.add(&notebook.notebook);
-    window.show_all();
+    pub fn create_tab(&mut self, title: &str, widget: Widget) -> u32 {
+        let close_image = gtk::Image::from_icon_name(Some(&quot;window-close&quot;), IconSize::Button);
+        let button = gtk::Button::new();
+        let label = gtk::Label::new(Some(title));
+        let tab = gtk::Box::new(Orientation::Horizontal, 0);
+
+        button.set_relief(ReliefStyle::None);
+        button.add(&close_image);
+
+        tab.pack_start(&label, false, false, 0);
+        tab.pack_start(&button, false, false, 0);
+        tab.show_all();
+
+        let index = self.notebook.append_page(&widget, Some(&tab));
+
+        button.connect_clicked(glib::clone!(@weak self.notebook as notebook => move |_| {
+            let index = notebook
+                .page_num(&widget)
+                .expect(&quot;Couldn't get page_num from notebook&quot;);
+            notebook.remove_page(Some(index));
+        }));
+
+        self.tabs.push(tab);
+
+        index
+    }
 }
 " data-locs="[[1302,1320]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/notebook/main.rs" target="_blank">examples/notebook/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+                <strong><a href="../src/notebook/notebook.rs.html" target="_blank">examples/notebook/notebook.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -732,16 +741,471 @@ fn build_ui(application: &gtk::Application) {
 <span id="33">33</span>
 <span id="34">34</span>
 <span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
 </pre><pre class="rust">
-<span class="kw">mod</span> <span class="ident">notebook</span>;
-
+<span class="kw">use</span> <span class="ident">gtk::glib</span>;
 <span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">IconSize</span>, <span class="ident">Orientation</span>, <span class="ident">ReliefStyle</span>, <span class="ident">Widget</span>};
 
-<span class="kw">use</span> <span class="ident">notebook::Notebook</span>;
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Notebook</span> {
+    <span class="kw">pub</span> <span class="ident">notebook</span>: <span class="ident">gtk::Notebook</span>,
+    <span class="ident">tabs</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">gtk::Box</span><span class="op">&gt;</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">Notebook</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="self">Self</span> {
+            <span class="ident">notebook</span>: <span class="ident">gtk::Notebook::new</span>(),
+            <span class="ident">tabs</span>: <span class="ident">Vec::new</span>(),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_tab</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">title</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">widget</span>: <span class="ident">Widget</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span> {
+        <span class="kw">let</span> <span class="ident">close_image</span> <span class="op">=</span> <span class="ident">gtk::Image::from_icon_name</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;window-close&quot;</span>), <span class="ident">IconSize::Button</span>);
+        <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::new</span>();
+        <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">Some</span>(<span class="ident">title</span>));
+        <span class="kw">let</span> <span class="ident">tab</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">Orientation::Horizontal</span>, <span class="number">0</span>);
+
+        <span class="ident">button</span>.<span class="ident">set_relief</span>(<span class="ident">ReliefStyle::None</span>);
+        <span class="ident">button</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">close_image</span>);
+
+        <span class="ident">tab</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">label</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>, <span class="number">0</span>);
+        <span class="ident">tab</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>, <span class="number">0</span>);
+        <span class="ident">tab</span>.<span class="ident">show_all</span>();
+
+        <span class="kw">let</span> <span class="ident">index</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">notebook</span>.<span class="ident">append_page</span>(<span class="kw-2">&amp;</span><span class="ident">widget</span>, <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">tab</span>));
+
+        <span class="ident">button</span>.<span class="ident">connect_clicked</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="self">self</span>.<span class="ident">notebook</span> <span class="kw">as</span> <span class="ident">notebook</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">index</span> <span class="op">=</span> <span class="ident">notebook</span>
+                .<span class="ident">page_num</span>(<span class="kw-2">&amp;</span><span class="ident">widget</span>)
+                .<span class="ident">expect</span>(<span class="string">&quot;Couldn&#39;t get page_num from notebook&quot;</span>);
+            <span class="ident">notebook</span>.<span class="ident">remove_page</span>(<span class="prelude-val">Some</span>(<span class="ident">index</span>));
+        }));
+
+        <span class="self">self</span>.<span class="ident">tabs</span>.<span class="ident">push</span>(<span class="ident">tab</span>);
+
+        <span class="ident">index</span>
+    }
+}
+</pre></div>
+</div></div></div></details></div></details><h4 id="method.from_icon_name" class="method"><code>pub fn <a href="#method.from_icon_name" class="fnname">from_icon_name</a>(icon_name: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, size: <a class="enum" href="enum.IconSize.html" title="enum gtk::IconSize">IconSize</a>) -&gt; <a class="struct" href="struct.Button.html" title="struct gtk::Button">Button</a></code><a href="#method.from_icon_name" class="anchor"></a><a class="srclink" href="../src/gtk/auto/button.rs.html#44-53" title="goto source code">[src]</a></h4><details class="rustdoc-toggle method-toggle" open><summary><h4 id="method.with_label" class="method"><code>pub fn <a href="#method.with_label" class="fnname">with_label</a>(label: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="struct.Button.html" title="struct gtk::Button">Button</a></code><a href="#method.with_label" class="anchor"></a><a class="srclink" href="../src/gtk/auto/button.rs.html#57-63" title="goto source code">[src]</a></h4></summary><div class="docblock scraped-example-list">
+          <h1 id="scraped-examples" class="small-section-header">
+             <a href="#scraped-examples-1">Uses found in <code>examples/</code></a>
+          </h1><div class="scraped-example" data-code="use gtk::prelude::*;
+use gtk::{cairo, gdk};
+use gtk::{ApplicationWindow, Button, Fixed};
+
+fn build_ui(application: &gtk::Application) {
+    let window = ApplicationWindow::new(application);
+    set_visual(&window, None);
+
+    window.connect_screen_changed(set_visual);
+    window.connect_draw(draw);
+
+    window.set_title(&quot;Alpha Demo&quot;);
+    window.set_default_size(500, 500);
+    window.set_app_paintable(true); // crucial for transparency
+
+    let fixed = Fixed::new();
+    window.add(&fixed);
+    let button = Button::with_label(&quot;Dummy&quot;);
+    button.set_size_request(100, 30);
+    fixed.add(&button);
+
+    window.show_all();
+}
+
+fn main() {
+    let application = gtk::Application::new(
+        Some(&quot;com.github.gtk-rs.examples.transparent_main_window&quot;),
+        Default::default(),
+    );
+
+    application.connect_activate(build_ui);
+
+    application.run();
+}
+
+fn set_visual(window: &ApplicationWindow, _screen: Option<&gdk::Screen>) {
+    if let Some(screen) = window.screen() {
+        if let Some(ref visual) = screen.rgba_visual() {
+            window.set_visual(Some(visual)); // crucial for transparency
+        }
+    }
+}
+
+fn draw(_window: &ApplicationWindow, ctx: &cairo::Context) -> Inhibit {
+    // crucial for transparency
+    ctx.set_source_rgba(1.0, 0.0, 0.0, 0.4);
+    ctx.set_operator(cairo::Operator::Screen);
+    ctx.paint().expect(&quot;Invalid cairo surface state&quot;);
+    Inhibit(false)
+}
+" data-locs="[[512,539]]">
+                <strong><a href="../src/transparent_main_window/main.rs.html" target="_blank">examples/transparent_main_window/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">cairo</span>, <span class="ident">gdk</span>};
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">ApplicationWindow</span>, <span class="ident">Button</span>, <span class="ident">Fixed</span>};
+
+<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">ApplicationWindow::new</span>(<span class="ident">application</span>);
+    <span class="ident">set_visual</span>(<span class="kw-2">&amp;</span><span class="ident">window</span>, <span class="prelude-val">None</span>);
+
+    <span class="ident">window</span>.<span class="ident">connect_screen_changed</span>(<span class="ident">set_visual</span>);
+    <span class="ident">window</span>.<span class="ident">connect_draw</span>(<span class="ident">draw</span>);
+
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Alpha Demo&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">500</span>, <span class="number">500</span>);
+    <span class="ident">window</span>.<span class="ident">set_app_paintable</span>(<span class="bool-val">true</span>); <span class="comment">// crucial for transparency</span>
+
+    <span class="kw">let</span> <span class="ident">fixed</span> <span class="op">=</span> <span class="ident">Fixed::new</span>();
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">fixed</span>);
+    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">Button::with_label</span>(<span class="string">&quot;Dummy&quot;</span>);
+    <span class="ident">button</span>.<span class="ident">set_size_request</span>(<span class="number">100</span>, <span class="number">30</span>);
+    <span class="ident">fixed</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
+
+    <span class="ident">window</span>.<span class="ident">show_all</span>();
+}
 
 <span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.notebook&quot;</span>),
+        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.transparent_main_window&quot;</span>),
+        <span class="ident">Default::default</span>(),
+    );
+
+    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
+
+    <span class="ident">application</span>.<span class="ident">run</span>();
+}
+
+<span class="kw">fn</span> <span class="ident">set_visual</span>(<span class="ident">window</span>: <span class="kw-2">&amp;</span><span class="ident">ApplicationWindow</span>, <span class="ident">_screen</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">gdk::Screen</span><span class="op">&gt;</span>) {
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">screen</span>) <span class="op">=</span> <span class="ident">window</span>.<span class="ident">screen</span>() {
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">visual</span>) <span class="op">=</span> <span class="ident">screen</span>.<span class="ident">rgba_visual</span>() {
+            <span class="ident">window</span>.<span class="ident">set_visual</span>(<span class="prelude-val">Some</span>(<span class="ident">visual</span>)); <span class="comment">// crucial for transparency</span>
+        }
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">draw</span>(<span class="ident">_window</span>: <span class="kw-2">&amp;</span><span class="ident">ApplicationWindow</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Inhibit</span> {
+    <span class="comment">// crucial for transparency</span>
+    <span class="ident">ctx</span>.<span class="ident">set_source_rgba</span>(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.4</span>);
+    <span class="ident">ctx</span>.<span class="ident">set_operator</span>(<span class="ident">cairo::Operator::Screen</span>);
+    <span class="ident">ctx</span>.<span class="ident">paint</span>().<span class="ident">expect</span>(<span class="string">&quot;Invalid cairo surface state&quot;</span>);
+    <span class="ident">Inhibit</span>(<span class="bool-val">false</span>)
+}
+</pre></div>
+</div></div><details class="rustdoc-toggle more-examples-toggle">
+                  <summary class="hideme">
+                     <span>More examples</span>
+                  </summary>
+                  <div class="more-scraped-examples"><div class="scraped-example" data-code="use gtk::glib;
+use gtk::prelude::*;
+
+use std::cell::RefCell;
+use std::collections::HashMap;
+use std::rc::Rc;
+
+fn main() {
+    let application = gtk::Application::new(
+        Some(&quot;com.github.gtk-rs.examples.multi_windows&quot;),
+        Default::default(),
+    );
+
+    application.connect_activate(build_ui);
+
+    application.run();
+}
+
+fn build_ui(application: &gtk::Application) {
+    let windows: Rc<RefCell<HashMap<usize, glib::WeakRef<gtk::Window>>>> =
+        Rc::new(RefCell::new(HashMap::new()));
+    let window = create_main_window(application);
+
+    // Why not changing all sub-windows' title at once?
+    let windows_title_entry = gtk::Entry::new();
+    windows_title_entry.set_placeholder_text(Some(&quot;Update all sub-windows' title&quot;));
+    windows_title_entry.connect_changed(glib::clone!(@weak windows => move |windows_title_entry| {
+        // When the entry's text is updated, we update the title of every sub windows.
+        let text = windows_title_entry.buffer().text();
+        for window in windows.borrow().values() {
+            if let Some(w) = window.upgrade() {
+                w.set_title(&text)
+            }
+        }
+    }));
+
+    let entry = gtk::Entry::new();
+    entry.set_editable(false);
+    entry.set_placeholder_text(Some(&quot;Events notification will be sent here&quot;));
+
+    // Now let's create a button to create a looooot of new windows!
+    let button = gtk::Button::with_label(&quot;Create new window&quot;);
+    button.connect_clicked(
+        glib::clone!(@weak windows_title_entry, @weak entry, @weak application => move |_| {
+            let new_id = generate_new_id(&windows.borrow());
+            create_sub_window(&application,
+                              &windows_title_entry.buffer().text(),
+                              &entry,
+                              new_id,
+                              &windows);
+        }),
+    );
+
+    // Now we add a layout so we can put all widgets into it.
+    let layout = gtk::Box::new(gtk::Orientation::Vertical, 5);
+    layout.add(&windows_title_entry);
+    layout.add(&button);
+    layout.add(&entry);
+    window.add(&layout);
+
+    window.set_focus(Some(&button));
+
+    // Then we show everything.
+    window.show_all();
+}
+
+fn create_main_window(application: &gtk::Application) -> gtk::ApplicationWindow {
+    let window = gtk::ApplicationWindow::new(application);
+
+    window.set_title(&quot;I'm the main window&quot;);
+    window.set_default_size(400, 200);
+    window.set_position(gtk::WindowPosition::Center);
+
+    window.show_all();
+    window
+}
+fn generate_new_id(windows: &HashMap<usize, glib::WeakRef<gtk::Window>>) -> usize {
+    let mut id = 0;
+    // As long as the id is already there, we just continue to increment.
+    while windows.get(&id).is_some() {
+        id += 1;
+    }
+    id
+}
+
+fn create_sub_window(
+    application: &gtk::Application,
+    title: &str,
+    main_window_entry: &gtk::Entry,
+    id: usize,
+    windows: &Rc<RefCell<HashMap<usize, glib::WeakRef<gtk::Window>>>>,
+) {
+    let window = gtk::Window::new(gtk::WindowType::Toplevel);
+
+    application.add_window(&window);
+
+    window.set_title(title);
+    window.set_default_size(400, 200);
+
+    window.connect_delete_event(
+        glib::clone!(@weak windows => @default-return Inhibit(false), move |_, _| {
+            windows.borrow_mut().remove(&id);
+            Inhibit(false)
+        }),
+    );
+
+    let button = gtk::Button::with_label(&format!(&quot;Notify main window with id {}!&quot;, id));
+    button.connect_clicked(glib::clone!(@weak main_window_entry => move |_| {
+        // When the button is clicked, let's write it on the main window's entry!
+        main_window_entry.buffer().set_text(&format!(&quot;sub window {} clicked&quot;, id));
+    }));
+    window.add(&button);
+
+    window.show_all();
+    // Once the new window has been created, we put it into our hashmap so we can update its
+    // title when needed.
+    windows.borrow_mut().insert(id, window.downgrade());
+}
+" data-locs="[[1382,1426],[3358,3429]]">
+                <strong><a href="../src/multi_window/main.rs.html" target="_blank">examples/multi_window/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">gtk::glib</span>;
+<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+
+<span class="kw">use</span> <span class="ident">std::cell::RefCell</span>;
+<span class="kw">use</span> <span class="ident">std::collections::HashMap</span>;
+<span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
+        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.multi_windows&quot;</span>),
         <span class="ident">Default::default</span>(),
     );
 
@@ -751,28 +1215,774 @@ fn build_ui(application: &gtk::Application) {
 }
 
 <span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
+    <span class="kw">let</span> <span class="ident">windows</span>: <span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::WeakRef</span><span class="op">&lt;</span><span class="ident">gtk::Window</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span>
+        <span class="ident">Rc::new</span>(<span class="ident">RefCell::new</span>(<span class="ident">HashMap::new</span>()));
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">create_main_window</span>(<span class="ident">application</span>);
+
+    <span class="comment">// Why not changing all sub-windows&#39; title at once?</span>
+    <span class="kw">let</span> <span class="ident">windows_title_entry</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
+    <span class="ident">windows_title_entry</span>.<span class="ident">set_placeholder_text</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Update all sub-windows&#39; title&quot;</span>));
+    <span class="ident">windows_title_entry</span>.<span class="ident">connect_changed</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">windows</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">windows_title_entry</span><span class="op">|</span> {
+        <span class="comment">// When the entry&#39;s text is updated, we update the title of every sub windows.</span>
+        <span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">windows_title_entry</span>.<span class="ident">buffer</span>().<span class="ident">text</span>();
+        <span class="kw">for</span> <span class="ident">window</span> <span class="kw">in</span> <span class="ident">windows</span>.<span class="ident">borrow</span>().<span class="ident">values</span>() {
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">w</span>) <span class="op">=</span> <span class="ident">window</span>.<span class="ident">upgrade</span>() {
+                <span class="ident">w</span>.<span class="ident">set_title</span>(<span class="kw-2">&amp;</span><span class="ident">text</span>)
+            }
+        }
+    }));
+
+    <span class="kw">let</span> <span class="ident">entry</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
+    <span class="ident">entry</span>.<span class="ident">set_editable</span>(<span class="bool-val">false</span>);
+    <span class="ident">entry</span>.<span class="ident">set_placeholder_text</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Events notification will be sent here&quot;</span>));
+
+    <span class="comment">// Now let&#39;s create a button to create a looooot of new windows!</span>
+    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Create new window&quot;</span>);
+    <span class="ident">button</span>.<span class="ident">connect_clicked</span>(
+        <span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">windows_title_entry</span>, @<span class="ident">weak</span> <span class="ident">entry</span>, @<span class="ident">weak</span> <span class="ident">application</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">new_id</span> <span class="op">=</span> <span class="ident">generate_new_id</span>(<span class="kw-2">&amp;</span><span class="ident">windows</span>.<span class="ident">borrow</span>());
+            <span class="ident">create_sub_window</span>(<span class="kw-2">&amp;</span><span class="ident">application</span>,
+                              <span class="kw-2">&amp;</span><span class="ident">windows_title_entry</span>.<span class="ident">buffer</span>().<span class="ident">text</span>(),
+                              <span class="kw-2">&amp;</span><span class="ident">entry</span>,
+                              <span class="ident">new_id</span>,
+                              <span class="kw-2">&amp;</span><span class="ident">windows</span>);
+        }),
+    );
+
+    <span class="comment">// Now we add a layout so we can put all widgets into it.</span>
+    <span class="kw">let</span> <span class="ident">layout</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">5</span>);
+    <span class="ident">layout</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">windows_title_entry</span>);
+    <span class="ident">layout</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
+    <span class="ident">layout</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">entry</span>);
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">layout</span>);
+
+    <span class="ident">window</span>.<span class="ident">set_focus</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>));
+
+    <span class="comment">// Then we show everything.</span>
+    <span class="ident">window</span>.<span class="ident">show_all</span>();
+}
+
+<span class="kw">fn</span> <span class="ident">create_main_window</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">gtk::ApplicationWindow</span> {
     <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
 
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Notebook&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;I&#39;m the main window&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">400</span>, <span class="number">200</span>);
     <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
-    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">640</span>, <span class="number">480</span>);
 
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">notebook</span> <span class="op">=</span> <span class="ident">Notebook::new</span>();
+    <span class="ident">window</span>.<span class="ident">show_all</span>();
+    <span class="ident">window</span>
+}
+<span class="kw">fn</span> <span class="ident">generate_new_id</span>(<span class="ident">windows</span>: <span class="kw-2">&amp;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::WeakRef</span><span class="op">&lt;</span><span class="ident">gtk::Window</span><span class="op">&gt;</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">id</span> <span class="op">=</span> <span class="number">0</span>;
+    <span class="comment">// As long as the id is already there, we just continue to increment.</span>
+    <span class="kw">while</span> <span class="ident">windows</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>).<span class="ident">is_some</span>() {
+        <span class="ident">id</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+    }
+    <span class="ident">id</span>
+}
 
-    <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">1</span>..<span class="number">4</span> {
-        <span class="kw">let</span> <span class="ident">title</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;sheet {}&quot;</span>, <span class="ident">i</span>);
-        <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">title</span>));
-        <span class="ident">notebook</span>.<span class="ident">create_tab</span>(<span class="kw-2">&amp;</span><span class="ident">title</span>, <span class="ident">label</span>.<span class="ident">upcast</span>());
+<span class="kw">fn</span> <span class="ident">create_sub_window</span>(
+    <span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>,
+    <span class="ident">title</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+    <span class="ident">main_window_entry</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Entry</span>,
+    <span class="ident">id</span>: <span class="ident">usize</span>,
+    <span class="ident">windows</span>: <span class="kw-2">&amp;</span><span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::WeakRef</span><span class="op">&lt;</span><span class="ident">gtk::Window</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+) {
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::Window::new</span>(<span class="ident">gtk::WindowType::Toplevel</span>);
+
+    <span class="ident">application</span>.<span class="ident">add_window</span>(<span class="kw-2">&amp;</span><span class="ident">window</span>);
+
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="ident">title</span>);
+    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">400</span>, <span class="number">200</span>);
+
+    <span class="ident">window</span>.<span class="ident">connect_delete_event</span>(
+        <span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">windows</span> <span class="op">=</span><span class="op">&gt;</span> @<span class="ident">default</span><span class="op">-</span><span class="kw">return</span> <span class="ident">Inhibit</span>(<span class="bool-val">false</span>), <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span>, <span class="kw">_</span><span class="op">|</span> {
+            <span class="ident">windows</span>.<span class="ident">borrow_mut</span>().<span class="ident">remove</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>);
+            <span class="ident">Inhibit</span>(<span class="bool-val">false</span>)
+        }),
+    );
+
+    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;Notify main window with id {}!&quot;</span>, <span class="ident">id</span>));
+    <span class="ident">button</span>.<span class="ident">connect_clicked</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">main_window_entry</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+        <span class="comment">// When the button is clicked, let&#39;s write it on the main window&#39;s entry!</span>
+        <span class="ident">main_window_entry</span>.<span class="ident">buffer</span>().<span class="ident">set_text</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;sub window {} clicked&quot;</span>, <span class="ident">id</span>));
+    }));
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
+
+    <span class="ident">window</span>.<span class="ident">show_all</span>();
+    <span class="comment">// Once the new window has been created, we put it into our hashmap so we can update its</span>
+    <span class="comment">// title when needed.</span>
+    <span class="ident">windows</span>.<span class="ident">borrow_mut</span>().<span class="ident">insert</span>(<span class="ident">id</span>, <span class="ident">window</span>.<span class="ident">downgrade</span>());
+}
+</pre></div>
+</div></div><div class="scraped-example" data-code="use std::cell::RefCell;
+use std::rc::Rc;
+
+use gtk::glib;
+use gtk::{prelude::*, Application, ApplicationWindow, Button};
+
+#[derive(Default)]
+struct State {
+    started: bool,
+    count: i32,
+}
+
+impl State {
+    fn new() -> Self {
+        Self {
+            started: false,
+            count: 0,
+        }
+    }
+}
+
+fn main() {
+    let application =
+        Application::new(Some(&quot;com.github.gtk-rs.examples.basic&quot;), Default::default());
+
+    let state = Rc::new(RefCell::new(State::new()));
+
+    {
+        let state2 = Rc::new(RefCell::new(State::new()));
+
+        application.connect_activate(glib::clone!(@weak state, @strong state2 => move |app| {
+            state.borrow_mut().started = true;
+
+            let window = ApplicationWindow::new(app);
+            window.set_title(&quot;First GTK+ Program&quot;);
+            window.set_default_size(350, 70);
+
+            let button = Button::with_label(&quot;Click me!&quot;);
+            button.connect_clicked(glib::clone!(@weak state, @weak state2 => move |_| {
+                let mut state = state.borrow_mut();
+                let mut state2 = state2.borrow_mut();
+                println!(&quot;Clicked (started: {}): {} - {}!&quot;, state.started, state.count, state2.count);
+                state.count += 1;
+                state2.count += 1;
+            }));
+            window.add(&button);
+
+            window.show_all();
+        }));
     }
 
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">notebook</span>.<span class="ident">notebook</span>);
+    application.run();
+}
+" data-locs="[[875,906]]">
+                <strong><a href="../src/clone_macro/main.rs.html" target="_blank">examples/clone_macro/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">std::cell::RefCell</span>;
+<span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
+
+<span class="kw">use</span> <span class="ident">gtk::glib</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">prelude</span>::<span class="kw-2">*</span>, <span class="ident">Application</span>, <span class="ident">ApplicationWindow</span>, <span class="ident">Button</span>};
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>)]</span>
+<span class="kw">struct</span> <span class="ident">State</span> {
+    <span class="ident">started</span>: <span class="ident">bool</span>,
+    <span class="ident">count</span>: <span class="ident">i32</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">State</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="self">Self</span> {
+            <span class="ident">started</span>: <span class="bool-val">false</span>,
+            <span class="ident">count</span>: <span class="number">0</span>,
+        }
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span>
+        <span class="ident">Application::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.basic&quot;</span>), <span class="ident">Default::default</span>());
+
+    <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">Rc::new</span>(<span class="ident">RefCell::new</span>(<span class="ident">State::new</span>()));
+
+    {
+        <span class="kw">let</span> <span class="ident">state2</span> <span class="op">=</span> <span class="ident">Rc::new</span>(<span class="ident">RefCell::new</span>(<span class="ident">State::new</span>()));
+
+        <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">state</span>, @<span class="ident">strong</span> <span class="ident">state2</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">app</span><span class="op">|</span> {
+            <span class="ident">state</span>.<span class="ident">borrow_mut</span>().<span class="ident">started</span> <span class="op">=</span> <span class="bool-val">true</span>;
+
+            <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">ApplicationWindow::new</span>(<span class="ident">app</span>);
+            <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;First GTK+ Program&quot;</span>);
+            <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">350</span>, <span class="number">70</span>);
+
+            <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">Button::with_label</span>(<span class="string">&quot;Click me!&quot;</span>);
+            <span class="ident">button</span>.<span class="ident">connect_clicked</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">state</span>, @<span class="ident">weak</span> <span class="ident">state2</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">borrow_mut</span>();
+                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state2</span> <span class="op">=</span> <span class="ident">state2</span>.<span class="ident">borrow_mut</span>();
+                <span class="macro">println!</span>(<span class="string">&quot;Clicked (started: {}): {} - {}!&quot;</span>, <span class="ident">state</span>.<span class="ident">started</span>, <span class="ident">state</span>.<span class="ident">count</span>, <span class="ident">state2</span>.<span class="ident">count</span>);
+                <span class="ident">state</span>.<span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+                <span class="ident">state2</span>.<span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+            }));
+            <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
+
+            <span class="ident">window</span>.<span class="ident">show_all</span>();
+        }));
+    }
+
+    <span class="ident">application</span>.<span class="ident">run</span>();
+}
+</pre></div>
+</div></div><div class="scraped-example" data-code="use gtk::prelude::*;
+use gtk::{gdk, gio};
+
+fn main() {
+    let application = gtk::Application::new(Some(&quot;com.github.css&quot;), gio::ApplicationFlags::empty());
+
+    application.connect_startup(|app| {
+        // The CSS &quot;magic&quot; happens here.
+        let provider = gtk::CssProvider::new();
+        // Load the CSS file
+        let style = include_bytes!(&quot;style.css&quot;);
+        provider.load_from_data(style).expect(&quot;Failed to load CSS&quot;);
+        // We give the CssProvided to the default screen so the CSS rules we added
+        // can be applied to our window.
+        gtk::StyleContext::add_provider_for_screen(
+            &gdk::Screen::default().expect(&quot;Error initializing gtk css provider.&quot;),
+            &provider,
+            gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
+        );
+
+        // We build the application UI.
+        build_ui(app);
+    });
+
+    application.run();
+}
+
+fn build_ui(application: &gtk::Application) {
+    let window = gtk::ApplicationWindow::new(application);
+
+    window.set_title(&quot;CSS&quot;);
+    window.set_position(gtk::WindowPosition::Center);
+
+    // The container container.
+    let vbox = gtk::Box::new(gtk::Orientation::Vertical, 0);
+
+    let label = gtk::Button::with_label(&quot;hover me!&quot;);
+    // We need to name it in order to be able to use its name as a CSS label to
+    // apply CSS on it.
+    label.set_widget_name(&quot;label1&quot;);
+
+    let entry = gtk::Entry::new();
+    // We need to name it in order to apply CSS on it.
+    entry.set_widget_name(&quot;entry1&quot;);
+    entry.set_text(&quot;Some text&quot;);
+
+    let combo = gtk::ComboBoxText::new();
+    combo.append_text(&quot;option 1&quot;);
+    combo.append_text(&quot;option 2&quot;);
+    combo.append_text(&quot;option 3&quot;);
+    combo.set_active(Some(0));
+
+    vbox.add(&label);
+    vbox.add(&entry);
+    vbox.add(&combo);
+    // Then we add the container inside our window.
+    window.add(&vbox);
+
+    application.connect_activate(move |_| {
+        window.show_all();
+    });
+}
+" data-locs="[[1180,1216]]">
+                <strong><a href="../src/css/main.rs.html" target="_blank">examples/css/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">gdk</span>, <span class="ident">gio</span>};
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;com.github.css&quot;</span>), <span class="ident">gio::ApplicationFlags::empty</span>());
+
+    <span class="ident">application</span>.<span class="ident">connect_startup</span>(<span class="op">|</span><span class="ident">app</span><span class="op">|</span> {
+        <span class="comment">// The CSS &quot;magic&quot; happens here.</span>
+        <span class="kw">let</span> <span class="ident">provider</span> <span class="op">=</span> <span class="ident">gtk::CssProvider::new</span>();
+        <span class="comment">// Load the CSS file</span>
+        <span class="kw">let</span> <span class="ident">style</span> <span class="op">=</span> <span class="macro">include_bytes!</span>(<span class="string">&quot;style.css&quot;</span>);
+        <span class="ident">provider</span>.<span class="ident">load_from_data</span>(<span class="ident">style</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to load CSS&quot;</span>);
+        <span class="comment">// We give the CssProvided to the default screen so the CSS rules we added</span>
+        <span class="comment">// can be applied to our window.</span>
+        <span class="ident">gtk::StyleContext::add_provider_for_screen</span>(
+            <span class="kw-2">&amp;</span><span class="ident">gdk::Screen::default</span>().<span class="ident">expect</span>(<span class="string">&quot;Error initializing gtk css provider.&quot;</span>),
+            <span class="kw-2">&amp;</span><span class="ident">provider</span>,
+            <span class="ident">gtk::STYLE_PROVIDER_PRIORITY_APPLICATION</span>,
+        );
+
+        <span class="comment">// We build the application UI.</span>
+        <span class="ident">build_ui</span>(<span class="ident">app</span>);
+    });
+
+    <span class="ident">application</span>.<span class="ident">run</span>();
+}
+
+<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
+
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;CSS&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
+
+    <span class="comment">// The container container.</span>
+    <span class="kw">let</span> <span class="ident">vbox</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">0</span>);
+
+    <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;hover me!&quot;</span>);
+    <span class="comment">// We need to name it in order to be able to use its name as a CSS label to</span>
+    <span class="comment">// apply CSS on it.</span>
+    <span class="ident">label</span>.<span class="ident">set_widget_name</span>(<span class="string">&quot;label1&quot;</span>);
+
+    <span class="kw">let</span> <span class="ident">entry</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
+    <span class="comment">// We need to name it in order to apply CSS on it.</span>
+    <span class="ident">entry</span>.<span class="ident">set_widget_name</span>(<span class="string">&quot;entry1&quot;</span>);
+    <span class="ident">entry</span>.<span class="ident">set_text</span>(<span class="string">&quot;Some text&quot;</span>);
+
+    <span class="kw">let</span> <span class="ident">combo</span> <span class="op">=</span> <span class="ident">gtk::ComboBoxText::new</span>();
+    <span class="ident">combo</span>.<span class="ident">append_text</span>(<span class="string">&quot;option 1&quot;</span>);
+    <span class="ident">combo</span>.<span class="ident">append_text</span>(<span class="string">&quot;option 2&quot;</span>);
+    <span class="ident">combo</span>.<span class="ident">append_text</span>(<span class="string">&quot;option 3&quot;</span>);
+    <span class="ident">combo</span>.<span class="ident">set_active</span>(<span class="prelude-val">Some</span>(<span class="number">0</span>));
+
+    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">label</span>);
+    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">entry</span>);
+    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">combo</span>);
+    <span class="comment">// Then we add the container inside our window.</span>
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">vbox</span>);
+
+    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+        <span class="ident">window</span>.<span class="ident">show_all</span>();
+    });
+}
+</pre></div>
+</div></div><div class="scraped-example" data-code="use gtk::prelude::*;
+use gtk::{atk, gio};
+
+fn build_ui(application: &gtk::Application) {
+    let window = gtk::ApplicationWindow::new(application);
+
+    window.set_title(&quot;Accessibility&quot;);
+    window.set_position(gtk::WindowPosition::Center);
+
+    let button = gtk::Button::with_label(&quot;Click me!&quot;);
+    let label = gtk::Label::new(Some(&quot;0&quot;));
+    let vbox = gtk::Box::new(gtk::Orientation::Vertical, 0);
+
+    if let (Some(button_obj), Some(label_obj)) = (button.accessible(), label.accessible()) {
+        // We set the description
+        button_obj.set_description(&quot;Button to increase label value&quot;);
+
+        // Then we setup the relation saying that the label is linked to the button.
+        let relation_set = label_obj
+            .ref_relation_set()
+            .expect(&quot;Failed to get relation for label&quot;);
+        let relation = atk::Relation::new(&[button_obj], atk::RelationType::LabelFor);
+
+        relation_set.add(&relation);
+    }
+
+    vbox.add(&button);
+    vbox.add(&label);
+
+    window.add(&vbox);
+
+    button.connect_clicked(move |_| {
+        let value = label.text().parse().unwrap_or(0) + 1;
+        label.set_text(&value.to_string());
+    });
+
+    window.show_all();
+}
+
+fn main() {
+    let application = gtk::Application::new(
+        Some(&quot;com.github.accessibility&quot;),
+        gio::ApplicationFlags::empty(),
+    );
+
+    application.connect_activate(|app| {
+        // We build the application UI.
+        build_ui(app);
+    });
+
+    application.run();
+}
+" data-locs="[[260,296]]">
+                <strong><a href="../src/accessibility/main.rs.html" target="_blank">examples/accessibility/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">atk</span>, <span class="ident">gio</span>};
+
+<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
+
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Accessibility&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
+
+    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Click me!&quot;</span>);
+    <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;0&quot;</span>));
+    <span class="kw">let</span> <span class="ident">vbox</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">0</span>);
+
+    <span class="kw">if</span> <span class="kw">let</span> (<span class="prelude-val">Some</span>(<span class="ident">button_obj</span>), <span class="prelude-val">Some</span>(<span class="ident">label_obj</span>)) <span class="op">=</span> (<span class="ident">button</span>.<span class="ident">accessible</span>(), <span class="ident">label</span>.<span class="ident">accessible</span>()) {
+        <span class="comment">// We set the description</span>
+        <span class="ident">button_obj</span>.<span class="ident">set_description</span>(<span class="string">&quot;Button to increase label value&quot;</span>);
+
+        <span class="comment">// Then we setup the relation saying that the label is linked to the button.</span>
+        <span class="kw">let</span> <span class="ident">relation_set</span> <span class="op">=</span> <span class="ident">label_obj</span>
+            .<span class="ident">ref_relation_set</span>()
+            .<span class="ident">expect</span>(<span class="string">&quot;Failed to get relation for label&quot;</span>);
+        <span class="kw">let</span> <span class="ident">relation</span> <span class="op">=</span> <span class="ident">atk::Relation::new</span>(<span class="kw-2">&amp;</span>[<span class="ident">button_obj</span>], <span class="ident">atk::RelationType::LabelFor</span>);
+
+        <span class="ident">relation_set</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">relation</span>);
+    }
+
+    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
+    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">label</span>);
+
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">vbox</span>);
+
+    <span class="ident">button</span>.<span class="ident">connect_clicked</span>(<span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">label</span>.<span class="ident">text</span>().<span class="ident">parse</span>().<span class="ident">unwrap_or</span>(<span class="number">0</span>) <span class="op">+</span> <span class="number">1</span>;
+        <span class="ident">label</span>.<span class="ident">set_text</span>(<span class="kw-2">&amp;</span><span class="ident">value</span>.<span class="ident">to_string</span>());
+    });
+
+    <span class="ident">window</span>.<span class="ident">show_all</span>();
+}
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
+        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.accessibility&quot;</span>),
+        <span class="ident">gio::ApplicationFlags::empty</span>(),
+    );
+
+    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="op">|</span><span class="ident">app</span><span class="op">|</span> {
+        <span class="comment">// We build the application UI.</span>
+        <span class="ident">build_ui</span>(<span class="ident">app</span>);
+    });
+
+    <span class="ident">application</span>.<span class="ident">run</span>();
+}
+</pre></div>
+</div></div><div class="scraped-example" data-code="use gtk::gdk;
+use gtk::prelude::*;
+
+fn main() {
+    let application = gtk::Application::new(
+        Some(&quot;com.github.gtk-rs.examples.drag_and_drop&quot;),
+        Default::default(),
+    );
+
+    application.connect_activate(build_ui);
+
+    application.run();
+}
+
+fn build_ui(application: &gtk::Application) {
+    // Configure button as drag source for text
+    let button = gtk::Button::with_label(&quot;Drag here&quot;);
+    let targets = vec![
+        gtk::TargetEntry::new(&quot;STRING&quot;, gtk::TargetFlags::SAME_APP, 0),
+        gtk::TargetEntry::new(&quot;text/plain&quot;, gtk::TargetFlags::SAME_APP, 0),
+    ];
+    button.drag_source_set(
+        gdk::ModifierType::MODIFIER_MASK,
+        &targets,
+        gdk::DragAction::COPY,
+    );
+    button.connect_drag_data_get(|_, _, s, _, _| {
+        let data = &quot;I'm data!&quot;;
+        s.set_text(data);
+    });
+
+    // Configure label as drag destination to receive text
+    let label = gtk::Label::new(Some(&quot;Drop here&quot;));
+    label.drag_dest_set(gtk::DestDefaults::ALL, &targets, gdk::DragAction::COPY);
+    label.connect_drag_data_received(|w, _, _, _, s, _, _| {
+        w.set_text(&s.text().expect(&quot;Couldn't get text&quot;));
+    });
+
+    // Stack the button and label horizontally
+    let hbox = gtk::Box::new(gtk::Orientation::Horizontal, 0);
+    hbox.pack_start(&button, true, true, 0);
+    hbox.pack_start(&label, true, true, 0);
+
+    // Finish populating the window and display everything
+    let window = gtk::ApplicationWindow::new(application);
+    window.set_title(&quot;Simple Drag and Drop Example&quot;);
+    window.set_default_size(200, 100);
+    window.add(&hbox);
+    window.show_all();
+}
+" data-locs="[[369,405]]">
+                <strong><a href="../src/drag_drop/main.rs.html" target="_blank">examples/drag_drop/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">gtk::gdk</span>;
+<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
+        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.drag_and_drop&quot;</span>),
+        <span class="ident">Default::default</span>(),
+    );
+
+    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
+
+    <span class="ident">application</span>.<span class="ident">run</span>();
+}
+
+<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
+    <span class="comment">// Configure button as drag source for text</span>
+    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Drag here&quot;</span>);
+    <span class="kw">let</span> <span class="ident">targets</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="ident">gtk::TargetEntry::new</span>(<span class="string">&quot;STRING&quot;</span>, <span class="ident">gtk::TargetFlags::SAME_APP</span>, <span class="number">0</span>),
+        <span class="ident">gtk::TargetEntry::new</span>(<span class="string">&quot;text/plain&quot;</span>, <span class="ident">gtk::TargetFlags::SAME_APP</span>, <span class="number">0</span>),
+    ];
+    <span class="ident">button</span>.<span class="ident">drag_source_set</span>(
+        <span class="ident">gdk::ModifierType::MODIFIER_MASK</span>,
+        <span class="kw-2">&amp;</span><span class="ident">targets</span>,
+        <span class="ident">gdk::DragAction::COPY</span>,
+    );
+    <span class="ident">button</span>.<span class="ident">connect_drag_data_get</span>(<span class="op">|</span><span class="kw">_</span>, <span class="kw">_</span>, <span class="ident">s</span>, <span class="kw">_</span>, <span class="kw">_</span><span class="op">|</span> {
+        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="string">&quot;I&#39;m data!&quot;</span>;
+        <span class="ident">s</span>.<span class="ident">set_text</span>(<span class="ident">data</span>);
+    });
+
+    <span class="comment">// Configure label as drag destination to receive text</span>
+    <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Drop here&quot;</span>));
+    <span class="ident">label</span>.<span class="ident">drag_dest_set</span>(<span class="ident">gtk::DestDefaults::ALL</span>, <span class="kw-2">&amp;</span><span class="ident">targets</span>, <span class="ident">gdk::DragAction::COPY</span>);
+    <span class="ident">label</span>.<span class="ident">connect_drag_data_received</span>(<span class="op">|</span><span class="ident">w</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="ident">s</span>, <span class="kw">_</span>, <span class="kw">_</span><span class="op">|</span> {
+        <span class="ident">w</span>.<span class="ident">set_text</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>.<span class="ident">text</span>().<span class="ident">expect</span>(<span class="string">&quot;Couldn&#39;t get text&quot;</span>));
+    });
+
+    <span class="comment">// Stack the button and label horizontally</span>
+    <span class="kw">let</span> <span class="ident">hbox</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Horizontal</span>, <span class="number">0</span>);
+    <span class="ident">hbox</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="number">0</span>);
+    <span class="ident">hbox</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">label</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="number">0</span>);
+
+    <span class="comment">// Finish populating the window and display everything</span>
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Simple Drag and Drop Example&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">200</span>, <span class="number">100</span>);
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">hbox</span>);
     <span class="ident">window</span>.<span class="ident">show_all</span>();
 }
 </pre></div>
-</div></div></div></details></div></details><h4 id="method.from_icon_name" class="method"><code>pub fn <a href="#method.from_icon_name" class="fnname">from_icon_name</a>(icon_name: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, size: <a class="enum" href="enum.IconSize.html" title="enum gtk::IconSize">IconSize</a>) -&gt; <a class="struct" href="struct.Button.html" title="struct gtk::Button">Button</a></code><a href="#method.from_icon_name" class="anchor"></a><a class="srclink" href="../src/gtk/auto/button.rs.html#44-53" title="goto source code">[src]</a></h4><details class="rustdoc-toggle method-toggle" open><summary><h4 id="method.with_label" class="method"><code>pub fn <a href="#method.with_label" class="fnname">with_label</a>(label: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="struct.Button.html" title="struct gtk::Button">Button</a></code><a href="#method.with_label" class="anchor"></a><a class="srclink" href="../src/gtk/auto/button.rs.html#57-63" title="goto source code">[src]</a></h4></summary><div class="docblock scraped-example-list">
-          <h1 id="scraped-examples" class="small-section-header">
-             <a href="#scraped-examples-1">Uses found in <code>examples/</code></a>
-          </h1><div class="scraped-example" data-code="//! # Overlay example
+</div></div><div class="scraped-example" data-code="//! # Overlay example
 //!
 //! This example demonstrates how to create an element &quot;floating&quot; above others.
 
@@ -858,8 +2068,8 @@ fn main() {
     application.run();
 }
 " data-locs="[[1100,1136],[1153,1186],[1203,1241]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/overlay/main.rs" target="_blank">examples/overlay/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+                <strong><a href="../src/overlay/main.rs.html" target="_blank">examples/overlay/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -1029,354 +2239,6 @@ fn main() {
     });
 
     <span class="ident">application</span>.<span class="ident">run</span>();
-}
-</pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle">
-                  <summary class="hideme">
-                     <span>More examples</span>
-                  </summary>
-                  <div class="more-scraped-examples"><div class="scraped-example" data-code="use gtk::gdk;
-use gtk::prelude::*;
-
-fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.gtk-rs.examples.drag_and_drop&quot;),
-        Default::default(),
-    );
-
-    application.connect_activate(build_ui);
-
-    application.run();
-}
-
-fn build_ui(application: &gtk::Application) {
-    // Configure button as drag source for text
-    let button = gtk::Button::with_label(&quot;Drag here&quot;);
-    let targets = vec![
-        gtk::TargetEntry::new(&quot;STRING&quot;, gtk::TargetFlags::SAME_APP, 0),
-        gtk::TargetEntry::new(&quot;text/plain&quot;, gtk::TargetFlags::SAME_APP, 0),
-    ];
-    button.drag_source_set(
-        gdk::ModifierType::MODIFIER_MASK,
-        &targets,
-        gdk::DragAction::COPY,
-    );
-    button.connect_drag_data_get(|_, _, s, _, _| {
-        let data = &quot;I'm data!&quot;;
-        s.set_text(data);
-    });
-
-    // Configure label as drag destination to receive text
-    let label = gtk::Label::new(Some(&quot;Drop here&quot;));
-    label.drag_dest_set(gtk::DestDefaults::ALL, &targets, gdk::DragAction::COPY);
-    label.connect_drag_data_received(|w, _, _, _, s, _, _| {
-        w.set_text(&s.text().expect(&quot;Couldn't get text&quot;));
-    });
-
-    // Stack the button and label horizontally
-    let hbox = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    hbox.pack_start(&button, true, true, 0);
-    hbox.pack_start(&label, true, true, 0);
-
-    // Finish populating the window and display everything
-    let window = gtk::ApplicationWindow::new(application);
-    window.set_title(&quot;Simple Drag and Drop Example&quot;);
-    window.set_default_size(200, 100);
-    window.add(&hbox);
-    window.show_all();
-}
-" data-locs="[[369,405]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/drag_drop/main.rs" target="_blank">examples/drag_drop/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
-<span id="49">49</span>
-<span id="50">50</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">gtk::gdk</span>;
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.drag_and_drop&quot;</span>),
-        <span class="ident">Default::default</span>(),
-    );
-
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
-
-    <span class="ident">application</span>.<span class="ident">run</span>();
-}
-
-<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
-    <span class="comment">// Configure button as drag source for text</span>
-    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Drag here&quot;</span>);
-    <span class="kw">let</span> <span class="ident">targets</span> <span class="op">=</span> <span class="macro">vec!</span>[
-        <span class="ident">gtk::TargetEntry::new</span>(<span class="string">&quot;STRING&quot;</span>, <span class="ident">gtk::TargetFlags::SAME_APP</span>, <span class="number">0</span>),
-        <span class="ident">gtk::TargetEntry::new</span>(<span class="string">&quot;text/plain&quot;</span>, <span class="ident">gtk::TargetFlags::SAME_APP</span>, <span class="number">0</span>),
-    ];
-    <span class="ident">button</span>.<span class="ident">drag_source_set</span>(
-        <span class="ident">gdk::ModifierType::MODIFIER_MASK</span>,
-        <span class="kw-2">&amp;</span><span class="ident">targets</span>,
-        <span class="ident">gdk::DragAction::COPY</span>,
-    );
-    <span class="ident">button</span>.<span class="ident">connect_drag_data_get</span>(<span class="op">|</span><span class="kw">_</span>, <span class="kw">_</span>, <span class="ident">s</span>, <span class="kw">_</span>, <span class="kw">_</span><span class="op">|</span> {
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="string">&quot;I&#39;m data!&quot;</span>;
-        <span class="ident">s</span>.<span class="ident">set_text</span>(<span class="ident">data</span>);
-    });
-
-    <span class="comment">// Configure label as drag destination to receive text</span>
-    <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Drop here&quot;</span>));
-    <span class="ident">label</span>.<span class="ident">drag_dest_set</span>(<span class="ident">gtk::DestDefaults::ALL</span>, <span class="kw-2">&amp;</span><span class="ident">targets</span>, <span class="ident">gdk::DragAction::COPY</span>);
-    <span class="ident">label</span>.<span class="ident">connect_drag_data_received</span>(<span class="op">|</span><span class="ident">w</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="ident">s</span>, <span class="kw">_</span>, <span class="kw">_</span><span class="op">|</span> {
-        <span class="ident">w</span>.<span class="ident">set_text</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>.<span class="ident">text</span>().<span class="ident">expect</span>(<span class="string">&quot;Couldn&#39;t get text&quot;</span>));
-    });
-
-    <span class="comment">// Stack the button and label horizontally</span>
-    <span class="kw">let</span> <span class="ident">hbox</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Horizontal</span>, <span class="number">0</span>);
-    <span class="ident">hbox</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="number">0</span>);
-    <span class="ident">hbox</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">label</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="number">0</span>);
-
-    <span class="comment">// Finish populating the window and display everything</span>
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Simple Drag and Drop Example&quot;</span>);
-    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">200</span>, <span class="number">100</span>);
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">hbox</span>);
-    <span class="ident">window</span>.<span class="ident">show_all</span>();
-}
-</pre></div>
-</div></div><div class="scraped-example" data-code="use gtk::prelude::*;
-use gtk::{gdk, gio};
-
-fn main() {
-    let application = gtk::Application::new(Some(&quot;com.github.css&quot;), gio::ApplicationFlags::empty());
-
-    application.connect_startup(|app| {
-        // The CSS &quot;magic&quot; happens here.
-        let provider = gtk::CssProvider::new();
-        // Load the CSS file
-        let style = include_bytes!(&quot;style.css&quot;);
-        provider.load_from_data(style).expect(&quot;Failed to load CSS&quot;);
-        // We give the CssProvided to the default screen so the CSS rules we added
-        // can be applied to our window.
-        gtk::StyleContext::add_provider_for_screen(
-            &gdk::Screen::default().expect(&quot;Error initializing gtk css provider.&quot;),
-            &provider,
-            gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-        );
-
-        // We build the application UI.
-        build_ui(app);
-    });
-
-    application.run();
-}
-
-fn build_ui(application: &gtk::Application) {
-    let window = gtk::ApplicationWindow::new(application);
-
-    window.set_title(&quot;CSS&quot;);
-    window.set_position(gtk::WindowPosition::Center);
-
-    // The container container.
-    let vbox = gtk::Box::new(gtk::Orientation::Vertical, 0);
-
-    let label = gtk::Button::with_label(&quot;hover me!&quot;);
-    // We need to name it in order to be able to use its name as a CSS label to
-    // apply CSS on it.
-    label.set_widget_name(&quot;label1&quot;);
-
-    let entry = gtk::Entry::new();
-    // We need to name it in order to apply CSS on it.
-    entry.set_widget_name(&quot;entry1&quot;);
-    entry.set_text(&quot;Some text&quot;);
-
-    let combo = gtk::ComboBoxText::new();
-    combo.append_text(&quot;option 1&quot;);
-    combo.append_text(&quot;option 2&quot;);
-    combo.append_text(&quot;option 3&quot;);
-    combo.set_active(Some(0));
-
-    vbox.add(&label);
-    vbox.add(&entry);
-    vbox.add(&combo);
-    // Then we add the container inside our window.
-    window.add(&vbox);
-
-    application.connect_activate(move |_| {
-        window.show_all();
-    });
-}
-" data-locs="[[1180,1216]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/css/main.rs" target="_blank">examples/css/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
-<span id="49">49</span>
-<span id="50">50</span>
-<span id="51">51</span>
-<span id="52">52</span>
-<span id="53">53</span>
-<span id="54">54</span>
-<span id="55">55</span>
-<span id="56">56</span>
-<span id="57">57</span>
-<span id="58">58</span>
-<span id="59">59</span>
-<span id="60">60</span>
-<span id="61">61</span>
-<span id="62">62</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">gdk</span>, <span class="ident">gio</span>};
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;com.github.css&quot;</span>), <span class="ident">gio::ApplicationFlags::empty</span>());
-
-    <span class="ident">application</span>.<span class="ident">connect_startup</span>(<span class="op">|</span><span class="ident">app</span><span class="op">|</span> {
-        <span class="comment">// The CSS &quot;magic&quot; happens here.</span>
-        <span class="kw">let</span> <span class="ident">provider</span> <span class="op">=</span> <span class="ident">gtk::CssProvider::new</span>();
-        <span class="comment">// Load the CSS file</span>
-        <span class="kw">let</span> <span class="ident">style</span> <span class="op">=</span> <span class="macro">include_bytes!</span>(<span class="string">&quot;style.css&quot;</span>);
-        <span class="ident">provider</span>.<span class="ident">load_from_data</span>(<span class="ident">style</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to load CSS&quot;</span>);
-        <span class="comment">// We give the CssProvided to the default screen so the CSS rules we added</span>
-        <span class="comment">// can be applied to our window.</span>
-        <span class="ident">gtk::StyleContext::add_provider_for_screen</span>(
-            <span class="kw-2">&amp;</span><span class="ident">gdk::Screen::default</span>().<span class="ident">expect</span>(<span class="string">&quot;Error initializing gtk css provider.&quot;</span>),
-            <span class="kw-2">&amp;</span><span class="ident">provider</span>,
-            <span class="ident">gtk::STYLE_PROVIDER_PRIORITY_APPLICATION</span>,
-        );
-
-        <span class="comment">// We build the application UI.</span>
-        <span class="ident">build_ui</span>(<span class="ident">app</span>);
-    });
-
-    <span class="ident">application</span>.<span class="ident">run</span>();
-}
-
-<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
-
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;CSS&quot;</span>);
-    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
-
-    <span class="comment">// The container container.</span>
-    <span class="kw">let</span> <span class="ident">vbox</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">0</span>);
-
-    <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;hover me!&quot;</span>);
-    <span class="comment">// We need to name it in order to be able to use its name as a CSS label to</span>
-    <span class="comment">// apply CSS on it.</span>
-    <span class="ident">label</span>.<span class="ident">set_widget_name</span>(<span class="string">&quot;label1&quot;</span>);
-
-    <span class="kw">let</span> <span class="ident">entry</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
-    <span class="comment">// We need to name it in order to apply CSS on it.</span>
-    <span class="ident">entry</span>.<span class="ident">set_widget_name</span>(<span class="string">&quot;entry1&quot;</span>);
-    <span class="ident">entry</span>.<span class="ident">set_text</span>(<span class="string">&quot;Some text&quot;</span>);
-
-    <span class="kw">let</span> <span class="ident">combo</span> <span class="op">=</span> <span class="ident">gtk::ComboBoxText::new</span>();
-    <span class="ident">combo</span>.<span class="ident">append_text</span>(<span class="string">&quot;option 1&quot;</span>);
-    <span class="ident">combo</span>.<span class="ident">append_text</span>(<span class="string">&quot;option 2&quot;</span>);
-    <span class="ident">combo</span>.<span class="ident">append_text</span>(<span class="string">&quot;option 3&quot;</span>);
-    <span class="ident">combo</span>.<span class="ident">set_active</span>(<span class="prelude-val">Some</span>(<span class="number">0</span>));
-
-    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">label</span>);
-    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">entry</span>);
-    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">combo</span>);
-    <span class="comment">// Then we add the container inside our window.</span>
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">vbox</span>);
-
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-        <span class="ident">window</span>.<span class="ident">show_all</span>();
-    });
 }
 </pre></div>
 </div></div><div class="scraped-example" data-code="mod model;
@@ -1565,8 +2427,8 @@ fn build_ui(application: &gtk::Application) {
     window.show_all();
 }
 " data-locs="[[2988,3019],[5647,5677],[7054,7087]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/list_box_model/main.rs" target="_blank">examples/list_box_model/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+                <strong><a href="../src/list_box_model/main.rs.html" target="_blank">examples/list_box_model/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -1939,58 +2801,33 @@ fn build_ui(application: &gtk::Application) {
 }
 </pre></div>
 </div></div><div class="scraped-example" data-code="use gtk::prelude::*;
-use gtk::{cairo, gdk};
-use gtk::{ApplicationWindow, Button, Fixed};
 
 fn build_ui(application: &gtk::Application) {
-    let window = ApplicationWindow::new(application);
-    set_visual(&window, None);
+    let window = gtk::ApplicationWindow::new(application);
 
-    window.connect_screen_changed(set_visual);
-    window.connect_draw(draw);
+    window.set_title(&quot;First GTK+ Program&quot;);
+    window.set_border_width(10);
+    window.set_position(gtk::WindowPosition::Center);
+    window.set_default_size(350, 70);
 
-    window.set_title(&quot;Alpha Demo&quot;);
-    window.set_default_size(500, 500);
-    window.set_app_paintable(true); // crucial for transparency
+    let button = gtk::Button::with_label(&quot;Click me!&quot;);
 
-    let fixed = Fixed::new();
-    window.add(&fixed);
-    let button = Button::with_label(&quot;Dummy&quot;);
-    button.set_size_request(100, 30);
-    fixed.add(&button);
+    window.add(&button);
 
     window.show_all();
 }
 
 fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.gtk-rs.examples.transparent_main_window&quot;),
-        Default::default(),
-    );
+    let application =
+        gtk::Application::new(Some(&quot;com.github.gtk-rs.examples.basic&quot;), Default::default());
 
     application.connect_activate(build_ui);
 
     application.run();
 }
-
-fn set_visual(window: &ApplicationWindow, _screen: Option<&gdk::Screen>) {
-    if let Some(screen) = window.screen() {
-        if let Some(ref visual) = screen.rgba_visual() {
-            window.set_visual(Some(visual)); // crucial for transparency
-        }
-    }
-}
-
-fn draw(_window: &ApplicationWindow, ctx: &cairo::Context) -> Inhibit {
-    // crucial for transparency
-    ctx.set_source_rgba(1.0, 0.0, 0.0, 0.4);
-    ctx.set_operator(cairo::Operator::Screen);
-    ctx.paint().expect(&quot;Invalid cairo surface state&quot;);
-    Inhibit(false)
-}
-" data-locs="[[512,539]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/transparent_main_window/main.rs" target="_blank">examples/transparent_main_window/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+" data-locs="[[315,351]]">
+                <strong><a href="../src/basics/main.rs.html" target="_blank">examples/basics/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -2015,242 +2852,29 @@ fn draw(_window: &ApplicationWindow, ctx: &cairo::Context) -> Inhibit {
 <span id="23">23</span>
 <span id="24">24</span>
 <span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
-<span id="49">49</span>
-<span id="50">50</span>
 </pre><pre class="rust">
 <span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">cairo</span>, <span class="ident">gdk</span>};
-<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">ApplicationWindow</span>, <span class="ident">Button</span>, <span class="ident">Fixed</span>};
 
 <span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">ApplicationWindow::new</span>(<span class="ident">application</span>);
-    <span class="ident">set_visual</span>(<span class="kw-2">&amp;</span><span class="ident">window</span>, <span class="prelude-val">None</span>);
+    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
 
-    <span class="ident">window</span>.<span class="ident">connect_screen_changed</span>(<span class="ident">set_visual</span>);
-    <span class="ident">window</span>.<span class="ident">connect_draw</span>(<span class="ident">draw</span>);
+    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;First GTK+ Program&quot;</span>);
+    <span class="ident">window</span>.<span class="ident">set_border_width</span>(<span class="number">10</span>);
+    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
+    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">350</span>, <span class="number">70</span>);
 
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Alpha Demo&quot;</span>);
-    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">500</span>, <span class="number">500</span>);
-    <span class="ident">window</span>.<span class="ident">set_app_paintable</span>(<span class="bool-val">true</span>); <span class="comment">// crucial for transparency</span>
+    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Click me!&quot;</span>);
 
-    <span class="kw">let</span> <span class="ident">fixed</span> <span class="op">=</span> <span class="ident">Fixed::new</span>();
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">fixed</span>);
-    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">Button::with_label</span>(<span class="string">&quot;Dummy&quot;</span>);
-    <span class="ident">button</span>.<span class="ident">set_size_request</span>(<span class="number">100</span>, <span class="number">30</span>);
-    <span class="ident">fixed</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
+    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
 
     <span class="ident">window</span>.<span class="ident">show_all</span>();
 }
 
 <span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.transparent_main_window&quot;</span>),
-        <span class="ident">Default::default</span>(),
-    );
+    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span>
+        <span class="ident">gtk::Application::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.basic&quot;</span>), <span class="ident">Default::default</span>());
 
     <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
-
-    <span class="ident">application</span>.<span class="ident">run</span>();
-}
-
-<span class="kw">fn</span> <span class="ident">set_visual</span>(<span class="ident">window</span>: <span class="kw-2">&amp;</span><span class="ident">ApplicationWindow</span>, <span class="ident">_screen</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">gdk::Screen</span><span class="op">&gt;</span>) {
-    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">screen</span>) <span class="op">=</span> <span class="ident">window</span>.<span class="ident">screen</span>() {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">visual</span>) <span class="op">=</span> <span class="ident">screen</span>.<span class="ident">rgba_visual</span>() {
-            <span class="ident">window</span>.<span class="ident">set_visual</span>(<span class="prelude-val">Some</span>(<span class="ident">visual</span>)); <span class="comment">// crucial for transparency</span>
-        }
-    }
-}
-
-<span class="kw">fn</span> <span class="ident">draw</span>(<span class="ident">_window</span>: <span class="kw-2">&amp;</span><span class="ident">ApplicationWindow</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Inhibit</span> {
-    <span class="comment">// crucial for transparency</span>
-    <span class="ident">ctx</span>.<span class="ident">set_source_rgba</span>(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.4</span>);
-    <span class="ident">ctx</span>.<span class="ident">set_operator</span>(<span class="ident">cairo::Operator::Screen</span>);
-    <span class="ident">ctx</span>.<span class="ident">paint</span>().<span class="ident">expect</span>(<span class="string">&quot;Invalid cairo surface state&quot;</span>);
-    <span class="ident">Inhibit</span>(<span class="bool-val">false</span>)
-}
-</pre></div>
-</div></div><div class="scraped-example" data-code="use std::cell::RefCell;
-use std::rc::Rc;
-
-use gtk::glib;
-use gtk::{prelude::*, Application, ApplicationWindow, Button};
-
-#[derive(Default)]
-struct State {
-    started: bool,
-    count: i32,
-}
-
-impl State {
-    fn new() -> Self {
-        Self {
-            started: false,
-            count: 0,
-        }
-    }
-}
-
-fn main() {
-    let application =
-        Application::new(Some(&quot;com.github.gtk-rs.examples.basic&quot;), Default::default());
-
-    let state = Rc::new(RefCell::new(State::new()));
-
-    {
-        let state2 = Rc::new(RefCell::new(State::new()));
-
-        application.connect_activate(glib::clone!(@weak state, @strong state2 => move |app| {
-            state.borrow_mut().started = true;
-
-            let window = ApplicationWindow::new(app);
-            window.set_title(&quot;First GTK+ Program&quot;);
-            window.set_default_size(350, 70);
-
-            let button = Button::with_label(&quot;Click me!&quot;);
-            button.connect_clicked(glib::clone!(@weak state, @weak state2 => move |_| {
-                let mut state = state.borrow_mut();
-                let mut state2 = state2.borrow_mut();
-                println!(&quot;Clicked (started: {}): {} - {}!&quot;, state.started, state.count, state2.count);
-                state.count += 1;
-                state2.count += 1;
-            }));
-            window.add(&button);
-
-            window.show_all();
-        }));
-    }
-
-    application.run();
-}
-" data-locs="[[875,906]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/clone_macro/main.rs" target="_blank">examples/clone_macro/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
-<span id="49">49</span>
-<span id="50">50</span>
-<span id="51">51</span>
-<span id="52">52</span>
-<span id="53">53</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">std::cell::RefCell</span>;
-<span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
-
-<span class="kw">use</span> <span class="ident">gtk::glib</span>;
-<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">prelude</span>::<span class="kw-2">*</span>, <span class="ident">Application</span>, <span class="ident">ApplicationWindow</span>, <span class="ident">Button</span>};
-
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>)]</span>
-<span class="kw">struct</span> <span class="ident">State</span> {
-    <span class="ident">started</span>: <span class="ident">bool</span>,
-    <span class="ident">count</span>: <span class="ident">i32</span>,
-}
-
-<span class="kw">impl</span> <span class="ident">State</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">started</span>: <span class="bool-val">false</span>,
-            <span class="ident">count</span>: <span class="number">0</span>,
-        }
-    }
-}
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span>
-        <span class="ident">Application::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.basic&quot;</span>), <span class="ident">Default::default</span>());
-
-    <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">Rc::new</span>(<span class="ident">RefCell::new</span>(<span class="ident">State::new</span>()));
-
-    {
-        <span class="kw">let</span> <span class="ident">state2</span> <span class="op">=</span> <span class="ident">Rc::new</span>(<span class="ident">RefCell::new</span>(<span class="ident">State::new</span>()));
-
-        <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">state</span>, @<span class="ident">strong</span> <span class="ident">state2</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">app</span><span class="op">|</span> {
-            <span class="ident">state</span>.<span class="ident">borrow_mut</span>().<span class="ident">started</span> <span class="op">=</span> <span class="bool-val">true</span>;
-
-            <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">ApplicationWindow::new</span>(<span class="ident">app</span>);
-            <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;First GTK+ Program&quot;</span>);
-            <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">350</span>, <span class="number">70</span>);
-
-            <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">Button::with_label</span>(<span class="string">&quot;Click me!&quot;</span>);
-            <span class="ident">button</span>.<span class="ident">connect_clicked</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">state</span>, @<span class="ident">weak</span> <span class="ident">state2</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">borrow_mut</span>();
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state2</span> <span class="op">=</span> <span class="ident">state2</span>.<span class="ident">borrow_mut</span>();
-                <span class="macro">println!</span>(<span class="string">&quot;Clicked (started: {}): {} - {}!&quot;</span>, <span class="ident">state</span>.<span class="ident">started</span>, <span class="ident">state</span>.<span class="ident">count</span>, <span class="ident">state2</span>.<span class="ident">count</span>);
-                <span class="ident">state</span>.<span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
-                <span class="ident">state2</span>.<span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
-            }));
-            <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
-
-            <span class="ident">window</span>.<span class="ident">show_all</span>();
-        }));
-    }
 
     <span class="ident">application</span>.<span class="ident">run</span>();
 }
@@ -2312,8 +2936,8 @@ fn main() {
     application.run();
 }
 " data-locs="[[236,259],[696,719]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/child_properties/main.rs" target="_blank">examples/child_properties/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+                <strong><a href="../src/child_properties/main.rs.html" target="_blank">examples/child_properties/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -2427,180 +3051,86 @@ fn main() {
     <span class="ident">application</span>.<span class="ident">run</span>();
 }
 </pre></div>
-</div></div><div class="scraped-example" data-code="pub mod simple_application;
-pub mod simple_window;
-
+</div></div><div class="scraped-example" data-code="use glib::clone;
+use gtk::glib;
 use gtk::prelude::*;
+use gtk::subclass::prelude::*;
+use once_cell::unsync::OnceCell;
+use std::cell::Cell;
 
-fn main() {
-    gtk::init().expect(&quot;Failed to initialize gtk&quot;);
-
-    let app = simple_application::SimpleApplication::new();
-
-    app.run();
-}
-" data-locs="[[4285,4322]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/basic_subclass/main.rs" target="_blank">examples/basic_subclass/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-</pre><pre class="rust">
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">simple_application</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">simple_window</span>;
-
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="ident">gtk::init</span>().<span class="ident">expect</span>(<span class="string">&quot;Failed to initialize gtk&quot;</span>);
-
-    <span class="kw">let</span> <span class="ident">app</span> <span class="op">=</span> <span class="ident">simple_application::SimpleApplication::new</span>();
-
-    <span class="ident">app</span>.<span class="ident">run</span>();
-}
-</pre></div>
-</div></div><div class="scraped-example" data-code="use gtk::prelude::*;
-
-fn build_ui(application: &gtk::Application) {
-    let window = gtk::ApplicationWindow::new(application);
-
-    window.set_title(&quot;First GTK+ Program&quot;);
-    window.set_border_width(10);
-    window.set_position(gtk::WindowPosition::Center);
-    window.set_default_size(350, 70);
-
-    let button = gtk::Button::with_label(&quot;Click me!&quot;);
-
-    window.add(&button);
-
-    window.show_all();
+#[derive(Debug)]
+struct WindowWidgets {
+    headerbar: gtk::HeaderBar,
+    increment: gtk::Button,
+    label: gtk::Label,
 }
 
-fn main() {
-    let application =
-        gtk::Application::new(Some(&quot;com.github.gtk-rs.examples.basic&quot;), Default::default());
-
-    application.connect_activate(build_ui);
-
-    application.run();
-}
-" data-locs="[[315,351]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/basics/main.rs" target="_blank">examples/basics/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-
-<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
-
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;First GTK+ Program&quot;</span>);
-    <span class="ident">window</span>.<span class="ident">set_border_width</span>(<span class="number">10</span>);
-    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
-    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">350</span>, <span class="number">70</span>);
-
-    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Click me!&quot;</span>);
-
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
-
-    <span class="ident">window</span>.<span class="ident">show_all</span>();
+#[derive(Debug, Default)]
+pub struct SimpleWindow {
+    widgets: OnceCell<WindowWidgets>,
+    counter: Cell<u64>,
 }
 
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span>
-        <span class="ident">gtk::Application::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.basic&quot;</span>), <span class="ident">Default::default</span>());
-
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
-
-    <span class="ident">application</span>.<span class="ident">run</span>();
+#[glib::object_subclass]
+impl ObjectSubclass for SimpleWindow {
+    const NAME: &'static str = &quot;SimpleWindow&quot;;
+    type Type = super::SimpleWindow;
+    type ParentType = gtk::ApplicationWindow;
 }
-</pre></div>
-</div></div><div class="scraped-example" data-code="use gtk::prelude::*;
-use gtk::{atk, gio};
 
-fn build_ui(application: &gtk::Application) {
-    let window = gtk::ApplicationWindow::new(application);
+impl ObjectImpl for SimpleWindow {
+    // Here we are overriding the glib::Objcet::contructed
+    // method. Its what gets called when we create our Object
+    // and where we can initialize things.
+    fn constructed(&self, obj: &Self::Type) {
+        self.parent_constructed(obj);
 
-    window.set_title(&quot;Accessibility&quot;);
-    window.set_position(gtk::WindowPosition::Center);
+        let headerbar = gtk::HeaderBar::new();
+        let increment = gtk::Button::with_label(&quot;Increment!&quot;);
+        let label = gtk::Label::new(Some(&quot;Press the Increment Button!&quot;));
 
-    let button = gtk::Button::with_label(&quot;Click me!&quot;);
-    let label = gtk::Label::new(Some(&quot;0&quot;));
-    let vbox = gtk::Box::new(gtk::Orientation::Vertical, 0);
+        headerbar.set_title(Some(&quot;Hello World!&quot;));
+        headerbar.set_show_close_button(true);
+        headerbar.pack_start(&increment);
 
-    if let (Some(button_obj), Some(label_obj)) = (button.accessible(), label.accessible()) {
-        // We set the description
-        button_obj.set_description(&quot;Button to increase label value&quot;);
+        // Connect our method `on_increment_clicked` to be called
+        // when the increment button is clicked.
+        increment.connect_clicked(clone!(@weak obj => move |_| {
+            let priv_ = SimpleWindow::from_instance(&obj);
+            priv_.on_increment_clicked();
+        }));
 
-        // Then we setup the relation saying that the label is linked to the button.
-        let relation_set = label_obj
-            .ref_relation_set()
-            .expect(&quot;Failed to get relation for label&quot;);
-        let relation = atk::Relation::new(&[button_obj], atk::RelationType::LabelFor);
+        obj.add(&label);
+        obj.set_titlebar(Some(&headerbar));
+        obj.set_default_size(640, 480);
 
-        relation_set.add(&relation);
+        self.widgets
+            .set(WindowWidgets {
+                headerbar,
+                increment,
+                label,
+            })
+            .expect(&quot;Failed to initialize window state&quot;);
     }
-
-    vbox.add(&button);
-    vbox.add(&label);
-
-    window.add(&vbox);
-
-    button.connect_clicked(move |_| {
-        let value = label.text().parse().unwrap_or(0) + 1;
-        label.set_text(&value.to_string());
-    });
-
-    window.show_all();
 }
 
-fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.accessibility&quot;),
-        gio::ApplicationFlags::empty(),
-    );
-
-    application.connect_activate(|app| {
-        // We build the application UI.
-        build_ui(app);
-    });
-
-    application.run();
+impl SimpleWindow {
+    fn on_increment_clicked(&self) {
+        self.counter.set(self.counter.get() + 1);
+        let w = self.widgets.get().unwrap();
+        w.label
+            .set_text(&format!(&quot;Counter is {}&quot;, self.counter.get()));
+    }
 }
-" data-locs="[[260,296]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/accessibility/main.rs" target="_blank">examples/accessibility/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+
+impl WidgetImpl for SimpleWindow {}
+impl ContainerImpl for SimpleWindow {}
+impl BinImpl for SimpleWindow {}
+impl WindowImpl for SimpleWindow {}
+impl ApplicationWindowImpl for SimpleWindow {}
+" data-locs="[[4285,4322]]">
+                <strong><a href="../src/basic_subclass/simple_window/imp.rs.html" target="_blank">examples/basic_subclass/simple_window/imp.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -2652,417 +3182,109 @@ fn main() {
 <span id="50">50</span>
 <span id="51">51</span>
 <span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">gtk</span>::{<span class="ident">atk</span>, <span class="ident">gio</span>};
-
-<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
-
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;Accessibility&quot;</span>);
-    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
-
-    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Click me!&quot;</span>);
-    <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;0&quot;</span>));
-    <span class="kw">let</span> <span class="ident">vbox</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">0</span>);
-
-    <span class="kw">if</span> <span class="kw">let</span> (<span class="prelude-val">Some</span>(<span class="ident">button_obj</span>), <span class="prelude-val">Some</span>(<span class="ident">label_obj</span>)) <span class="op">=</span> (<span class="ident">button</span>.<span class="ident">accessible</span>(), <span class="ident">label</span>.<span class="ident">accessible</span>()) {
-        <span class="comment">// We set the description</span>
-        <span class="ident">button_obj</span>.<span class="ident">set_description</span>(<span class="string">&quot;Button to increase label value&quot;</span>);
-
-        <span class="comment">// Then we setup the relation saying that the label is linked to the button.</span>
-        <span class="kw">let</span> <span class="ident">relation_set</span> <span class="op">=</span> <span class="ident">label_obj</span>
-            .<span class="ident">ref_relation_set</span>()
-            .<span class="ident">expect</span>(<span class="string">&quot;Failed to get relation for label&quot;</span>);
-        <span class="kw">let</span> <span class="ident">relation</span> <span class="op">=</span> <span class="ident">atk::Relation::new</span>(<span class="kw-2">&amp;</span>[<span class="ident">button_obj</span>], <span class="ident">atk::RelationType::LabelFor</span>);
-
-        <span class="ident">relation_set</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">relation</span>);
-    }
-
-    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
-    <span class="ident">vbox</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">label</span>);
-
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">vbox</span>);
-
-    <span class="ident">button</span>.<span class="ident">connect_clicked</span>(<span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">label</span>.<span class="ident">text</span>().<span class="ident">parse</span>().<span class="ident">unwrap_or</span>(<span class="number">0</span>) <span class="op">+</span> <span class="number">1</span>;
-        <span class="ident">label</span>.<span class="ident">set_text</span>(<span class="kw-2">&amp;</span><span class="ident">value</span>.<span class="ident">to_string</span>());
-    });
-
-    <span class="ident">window</span>.<span class="ident">show_all</span>();
-}
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.accessibility&quot;</span>),
-        <span class="ident">gio::ApplicationFlags::empty</span>(),
-    );
-
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="op">|</span><span class="ident">app</span><span class="op">|</span> {
-        <span class="comment">// We build the application UI.</span>
-        <span class="ident">build_ui</span>(<span class="ident">app</span>);
-    });
-
-    <span class="ident">application</span>.<span class="ident">run</span>();
-}
-</pre></div>
-</div></div><div class="scraped-example" data-code="use gtk::glib;
-use gtk::prelude::*;
-
-use std::cell::RefCell;
-use std::collections::HashMap;
-use std::rc::Rc;
-
-fn main() {
-    let application = gtk::Application::new(
-        Some(&quot;com.github.gtk-rs.examples.multi_windows&quot;),
-        Default::default(),
-    );
-
-    application.connect_activate(build_ui);
-
-    application.run();
-}
-
-fn build_ui(application: &gtk::Application) {
-    let windows: Rc<RefCell<HashMap<usize, glib::WeakRef<gtk::Window>>>> =
-        Rc::new(RefCell::new(HashMap::new()));
-    let window = create_main_window(application);
-
-    // Why not changing all sub-windows' title at once?
-    let windows_title_entry = gtk::Entry::new();
-    windows_title_entry.set_placeholder_text(Some(&quot;Update all sub-windows' title&quot;));
-    windows_title_entry.connect_changed(glib::clone!(@weak windows => move |windows_title_entry| {
-        // When the entry's text is updated, we update the title of every sub windows.
-        let text = windows_title_entry.buffer().text();
-        for window in windows.borrow().values() {
-            if let Some(w) = window.upgrade() {
-                w.set_title(&text)
-            }
-        }
-    }));
-
-    let entry = gtk::Entry::new();
-    entry.set_editable(false);
-    entry.set_placeholder_text(Some(&quot;Events notification will be sent here&quot;));
-
-    // Now let's create a button to create a looooot of new windows!
-    let button = gtk::Button::with_label(&quot;Create new window&quot;);
-    button.connect_clicked(
-        glib::clone!(@weak windows_title_entry, @weak entry, @weak application => move |_| {
-            let new_id = generate_new_id(&windows.borrow());
-            create_sub_window(&application,
-                              &windows_title_entry.buffer().text(),
-                              &entry,
-                              new_id,
-                              &windows);
-        }),
-    );
-
-    // Now we add a layout so we can put all widgets into it.
-    let layout = gtk::Box::new(gtk::Orientation::Vertical, 5);
-    layout.add(&windows_title_entry);
-    layout.add(&button);
-    layout.add(&entry);
-    window.add(&layout);
-
-    window.set_focus(Some(&button));
-
-    // Then we show everything.
-    window.show_all();
-}
-
-fn create_main_window(application: &gtk::Application) -> gtk::ApplicationWindow {
-    let window = gtk::ApplicationWindow::new(application);
-
-    window.set_title(&quot;I'm the main window&quot;);
-    window.set_default_size(400, 200);
-    window.set_position(gtk::WindowPosition::Center);
-
-    window.show_all();
-    window
-}
-fn generate_new_id(windows: &HashMap<usize, glib::WeakRef<gtk::Window>>) -> usize {
-    let mut id = 0;
-    // As long as the id is already there, we just continue to increment.
-    while windows.get(&id).is_some() {
-        id += 1;
-    }
-    id
-}
-
-fn create_sub_window(
-    application: &gtk::Application,
-    title: &str,
-    main_window_entry: &gtk::Entry,
-    id: usize,
-    windows: &Rc<RefCell<HashMap<usize, glib::WeakRef<gtk::Window>>>>,
-) {
-    let window = gtk::Window::new(gtk::WindowType::Toplevel);
-
-    application.add_window(&window);
-
-    window.set_title(title);
-    window.set_default_size(400, 200);
-
-    window.connect_delete_event(
-        glib::clone!(@weak windows => @default-return Inhibit(false), move |_, _| {
-            windows.borrow_mut().remove(&id);
-            Inhibit(false)
-        }),
-    );
-
-    let button = gtk::Button::with_label(&format!(&quot;Notify main window with id {}!&quot;, id));
-    button.connect_clicked(glib::clone!(@weak main_window_entry => move |_| {
-        // When the button is clicked, let's write it on the main window's entry!
-        main_window_entry.buffer().set_text(&format!(&quot;sub window {} clicked&quot;, id));
-    }));
-    window.add(&button);
-
-    window.show_all();
-    // Once the new window has been created, we put it into our hashmap so we can update its
-    // title when needed.
-    windows.borrow_mut().insert(id, window.downgrade());
-}
-" data-locs="[[1382,1426],[3358,3429]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/multi_window/main.rs" target="_blank">examples/multi_window/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
-<span id="2">  2</span>
-<span id="3">  3</span>
-<span id="4">  4</span>
-<span id="5">  5</span>
-<span id="6">  6</span>
-<span id="7">  7</span>
-<span id="8">  8</span>
-<span id="9">  9</span>
-<span id="10"> 10</span>
-<span id="11"> 11</span>
-<span id="12"> 12</span>
-<span id="13"> 13</span>
-<span id="14"> 14</span>
-<span id="15"> 15</span>
-<span id="16"> 16</span>
-<span id="17"> 17</span>
-<span id="18"> 18</span>
-<span id="19"> 19</span>
-<span id="20"> 20</span>
-<span id="21"> 21</span>
-<span id="22"> 22</span>
-<span id="23"> 23</span>
-<span id="24"> 24</span>
-<span id="25"> 25</span>
-<span id="26"> 26</span>
-<span id="27"> 27</span>
-<span id="28"> 28</span>
-<span id="29"> 29</span>
-<span id="30"> 30</span>
-<span id="31"> 31</span>
-<span id="32"> 32</span>
-<span id="33"> 33</span>
-<span id="34"> 34</span>
-<span id="35"> 35</span>
-<span id="36"> 36</span>
-<span id="37"> 37</span>
-<span id="38"> 38</span>
-<span id="39"> 39</span>
-<span id="40"> 40</span>
-<span id="41"> 41</span>
-<span id="42"> 42</span>
-<span id="43"> 43</span>
-<span id="44"> 44</span>
-<span id="45"> 45</span>
-<span id="46"> 46</span>
-<span id="47"> 47</span>
-<span id="48"> 48</span>
-<span id="49"> 49</span>
-<span id="50"> 50</span>
-<span id="51"> 51</span>
-<span id="52"> 52</span>
-<span id="53"> 53</span>
-<span id="54"> 54</span>
-<span id="55"> 55</span>
-<span id="56"> 56</span>
-<span id="57"> 57</span>
-<span id="58"> 58</span>
-<span id="59"> 59</span>
-<span id="60"> 60</span>
-<span id="61"> 61</span>
-<span id="62"> 62</span>
-<span id="63"> 63</span>
-<span id="64"> 64</span>
-<span id="65"> 65</span>
-<span id="66"> 66</span>
-<span id="67"> 67</span>
-<span id="68"> 68</span>
-<span id="69"> 69</span>
-<span id="70"> 70</span>
-<span id="71"> 71</span>
-<span id="72"> 72</span>
-<span id="73"> 73</span>
-<span id="74"> 74</span>
-<span id="75"> 75</span>
-<span id="76"> 76</span>
-<span id="77"> 77</span>
-<span id="78"> 78</span>
-<span id="79"> 79</span>
-<span id="80"> 80</span>
-<span id="81"> 81</span>
-<span id="82"> 82</span>
-<span id="83"> 83</span>
-<span id="84"> 84</span>
-<span id="85"> 85</span>
-<span id="86"> 86</span>
-<span id="87"> 87</span>
-<span id="88"> 88</span>
-<span id="89"> 89</span>
-<span id="90"> 90</span>
-<span id="91"> 91</span>
-<span id="92"> 92</span>
-<span id="93"> 93</span>
-<span id="94"> 94</span>
-<span id="95"> 95</span>
-<span id="96"> 96</span>
-<span id="97"> 97</span>
-<span id="98"> 98</span>
-<span id="99"> 99</span>
-<span id="100">100</span>
-<span id="101">101</span>
-<span id="102">102</span>
-<span id="103">103</span>
-<span id="104">104</span>
-<span id="105">105</span>
-<span id="106">106</span>
-<span id="107">107</span>
-<span id="108">108</span>
-<span id="109">109</span>
-<span id="110">110</span>
-<span id="111">111</span>
-<span id="112">112</span>
-<span id="113">113</span>
-<span id="114">114</span>
-<span id="115">115</span>
-<span id="116">116</span>
-<span id="117">117</span>
-<span id="118">118</span>
-</pre><pre class="rust">
+<span class="kw">use</span> <span class="ident">glib::clone</span>;
 <span class="kw">use</span> <span class="ident">gtk::glib</span>;
 <span class="kw">use</span> <span class="ident">gtk::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">gtk::subclass::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">once_cell::unsync::OnceCell</span>;
+<span class="kw">use</span> <span class="ident">std::cell::Cell</span>;
 
-<span class="kw">use</span> <span class="ident">std::cell::RefCell</span>;
-<span class="kw">use</span> <span class="ident">std::collections::HashMap</span>;
-<span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
-
-<span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="ident">gtk::Application::new</span>(
-        <span class="prelude-val">Some</span>(<span class="string">&quot;com.github.gtk-rs.examples.multi_windows&quot;</span>),
-        <span class="ident">Default::default</span>(),
-    );
-
-    <span class="ident">application</span>.<span class="ident">connect_activate</span>(<span class="ident">build_ui</span>);
-
-    <span class="ident">application</span>.<span class="ident">run</span>();
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
+<span class="kw">struct</span> <span class="ident">WindowWidgets</span> {
+    <span class="ident">headerbar</span>: <span class="ident">gtk::HeaderBar</span>,
+    <span class="ident">increment</span>: <span class="ident">gtk::Button</span>,
+    <span class="ident">label</span>: <span class="ident">gtk::Label</span>,
 }
 
-<span class="kw">fn</span> <span class="ident">build_ui</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) {
-    <span class="kw">let</span> <span class="ident">windows</span>: <span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::WeakRef</span><span class="op">&lt;</span><span class="ident">gtk::Window</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span>
-        <span class="ident">Rc::new</span>(<span class="ident">RefCell::new</span>(<span class="ident">HashMap::new</span>()));
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">create_main_window</span>(<span class="ident">application</span>);
-
-    <span class="comment">// Why not changing all sub-windows&#39; title at once?</span>
-    <span class="kw">let</span> <span class="ident">windows_title_entry</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
-    <span class="ident">windows_title_entry</span>.<span class="ident">set_placeholder_text</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Update all sub-windows&#39; title&quot;</span>));
-    <span class="ident">windows_title_entry</span>.<span class="ident">connect_changed</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">windows</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="ident">windows_title_entry</span><span class="op">|</span> {
-        <span class="comment">// When the entry&#39;s text is updated, we update the title of every sub windows.</span>
-        <span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">windows_title_entry</span>.<span class="ident">buffer</span>().<span class="ident">text</span>();
-        <span class="kw">for</span> <span class="ident">window</span> <span class="kw">in</span> <span class="ident">windows</span>.<span class="ident">borrow</span>().<span class="ident">values</span>() {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">w</span>) <span class="op">=</span> <span class="ident">window</span>.<span class="ident">upgrade</span>() {
-                <span class="ident">w</span>.<span class="ident">set_title</span>(<span class="kw-2">&amp;</span><span class="ident">text</span>)
-            }
-        }
-    }));
-
-    <span class="kw">let</span> <span class="ident">entry</span> <span class="op">=</span> <span class="ident">gtk::Entry::new</span>();
-    <span class="ident">entry</span>.<span class="ident">set_editable</span>(<span class="bool-val">false</span>);
-    <span class="ident">entry</span>.<span class="ident">set_placeholder_text</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Events notification will be sent here&quot;</span>));
-
-    <span class="comment">// Now let&#39;s create a button to create a looooot of new windows!</span>
-    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Create new window&quot;</span>);
-    <span class="ident">button</span>.<span class="ident">connect_clicked</span>(
-        <span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">windows_title_entry</span>, @<span class="ident">weak</span> <span class="ident">entry</span>, @<span class="ident">weak</span> <span class="ident">application</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">new_id</span> <span class="op">=</span> <span class="ident">generate_new_id</span>(<span class="kw-2">&amp;</span><span class="ident">windows</span>.<span class="ident">borrow</span>());
-            <span class="ident">create_sub_window</span>(<span class="kw-2">&amp;</span><span class="ident">application</span>,
-                              <span class="kw-2">&amp;</span><span class="ident">windows_title_entry</span>.<span class="ident">buffer</span>().<span class="ident">text</span>(),
-                              <span class="kw-2">&amp;</span><span class="ident">entry</span>,
-                              <span class="ident">new_id</span>,
-                              <span class="kw-2">&amp;</span><span class="ident">windows</span>);
-        }),
-    );
-
-    <span class="comment">// Now we add a layout so we can put all widgets into it.</span>
-    <span class="kw">let</span> <span class="ident">layout</span> <span class="op">=</span> <span class="ident">gtk::Box::new</span>(<span class="ident">gtk::Orientation::Vertical</span>, <span class="number">5</span>);
-    <span class="ident">layout</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">windows_title_entry</span>);
-    <span class="ident">layout</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
-    <span class="ident">layout</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">entry</span>);
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">layout</span>);
-
-    <span class="ident">window</span>.<span class="ident">set_focus</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>));
-
-    <span class="comment">// Then we show everything.</span>
-    <span class="ident">window</span>.<span class="ident">show_all</span>();
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Default</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SimpleWindow</span> {
+    <span class="ident">widgets</span>: <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">WindowWidgets</span><span class="op">&gt;</span>,
+    <span class="ident">counter</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">fn</span> <span class="ident">create_main_window</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">gtk::ApplicationWindow</span> {
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow::new</span>(<span class="ident">application</span>);
-
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="string">&quot;I&#39;m the main window&quot;</span>);
-    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">400</span>, <span class="number">200</span>);
-    <span class="ident">window</span>.<span class="ident">set_position</span>(<span class="ident">gtk::WindowPosition::Center</span>);
-
-    <span class="ident">window</span>.<span class="ident">show_all</span>();
-    <span class="ident">window</span>
+<span class="attribute">#[<span class="ident">glib::object_subclass</span>]</span>
+<span class="kw">impl</span> <span class="ident">ObjectSubclass</span> <span class="kw">for</span> <span class="ident">SimpleWindow</span> {
+    <span class="kw">const</span> <span class="ident">NAME</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;SimpleWindow&quot;</span>;
+    <span class="kw">type</span> <span class="ident">Type</span> <span class="op">=</span> <span class="kw">super</span><span class="ident">::SimpleWindow</span>;
+    <span class="kw">type</span> <span class="ident">ParentType</span> <span class="op">=</span> <span class="ident">gtk::ApplicationWindow</span>;
 }
-<span class="kw">fn</span> <span class="ident">generate_new_id</span>(<span class="ident">windows</span>: <span class="kw-2">&amp;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::WeakRef</span><span class="op">&lt;</span><span class="ident">gtk::Window</span><span class="op">&gt;</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">id</span> <span class="op">=</span> <span class="number">0</span>;
-    <span class="comment">// As long as the id is already there, we just continue to increment.</span>
-    <span class="kw">while</span> <span class="ident">windows</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>).<span class="ident">is_some</span>() {
-        <span class="ident">id</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+
+<span class="kw">impl</span> <span class="ident">ObjectImpl</span> <span class="kw">for</span> <span class="ident">SimpleWindow</span> {
+    <span class="comment">// Here we are overriding the glib::Objcet::contructed</span>
+    <span class="comment">// method. Its what gets called when we create our Object</span>
+    <span class="comment">// and where we can initialize things.</span>
+    <span class="kw">fn</span> <span class="ident">constructed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">obj</span>: <span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Type</span>) {
+        <span class="self">self</span>.<span class="ident">parent_constructed</span>(<span class="ident">obj</span>);
+
+        <span class="kw">let</span> <span class="ident">headerbar</span> <span class="op">=</span> <span class="ident">gtk::HeaderBar::new</span>();
+        <span class="kw">let</span> <span class="ident">increment</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="string">&quot;Increment!&quot;</span>);
+        <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">gtk::Label::new</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Press the Increment Button!&quot;</span>));
+
+        <span class="ident">headerbar</span>.<span class="ident">set_title</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Hello World!&quot;</span>));
+        <span class="ident">headerbar</span>.<span class="ident">set_show_close_button</span>(<span class="bool-val">true</span>);
+        <span class="ident">headerbar</span>.<span class="ident">pack_start</span>(<span class="kw-2">&amp;</span><span class="ident">increment</span>);
+
+        <span class="comment">// Connect our method `on_increment_clicked` to be called</span>
+        <span class="comment">// when the increment button is clicked.</span>
+        <span class="ident">increment</span>.<span class="ident">connect_clicked</span>(<span class="macro">clone!</span>(@<span class="ident">weak</span> <span class="ident">obj</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">priv_</span> <span class="op">=</span> <span class="ident">SimpleWindow::from_instance</span>(<span class="kw-2">&amp;</span><span class="ident">obj</span>);
+            <span class="ident">priv_</span>.<span class="ident">on_increment_clicked</span>();
+        }));
+
+        <span class="ident">obj</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">label</span>);
+        <span class="ident">obj</span>.<span class="ident">set_titlebar</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">headerbar</span>));
+        <span class="ident">obj</span>.<span class="ident">set_default_size</span>(<span class="number">640</span>, <span class="number">480</span>);
+
+        <span class="self">self</span>.<span class="ident">widgets</span>
+            .<span class="ident">set</span>(<span class="ident">WindowWidgets</span> {
+                <span class="ident">headerbar</span>,
+                <span class="ident">increment</span>,
+                <span class="ident">label</span>,
+            })
+            .<span class="ident">expect</span>(<span class="string">&quot;Failed to initialize window state&quot;</span>);
     }
-    <span class="ident">id</span>
 }
 
-<span class="kw">fn</span> <span class="ident">create_sub_window</span>(
-    <span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Application</span>,
-    <span class="ident">title</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-    <span class="ident">main_window_entry</span>: <span class="kw-2">&amp;</span><span class="ident">gtk::Entry</span>,
-    <span class="ident">id</span>: <span class="ident">usize</span>,
-    <span class="ident">windows</span>: <span class="kw-2">&amp;</span><span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::WeakRef</span><span class="op">&lt;</span><span class="ident">gtk::Window</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-) {
-    <span class="kw">let</span> <span class="ident">window</span> <span class="op">=</span> <span class="ident">gtk::Window::new</span>(<span class="ident">gtk::WindowType::Toplevel</span>);
-
-    <span class="ident">application</span>.<span class="ident">add_window</span>(<span class="kw-2">&amp;</span><span class="ident">window</span>);
-
-    <span class="ident">window</span>.<span class="ident">set_title</span>(<span class="ident">title</span>);
-    <span class="ident">window</span>.<span class="ident">set_default_size</span>(<span class="number">400</span>, <span class="number">200</span>);
-
-    <span class="ident">window</span>.<span class="ident">connect_delete_event</span>(
-        <span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">windows</span> <span class="op">=</span><span class="op">&gt;</span> @<span class="ident">default</span><span class="op">-</span><span class="kw">return</span> <span class="ident">Inhibit</span>(<span class="bool-val">false</span>), <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span>, <span class="kw">_</span><span class="op">|</span> {
-            <span class="ident">windows</span>.<span class="ident">borrow_mut</span>().<span class="ident">remove</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>);
-            <span class="ident">Inhibit</span>(<span class="bool-val">false</span>)
-        }),
-    );
-
-    <span class="kw">let</span> <span class="ident">button</span> <span class="op">=</span> <span class="ident">gtk::Button::with_label</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;Notify main window with id {}!&quot;</span>, <span class="ident">id</span>));
-    <span class="ident">button</span>.<span class="ident">connect_clicked</span>(<span class="macro">glib::clone!</span>(@<span class="ident">weak</span> <span class="ident">main_window_entry</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-        <span class="comment">// When the button is clicked, let&#39;s write it on the main window&#39;s entry!</span>
-        <span class="ident">main_window_entry</span>.<span class="ident">buffer</span>().<span class="ident">set_text</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;sub window {} clicked&quot;</span>, <span class="ident">id</span>));
-    }));
-    <span class="ident">window</span>.<span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="ident">button</span>);
-
-    <span class="ident">window</span>.<span class="ident">show_all</span>();
-    <span class="comment">// Once the new window has been created, we put it into our hashmap so we can update its</span>
-    <span class="comment">// title when needed.</span>
-    <span class="ident">windows</span>.<span class="ident">borrow_mut</span>().<span class="ident">insert</span>(<span class="ident">id</span>, <span class="ident">window</span>.<span class="ident">downgrade</span>());
+<span class="kw">impl</span> <span class="ident">SimpleWindow</span> {
+    <span class="kw">fn</span> <span class="ident">on_increment_clicked</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.<span class="ident">counter</span>.<span class="ident">set</span>(<span class="self">self</span>.<span class="ident">counter</span>.<span class="ident">get</span>() <span class="op">+</span> <span class="number">1</span>);
+        <span class="kw">let</span> <span class="ident">w</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">widgets</span>.<span class="ident">get</span>().<span class="ident">unwrap</span>();
+        <span class="ident">w</span>.<span class="ident">label</span>
+            .<span class="ident">set_text</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;Counter is {}&quot;</span>, <span class="self">self</span>.<span class="ident">counter</span>.<span class="ident">get</span>()));
+    }
 }
+
+<span class="kw">impl</span> <span class="ident">WidgetImpl</span> <span class="kw">for</span> <span class="ident">SimpleWindow</span> {}
+<span class="kw">impl</span> <span class="ident">ContainerImpl</span> <span class="kw">for</span> <span class="ident">SimpleWindow</span> {}
+<span class="kw">impl</span> <span class="ident">BinImpl</span> <span class="kw">for</span> <span class="ident">SimpleWindow</span> {}
+<span class="kw">impl</span> <span class="ident">WindowImpl</span> <span class="kw">for</span> <span class="ident">SimpleWindow</span> {}
+<span class="kw">impl</span> <span class="ident">ApplicationWindowImpl</span> <span class="kw">for</span> <span class="ident">SimpleWindow</span> {}
 </pre></div>
 </div></div></div></details></div></details><details class="rustdoc-toggle method-toggle" open><summary><h4 id="method.with_mnemonic" class="method"><code>pub fn <a href="#method.with_mnemonic" class="fnname">with_mnemonic</a>(label: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="struct.Button.html" title="struct gtk::Button">Button</a></code><a href="#method.with_mnemonic" class="anchor"></a><a class="srclink" href="../src/gtk/auto/button.rs.html#67-73" title="goto source code">[src]</a></h4></summary><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
@@ -3202,8 +3424,8 @@ fn main() {
     application.run();
 }
 " data-locs="[[1236,1271],[1296,1332]]">
-           <strong><a href="https://github.com/gtk-rs/gtk-rs/tree/master/examples/clipboard_simple/main.rs" target="_blank">examples/clipboard_simple/main.rs</a></strong>
-           <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+                <strong><a href="../src/clipboard_simple/main.rs.html" target="_blank">examples/clipboard_simple/main.rs</a></strong>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
