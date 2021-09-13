@@ -1,7 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/wcrichto/.cargo/registry/src/github.com-1ecc6299db9ec823/multipart-0.17.1/src/server/save.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>save.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
-<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../multipart/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button">?</button>
-                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;wcrichto&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;multipart-0.18.0&#x2F;src&#x2F;server&#x2F;save.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>save.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../multipart/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1046,8 +1043,7 @@
 <span id="1043">1043</span>
 <span id="1044">1044</span>
 <span id="1045">1045</span>
-</pre><pre class="rust">
-<span class="comment">// Copyright 2016 `multipart` Crate Developers</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright 2016 `multipart` Crate Developers</span>
 <span class="comment">//</span>
 <span class="comment">// Licensed under the Apache License, Version 2.0, &lt;LICENSE-APACHE or</span>
 <span class="comment">// http://apache.org/licenses/LICENSE-2.0&gt; or the MIT license &lt;LICENSE-MIT or</span>
@@ -1069,9 +1065,9 @@
 
 <span class="kw">use</span> <span class="ident">server::field</span>::{<span class="ident">FieldHeaders</span>, <span class="ident">MultipartField</span>, <span class="ident">MultipartData</span>, <span class="ident">ReadEntry</span>, <span class="ident">ReadEntryResult</span>};
 
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::SaveResult</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::TextPolicy</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::PartialReason</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::SaveResult</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::TextPolicy</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::PartialReason</span>::<span class="kw-2">*</span>;
 
 <span class="kw">const</span> <span class="ident">RANDOM_FILENAME_LEN</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">12</span>;
 
@@ -1560,7 +1556,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the data is in a file, the file is opened in read-only mode.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">readable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">DataReader</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SavedData</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SavedData</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Text</span>(<span class="kw-2">ref</span> <span class="ident">text</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">DataReader::Bytes</span>(<span class="ident">text</span>.<span class="ident">as_ref</span>())),
@@ -1574,7 +1570,7 @@
     <span class="doccomment">/// #### Note</span>
     <span class="doccomment">/// The size on disk may not match the size of the file if it is externally modified.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SavedData</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SavedData</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Text</span>(<span class="kw-2">ref</span> <span class="ident">text</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>,
@@ -1585,7 +1581,7 @@
 
     <span class="doccomment">/// Returns `true` if the data is known to be in memory (`Text | Bytes`)</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_memory</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SavedData</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SavedData</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Text</span>(<span class="kw">_</span>) <span class="op">|</span> <span class="ident">Bytes</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
@@ -1594,7 +1590,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">add_size</span>(<span class="self">self</span>, <span class="ident">add</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SavedData::File</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SavedData::File</span>;
 
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="ident">File</span>(<span class="ident">path</span>, <span class="ident">size</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">File</span>(<span class="ident">path</span>, <span class="ident">size</span>.<span class="ident">saturating_add</span>(<span class="ident">add</span>)),
@@ -1625,7 +1621,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Read</span> <span class="kw">for</span> <span class="ident">DataReader</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::DataReader</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::DataReader</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>.<span class="ident">read</span>(<span class="ident">buf</span>),
@@ -1636,7 +1632,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">BufRead</span> <span class="kw">for</span> <span class="ident">DataReader</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">fill_buf</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::DataReader</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::DataReader</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>.<span class="ident">fill_buf</span>(),
@@ -1645,7 +1641,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">consume</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">amt</span>: <span class="ident">usize</span>) {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::DataReader</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::DataReader</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>.<span class="ident">consume</span>(<span class="ident">amt</span>),
@@ -1760,7 +1756,7 @@
 <span class="kw">impl</span> <span class="ident">SaveDir</span> {
     <span class="doccomment">/// Get the path of this directory, either temporary or permanent.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Path</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SaveDir</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SaveDir</span>::<span class="kw-2">*</span>;
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Temp</span>(<span class="kw-2">ref</span> <span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">tempdir</span>.<span class="ident">path</span>(),
             <span class="ident">Perm</span>(<span class="kw-2">ref</span> <span class="ident">pathbuf</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">pathbuf</span>,
@@ -1769,7 +1765,7 @@
 
     <span class="doccomment">/// Returns `true` if this is a temporary directory which will be deleted on-drop.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_temporary</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SaveDir</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SaveDir</span>::<span class="kw-2">*</span>;
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Temp</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
             <span class="ident">Perm</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
@@ -1779,7 +1775,7 @@
     <span class="doccomment">/// Unwrap the `PathBuf` from `self`; if this is a temporary directory,</span>
     <span class="doccomment">/// it will be converted to a permanent one.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_path</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PathBuf</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SaveDir</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SaveDir</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">tempdir</span>.<span class="ident">into_path</span>(),
@@ -1798,7 +1794,7 @@
     <span class="doccomment">/// It is recommended that you relocate the files from a request which you want to keep to a</span>
     <span class="doccomment">/// permanent folder on the filesystem.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">keep</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SaveDir</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SaveDir</span>::<span class="kw-2">*</span>;
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">mem::replace</span>(<span class="self">self</span>, <span class="ident">Perm</span>(<span class="ident">PathBuf::new</span>())) {
             <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Perm</span>(<span class="ident">tempdir</span>.<span class="ident">into_path</span>()),
             <span class="ident">old_self</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">old_self</span>,
@@ -1814,7 +1810,7 @@
     <span class="doccomment">/// manager applications which use a staging area from which deleted files can be safely</span>
     <span class="doccomment">/// recovered (i.e. Windows&#39; Recycle Bin, OS X&#39;s Trash Can, etc.).</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">delete</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="self">self</span><span class="ident">::SaveDir</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SaveDir</span>::<span class="kw-2">*</span>;
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">tempdir</span>.<span class="ident">close</span>(),
             <span class="ident">Perm</span>(<span class="ident">pathbuf</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">fs::remove_dir_all</span>(<span class="kw-2">&amp;</span><span class="ident">pathbuf</span>),
@@ -2092,6 +2088,7 @@
 
     <span class="ident">Full</span>(<span class="ident">total_copied</span>)
 }
-</pre></div>
+</code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="multipart" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script></body></html>
+    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script>
+</body></html>

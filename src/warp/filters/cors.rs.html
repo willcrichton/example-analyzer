@@ -1,7 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/filters/cors.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>cors.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
-<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button">?</button>
-                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src&#x2F;filters&#x2F;cors.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>cors.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -626,8 +623,7 @@
 <span id="623">623</span>
 <span id="624">624</span>
 <span id="625">625</span>
-</pre><pre class="rust">
-<span class="doccomment">//! CORS Filters</span>
+</pre><pre class="rust"><code><span class="doccomment">//! CORS Filters</span>
 
 <span class="kw">use</span> <span class="ident">std::collections::HashSet</span>;
 <span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
@@ -642,11 +638,11 @@
     <span class="ident">header</span>::{<span class="self">self</span>, <span class="ident">HeaderName</span>, <span class="ident">HeaderValue</span>},
 };
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::filter</span>::{<span class="ident">Filter</span>, <span class="ident">WrapSealed</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::reject</span>::{<span class="ident">CombineRejection</span>, <span class="ident">Rejection</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::reply::Reply</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::filter</span>::{<span class="ident">Filter</span>, <span class="ident">WrapSealed</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::reject</span>::{<span class="ident">CombineRejection</span>, <span class="ident">Rejection</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::reply::Reply</span>;
 
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::internal</span>::{<span class="ident">CorsFilter</span>, <span class="ident">IntoOrigin</span>, <span class="ident">Seconds</span>};
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::internal</span>::{<span class="ident">CorsFilter</span>, <span class="ident">IntoOrigin</span>, <span class="ident">Seconds</span>};
 
 <span class="doccomment">/// Create a wrapping filter that exposes [CORS][] behavior for a wrapped</span>
 <span class="doccomment">/// filter.</span>
@@ -914,7 +910,7 @@
 {
     <span class="kw">type</span> <span class="ident">Wrapped</span> <span class="op">=</span> <span class="ident">CorsFilter</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">wrap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">inner</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Wrapped</span> {
+    <span class="kw">fn</span> <span class="ident">wrap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">inner</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Wrapped</span> {
         <span class="kw">let</span> <span class="ident">Cors</span> { <span class="ident">config</span> } <span class="op">=</span> <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">build</span>();
 
         <span class="ident">CorsFilter</span> { <span class="ident">config</span>, <span class="ident">inner</span> }
@@ -930,7 +926,7 @@
 {
     <span class="kw">type</span> <span class="ident">Wrapped</span> <span class="op">=</span> <span class="ident">CorsFilter</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">wrap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">inner</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Wrapped</span> {
+    <span class="kw">fn</span> <span class="ident">wrap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">inner</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Wrapped</span> {
         <span class="kw">let</span> <span class="ident">config</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">config</span>.<span class="ident">clone</span>();
 
         <span class="ident">CorsFilter</span> { <span class="ident">config</span>, <span class="ident">inner</span> }
@@ -1093,10 +1089,10 @@
     <span class="kw">use</span> <span class="ident">pin_project::pin_project</span>;
 
     <span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">Configured</span>, <span class="ident">CorsForbidden</span>, <span class="ident">Validated</span>};
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::filter</span>::{<span class="ident">Filter</span>, <span class="ident">FilterBase</span>, <span class="ident">Internal</span>, <span class="ident">One</span>};
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::generic::Either</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::reject</span>::{<span class="ident">CombineRejection</span>, <span class="ident">Rejection</span>};
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::route</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::filter</span>::{<span class="ident">Filter</span>, <span class="ident">FilterBase</span>, <span class="ident">Internal</span>, <span class="ident">One</span>};
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::generic::Either</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::reject</span>::{<span class="ident">CombineRejection</span>, <span class="ident">Rejection</span>};
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::route</span>;
 
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CorsFilter</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span> {
@@ -1115,11 +1111,11 @@
             <span class="ident">One</span><span class="op">&lt;</span><span class="ident">Either</span><span class="op">&lt;</span><span class="ident">One</span><span class="op">&lt;</span><span class="ident">Preflight</span><span class="op">&gt;</span>, <span class="ident">One</span><span class="op">&lt;</span><span class="ident">Either</span><span class="op">&lt;</span><span class="ident">One</span><span class="op">&lt;</span><span class="ident">Wrapped</span><span class="op">&lt;</span><span class="ident">F::Extract</span><span class="op">&gt;</span><span class="op">&gt;</span>, <span class="ident">F::Extract</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>;
         <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="op">&lt;</span><span class="ident">F::Error</span> <span class="kw">as</span> <span class="ident">CombineRejection</span><span class="op">&lt;</span><span class="ident">Rejection</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::One</span>;
         <span class="kw">type</span> <span class="ident">Future</span> <span class="op">=</span> <span class="ident">future::Either</span><span class="op">&lt;</span>
-            <span class="ident">future::Ready</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Extract</span>, <span class="self">Self</span><span class="ident">::Error</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+            <span class="ident">future::Ready</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Extract</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span>,
             <span class="ident">WrappedFuture</span><span class="op">&lt;</span><span class="ident">F::Future</span><span class="op">&gt;</span>,
         <span class="op">&gt;</span>;
 
-        <span class="kw">fn</span> <span class="ident">filter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw">_</span>: <span class="ident">Internal</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Future</span> {
+        <span class="kw">fn</span> <span class="ident">filter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw">_</span>: <span class="ident">Internal</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Future</span> {
             <span class="kw">let</span> <span class="ident">validated</span> <span class="op">=</span>
                 <span class="ident">route::with</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">config</span>.<span class="ident">check_request</span>(<span class="ident">route</span>.<span class="ident">method</span>(), <span class="ident">route</span>.<span class="ident">headers</span>()));
 
@@ -1140,7 +1136,7 @@
                     <span class="ident">wrapped</span>: <span class="prelude-val">None</span>,
                 }),
                 <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                    <span class="kw">let</span> <span class="ident">rejection</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::reject::known</span>(<span class="ident">CorsForbidden</span> { <span class="ident">kind</span>: <span class="ident">err</span> });
+                    <span class="kw">let</span> <span class="ident">rejection</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::reject::known</span>(<span class="ident">CorsForbidden</span> { <span class="ident">kind</span>: <span class="ident">err</span> });
                     <span class="ident">future::Either::Left</span>(<span class="ident">future::err</span>(<span class="ident">rejection</span>.<span class="ident">into</span>()))
                 }
             }
@@ -1153,9 +1149,9 @@
         <span class="ident">origin</span>: <span class="ident">header::HeaderValue</span>,
     }
 
-    <span class="kw">impl</span> <span class="kw">crate</span><span class="ident">::reply::Reply</span> <span class="kw">for</span> <span class="ident">Preflight</span> {
-        <span class="kw">fn</span> <span class="ident">into_response</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">crate</span><span class="ident">::reply::Response</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::reply::Response::default</span>();
+    <span class="kw">impl</span> <span class="ident"><span class="kw">crate</span>::reply::Reply</span> <span class="kw">for</span> <span class="ident">Preflight</span> {
+        <span class="kw">fn</span> <span class="ident">into_response</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::reply::Response</span> {
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::reply::Response::default</span>();
             <span class="self">self</span>.<span class="ident">config</span>.<span class="ident">append_preflight_headers</span>(<span class="ident">res</span>.<span class="ident">headers_mut</span>());
             <span class="ident">res</span>.<span class="ident">headers_mut</span>()
                 .<span class="ident">insert</span>(<span class="ident">header::ACCESS_CONTROL_ALLOW_ORIGIN</span>, <span class="self">self</span>.<span class="ident">origin</span>);
@@ -1170,11 +1166,11 @@
         <span class="ident">origin</span>: <span class="ident">header::HeaderValue</span>,
     }
 
-    <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="kw">crate</span><span class="ident">::reply::Reply</span> <span class="kw">for</span> <span class="ident">Wrapped</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>
+    <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::reply::Reply</span> <span class="kw">for</span> <span class="ident">Wrapped</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">R</span>: <span class="kw">crate</span><span class="ident">::reply::Reply</span>,
+        <span class="ident">R</span>: <span class="ident"><span class="kw">crate</span>::reply::Reply</span>,
     {
-        <span class="kw">fn</span> <span class="ident">into_response</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">crate</span><span class="ident">::reply::Response</span> {
+        <span class="kw">fn</span> <span class="ident">into_response</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::reply::Response</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">into_response</span>();
             <span class="self">self</span>.<span class="ident">config</span>.<span class="ident">append_common_headers</span>(<span class="ident">res</span>.<span class="ident">headers_mut</span>());
             <span class="ident">res</span>.<span class="ident">headers_mut</span>()
@@ -1201,7 +1197,7 @@
             <span class="op">&lt;</span><span class="ident">F::Error</span> <span class="kw">as</span> <span class="ident">CombineRejection</span><span class="op">&lt;</span><span class="ident">Rejection</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::One</span>,
         <span class="op">&gt;</span>;
 
-        <span class="kw">fn</span> <span class="ident">poll</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Output</span><span class="op">&gt;</span> {
+        <span class="kw">fn</span> <span class="ident">poll</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Output</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="ident">pin</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">project</span>();
             <span class="kw">match</span> <span class="macro">ready!</span>(<span class="ident">pin</span>.<span class="ident">inner</span>.<span class="ident">try_poll</span>(<span class="ident">cx</span>)) {
                 <span class="prelude-val">Ok</span>(<span class="ident">inner</span>) <span class="op">=</span><span class="op">&gt;</span> {
@@ -1252,6 +1248,7 @@
         }
     }
 }
-</pre></div>
+</code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script></body></html>
+    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script>
+</body></html>

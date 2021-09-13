@@ -1,7 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/wcrichto/.cargo/registry/src/github.com-1ecc6299db9ec823/pin-project-internal-1.0.7/src/pin_project/derive.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>derive.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
-<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../pin_project_internal/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button">?</button>
-                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;wcrichto&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;pin-project-internal-1.0.8&#x2F;src&#x2F;pin_project&#x2F;derive.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>derive.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../pin_project_internal/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1119,8 +1116,11 @@
 <span id="1116">1116</span>
 <span id="1117">1117</span>
 <span id="1118">1118</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Delimiter</span>, <span class="ident">Group</span>, <span class="ident">Span</span>, <span class="ident">TokenStream</span>};
+<span id="1119">1119</span>
+<span id="1120">1120</span>
+<span id="1121">1121</span>
+<span id="1122">1122</span>
+</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Delimiter</span>, <span class="ident">Group</span>, <span class="ident">Span</span>, <span class="ident">TokenStream</span>};
 <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">format_ident</span>, <span class="ident">quote</span>, <span class="ident">quote_spanned</span>, <span class="ident">ToTokens</span>};
 <span class="kw">use</span> <span class="ident">syn</span>::{
     <span class="ident">parse_quote</span>, <span class="ident">token</span>, <span class="ident">visit_mut::VisitMut</span>, <span class="ident">Attribute</span>, <span class="ident">Data</span>, <span class="ident">DataEnum</span>, <span class="ident">DeriveInput</span>, <span class="ident">Error</span>, <span class="ident">Field</span>,
@@ -1132,7 +1132,7 @@
     <span class="ident">args</span>::{<span class="ident">parse_args</span>, <span class="ident">Args</span>, <span class="ident">ProjReplace</span>, <span class="ident">UnpinImpl</span>},
     <span class="ident">PIN</span>,
 };
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::utils</span>::{
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils</span>::{
     <span class="ident">determine_lifetime_name</span>, <span class="ident">determine_visibility</span>, <span class="ident">insert_lifetime_and_bound</span>, <span class="ident">ReplaceReceiver</span>,
     <span class="ident">SliceExt</span>, <span class="ident">Variants</span>,
 };
@@ -1210,6 +1210,7 @@
             <span class="comment">// * https://github.com/taiki-e/pin-project/pull/70</span>
             #<span class="ident">allowed_lints</span>
             <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::semicolon_if_nothing_returned</span>)]</span>
+            <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::use_self</span>)]</span>
             <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::used_underscore_binding</span>)]</span>
             <span class="kw">const</span> <span class="kw">_</span>: () <span class="op">=</span> {
                 #<span class="ident">scoped</span>
@@ -1234,12 +1235,13 @@
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::unknown_clippy_lints</span>)]</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::pattern_type_mismatch</span>)]</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::redundant_pub_crate</span>)]</span> <span class="comment">// This lint warns `pub(crate)` field in private struct.</span>
+        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::type_repetition_in_bounds</span>)]</span> <span class="comment">// https://github.com/rust-lang/rust-clippy/issues/4326</span>
     }
 }
 
 <span class="doccomment">/// Returns attributes used on projected types.</span>
-<span class="kw">fn</span> <span class="ident">proj_allowed_lints</span>(<span class="ident">kind</span>: <span class="ident">TypeKind</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-    <span class="kw">let</span> <span class="ident">large_enum_variant</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">kind</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Enum</span> {
+<span class="kw">fn</span> <span class="ident">proj_allowed_lints</span>(<span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
+    <span class="kw">let</span> <span class="ident">large_enum_variant</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">cx</span>.<span class="ident">kind</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Enum</span> {
         <span class="prelude-val">Some</span>(<span class="macro">quote!</span> {
             <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">variant_size_differences</span>)]</span>
             <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::large_enum_variant</span>)]</span>
@@ -1248,20 +1250,22 @@
         <span class="prelude-val">None</span>
     };
     <span class="kw">let</span> <span class="ident">global_allowed_lints</span> <span class="op">=</span> <span class="ident">global_allowed_lints</span>();
+    <span class="kw">let</span> <span class="ident">proj_mut_allowed_lints</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">cx</span>.<span class="ident">project</span> { <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">global_allowed_lints</span>) } <span class="kw">else</span> { <span class="prelude-val">None</span> };
     <span class="kw">let</span> <span class="ident">proj_mut</span> <span class="op">=</span> <span class="macro">quote!</span> {
-        #<span class="ident">global_allowed_lints</span>
+        #<span class="ident">proj_mut_allowed_lints</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span> <span class="comment">// This lint warns unused fields/variants.</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::mut_mut</span>)]</span> <span class="comment">// This lint warns `&amp;mut &amp;mut &lt;ty&gt;`.</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::type_repetition_in_bounds</span>)]</span> <span class="comment">// https://github.com/rust-lang/rust-clippy/issues/4326}</span>
     };
+    <span class="kw">let</span> <span class="ident">proj_ref_allowed_lints</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">cx</span>.<span class="ident">project_ref</span> { <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">global_allowed_lints</span>) } <span class="kw">else</span> { <span class="prelude-val">None</span> };
     <span class="kw">let</span> <span class="ident">proj_ref</span> <span class="op">=</span> <span class="macro">quote!</span> {
-        #<span class="ident">global_allowed_lints</span>
+        #<span class="ident">proj_ref_allowed_lints</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span> <span class="comment">// This lint warns unused fields/variants.</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::ref_option_ref</span>)]</span> <span class="comment">// This lint warns `&amp;Option&lt;&amp;&lt;ty&gt;&gt;`.</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::type_repetition_in_bounds</span>)]</span> <span class="comment">// https://github.com/rust-lang/rust-clippy/issues/4326</span>
     };
+    <span class="kw">let</span> <span class="ident">proj_own_allowed_lints</span> <span class="op">=</span>
+        <span class="kw">if</span> <span class="ident">cx</span>.<span class="ident">project_replace</span>.<span class="ident">ident</span>().<span class="ident">is_some</span>() { <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">global_allowed_lints</span>) } <span class="kw">else</span> { <span class="prelude-val">None</span> };
     <span class="kw">let</span> <span class="ident">proj_own</span> <span class="op">=</span> <span class="macro">quote!</span> {
-        #<span class="ident">global_allowed_lints</span>
+        #<span class="ident">proj_own_allowed_lints</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span> <span class="comment">// This lint warns unused fields/variants.</span>
         #<span class="ident">large_enum_variant</span>
     };
@@ -1490,7 +1494,7 @@
         <span class="ident">Fields::Unit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unreachable!</span>(),
     };
 
-    <span class="kw">let</span> (<span class="ident">proj_attrs</span>, <span class="ident">proj_ref_attrs</span>, <span class="ident">proj_own_attrs</span>) <span class="op">=</span> <span class="ident">proj_allowed_lints</span>(<span class="ident">cx</span>.<span class="ident">kind</span>);
+    <span class="kw">let</span> (<span class="ident">proj_attrs</span>, <span class="ident">proj_ref_attrs</span>, <span class="ident">proj_own_attrs</span>) <span class="op">=</span> <span class="ident">proj_allowed_lints</span>(<span class="ident">cx</span>);
     <span class="ident">generate</span>.<span class="ident">extend</span>(<span class="ident">cx</span>.<span class="ident">project</span>, <span class="macro">quote!</span> {
         #<span class="ident">proj_attrs</span>
         #<span class="ident">vis</span> <span class="kw">struct</span> #<span class="ident">proj_ident</span> #<span class="ident">proj_generics</span> #<span class="ident">where_clause_fields</span>
@@ -1563,7 +1567,7 @@
     <span class="kw">let</span> <span class="ident">proj_generics</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">cx</span>.<span class="ident">proj</span>.<span class="ident">generics</span>;
     <span class="kw">let</span> <span class="ident">proj_where_clause</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">cx</span>.<span class="ident">proj</span>.<span class="ident">where_clause</span>;
 
-    <span class="kw">let</span> (<span class="ident">proj_attrs</span>, <span class="ident">proj_ref_attrs</span>, <span class="ident">proj_own_attrs</span>) <span class="op">=</span> <span class="ident">proj_allowed_lints</span>(<span class="ident">cx</span>.<span class="ident">kind</span>);
+    <span class="kw">let</span> (<span class="ident">proj_attrs</span>, <span class="ident">proj_ref_attrs</span>, <span class="ident">proj_own_attrs</span>) <span class="op">=</span> <span class="ident">proj_allowed_lints</span>(<span class="ident">cx</span>);
     <span class="kw">if</span> <span class="ident">cx</span>.<span class="ident">project</span> {
         <span class="ident">generate</span>.<span class="ident">extend</span>(<span class="bool-val">true</span>, <span class="macro">quote!</span> {
             #<span class="ident">proj_attrs</span>
@@ -1733,7 +1737,7 @@
     <span class="kw">let</span> <span class="ident">proj_own_fields</span> <span class="op">=</span> <span class="ident">surround</span>(<span class="ident">delim</span>, <span class="ident">proj_own_fields</span>);
 
     <span class="kw">let</span> <span class="ident">proj_move</span> <span class="op">=</span> <span class="ident">Group::new</span>(<span class="ident">delim</span>, <span class="ident">proj_move</span>);
-    <span class="kw">let</span> <span class="ident">proj_own_body</span> <span class="op">=</span> <span class="ident">proj_own_body</span>(<span class="ident">cx</span>, <span class="ident">variant_ident</span>, <span class="prelude-val">Some</span>(<span class="ident">proj_move</span>), <span class="kw-2">&amp;</span><span class="ident">pinned_bindings</span>);
+    <span class="kw">let</span> <span class="ident">proj_own_body</span> <span class="op">=</span> <span class="ident">proj_own_body</span>(<span class="ident">cx</span>, <span class="ident">variant_ident</span>, <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">proj_move</span>), <span class="kw-2">&amp;</span><span class="ident">pinned_bindings</span>);
 
     <span class="prelude-val">Ok</span>(<span class="ident">ProjectedFields</span> {
         <span class="ident">proj_pat</span>,
@@ -1751,7 +1755,7 @@
 <span class="kw">fn</span> <span class="ident">proj_own_body</span>(
     <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
     <span class="ident">variant_ident</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Ident</span><span class="op">&gt;</span>,
-    <span class="ident">proj_move</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Group</span><span class="op">&gt;</span>,
+    <span class="ident">proj_move</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Group</span><span class="op">&gt;</span>,
     <span class="ident">pinned_fields</span>: <span class="kw-2">&amp;</span>[<span class="ident">Ident</span>],
 ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">cx</span>.<span class="ident">proj</span>.<span class="ident">own_ident</span>;
@@ -2011,7 +2015,7 @@
             <span class="comment">// Since the user did not pass `PinnedDrop` to `#[pin_project]`, any `PinnedDrop`</span>
             <span class="comment">// impl will not actually be called. Unfortunately, we can&#39;t detect this situation</span>
             <span class="comment">// directly from either the `#[pin_project]` or `#[pinned_drop]` attributes, since</span>
-            <span class="comment">// we don&#39;t know what other attirbutes/impl may exist.</span>
+            <span class="comment">// we don&#39;t know what other attributes/impl may exist.</span>
             <span class="comment">//</span>
             <span class="comment">// To ensure that users don&#39;t accidentally write a non-functional `PinnedDrop`</span>
             <span class="comment">// impls, we emit one ourselves. If the user ends up writing a `PinnedDrop` impl,</span>
@@ -2238,6 +2242,7 @@
         }
     })
 }
-</pre></div>
+</code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="pin_project_internal" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script></body></html>
+    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script>
+</body></html>

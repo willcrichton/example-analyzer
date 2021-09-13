@@ -1,14 +1,10 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Creates a `Filter` that serves a directory at the base `path` joined by the request path."><meta name="keywords" content="rust, rustlang, rust-lang, dir"><title>dir in warp::filters::fs - Rust</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings"></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
-<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class="location"><a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">fs</a></p><div id="sidebar-vars" data-name="dir" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button">?</button>
-                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">fs</a>::<wbr><a class="fn" href="">dir</a><button id="copy-path" onclick="copy_path(this)"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item import"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../../src/warp/filters/fs.rs.html#81-89" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn dir(<br>&nbsp;&nbsp;&nbsp;&nbsp;path: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>&gt;<br>) -&gt; impl FilterClone&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.File.html" title="struct warp::filters::fs::File">File</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt;</pre><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Creates a <code>Filter</code> that serves a directory at the base <code>path</code> joined
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Creates a `Filter` that serves a directory at the base `path` joined by the request path."><meta name="keywords" content="rust, rustlang, rust-lang, dir"><title>dir in warp::filters::fs - Rust</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><h2 class="location">Other items in<br><a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">fs</a></h2><div id="sidebar-vars" data-name="dir" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">fs</a>::<wbr><a class="fn" href="#">dir</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../../src/warp/filters/fs.rs.html#81-89" title="goto source code">[src]</a></span></h1><pre class="rust fn"><code>pub fn dir(<br>&nbsp;&nbsp;&nbsp;&nbsp;path: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>&gt;<br>) -&gt; impl FilterClone&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.File.html" title="struct warp::filters::fs::File">File</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt;</code></pre><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Creates a <code>Filter</code> that serves a directory at the base <code>path</code> joined
 by the request path.</p>
 <p>This can be used to serve “static files” from a directory. By far the most
 common pattern of serving static files is for <code>GET</code> requests, so this
 filter automatically includes a <code>GET</code> check.</p>
 <h1 id="example" class="section-header"><a href="#example">Example</a></h1>
-<div class="example-wrap"><pre class="rust rust-example-rendered">
-<span class="kw">use</span> <span class="ident">warp::Filter</span>;
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
 <span class="comment">// Matches requests that start with `/static`,</span>
 <span class="comment">// and then uses the rest of that path to lookup</span>
@@ -18,54 +14,87 @@ filter automatically includes a <code>GET</code> check.</p>
 
 <span class="comment">// For example:</span>
 <span class="comment">// - `GET /static/app.js` would serve the file `/www/static/app.js`</span>
-<span class="comment">// - `GET /static/css/app.css` would serve the file `/www/static/css/app.css`</span></pre></div>
+<span class="comment">// - `GET /static/css/app.css` would serve the file `/www/static/css/app.css`</span></code></pre></div>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
-             <a href="#scraped-examples">Uses found in <code>examples/</code></a>
-          </h1><div class="scraped-example" data-code="#![deny(warnings)]
-
-#[tokio::main]
-async fn main() {
+             <a href="#scraped-examples">Examples found in repository</a>
+          </h1><div class="scraped-example" data-code="pub fn assets_filter() -> BoxedFilter<(impl Reply,)> {
+    warp::path(&quot;assets&quot;).and(warp::fs::dir(&quot;./assets&quot;)).boxed()
+}" data-locs="[[1,1]]">
+                <div class="scraped-example-title"><a href="../../../src/returning/returning.rs.html#8" target="_blank">examples/returning.rs</a></div>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="7">7</span>
+<span id="8">8</span>
+<span id="9">9</span>
+</pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">assets_filter</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BoxedFilter</span><span class="op">&lt;</span>(<span class="kw">impl</span> <span class="ident">Reply</span>,)<span class="op">&gt;</span> {
+    <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>)</span>).<span class="ident">boxed</span>()
+}</code></pre></div>
+</div></div><details class="rustdoc-toggle more-examples-toggle">
+                  <summary class="hideme">
+                     <span>More examples</span>
+                  </summary>
+                  <div class="more-scraped-examples">
+                    <div class="toggle-line"><div class="toggle-line-inner"></div></div>
+                    <div>
+<div class="scraped-example" data-code="fn main() {
     pretty_env_logger::init();
 
     warp::serve(warp::fs::dir(&quot;examples/dir&quot;))
         .run(([127, 0, 0, 1], 3030))
         .await;
-}
-" data-locs="[[101,130]]">
-                <strong><a href="../../../src/dir/dir.rs.html" target="_blank">examples/dir.rs</a></strong>
-                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
+}" data-locs="[[3,3]]">
+                <div class="scraped-example-title"><a href="../../../src/dir/dir.rs.html#7" target="_blank">examples/dir.rs</a></div>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="4">4</span>
+<span id="5">5</span>
+<span id="6">6</span>
+<span id="7">7</span>
+<span id="8">8</span>
+<span id="9">9</span>
+<span id="10">10</span>
+</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="ident">pretty_env_logger::init</span>();
+
+    <span class="ident">warp::serve</span>(<span class="highlight"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;examples/dir&quot;</span>)</span>)
+        .<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))
+        .<span class="kw">await</span>;
+}</code></pre></div>
+</div></div><div class="scraped-example" data-code="fn main() {
+    use tokio::net::UnixListener;
+    use tokio_stream::wrappers::UnixListenerStream;
+
+    pretty_env_logger::init();
+
+    let listener = UnixListener::bind(&quot;/tmp/warp.sock&quot;).unwrap();
+    let incoming = UnixListenerStream::new(listener);
+    warp::serve(warp::fs::dir(&quot;examples/dir&quot;))
+        .run_incoming(incoming)
+        .await;
+}" data-locs="[[8,8]]">
+                <div class="scraped-example-title"><a href="../../../src/unix_socket/unix_socket.rs.html#13" target="_blank">examples/unix_socket.rs</a></div>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5"> 5</span>
 <span id="6"> 6</span>
 <span id="7"> 7</span>
 <span id="8"> 8</span>
 <span id="9"> 9</span>
 <span id="10">10</span>
-</pre><pre class="rust">
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">use</span> <span class="ident">tokio::net::UnixListener</span>;
+    <span class="kw">use</span> <span class="ident">tokio_stream::wrappers::UnixListenerStream</span>;
 
-<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
-    <span class="ident">warp::serve</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;examples/dir&quot;</span>))
-        .<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))
+    <span class="kw">let</span> <span class="ident">listener</span> <span class="op">=</span> <span class="ident">UnixListener::bind</span>(<span class="string">&quot;/tmp/warp.sock&quot;</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">incoming</span> <span class="op">=</span> <span class="ident">UnixListenerStream::new</span>(<span class="ident">listener</span>);
+    <span class="ident">warp::serve</span>(<span class="highlight"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;examples/dir&quot;</span>)</span>)
+        .<span class="ident">run_incoming</span>(<span class="ident">incoming</span>)
         .<span class="kw">await</span>;
-}
-</pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle">
-                  <summary class="hideme">
-                     <span>More examples</span>
-                  </summary>
-                  <div class="more-scraped-examples"><div class="scraped-example" data-code="#![deny(warnings)]
-
-use warp::Filter;
-
-#[tokio::main]
-async fn main() {
+}</code></pre></div>
+</div></div><div class="scraped-example" data-code="fn main() {
     pretty_env_logger::init();
 
     let readme = warp::get()
@@ -80,15 +109,9 @@ async fn main() {
     let routes = readme.or(examples);
 
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}
-" data-locs="[[286,314]]">
-                <strong><a href="../../../src/file/file.rs.html" target="_blank">examples/file.rs</a></strong>
-                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
+}" data-locs="[[8,8]]">
+                <div class="scraped-example-title"><a href="../../../src/file/file.rs.html#14" target="_blank">examples/file.rs</a></div>
+                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6"> 6</span>
 <span id="7"> 7</span>
 <span id="8"> 8</span>
 <span id="9"> 9</span>
@@ -104,13 +127,7 @@ async fn main() {
 <span id="19">19</span>
 <span id="20">20</span>
 <span id="21">21</span>
-</pre><pre class="rust">
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
-
-<span class="kw">use</span> <span class="ident">warp::Filter</span>;
-
-<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
     <span class="kw">let</span> <span class="ident">readme</span> <span class="op">=</span> <span class="ident">warp::get</span>()
@@ -118,127 +135,14 @@ async fn main() {
         .<span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>));
 
     <span class="comment">// dir already requires GET...</span>
-    <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./examples/&quot;</span>));
+    <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>).<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;./examples/&quot;</span>)</span>);
 
     <span class="comment">// GET / =&gt; README.md</span>
     <span class="comment">// GET /ex/... =&gt; ./examples/..</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">readme</span>.<span class="ident">or</span>(<span class="ident">examples</span>);
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
-}
-</pre></div>
-</div></div><div class="scraped-example" data-code="#![deny(warnings)]
-
-use tokio::net::UnixListener;
-use tokio_stream::wrappers::UnixListenerStream;
-
-#[tokio::main]
-async fn main() {
-    pretty_env_logger::init();
-
-    let listener = UnixListener::bind(&quot;/tmp/warp.sock&quot;).unwrap();
-    let incoming = UnixListenerStream::new(listener);
-    warp::serve(warp::fs::dir(&quot;examples/dir&quot;))
-        .run_incoming(incoming)
-        .await;
-}
-" data-locs="[[300,329]]">
-                <strong><a href="../../../src/unix_socket/unix_socket.rs.html" target="_blank">examples/unix_socket.rs</a></strong>
-                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-</pre><pre class="rust">
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
-
-<span class="kw">use</span> <span class="ident">tokio::net::UnixListener</span>;
-<span class="kw">use</span> <span class="ident">tokio_stream::wrappers::UnixListenerStream</span>;
-
-<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="ident">pretty_env_logger::init</span>();
-
-    <span class="kw">let</span> <span class="ident">listener</span> <span class="op">=</span> <span class="ident">UnixListener::bind</span>(<span class="string">&quot;/tmp/warp.sock&quot;</span>).<span class="ident">unwrap</span>();
-    <span class="kw">let</span> <span class="ident">incoming</span> <span class="op">=</span> <span class="ident">UnixListenerStream::new</span>(<span class="ident">listener</span>);
-    <span class="ident">warp::serve</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;examples/dir&quot;</span>))
-        .<span class="ident">run_incoming</span>(<span class="ident">incoming</span>)
-        .<span class="kw">await</span>;
-}
-</pre></div>
-</div></div><div class="scraped-example" data-code="use warp::{filters::BoxedFilter, Filter, Rejection, Reply};
-
-// Option 1: BoxedFilter
-// Note that this may be useful for shortening compile times when you are composing many filters.
-// Boxing the filters will use dynamic dispatch and speed up compilation while
-// making it slightly slower at runtime.
-pub fn assets_filter() -> BoxedFilter<(impl Reply,)> {
-    warp::path(&quot;assets&quot;).and(warp::fs::dir(&quot;./assets&quot;)).boxed()
-}
-
-// Option 2: impl Filter + Clone
-pub fn index_filter() -> impl Filter<Extract = (&'static str,), Error = Rejection> + Clone {
-    warp::path::end().map(|| &quot;Index page&quot;)
-}
-
-#[tokio::main]
-async fn main() {
-    let routes = index_filter().or(assets_filter());
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}
-" data-locs="[[388,413]]">
-                <strong><a href="../../../src/returning/returning.rs.html" target="_blank">examples/returning.rs</a></strong>
-                 <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="ident">warp</span>::{<span class="ident">filters::BoxedFilter</span>, <span class="ident">Filter</span>, <span class="ident">Rejection</span>, <span class="ident">Reply</span>};
-
-<span class="comment">// Option 1: BoxedFilter</span>
-<span class="comment">// Note that this may be useful for shortening compile times when you are composing many filters.</span>
-<span class="comment">// Boxing the filters will use dynamic dispatch and speed up compilation while</span>
-<span class="comment">// making it slightly slower at runtime.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">assets_filter</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BoxedFilter</span><span class="op">&lt;</span>(<span class="kw">impl</span> <span class="ident">Reply</span>,)<span class="op">&gt;</span> {
-    <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>)).<span class="ident">boxed</span>()
-}
-
-<span class="comment">// Option 2: impl Filter + Clone</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index_filter</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
-    <span class="ident">warp::path::end</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Index page&quot;</span>)
-}
-
-<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index_filter</span>().<span class="ident">or</span>(<span class="ident">assets_filter</span>());
-    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
-}
-</pre></div>
-</div></div></div></details></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script></body></html>
+}</code></pre></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
+    <script src="../../../main.js"></script>
+</body></html>

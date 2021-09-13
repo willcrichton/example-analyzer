@@ -1,1 +1,0 @@
-{"doctest::other_mod::bar":{"examples/bar.rs":{"locations":[[84,89]],"url":"src/bar/bar.rs.html#17"}},"core::panicking::assert_failed":{"/raid/wcrichto/rust.example-analyzer/library/core/src/macros/mod.rs":{"locations":[[2315836,2315929]],"url":"src/bar/bar.rs.html#17"}}}

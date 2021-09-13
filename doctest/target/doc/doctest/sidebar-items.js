@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["foo",""],["quux",""]],"mod":[["other_mod",""]],"struct":[["A",""]]});
