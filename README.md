@@ -1,5 +1,7 @@
 # example-analyzer
 
+This repo is now out of date. Please see the newer implementation described in the [RFC](https://github.com/rust-lang/rfcs/pull/3123).
+
 ## Setup
 
 ```bash
