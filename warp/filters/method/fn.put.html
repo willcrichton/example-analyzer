@@ -6,15 +6,7 @@
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="pub fn todos_update(
-        db: Db,
-    ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
-        warp::path!(&quot;todos&quot; / u64)
-            .and(warp::put())
-            .and(json_body())
-            .and(with_db(db))
-            .and_then(handlers::update_todo)
-    }" data-locs="[[4,4]]">
+          </h1><div class="scraped-example" data-locs="[[4,4]]">
                 <div class="scraped-example-title"><a href="../../../src/todos/todos.rs.html#75" target="_blank">examples/todos.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="71">71</span>
 <span id="72">72</span>

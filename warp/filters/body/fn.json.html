@@ -15,11 +15,7 @@ prevent a overly large request from using too much memory.</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn json_body() -> impl Filter<Extract = (Todo,), Error = warp::Rejection> + Clone {
-        // When accepting a body, we want a JSON body
-        // (and to reject huge payloads)...
-        warp::body::content_length_limit(1024 * 16).and(warp::body::json())
-    }" data-locs="[[3,3]]">
+          </h1><div class="scraped-example" data-locs="[[3,3]]">
                 <div class="scraped-example-title"><a href="../../../src/todos/todos.rs.html#106" target="_blank">examples/todos.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="103">103</span>
 <span id="104">104</span>
@@ -37,24 +33,8 @@ prevent a overly large request from using too much memory.</p>
                   </summary>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
-                    <div>
-<div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    // POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}
-    let promote = warp::post()
-        .and(warp::path(&quot;employees&quot;))
-        .and(warp::path::param::<u32>())
-        // Only accept bodies smaller than 16kb...
-        .and(warp::body::content_length_limit(1024 * 16))
-        .and(warp::body::json())
-        .map(|rate, mut employee: Employee| {
-            employee.rate = rate;
-            warp::reply::json(&employee)
-        });
-
-    warp::serve(promote).run(([127, 0, 0, 1], 3030)).await
-}" data-locs="[[9,9]]">
+                    <div class="more-scraped-examples-inner">
+<div class="scraped-example" data-locs="[[9,9]]">
                 <div class="scraped-example-title"><a href="../../../src/body/body.rs.html#23" target="_blank">examples/body.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
 <span id="15">15</span>
@@ -90,32 +70,7 @@ prevent a overly large request from using too much memory.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    let math = warp::path!(&quot;math&quot; / u16);
-    let div_with_header = math
-        .and(warp::get())
-        .and(div_by())
-        .map(|num: u16, denom: NonZeroU16| {
-            warp::reply::json(&Math {
-                op: format!(&quot;{} / {}&quot;, num, denom),
-                output: num / denom.get(),
-            })
-        });
-
-    let div_with_body =
-        math.and(warp::post())
-            .and(warp::body::json())
-            .map(|num: u16, body: DenomRequest| {
-                warp::reply::json(&Math {
-                    op: format!(&quot;{} / {}&quot;, num, body.denom),
-                    output: num / body.denom.get(),
-                })
-            });
-
-    let routes = div_with_header.or(div_with_body).recover(handle_rejection);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[14,14]]">
+</div></div><div class="scraped-example" data-locs="[[14,14]]">
                 <div class="scraped-example-title"><a href="../../../src/rejections/rejections.rs.html#28" target="_blank">examples/rejections.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
 <span id="15">15</span>

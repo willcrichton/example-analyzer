@@ -3,10 +3,7 @@
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn main() {
-    let routes = index_filter().or(assets_filter());
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[2,2]]">
+          </h1><div class="scraped-example" data-locs="[[2,2]]">
                 <div class="scraped-example-title"><a href="../src/returning/returning.rs.html#19" target="_blank">examples/returning.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="17">17</span>
 <span id="18">18</span>
@@ -22,12 +19,8 @@
                   </summary>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
-                    <div>
-<div class="scraped-example" data-code="fn main() {
-    let routes = warp::path::param().and_then(dyn_reply);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[3,3]]">
+                    <div class="more-scraped-examples-inner">
+<div class="scraped-example" data-locs="[[3,3]]">
                 <div class="scraped-example-title"><a href="../src/dyn_reply/dyn_reply.rs.html#16" target="_blank">examples/dyn_reply.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="13">13</span>
 <span id="14">14</span>
@@ -39,13 +32,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="highlight"><span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))</span>.<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    warp::serve(warp::fs::dir(&quot;examples/dir&quot;))
-        .run(([127, 0, 0, 1], 3030))
-        .await;
-}" data-locs="[[4,4]]">
+</div></div><div class="scraped-example" data-locs="[[4,4]]">
                 <div class="scraped-example-title"><a href="../src/dir/dir.rs.html#8" target="_blank">examples/dir.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="4">4</span>
 <span id="5">5</span>
@@ -61,12 +48,7 @@
         .<span class="highlight"><span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))</span>
         .<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    // Match any request and return hello world!
-    let routes = warp::any().map(|| &quot;Hello, World!&quot;);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[4,4]]">
+</div></div><div class="scraped-example" data-locs="[[4,4]]">
                 <div class="scraped-example-title"><a href="../src/hello/hello.rs.html#9" target="_blank">examples/hello.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5">5</span>
 <span id="6">6</span>
@@ -80,14 +62,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="highlight"><span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))</span>.<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    // Match `/:Seconds`...
-    let routes = warp::path::param()
-        // and_then create a `Future` that will simply wait N seconds...
-        .and_then(sleepy);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[6,6]]">
+</div></div><div class="scraped-example" data-locs="[[6,6]]">
                 <div class="scraped-example-title"><a href="../src/futures/futures.rs.html#15" target="_blank">examples/futures.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="9">9</span>
 <span id="10">10</span>
@@ -105,17 +80,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="highlight"><span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))</span>.<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    // Match any request and return hello world!
-    let routes = warp::any()
-        .map(|| &quot;hello world&quot;)
-        .boxed()
-        .recover(|_err| async { Ok(&quot;recovered&quot;) })
-        // wrap the filter with hello_wrapper
-        .with(warp::wrap_fn(hello_wrapper));
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[9,9]]">
+</div></div><div class="scraped-example" data-locs="[[9,9]]">
                 <div class="scraped-example-title"><a href="../src/wrapping/wrapping.rs.html#30" target="_blank">examples/wrapping.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="21">21</span>
 <span id="22">22</span>
@@ -145,18 +110,7 @@ of incoming connections.</p>
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples-1">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn main() {
-    use tokio::net::UnixListener;
-    use tokio_stream::wrappers::UnixListenerStream;
-
-    pretty_env_logger::init();
-
-    let listener = UnixListener::bind(&quot;/tmp/warp.sock&quot;).unwrap();
-    let incoming = UnixListenerStream::new(listener);
-    warp::serve(warp::fs::dir(&quot;examples/dir&quot;))
-        .run_incoming(incoming)
-        .await;
-}" data-locs="[[9,9]]">
+          </h1><div class="scraped-example" data-locs="[[9,9]]">
                 <div class="scraped-example-title"><a href="../src/unix_socket/unix_socket.rs.html#14" target="_blank">examples/unix_socket.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5"> 5</span>
 <span id="6"> 6</span>

@@ -10,49 +10,7 @@
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
-    let code;
-    let message;
-
-    if err.is_not_found() {
-        code = StatusCode::NOT_FOUND;
-        message = &quot;NOT_FOUND&quot;;
-    } else if let Some(DivideByZero) = err.find() {
-        code = StatusCode::BAD_REQUEST;
-        message = &quot;DIVIDE_BY_ZERO&quot;;
-    } else if let Some(e) = err.find::<warp::filters::body::BodyDeserializeError>() {
-        // This error happens if the body could not be deserialized correctly
-        // We can use the cause to analyze the error and customize the error message
-        message = match e.source() {
-            Some(cause) => {
-                if cause.to_string().contains(&quot;denom&quot;) {
-                    &quot;FIELD_ERROR: denom&quot;
-                } else {
-                    &quot;BAD_REQUEST&quot;
-                }
-            }
-            None => &quot;BAD_REQUEST&quot;,
-        };
-        code = StatusCode::BAD_REQUEST;
-    } else if let Some(_) = err.find::<warp::reject::MethodNotAllowed>() {
-        // We can handle a specific error, here METHOD_NOT_ALLOWED,
-        // and render it however we want
-        code = StatusCode::METHOD_NOT_ALLOWED;
-        message = &quot;METHOD_NOT_ALLOWED&quot;;
-    } else {
-        // We should have expected this... Just log and say its a 500
-        eprintln!(&quot;unhandled rejection: {:?}&quot;, err);
-        code = StatusCode::INTERNAL_SERVER_ERROR;
-        message = &quot;UNHANDLED_REJECTION&quot;;
-    }
-
-    let json = warp::reply::json(&ErrorMessage {
-        code: code.as_u16(),
-        message: message.into(),
-    });
-
-    Ok(warp::reply::with_status(json, code))
-}" data-locs="[[41,41]]">
+          </h1><div class="scraped-example" data-locs="[[41,41]]">
                 <div class="scraped-example-title"><a href="../../src/rejections/rejections.rs.html#121" target="_blank">examples/rejections.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="80">80</span>
 <span id="81">81</span>

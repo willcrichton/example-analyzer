@@ -6,22 +6,7 @@
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="pub fn todos_delete(
-        db: Db,
-    ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
-        // We'll make one of our endpoints admin-only to show how authentication filters are used
-        let admin_only = warp::header::exact(&quot;authorization&quot;, &quot;Bearer admin&quot;);
-
-        warp::path!(&quot;todos&quot; / u64)
-            // It is important to put the auth check _after_ the path filters.
-            // If we put the auth check before, the request `PUT /todos/invalid-string`
-            // would try this filter and reject because the authorization header doesn't match,
-            // rather because the param is wrong for that other path.
-            .and(admin_only)
-            .and(warp::delete())
-            .and(with_db(db))
-            .and_then(handlers::delete_todo)
-    }" data-locs="[[12,12]]">
+          </h1><div class="scraped-example" data-locs="[[12,12]]">
                 <div class="scraped-example-title"><a href="../../../src/todos/todos.rs.html#94" target="_blank">examples/todos.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="82">82</span>
 <span id="83">83</span>

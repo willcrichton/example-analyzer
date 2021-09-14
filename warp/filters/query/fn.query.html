@@ -45,15 +45,7 @@ the crate in your dependencies before usage.</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="pub fn todos_list(
-        db: Db,
-    ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
-        warp::path!(&quot;todos&quot;)
-            .and(warp::get())
-            .and(warp::query::<ListOptions>())
-            .and(with_db(db))
-            .and_then(handlers::list_todos)
-    }" data-locs="[[5,5]]">
+          </h1><div class="scraped-example" data-locs="[[5,5]]">
                 <div class="scraped-example-title"><a href="../../../src/todos/todos.rs.html#54" target="_blank">examples/todos.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="49">49</span>
 <span id="50">50</span>
@@ -79,52 +71,8 @@ the crate in your dependencies before usage.</p>
                   </summary>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
-                    <div>
-<div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    // get /example1?key=value
-    // demonstrates an optional parameter.
-    let example1 = warp::get()
-        .and(warp::path(&quot;example1&quot;))
-        .and(warp::query::<HashMap<String, String>>())
-        .map(|p: HashMap<String, String>| match p.get(&quot;key&quot;) {
-            Some(key) => Response::builder().body(format!(&quot;key = {}&quot;, key)),
-            None => Response::builder().body(String::from(&quot;No \&quot;key\&quot; param in query.&quot;)),
-        });
-
-    // get /example2?key1=value&key2=42
-    // uses the query string to populate a custom object
-    let example2 = warp::get()
-        .and(warp::path(&quot;example2&quot;))
-        .and(warp::query::<MyObject>())
-        .map(|p: MyObject| {
-            Response::builder().body(format!(&quot;key1 = {}, key2 = {}&quot;, p.key1, p.key2))
-        });
-
-    let opt_query = warp::query::<MyObject>()
-        .map(Some)
-        .or_else(|_| async { Ok::<(Option<MyObject>,), std::convert::Infallible>((None,)) });
-
-    // get /example3?key1=value&key2=42
-    // builds on example2 but adds custom error handling
-    let example3 =
-        warp::get()
-            .and(warp::path(&quot;example3&quot;))
-            .and(opt_query)
-            .map(|p: Option<MyObject>| match p {
-                Some(obj) => {
-                    Response::builder().body(format!(&quot;key1 = {}, key2 = {}&quot;, obj.key1, obj.key2))
-                }
-                None => Response::builder()
-                    .status(StatusCode::BAD_REQUEST)
-                    .body(String::from(&quot;Failed to decode query param.&quot;)),
-            });
-
-    warp::serve(example1.or(example2).or(example3))
-        .run(([127, 0, 0, 1], 3030))
-        .await
-}" data-locs="[[7,7],[17,17],[22,22]]">
+                    <div class="more-scraped-examples-inner">
+<div class="scraped-example" data-locs="[[7,7],[17,17],[22,22]]">
                 <div class="scraped-example-title"><a href="../../../src/query_string/query_string.rs.html#22" target="_blank">examples/query_string.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="15">15</span>
 <span id="16">16</span>

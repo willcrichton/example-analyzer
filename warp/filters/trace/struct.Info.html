@@ -5,54 +5,7 @@
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn main() {
-    // Filter traces based on the RUST_LOG env var, or, if it's not set,
-    // default to show the output of the example.
-    let filter = std::env::var(&quot;RUST_LOG&quot;).unwrap_or_else(|_| &quot;tracing=info,warp=debug&quot;.to_owned());
-
-    // Configure the default `tracing` subscriber.
-    // The `fmt` subscriber from the `tracing-subscriber` crate logs `tracing`
-    // events to stdout. Other subscribers are available for integrating with
-    // distributed tracing systems such as OpenTelemetry.
-    tracing_subscriber::fmt()
-        // Use the filter we built above to determine which traces to record.
-        .with_env_filter(filter)
-        // Record an event when each span closes. This can be used to time our
-        // routes' durations!
-        .with_span_events(FmtSpan::CLOSE)
-        .init();
-
-    let hello = warp::path(&quot;hello&quot;)
-        .and(warp::get())
-        // When the `hello` route is called, emit a `tracing` event.
-        .map(|| {
-            tracing::info!(&quot;saying hello...&quot;);
-            &quot;Hello, World!&quot;
-        })
-        // Wrap the route in a `tracing` span to add the route's name as context
-        // to any events that occur inside it.
-        .with(warp::trace::named(&quot;hello&quot;));
-
-    let goodbye = warp::path(&quot;goodbye&quot;)
-        .and(warp::get())
-        .map(|| {
-            tracing::info!(&quot;saying goodbye...&quot;);
-            &quot;So long and thanks for all the fish!&quot;
-        })
-        // We can also provide our own custom `tracing` spans to wrap a route.
-        .with(warp::trace(|info| {
-            // Construct our own custom span for this route.
-            tracing::info_span!(&quot;goodbye&quot;, req.path = ?info.path())
-        }));
-
-    let routes = hello
-        .or(goodbye)
-        // Wrap all the routes with a filter that creates a `tracing` span for
-        // each request we receive, including data about the request.
-        .with(warp::trace::request());
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[37,37],[37,37]]">
+          </h1><div class="scraped-example" data-locs="[[37,37],[37,37]]">
                 <div class="scraped-example-title"><a href="../../../src/tracing/tracing.rs.html#49" target="_blank">examples/tracing.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="12">12</span>
 <span id="13">13</span>

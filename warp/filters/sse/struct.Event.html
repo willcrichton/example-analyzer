@@ -4,9 +4,7 @@ data field(s) (“data:<content>”)</p>
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn sse_counter(counter: u64) -> Result<Event, Infallible> {
-    Ok(warp::sse::Event::default().data(counter.to_string()))
-}" data-locs="[[1,1]]">
+          </h1><div class="scraped-example" data-locs="[[1,1]]">
                 <div class="scraped-example-title"><a href="../../../src/sse/sse.rs.html#10" target="_blank">examples/sse.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="9">9</span>
 <span id="10">10</span>
@@ -20,31 +18,8 @@ data field(s) (“data:<content>”)</p>
                   </summary>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
-                    <div>
-<div class="scraped-example" data-code="fn user_connected(users: Users) -> impl Stream<Item = Result<Event, warp::Error>> + Send + 'static {
-    // Use a counter to assign a new unique ID for this user.
-    let my_id = NEXT_USER_ID.fetch_add(1, Ordering::Relaxed);
-
-    eprintln!(&quot;new chat user: {}&quot;, my_id);
-
-    // Use an unbounded channel to handle buffering and flushing of messages
-    // to the event source...
-    let (tx, rx) = mpsc::unbounded_channel();
-    let rx = UnboundedReceiverStream::new(rx);
-
-    tx.send(Message::UserId(my_id))
-        // rx is right above, so this cannot fail
-        .unwrap();
-
-    // Save the sender in our list of connected users.
-    users.lock().unwrap().insert(my_id, tx);
-
-    // Convert messages into Server-Sent Events and return resulting stream.
-    rx.map(|msg| match msg {
-        Message::UserId(my_id) => Ok(Event::default().event(&quot;user&quot;).data(my_id.to_string())),
-        Message::Reply(reply) => Ok(Event::default().data(reply)),
-    })
-}" data-locs="[[20,20],[21,21]]">
+                    <div class="more-scraped-examples-inner">
+<div class="scraped-example" data-locs="[[20,20],[21,21]]">
                 <div class="scraped-example-title"><a href="../../../src/sse_chat/sse_chat.rs.html#98" target="_blank">examples/sse_chat.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="78">78</span>
 <span id="79">79</span>
@@ -103,30 +78,7 @@ Event name field (“event:<event-name>”)</p>
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples-1">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn user_connected(users: Users) -> impl Stream<Item = Result<Event, warp::Error>> + Send + 'static {
-    // Use a counter to assign a new unique ID for this user.
-    let my_id = NEXT_USER_ID.fetch_add(1, Ordering::Relaxed);
-
-    eprintln!(&quot;new chat user: {}&quot;, my_id);
-
-    // Use an unbounded channel to handle buffering and flushing of messages
-    // to the event source...
-    let (tx, rx) = mpsc::unbounded_channel();
-    let rx = UnboundedReceiverStream::new(rx);
-
-    tx.send(Message::UserId(my_id))
-        // rx is right above, so this cannot fail
-        .unwrap();
-
-    // Save the sender in our list of connected users.
-    users.lock().unwrap().insert(my_id, tx);
-
-    // Convert messages into Server-Sent Events and return resulting stream.
-    rx.map(|msg| match msg {
-        Message::UserId(my_id) => Ok(Event::default().event(&quot;user&quot;).data(my_id.to_string())),
-        Message::Reply(reply) => Ok(Event::default().data(reply)),
-    })
-}" data-locs="[[20,20]]">
+          </h1><div class="scraped-example" data-locs="[[20,20]]">
                 <div class="scraped-example-title"><a href="../../../src/sse_chat/sse_chat.rs.html#98" target="_blank">examples/sse_chat.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="78">78</span>
 <span id="79">79</span>

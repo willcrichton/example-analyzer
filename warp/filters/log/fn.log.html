@@ -13,23 +13,7 @@ will have their <code>target</code> set to <code>name</code>.</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn main() {
-    if env::var_os(&quot;RUST_LOG&quot;).is_none() {
-        // Set `RUST_LOG=todos=debug` to see debug logs,
-        // this only shows access logs.
-        env::set_var(&quot;RUST_LOG&quot;, &quot;todos=info&quot;);
-    }
-    pretty_env_logger::init();
-
-    let db = models::blank_db();
-
-    let api = filters::todos(db);
-
-    // View access logs by setting `RUST_LOG=todos`.
-    let routes = api.with(warp::log(&quot;todos&quot;));
-    // Start up the server...
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[13,13]]">
+          </h1><div class="scraped-example" data-locs="[[13,13]]">
                 <div class="scraped-example-title"><a href="../../../src/todos/todos.rs.html#28" target="_blank">examples/todos.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="15">15</span>
 <span id="16">16</span>

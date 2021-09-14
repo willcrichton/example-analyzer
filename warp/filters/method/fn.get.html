@@ -6,15 +6,7 @@
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="pub fn todos_list(
-        db: Db,
-    ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
-        warp::path!(&quot;todos&quot;)
-            .and(warp::get())
-            .and(warp::query::<ListOptions>())
-            .and(with_db(db))
-            .and_then(handlers::list_todos)
-    }" data-locs="[[4,4]]">
+          </h1><div class="scraped-example" data-locs="[[4,4]]">
                 <div class="scraped-example-title"><a href="../../../src/todos/todos.rs.html#53" target="_blank">examples/todos.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="49">49</span>
 <span id="50">50</span>
@@ -40,23 +32,8 @@
                   </summary>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
-                    <div>
-<div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    let readme = warp::get()
-        .and(warp::path::end())
-        .and(warp::fs::file(&quot;./README.md&quot;));
-
-    // dir already requires GET...
-    let examples = warp::path(&quot;ex&quot;).and(warp::fs::dir(&quot;./examples/&quot;));
-
-    // GET / => README.md
-    // GET /ex/... => ./examples/..
-    let routes = readme.or(examples);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[3,3]]">
+                    <div class="more-scraped-examples-inner">
+<div class="scraped-example" data-locs="[[3,3]]">
                 <div class="scraped-example-title"><a href="../../../src/file/file.rs.html#9" target="_blank">examples/file.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6"> 6</span>
 <span id="7"> 7</span>
@@ -90,24 +67,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    let routes = warp::path(&quot;ticks&quot;).and(warp::get()).map(|| {
-        let mut counter: u64 = 0;
-        // create server event source
-        let interval = interval(Duration::from_secs(1));
-        let stream = IntervalStream::new(interval);
-        let event_stream = stream.map(move |_| {
-            counter += 1;
-            sse_counter(counter)
-        });
-        // reply using server-sent events
-        warp::sse::reply(event_stream)
-    });
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[3,3]]">
+</div></div><div class="scraped-example" data-locs="[[3,3]]">
                 <div class="scraped-example-title"><a href="../../../src/sse/sse.rs.html#17" target="_blank">examples/sse.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
 <span id="15">15</span>
@@ -145,32 +105,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    let math = warp::path!(&quot;math&quot; / u16);
-    let div_with_header = math
-        .and(warp::get())
-        .and(div_by())
-        .map(|num: u16, denom: NonZeroU16| {
-            warp::reply::json(&Math {
-                op: format!(&quot;{} / {}&quot;, num, denom),
-                output: num / denom.get(),
-            })
-        });
-
-    let div_with_body =
-        math.and(warp::post())
-            .and(warp::body::json())
-            .map(|num: u16, body: DenomRequest| {
-                warp::reply::json(&Math {
-                    op: format!(&quot;{} / {}&quot;, num, body.denom),
-                    output: num / body.denom.get(),
-                })
-            });
-
-    let routes = div_with_header.or(div_with_body).recover(handle_rejection);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[3,3]]">
+</div></div><div class="scraped-example" data-locs="[[3,3]]">
                 <div class="scraped-example-title"><a href="../../../src/rejections/rejections.rs.html#17" target="_blank">examples/rejections.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
 <span id="15">15</span>
@@ -224,40 +159,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    let template = &quot;<!DOCTYPE html>
-                    <html>
-                      <head>
-                        <title>Warp Handlebars template example</title>
-                      </head>
-                      <body>
-                        <h1>Hello {{user}}!</h1>
-                      </body>
-                    </html>&quot;;
-
-    let mut hb = Handlebars::new();
-    // register the template
-    hb.register_template_string(&quot;template.html&quot;, template)
-        .unwrap();
-
-    // Turn Handlebars instance into a Filter so we can combine it
-    // easily with others...
-    let hb = Arc::new(hb);
-
-    // Create a reusable closure to render template
-    let handlebars = move |with_template| render(with_template, hb.clone());
-
-    //GET /
-    let route = warp::get()
-        .and(warp::path::end())
-        .map(|| WithTemplate {
-            name: &quot;template.html&quot;,
-            value: json!({&quot;user&quot; : &quot;Warp&quot;}),
-        })
-        .map(handlebars);
-
-    warp::serve(route).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[24,24]]">
+</div></div><div class="scraped-example" data-locs="[[24,24]]">
                 <div class="scraped-example-title"><a href="../../../src/handlebars_template/handlebars_template.rs.html#49" target="_blank">examples/handlebars_template.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="25">25</span>
 <span id="26">26</span>
@@ -327,51 +229,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">route</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    // Keep track of all connected users, key is usize, value
-    // is an event stream sender.
-    let users = Arc::new(Mutex::new(HashMap::new()));
-    // Turn our &quot;state&quot; into a new Filter...
-    let users = warp::any().map(move || users.clone());
-
-    // POST /chat -> send message
-    let chat_send = warp::path(&quot;chat&quot;)
-        .and(warp::post())
-        .and(warp::path::param::<usize>())
-        .and(warp::body::content_length_limit(500))
-        .and(
-            warp::body::bytes().and_then(|body: bytes::Bytes| async move {
-                std::str::from_utf8(&body)
-                    .map(String::from)
-                    .map_err(|_e| warp::reject::custom(NotUtf8))
-            }),
-        )
-        .and(users.clone())
-        .map(|my_id, msg, users| {
-            user_message(my_id, msg, &users);
-            warp::reply()
-        });
-
-    // GET /chat -> messages stream
-    let chat_recv = warp::path(&quot;chat&quot;).and(warp::get()).and(users).map(|users| {
-        // reply using server-sent events
-        let stream = user_connected(users);
-        warp::sse::reply(warp::sse::keep_alive().stream(stream))
-    });
-
-    // GET / -> index html
-    let index = warp::path::end().map(|| {
-        warp::http::Response::builder()
-            .header(&quot;content-type&quot;, &quot;text/html; charset=utf-8&quot;)
-            .body(INDEX_HTML)
-    });
-
-    let routes = index.or(chat_recv).or(chat_send);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[28,28]]">
+</div></div><div class="scraped-example" data-locs="[[28,28]]">
                 <div class="scraped-example-title"><a href="../../../src/sse_chat/sse_chat.rs.html#40" target="_blank">examples/sse_chat.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="12">12</span>
 <span id="13">13</span>

@@ -26,33 +26,7 @@ the greater <a href="https://docs.rs/tower">Tower</a> set of middleware.</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn main() {
-    // Match any request and return hello world!
-    let routes = warp::any().map(|| &quot;Hello, World!&quot;);
-
-    // hyper let's us build a server from a TcpListener (which will be
-    // useful shortly). Thus, we'll need to convert our `warp::Filter` into
-    // a `hyper::service::MakeService` for use with a `hyper::server::Server`.
-    let svc = warp::service(routes);
-
-    let make_svc = hyper::service::make_service_fn(|_: _| {
-        // the clone is there because not all warp filters impl Copy
-        let svc = svc.clone();
-        async move { Ok::<_, Infallible>(svc) }
-    });
-
-    let mut listenfd = ListenFd::from_env();
-    // if listenfd doesn't take a TcpListener (i.e. we're not running via
-    // the command above), we fall back to explicitly binding to a given
-    // host:port.
-    let server = if let Some(l) = listenfd.take_tcp_listener(0).unwrap() {
-        Server::from_tcp(l).unwrap()
-    } else {
-        Server::bind(&([127, 0, 0, 1], 3030).into())
-    };
-
-    server.serve(make_svc).await.unwrap();
-}" data-locs="[[7,7]]">
+          </h1><div class="scraped-example" data-locs="[[7,7]]">
                 <div class="scraped-example-title"><a href="../src/autoreload/autoreload.rs.html#24" target="_blank">examples/autoreload.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="17">17</span>
 <span id="18">18</span>

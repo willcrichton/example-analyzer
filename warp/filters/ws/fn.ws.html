@@ -20,27 +20,7 @@ return a reply with:</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    let routes = warp::path(&quot;echo&quot;)
-        // The `ws()` filter will prepare the Websocket handshake.
-        .and(warp::ws())
-        .map(|ws: warp::ws::Ws| {
-            // And then our closure will be called when it completes...
-            ws.on_upgrade(|websocket| {
-                // Just echo all messages back...
-                let (tx, rx) = websocket.split();
-                rx.forward(tx).map(|result| {
-                    if let Err(e) = result {
-                        eprintln!(&quot;websocket error: {:?}&quot;, e);
-                    }
-                })
-            })
-        });
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[5,5]]">
+          </h1><div class="scraped-example" data-locs="[[5,5]]">
                 <div class="scraped-example-title"><a href="../../../src/websockets/websockets.rs.html#12" target="_blank">examples/websockets.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="7"> 7</span>
 <span id="8"> 8</span>
@@ -90,33 +70,8 @@ return a reply with:</p>
                   </summary>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
-                    <div>
-<div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    // Keep track of all connected users, key is usize, value
-    // is a websocket sender.
-    let users = Users::default();
-    // Turn our &quot;state&quot; into a new Filter...
-    let users = warp::any().map(move || users.clone());
-
-    // GET /chat -> websocket upgrade
-    let chat = warp::path(&quot;chat&quot;)
-        // The `ws()` filter will prepare Websocket handshake...
-        .and(warp::ws())
-        .and(users)
-        .map(|ws: warp::ws::Ws, users| {
-            // This will call our function if the handshake succeeds.
-            ws.on_upgrade(move |socket| user_connected(socket, users))
-        });
-
-    // GET / -> index html
-    let index = warp::path::end().map(|| warp::reply::html(INDEX_HTML));
-
-    let routes = index.or(chat);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[12,12]]">
+                    <div class="more-scraped-examples-inner">
+<div class="scraped-example" data-locs="[[12,12]]">
                 <div class="scraped-example-title"><a href="../../../src/websockets_chat/websockets_chat.rs.html#36" target="_blank">examples/websockets_chat.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="24">24</span>
 <span id="25">25</span>

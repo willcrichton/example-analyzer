@@ -5,27 +5,7 @@ language feature has stabilized.</p>
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="async fn user_message(my_id: usize, msg: Message, users: &Users) {
-    // Skip any non-Text messages...
-    let msg = if let Ok(s) = msg.to_str() {
-        s
-    } else {
-        return;
-    };
-
-    let new_msg = format!(&quot;<User#{}>: {}&quot;, my_id, msg);
-
-    // New message from this user, send it to everyone else (except same uid)...
-    for (&uid, tx) in users.read().await.iter() {
-        if my_id != uid {
-            if let Err(_disconnected) = tx.send(Message::text(new_msg.clone())) {
-                // The tx is disconnected, our `user_disconnected` code
-                // should be happening in another task, nothing more to
-                // do here.
-            }
-        }
-    }
-}" data-locs="[[13,13]]">
+          </h1><div class="scraped-example" data-locs="[[13,13]]">
                 <div class="scraped-example-title"><a href="../../../src/websockets_chat/websockets_chat.rs.html#113" target="_blank">examples/websockets_chat.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="100">100</span>
 <span id="101">101</span>
@@ -87,27 +67,7 @@ like in tests or to send unidirectional heartbeats.</p>
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples-1">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="async fn user_message(my_id: usize, msg: Message, users: &Users) {
-    // Skip any non-Text messages...
-    let msg = if let Ok(s) = msg.to_str() {
-        s
-    } else {
-        return;
-    };
-
-    let new_msg = format!(&quot;<User#{}>: {}&quot;, my_id, msg);
-
-    // New message from this user, send it to everyone else (except same uid)...
-    for (&uid, tx) in users.read().await.iter() {
-        if my_id != uid {
-            if let Err(_disconnected) = tx.send(Message::text(new_msg.clone())) {
-                // The tx is disconnected, our `user_disconnected` code
-                // should be happening in another task, nothing more to
-                // do here.
-            }
-        }
-    }
-}" data-locs="[[2,2]]">
+          </h1><div class="scraped-example" data-locs="[[2,2]]">
                 <div class="scraped-example-title"><a href="../../../src/websockets_chat/websockets_chat.rs.html#102" target="_blank">examples/websockets_chat.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="100">100</span>
 <span id="101">101</span>

@@ -10,9 +10,7 @@
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-code="pub fn index_filter() -> impl Filter<Extract = (&'static str,), Error = Rejection> + Clone {
-    warp::path::end().map(|| &quot;Index page&quot;)
-}" data-locs="[[1,1]]">
+          </h1><div class="scraped-example" data-locs="[[1,1]]">
                 <div class="scraped-example-title"><a href="../../../src/returning/returning.rs.html#13" target="_blank">examples/returning.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="12">12</span>
 <span id="13">13</span>
@@ -26,23 +24,8 @@
                   </summary>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
-                    <div>
-<div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    let readme = warp::get()
-        .and(warp::path::end())
-        .and(warp::fs::file(&quot;./README.md&quot;));
-
-    // dir already requires GET...
-    let examples = warp::path(&quot;ex&quot;).and(warp::fs::dir(&quot;./examples/&quot;));
-
-    // GET / => README.md
-    // GET /ex/... => ./examples/..
-    let routes = readme.or(examples);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[4,4]]">
+                    <div class="more-scraped-examples-inner">
+<div class="scraped-example" data-locs="[[4,4]]">
                 <div class="scraped-example-title"><a href="../../../src/file/file.rs.html#10" target="_blank">examples/file.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6"> 6</span>
 <span id="7"> 7</span>
@@ -76,32 +59,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    // Keep track of all connected users, key is usize, value
-    // is a websocket sender.
-    let users = Users::default();
-    // Turn our &quot;state&quot; into a new Filter...
-    let users = warp::any().map(move || users.clone());
-
-    // GET /chat -> websocket upgrade
-    let chat = warp::path(&quot;chat&quot;)
-        // The `ws()` filter will prepare Websocket handshake...
-        .and(warp::ws())
-        .and(users)
-        .map(|ws: warp::ws::Ws, users| {
-            // This will call our function if the handshake succeeds.
-            ws.on_upgrade(move |socket| user_connected(socket, users))
-        });
-
-    // GET / -> index html
-    let index = warp::path::end().map(|| warp::reply::html(INDEX_HTML));
-
-    let routes = index.or(chat);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[20,20]]">
+</div></div><div class="scraped-example" data-locs="[[20,20]]">
                 <div class="scraped-example-title"><a href="../../../src/websockets_chat/websockets_chat.rs.html#44" target="_blank">examples/websockets_chat.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="24">24</span>
 <span id="25">25</span>
@@ -155,40 +113,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    let template = &quot;<!DOCTYPE html>
-                    <html>
-                      <head>
-                        <title>Warp Handlebars template example</title>
-                      </head>
-                      <body>
-                        <h1>Hello {{user}}!</h1>
-                      </body>
-                    </html>&quot;;
-
-    let mut hb = Handlebars::new();
-    // register the template
-    hb.register_template_string(&quot;template.html&quot;, template)
-        .unwrap();
-
-    // Turn Handlebars instance into a Filter so we can combine it
-    // easily with others...
-    let hb = Arc::new(hb);
-
-    // Create a reusable closure to render template
-    let handlebars = move |with_template| render(with_template, hb.clone());
-
-    //GET /
-    let route = warp::get()
-        .and(warp::path::end())
-        .map(|| WithTemplate {
-            name: &quot;template.html&quot;,
-            value: json!({&quot;user&quot; : &quot;Warp&quot;}),
-        })
-        .map(handlebars);
-
-    warp::serve(route).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[25,25]]">
+</div></div><div class="scraped-example" data-locs="[[25,25]]">
                 <div class="scraped-example-title"><a href="../../../src/handlebars_template/handlebars_template.rs.html#50" target="_blank">examples/handlebars_template.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="25">25</span>
 <span id="26">26</span>
@@ -258,51 +183,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">route</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    // Keep track of all connected users, key is usize, value
-    // is an event stream sender.
-    let users = Arc::new(Mutex::new(HashMap::new()));
-    // Turn our &quot;state&quot; into a new Filter...
-    let users = warp::any().map(move || users.clone());
-
-    // POST /chat -> send message
-    let chat_send = warp::path(&quot;chat&quot;)
-        .and(warp::post())
-        .and(warp::path::param::<usize>())
-        .and(warp::body::content_length_limit(500))
-        .and(
-            warp::body::bytes().and_then(|body: bytes::Bytes| async move {
-                std::str::from_utf8(&body)
-                    .map(String::from)
-                    .map_err(|_e| warp::reject::custom(NotUtf8))
-            }),
-        )
-        .and(users.clone())
-        .map(|my_id, msg, users| {
-            user_message(my_id, msg, &users);
-            warp::reply()
-        });
-
-    // GET /chat -> messages stream
-    let chat_recv = warp::path(&quot;chat&quot;).and(warp::get()).and(users).map(|users| {
-        // reply using server-sent events
-        let stream = user_connected(users);
-        warp::sse::reply(warp::sse::keep_alive().stream(stream))
-    });
-
-    // GET / -> index html
-    let index = warp::path::end().map(|| {
-        warp::http::Response::builder()
-            .header(&quot;content-type&quot;, &quot;text/html; charset=utf-8&quot;)
-            .body(INDEX_HTML)
-    });
-
-    let routes = index.or(chat_recv).or(chat_send);
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[35,35]]">
+</div></div><div class="scraped-example" data-locs="[[35,35]]">
                 <div class="scraped-example-title"><a href="../../../src/sse_chat/sse_chat.rs.html#47" target="_blank">examples/sse_chat.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="12">12</span>
 <span id="13">13</span>
@@ -394,105 +275,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-code="fn main() {
-    pretty_env_logger::init();
-
-    // We'll start simple, and gradually show how you combine these powers
-    // into super powers!
-
-    // GET /
-    let hello_world = warp::path::end().map(|| &quot;Hello, World at root!&quot;);
-
-    // GET /hi
-    let hi = warp::path(&quot;hi&quot;).map(|| &quot;Hello, World!&quot;);
-
-    // How about multiple segments? First, we could use the `path!` macro:
-    //
-    // GET /hello/from/warp
-    let hello_from_warp = warp::path!(&quot;hello&quot; / &quot;from&quot; / &quot;warp&quot;).map(|| &quot;Hello from warp!&quot;);
-
-    // Fine, but how do I handle parameters in paths?
-    //
-    // GET /sum/:u32/:u32
-    let sum = warp::path!(&quot;sum&quot; / u32 / u32).map(|a, b| format!(&quot;{} + {} = {}&quot;, a, b, a + b));
-
-    // Any type that implements FromStr can be used, and in any order:
-    //
-    // GET /:u16/times/:u16
-    let times =
-        warp::path!(u16 / &quot;times&quot; / u16).map(|a, b| format!(&quot;{} times {} = {}&quot;, a, b, a * b));
-
-    // Oh shoot, those math routes should be mounted at a different path,
-    // is that possible? Yep.
-    //
-    // GET /math/sum/:u32/:u32
-    // GET /math/:u16/times/:u16
-    let math = warp::path(&quot;math&quot;);
-    let _sum = math.and(sum);
-    let _times = math.and(times);
-
-    // What! And? What's that do?
-    //
-    // It combines the filters in a sort of &quot;this and then that&quot; order. In
-    // fact, it's exactly what the `path!` macro has been doing internally.
-    //
-    // GET /bye/:string
-    let bye = warp::path(&quot;bye&quot;)
-        .and(warp::path::param())
-        .map(|name: String| format!(&quot;Good bye, {}!&quot;, name));
-
-    // Ah, can filters do things besides `and`?
-    //
-    // Why, yes they can! They can also `or`! As you might expect, `or` creates
-    // a &quot;this or else that&quot; chain of filters. If the first doesn't succeed,
-    // then it tries the other.
-    //
-    // So, those `math` routes could have been mounted all as one, with `or`.
-    //
-    // GET /math/sum/:u32/:u32
-    // GET /math/:u16/times/:u16
-    let math = warp::path(&quot;math&quot;).and(sum.or(times));
-
-    // We can use the end() filter to match a shorter path
-    let help = warp::path(&quot;math&quot;)
-        // Careful! Omitting the following line would make this filter match
-        // requests to /math/sum/:u32/:u32 and /math/:u16/times/:u16
-        .and(warp::path::end())
-        .map(|| &quot;This is the Math API. Try calling /math/sum/:u32/:u32 or /math/:u16/times/:u16&quot;);
-    let math = help.or(math);
-
-    // Let's let people know that the `sum` and `times` routes are under `math`.
-    let sum = sum.map(|output| format!(&quot;(This route has moved to /math/sum/:u16/:u16) {}&quot;, output));
-    let times =
-        times.map(|output| format!(&quot;(This route has moved to /math/:u16/times/:u16) {}&quot;, output));
-
-    // It turns out, using `or` is how you combine everything together into
-    // a single API. (We also actually haven't been enforcing that the
-    // method is GET, so we'll do that too!)
-    //
-    // GET /
-    // GET /hi
-    // GET /hello/from/warp
-    // GET /bye/:string
-    // GET /math/sum/:u32/:u32
-    // GET /math/:u16/times/:u16
-
-    let routes = warp::get().and(
-        hello_world
-            .or(hi)
-            .or(hello_from_warp)
-            .or(bye)
-            .or(math)
-            .or(sum)
-            .or(times),
-    );
-
-    // Note that composing filters for many routes may increase compile times (because it uses a lot of generics).
-    // If you wish to use dynamic dispatch instead and speed up compile times while
-    // making it slightly slower at runtime, you can use Filter::boxed().
-
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
-}" data-locs="[[7,7],[63,63]]">
+</div></div><div class="scraped-example" data-locs="[[7,7],[63,63]]">
                 <div class="scraped-example-title"><a href="../../../src/routing/routing.rs.html#13" target="_blank">examples/routing.rs</a></div>
                  <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6"> 6</span>
 <span id="7"> 7</span>
