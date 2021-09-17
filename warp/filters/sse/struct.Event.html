@@ -4,13 +4,13 @@ data field(s) (“data:<content>”)</p>
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[1,1]]">
+          </h1><div class="scraped-example" data-locs="[[1,1]]" data-offset="9">
                 <div class="scraped-example-title">
-                   examples/sse.rs <a href="../../../src/sse/sse.rs.html#10" target="_blank">[src]</a>
+                   examples/sse.rs (<a href="../../../src/sse/sse.rs.html#10" target="_blank">line 10</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="9">9</span>
-<span id="10">10</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="10">10</span>
 <span id="11">11</span>
+<span id="12">12</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">sse_counter</span>(<span class="ident">counter</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Event</span>, <span class="ident">Infallible</span><span class="op">&gt;</span> {
     <span class="prelude-val">Ok</span>(<span class="ident">warp::sse::Event::default</span>().<span class="highlight"><span class="ident">data</span>(<span class="ident">counter</span>.<span class="ident">to_string</span>())</span>)
 }</code></pre></div>
@@ -21,12 +21,11 @@ data field(s) (“data:<content>”)</p>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
                     <div class="more-scraped-examples-inner">
-<div class="scraped-example" data-locs="[[20,20],[21,21]]">
+<div class="scraped-example" data-locs="[[20,20],[21,21]]" data-offset="78">
                 <div class="scraped-example-title">
-                   examples/sse_chat.rs <a href="../../../src/sse_chat/sse_chat.rs.html#98" target="_blank">[src]</a>
+                   examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#98" target="_blank">line 98</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="78">78</span>
-<span id="79">79</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="79">79</span>
 <span id="80">80</span>
 <span id="81">81</span>
 <span id="82">82</span>
@@ -49,6 +48,7 @@ data field(s) (“data:<content>”)</p>
 <span id="99">99</span>
 <span id="100">100</span>
 <span id="101">101</span>
+<span id="102">102</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">user_connected</span>(<span class="ident">users</span>: <span class="ident">Users</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Event</span>, <span class="ident">warp::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> {
     <span class="comment">// Use a counter to assign a new unique ID for this user.</span>
     <span class="kw">let</span> <span class="ident">my_id</span> <span class="op">=</span> <span class="ident">NEXT_USER_ID</span>.<span class="ident">fetch_add</span>(<span class="number">1</span>, <span class="ident">Ordering::Relaxed</span>);
@@ -82,12 +82,11 @@ Event name field (“event:<event-name>”)</p>
 </div><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples-1">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[20,20]]">
+          </h1><div class="scraped-example" data-locs="[[20,20]]" data-offset="78">
                 <div class="scraped-example-title">
-                   examples/sse_chat.rs <a href="../../../src/sse_chat/sse_chat.rs.html#98" target="_blank">[src]</a>
+                   examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#98" target="_blank">line 98</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="78">78</span>
-<span id="79">79</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="79">79</span>
 <span id="80">80</span>
 <span id="81">81</span>
 <span id="82">82</span>
@@ -110,6 +109,7 @@ Event name field (“event:<event-name>”)</p>
 <span id="99">99</span>
 <span id="100">100</span>
 <span id="101">101</span>
+<span id="102">102</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">user_connected</span>(<span class="ident">users</span>: <span class="ident">Users</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Event</span>, <span class="ident">warp::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> {
     <span class="comment">// Use a counter to assign a new unique ID for this user.</span>
     <span class="kw">let</span> <span class="ident">my_id</span> <span class="op">=</span> <span class="ident">NEXT_USER_ID</span>.<span class="ident">fetch_add</span>(<span class="number">1</span>, <span class="ident">Ordering::Relaxed</span>);
