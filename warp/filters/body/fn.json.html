@@ -15,15 +15,15 @@ prevent a overly large request from using too much memory.</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[3,3]]" data-offset="103">
+          </h1><div class="scraped-example" data-locs="[[3,3]]" data-offset="102">
                 <div class="scraped-example-title">
                    examples/todos.rs (<a href="../../../src/todos/todos.rs.html#106" target="_blank">line 106</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="104">104</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="103">103</span>
+<span id="104">104</span>
 <span id="105">105</span>
 <span id="106">106</span>
 <span id="107">107</span>
-<span id="108">108</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">json_body</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">Todo</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
         <span class="comment">// When accepting a body, we want a JSON body</span>
         <span class="comment">// (and to reject huge payloads)...</span>
@@ -36,11 +36,12 @@ prevent a overly large request from using too much memory.</p>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
                     <div class="more-scraped-examples-inner">
-<div class="scraped-example" data-locs="[[9,9]]" data-offset="14">
+<div class="scraped-example" data-locs="[[9,9]]" data-offset="13">
                 <div class="scraped-example-title">
                    examples/body.rs (<a href="../../../src/body/body.rs.html#23" target="_blank">line 23</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="15">15</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
+<span id="15">15</span>
 <span id="16">16</span>
 <span id="17">17</span>
 <span id="18">18</span>
@@ -56,7 +57,6 @@ prevent a overly large request from using too much memory.</p>
 <span id="28">28</span>
 <span id="29">29</span>
 <span id="30">30</span>
-<span id="31">31</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
@@ -74,11 +74,12 @@ prevent a overly large request from using too much memory.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[14,14]]" data-offset="14">
+</div></div><div class="scraped-example" data-locs="[[14,14]]" data-offset="13">
                 <div class="scraped-example-title">
                    examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#28" target="_blank">line 28</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="15">15</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
+<span id="15">15</span>
 <span id="16">16</span>
 <span id="17">17</span>
 <span id="18">18</span>
@@ -103,7 +104,6 @@ prevent a overly large request from using too much memory.</p>
 <span id="37">37</span>
 <span id="38">38</span>
 <span id="39">39</span>
-<span id="40">40</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="macro">warp::path!</span>(<span class="string">&quot;math&quot;</span> <span class="op">/</span> <span class="ident">u16</span>);
     <span class="kw">let</span> <span class="ident">div_with_header</span> <span class="op">=</span> <span class="ident">math</span>

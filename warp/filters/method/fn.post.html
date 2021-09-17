@@ -6,11 +6,12 @@
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[4,4]]" data-offset="60">
+          </h1><div class="scraped-example" data-locs="[[4,4]]" data-offset="59">
                 <div class="scraped-example-title">
                    examples/todos.rs (<a href="../../../src/todos/todos.rs.html#64" target="_blank">line 64</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="61">61</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="60">60</span>
+<span id="61">61</span>
 <span id="62">62</span>
 <span id="63">63</span>
 <span id="64">64</span>
@@ -18,7 +19,6 @@
 <span id="66">66</span>
 <span id="67">67</span>
 <span id="68">68</span>
-<span id="69">69</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">todos_create</span>(
         <span class="ident">db</span>: <span class="ident">Db</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
@@ -35,11 +35,12 @@
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
                     <div class="more-scraped-examples-inner">
-<div class="scraped-example" data-locs="[[4,4]]" data-offset="14">
+<div class="scraped-example" data-locs="[[4,4]]" data-offset="13">
                 <div class="scraped-example-title">
                    examples/body.rs (<a href="../../../src/body/body.rs.html#18" target="_blank">line 18</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="15">15</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
+<span id="15">15</span>
 <span id="16">16</span>
 <span id="17">17</span>
 <span id="18">18</span>
@@ -55,7 +56,6 @@
 <span id="28">28</span>
 <span id="29">29</span>
 <span id="30">30</span>
-<span id="31">31</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
@@ -73,11 +73,12 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[13,13]]" data-offset="14">
+</div></div><div class="scraped-example" data-locs="[[13,13]]" data-offset="13">
                 <div class="scraped-example-title">
                    examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#27" target="_blank">line 27</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="15">15</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
+<span id="15">15</span>
 <span id="16">16</span>
 <span id="17">17</span>
 <span id="18">18</span>
@@ -102,7 +103,6 @@
 <span id="37">37</span>
 <span id="38">38</span>
 <span id="39">39</span>
-<span id="40">40</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="macro">warp::path!</span>(<span class="string">&quot;math&quot;</span> <span class="op">/</span> <span class="ident">u16</span>);
     <span class="kw">let</span> <span class="ident">div_with_header</span> <span class="op">=</span> <span class="ident">math</span>
@@ -129,11 +129,12 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[11,11]]" data-offset="12">
+</div></div><div class="scraped-example" data-locs="[[11,11]]" data-offset="11">
                 <div class="scraped-example-title">
                    examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#23" target="_blank">line 23</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="13">13</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="12">12</span>
+<span id="13">13</span>
 <span id="14">14</span>
 <span id="15">15</span>
 <span id="16">16</span>
@@ -177,7 +178,6 @@
 <span id="54">54</span>
 <span id="55">55</span>
 <span id="56">56</span>
-<span id="57">57</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 

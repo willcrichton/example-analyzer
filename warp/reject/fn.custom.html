@@ -4,11 +4,12 @@ or else this will be returned as a <code>500 Internal Server Error</code>.</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[5,5]]" data-offset="42">
+          </h1><div class="scraped-example" data-locs="[[5,5]]" data-offset="41">
                 <div class="scraped-example-title">
                    examples/rejections.rs (<a href="../../src/rejections/rejections.rs.html#47" target="_blank">line 47</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="43">43</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="42">42</span>
+<span id="43">43</span>
 <span id="44">44</span>
 <span id="45">45</span>
 <span id="46">46</span>
@@ -16,7 +17,6 @@ or else this will be returned as a <code>500 Internal Server Error</code>.</p>
 <span id="48">48</span>
 <span id="49">49</span>
 <span id="50">50</span>
-<span id="51">51</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">div_by</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">NonZeroU16</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
     <span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>(<span class="string">&quot;div-by&quot;</span>).<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">n</span>: <span class="ident">u16</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">denom</span>) <span class="op">=</span> <span class="ident">NonZeroU16::new</span>(<span class="ident">n</span>) {
@@ -33,11 +33,12 @@ or else this will be returned as a <code>500 Internal Server Error</code>.</p>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
                     <div class="more-scraped-examples-inner">
-<div class="scraped-example" data-locs="[[18,18]]" data-offset="12">
+<div class="scraped-example" data-locs="[[18,18]]" data-offset="11">
                 <div class="scraped-example-title">
                    examples/sse_chat.rs (<a href="../../src/sse_chat/sse_chat.rs.html#30" target="_blank">line 30</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="13">13</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="12">12</span>
+<span id="13">13</span>
 <span id="14">14</span>
 <span id="15">15</span>
 <span id="16">16</span>
@@ -81,7 +82,6 @@ or else this will be returned as a <code>500 Internal Server Error</code>.</p>
 <span id="54">54</span>
 <span id="55">55</span>
 <span id="56">56</span>
-<span id="57">57</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 

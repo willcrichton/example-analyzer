@@ -30,16 +30,16 @@ thus allowing to easily <code>and</code> it together with others.</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[2,2]]" data-offset="5">
+          </h1><div class="scraped-example" data-locs="[[2,2]]" data-offset="4">
                 <div class="scraped-example-title">
                    examples/hello.rs (<a href="../../../src/hello/hello.rs.html#7" target="_blank">line 7</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6">6</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5">5</span>
+<span id="6">6</span>
 <span id="7">7</span>
 <span id="8">8</span>
 <span id="9">9</span>
 <span id="10">10</span>
-<span id="11">11</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// Match any request and return hello world!</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::any</span>()</span>.<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>);
@@ -53,11 +53,12 @@ thus allowing to easily <code>and</code> it together with others.</p>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
                     <div class="more-scraped-examples-inner">
-<div class="scraped-example" data-locs="[[3,3],[14,14],[25,25],[39,39],[51,51]]" data-offset="49">
+<div class="scraped-example" data-locs="[[3,3],[14,14],[25,25],[39,39],[51,51]]" data-offset="48">
                 <div class="scraped-example-title">
                    examples/todos.rs (<a href="../../../src/todos/todos.rs.html#52" target="_blank">line 52</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="50">50</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="49">49</span>
+<span id="50">50</span>
 <span id="51">51</span>
 <span id="52">52</span>
 <span id="53">53</span>
@@ -109,7 +110,6 @@ thus allowing to easily <code>and</code> it together with others.</p>
 <span id="99">99</span>
 <span id="100">100</span>
 <span id="101">101</span>
-<span id="102">102</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">todos_list</span>(
         <span class="ident">db</span>: <span class="ident">Db</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
@@ -163,11 +163,12 @@ thus allowing to easily <code>and</code> it together with others.</p>
     <span class="kw">fn</span> <span class="ident">with_db</span>(<span class="ident">db</span>: <span class="ident">Db</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">Db</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">std::convert::Infallible</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
         <span class="highlight"><span class="ident">warp::any</span>()</span>.<span class="ident">map</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="ident">db</span>.<span class="ident">clone</span>())
     }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[7,7],[19,19]]" data-offset="4">
+</div></div><div class="scraped-example" data-locs="[[7,7],[19,19]]" data-offset="3">
                 <div class="scraped-example-title">
                    examples/wrapping.rs (<a href="../../../src/wrapping/wrapping.rs.html#11" target="_blank">line 11</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5"> 5</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="4"> 4</span>
+<span id="5"> 5</span>
 <span id="6"> 6</span>
 <span id="7"> 7</span>
 <span id="8"> 8</span>
@@ -194,7 +195,6 @@ thus allowing to easily <code>and</code> it together with others.</p>
 <span id="29">29</span>
 <span id="30">30</span>
 <span id="31">31</span>
-<span id="32">32</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">hello_wrapper</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span>(
     <span class="ident">filter</span>: <span class="ident">F</span>,
 ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,)<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>
@@ -223,11 +223,12 @@ thus allowing to easily <code>and</code> it together with others.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[1,1]]" data-offset="14">
+</div></div><div class="scraped-example" data-locs="[[1,1]]" data-offset="13">
                 <div class="scraped-example-title">
                    examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#15" target="_blank">line 15</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="15">15</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
+<span id="15">15</span>
 <span id="16">16</span>
 <span id="17">17</span>
 <span id="18">18</span>
@@ -252,7 +253,6 @@ thus allowing to easily <code>and</code> it together with others.</p>
 <span id="37">37</span>
 <span id="38">38</span>
 <span id="39">39</span>
-<span id="40">40</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="highlight"><span class="macro">warp::path!</span>(<span class="string">&quot;math&quot;</span> <span class="op">/</span> <span class="ident">u16</span>)</span>;
     <span class="kw">let</span> <span class="ident">div_with_header</span> <span class="op">=</span> <span class="ident">math</span>
@@ -279,11 +279,12 @@ thus allowing to easily <code>and</code> it together with others.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[7,7]]" data-offset="24">
+</div></div><div class="scraped-example" data-locs="[[7,7]]" data-offset="23">
                 <div class="scraped-example-title">
                    examples/websockets_chat.rs (<a href="../../../src/websockets_chat/websockets_chat.rs.html#31" target="_blank">line 31</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="25">25</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="24">24</span>
+<span id="25">25</span>
 <span id="26">26</span>
 <span id="27">27</span>
 <span id="28">28</span>
@@ -308,7 +309,6 @@ thus allowing to easily <code>and</code> it together with others.</p>
 <span id="47">47</span>
 <span id="48">48</span>
 <span id="49">49</span>
-<span id="50">50</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
@@ -335,11 +335,12 @@ thus allowing to easily <code>and</code> it together with others.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[2,2]]" data-offset="17">
+</div></div><div class="scraped-example" data-locs="[[2,2]]" data-offset="16">
                 <div class="scraped-example-title">
                    examples/autoreload.rs (<a href="../../../src/autoreload/autoreload.rs.html#19" target="_blank">line 19</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="18">18</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="17">17</span>
+<span id="18">18</span>
 <span id="19">19</span>
 <span id="20">20</span>
 <span id="21">21</span>
@@ -365,7 +366,6 @@ thus allowing to easily <code>and</code> it together with others.</p>
 <span id="41">41</span>
 <span id="42">42</span>
 <span id="43">43</span>
-<span id="44">44</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// Match any request and return hello world!</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::any</span>()</span>.<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>);

@@ -18,13 +18,13 @@ filter automatically includes a <code>GET</code> check.</p>
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[1,1]]" data-offset="7">
+          </h1><div class="scraped-example" data-locs="[[1,1]]" data-offset="6">
                 <div class="scraped-example-title">
                    examples/returning.rs (<a href="../../../src/returning/returning.rs.html#8" target="_blank">line 8</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="8">8</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="7">7</span>
+<span id="8">8</span>
 <span id="9">9</span>
-<span id="10">10</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">assets_filter</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BoxedFilter</span><span class="op">&lt;</span>(<span class="kw">impl</span> <span class="ident">Reply</span>,)<span class="op">&gt;</span> {
     <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>)</span>).<span class="ident">boxed</span>()
 }</code></pre></div>
@@ -35,17 +35,17 @@ filter automatically includes a <code>GET</code> check.</p>
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
                     <div class="more-scraped-examples-inner">
-<div class="scraped-example" data-locs="[[3,3]]" data-offset="4">
+<div class="scraped-example" data-locs="[[3,3]]" data-offset="3">
                 <div class="scraped-example-title">
                    examples/dir.rs (<a href="../../../src/dir/dir.rs.html#7" target="_blank">line 7</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5">5</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="4">4</span>
+<span id="5">5</span>
 <span id="6">6</span>
 <span id="7">7</span>
 <span id="8">8</span>
 <span id="9">9</span>
 <span id="10">10</span>
-<span id="11">11</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
@@ -53,11 +53,12 @@ filter automatically includes a <code>GET</code> check.</p>
         .<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))
         .<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[8,8]]" data-offset="5">
+</div></div><div class="scraped-example" data-locs="[[8,8]]" data-offset="4">
                 <div class="scraped-example-title">
                    examples/unix_socket.rs (<a href="../../../src/unix_socket/unix_socket.rs.html#13" target="_blank">line 13</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6"> 6</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5"> 5</span>
+<span id="6"> 6</span>
 <span id="7"> 7</span>
 <span id="8"> 8</span>
 <span id="9"> 9</span>
@@ -68,7 +69,6 @@ filter automatically includes a <code>GET</code> check.</p>
 <span id="14">14</span>
 <span id="15">15</span>
 <span id="16">16</span>
-<span id="17">17</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">use</span> <span class="ident">tokio::net::UnixListener</span>;
     <span class="kw">use</span> <span class="ident">tokio_stream::wrappers::UnixListenerStream</span>;
@@ -81,11 +81,12 @@ filter automatically includes a <code>GET</code> check.</p>
         .<span class="ident">run_incoming</span>(<span class="ident">incoming</span>)
         .<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[8,8]]" data-offset="6">
+</div></div><div class="scraped-example" data-locs="[[8,8]]" data-offset="5">
                 <div class="scraped-example-title">
                    examples/file.rs (<a href="../../../src/file/file.rs.html#14" target="_blank">line 14</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="7"> 7</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6"> 6</span>
+<span id="7"> 7</span>
 <span id="8"> 8</span>
 <span id="9"> 9</span>
 <span id="10">10</span>
@@ -100,7 +101,6 @@ filter automatically includes a <code>GET</code> check.</p>
 <span id="19">19</span>
 <span id="20">20</span>
 <span id="21">21</span>
-<span id="22">22</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 

@@ -2,14 +2,14 @@
 </div></details><div class="docblock scraped-example-list">
           <h1 id="scraped-examples" class="small-section-header">
              <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[2,2]]" data-offset="17">
+          </h1><div class="scraped-example" data-locs="[[2,2]]" data-offset="16">
                 <div class="scraped-example-title">
                    examples/returning.rs (<a href="../src/returning/returning.rs.html#19" target="_blank">line 19</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="18">18</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="17">17</span>
+<span id="18">18</span>
 <span id="19">19</span>
 <span id="20">20</span>
-<span id="21">21</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index_filter</span>().<span class="ident">or</span>(<span class="ident">assets_filter</span>());
     <span class="highlight"><span class="ident">warp::serve</span>(<span class="ident">routes</span>)</span>.<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
@@ -21,31 +21,31 @@
                   <div class="more-scraped-examples">
                     <div class="toggle-line"><div class="toggle-line-inner"></div></div>
                     <div class="more-scraped-examples-inner">
-<div class="scraped-example" data-locs="[[3,3]]" data-offset="13">
+<div class="scraped-example" data-locs="[[3,3]]" data-offset="12">
                 <div class="scraped-example-title">
                    examples/dyn_reply.rs (<a href="../src/dyn_reply/dyn_reply.rs.html#16" target="_blank">line 16</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="14">14</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="13">13</span>
+<span id="14">14</span>
 <span id="15">15</span>
 <span id="16">16</span>
 <span id="17">17</span>
-<span id="18">18</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path::param</span>().<span class="ident">and_then</span>(<span class="ident">dyn_reply</span>);
 
     <span class="highlight"><span class="ident">warp::serve</span>(<span class="ident">routes</span>)</span>.<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[3,3]]" data-offset="4">
+</div></div><div class="scraped-example" data-locs="[[3,3]]" data-offset="3">
                 <div class="scraped-example-title">
                    examples/dir.rs (<a href="../src/dir/dir.rs.html#7" target="_blank">line 7</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5">5</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="4">4</span>
+<span id="5">5</span>
 <span id="6">6</span>
 <span id="7">7</span>
 <span id="8">8</span>
 <span id="9">9</span>
 <span id="10">10</span>
-<span id="11">11</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
@@ -53,34 +53,34 @@
         .<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))
         .<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[4,4]]" data-offset="5">
+</div></div><div class="scraped-example" data-locs="[[4,4]]" data-offset="4">
                 <div class="scraped-example-title">
                    examples/hello.rs (<a href="../src/hello/hello.rs.html#9" target="_blank">line 9</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6">6</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5">5</span>
+<span id="6">6</span>
 <span id="7">7</span>
 <span id="8">8</span>
 <span id="9">9</span>
 <span id="10">10</span>
-<span id="11">11</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// Match any request and return hello world!</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::any</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>);
 
     <span class="highlight"><span class="ident">warp::serve</span>(<span class="ident">routes</span>)</span>.<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[6,6]]" data-offset="9">
+</div></div><div class="scraped-example" data-locs="[[6,6]]" data-offset="8">
                 <div class="scraped-example-title">
                    examples/futures.rs (<a href="../src/futures/futures.rs.html#15" target="_blank">line 15</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="10">10</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="9">9</span>
+<span id="10">10</span>
 <span id="11">11</span>
 <span id="12">12</span>
 <span id="13">13</span>
 <span id="14">14</span>
 <span id="15">15</span>
 <span id="16">16</span>
-<span id="17">17</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// Match `/:Seconds`...</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path::param</span>()
@@ -89,11 +89,12 @@
 
     <span class="highlight"><span class="ident">warp::serve</span>(<span class="ident">routes</span>)</span>.<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[9,9]]" data-offset="21">
+</div></div><div class="scraped-example" data-locs="[[9,9]]" data-offset="20">
                 <div class="scraped-example-title">
                    examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#30" target="_blank">line 30</a>)
                 </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="22">22</span>
+                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="21">21</span>
+<span id="22">22</span>
 <span id="23">23</span>
 <span id="24">24</span>
 <span id="25">25</span>
@@ -103,7 +104,6 @@
 <span id="29">29</span>
 <span id="30">30</span>
 <span id="31">31</span>
-<span id="32">32</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// Match any request and return hello world!</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::any</span>()
