@@ -37,7 +37,7 @@ inside a span, the returned span will be disabled.</p>
 call <a href="../subscriber/trait.Subscriber.html#method.enter"><code>Subscriber::enter</code></a> with the span’s <a href="../struct.Id.html"><code>Id</code></a>, and dropping the guard
 will call <a href="../subscriber/trait.Subscriber.html#method.exit"><code>Subscriber::exit</code></a>. If the span is disabled, this does
 nothing.</p>
-<h1 id="in-asynchronous-code" class="section-header"><a href="#in-asynchronous-code">In Asynchronous Code</a></h1>
+<h5 id="in-asynchronous-code" class="section-header"><a href="#in-asynchronous-code">In Asynchronous Code</a></h5>
 <p><strong>Warning</strong>: in asynchronous code that uses <a href="https://rust-lang.github.io/async-book/01_getting_started/04_async_await_primer.html">async/await syntax</a>,
 <code>Span::enter</code> should be used very carefully or avoided entirely. Holding
 the drop guard returned by <code>Span::enter</code> across <code>.await</code> points will
@@ -137,7 +137,7 @@ correct code when used on an async function:</p>
 }</code></pre></div>
 </li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attribute">#[<span class="ident">macro_use</span>]</span> <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">tracing</span>;
 <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="macro">span!</span>(<span class="ident">Level::INFO</span>, <span class="string">&quot;my_span&quot;</span>);
 <span class="kw">let</span> <span class="ident">guard</span> <span class="op">=</span> <span class="ident">span</span>.<span class="ident">enter</span>();
@@ -217,7 +217,7 @@ between threads.</p>
 the drop guard returned by <code>Span::entered</code> across <code>.await</code> points will
 result in incorrect traces. See the documentation for the
 <a href="struct.Span.html#method.enter" title="Span::enter"><code>Span::enter</code></a> method for details.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>The returned guard can be <a href="span/struct.EnteredSpan.html#method.exit" title="EnteredSpan::exit">explicitly exited</a>,
 returning the un-entered span:</p>
 
@@ -266,7 +266,7 @@ and then exits the span. If the span is disabled, <code>f</code> will still be
 invoked, but in the context of the currently-executing span (if there is
 one).</p>
 <p>Returns the result of evaluating <code>f</code>.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">my_span</span> <span class="op">=</span> <span class="macro">span!</span>(<span class="ident">Level::TRACE</span>, <span class="string">&quot;my_span&quot;</span>);
 
 <span class="ident">my_span</span>.<span class="ident">in_scope</span>(<span class="op">|</span><span class="op">|</span> {
@@ -374,7 +374,7 @@ executing. This is used to model causal relationships such as when a
 single future spawns several related background tasks, et cetera.</p>
 <p>If this span is disabled, or the resulting follows-from relationship
 would be invalid, this function will do nothing.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <p>Setting a <code>follows_from</code> relationship with a <code>Span</code>:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">span1</span> <span class="op">=</span> <span class="macro">span!</span>(<span class="ident">Level::INFO</span>, <span class="string">&quot;span_1&quot;</span>);

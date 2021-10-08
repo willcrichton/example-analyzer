@@ -8,7 +8,7 @@ already locked the data.</p>
 <p>This is an associated function that needs to be
 used as <code>OwnedRwLockReadGuard::map(...)</code>. A method would interfere with
 methods of the same name on the contents of the locked data.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">RwLock</span>, <span class="ident">OwnedRwLockReadGuard</span>};
 
@@ -29,7 +29,7 @@ already locked the data.</p>
 <p>This is an associated function that needs to be used as
 <code>OwnedRwLockReadGuard::try_map(..)</code>. A method would interfere with
 methods of the same name on the contents of the locked data.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">RwLock</span>, <span class="ident">OwnedRwLockReadGuard</span>};
 

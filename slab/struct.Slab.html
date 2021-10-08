@@ -3,7 +3,7 @@
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#207-1115" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="struct" href="struct.Slab.html" title="struct slab::Slab">Slab</a>&lt;T&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#219-221" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; <a class="struct" href="struct.Slab.html" title="struct slab::Slab">Slab</a>&lt;T&gt;</h4></div></summary><div class="docblock"><p>Construct a new, empty <code>Slab</code>.</p>
 <p>The function does not allocate and the returned slab will have no
 capacity until <code>insert</code> is called or capacity is explicitly reserved.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">slab</span>: <span class="ident">Slab</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Slab::new</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.with_capacity" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#250-256" title="goto source code">[src]</a></div><a href="#method.with_capacity" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.with_capacity" class="fnname">with_capacity</a>(capacity: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="struct" href="struct.Slab.html" title="struct slab::Slab">Slab</a>&lt;T&gt;</h4></div></summary><div class="docblock"><p>Construct a new, empty <code>Slab</code> with the specified capacity.</p>
 <p>The returned slab will be able to store exactly <code>capacity</code> without
@@ -12,7 +12,7 @@ reallocating. If <code>capacity</code> is 0, the slab will not allocate.</p>
 of the returned slab, but only the capacity. For an explanation of the
 difference between length and capacity, see <a href="index.html#capacity-and-reallocation">Capacity and
 reallocation</a>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::with_capacity</span>(<span class="number">10</span>);
 
 <span class="comment">// The slab contains no values, even though it has capacity for more</span>
@@ -26,7 +26,7 @@ reallocation</a>.</p>
 <span class="comment">// ...but this may make the slab reallocate</span>
 <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="number">11</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.capacity" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#267-269" title="goto source code">[src]</a></div><a href="#method.capacity" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.capacity" class="fnname">capacity</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></div></summary><div class="docblock"><p>Return the number of values the slab can store without reallocating.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">slab</span>: <span class="ident">Slab</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Slab::with_capacity</span>(<span class="number">10</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">slab</span>.<span class="ident">capacity</span>(), <span class="number">10</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.reserve" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#297-303" title="goto source code">[src]</a></div><a href="#method.reserve" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.reserve" class="fnname">reserve</a>(&amp;mut self, additional: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)</h4></div></summary><div class="docblock"><p>Reserve capacity for at least <code>additional</code> more values to be stored
@@ -39,9 +39,9 @@ up being expensive.</p>
 <p>The slab may reserve more than <code>additional</code> extra space in order to
 avoid frequent reallocations. Use <code>reserve_exact</code> instead to guarantee
 that only the requested space is allocated.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>Panics if the new capacity overflows <code>usize</code>.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;hello&quot;</span>);
 <span class="ident">slab</span>.<span class="ident">reserve</span>(<span class="number">10</span>);
@@ -56,9 +56,9 @@ end up being expensive.</p>
 <p>Note that the allocator may give the slab more space than it requests.
 Therefore capacity can not be relied upon to be precisely minimal.
 Prefer <code>reserve</code> if future insertions are expected.</p>
-<h1 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h1>
+<h5 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h5>
 <p>Panics if the new capacity overflows <code>usize</code>.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;hello&quot;</span>);
 <span class="ident">slab</span>.<span class="ident">reserve_exact</span>(<span class="number">10</span>);
@@ -70,7 +70,7 @@ It will drop down as close as possible to the length but the allocator may
 still inform the underlying vector that there is space for a few more elements.</p>
 <p>This function can take O(n) time even when the capacity cannot be reduced
 or the allocation is shrunk in place. Repeated calls run in O(1) though.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::with_capacity</span>(<span class="number">10</span>);
 
 <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">3</span> {
@@ -103,7 +103,7 @@ the move can be cancelled by returning <code>false</code> from the closure.
 In that case no further attempts at relocating elements is made.
 If the closure unwinds, the slab will be left in a consistent state,
 but the value that the closure panicked on might be removed.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::with_capacity</span>(<span class="number">10</span>);
 <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&#39;a&#39;</span>);
@@ -125,7 +125,7 @@ but the value that the closure panicked on might be removed.</p>
 <span class="ident">slab</span>.<span class="ident">compact</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">value</span>, <span class="ident">from</span>, <span class="ident">to</span><span class="op">|</span> <span class="bool-val">false</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">slab</span>.<span class="ident">iter</span>().<span class="ident">next</span>(), <span class="prelude-val">Some</span>((<span class="ident">b</span>, <span class="kw-2">&amp;</span><span class="string">&#39;b&#39;</span>)));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clear" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#539-543" title="goto source code">[src]</a></div><a href="#method.clear" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.clear" class="fnname">clear</a>(&amp;mut self)</h4></div></summary><div class="docblock"><p>Clear the slab of all values.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">3</span> {
@@ -135,7 +135,7 @@ but the value that the closure panicked on might be removed.</p>
 <span class="ident">slab</span>.<span class="ident">clear</span>();
 <span class="macro">assert!</span>(<span class="ident">slab</span>.<span class="ident">is_empty</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.len" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#559-561" title="goto source code">[src]</a></div><a href="#method.len" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.len" class="fnname">len</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></div></summary><div class="docblock"><p>Return the number of stored values.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">3</span> {
@@ -144,7 +144,7 @@ but the value that the closure panicked on might be removed.</p>
 
 <span class="macro">assert_eq!</span>(<span class="number">3</span>, <span class="ident">slab</span>.<span class="ident">len</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_empty" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#575-577" title="goto source code">[src]</a></div><a href="#method.is_empty" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_empty" class="fnname">is_empty</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Return <code>true</code> if there are no values stored in the slab.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="macro">assert!</span>(<span class="ident">slab</span>.<span class="ident">is_empty</span>());
 
@@ -155,7 +155,7 @@ but the value that the closure panicked on might be removed.</p>
 Iterators must iterate over every slot in the slab even if it is
 vacant. As such, a slab with a capacity of 1 million but only one
 stored value must still iterate the million slots.</p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">3</span> {
@@ -173,7 +173,7 @@ stored value must still iterate the million slots.</p>
 Iterators must iterate over every slot in the slab even if it is
 vacant. As such, a slab with a capacity of 1 million but only one
 stored value must still iterate the million slots.</p>
-<h1 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h1>
+<h5 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">let</span> <span class="ident">key1</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="number">0</span>);
@@ -190,7 +190,7 @@ stored value must still iterate the million slots.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.get" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#657-662" title="goto source code">[src]</a></div><a href="#method.get" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.get" class="fnname">get</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T&gt;</h4></div></summary><div class="docblock"><p>Return a reference to the value associated with the given key.</p>
 <p>If the given key is not associated with a value, then <code>None</code> is
 returned.</p>
-<h1 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h1>
+<h5 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;hello&quot;</span>);
 
@@ -199,7 +199,7 @@ returned.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.get_mut" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#681-686" title="goto source code">[src]</a></div><a href="#method.get_mut" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.get_mut" class="fnname">get_mut</a>(&amp;mut self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>T&gt;</h4></div></summary><div class="docblock"><p>Return a mutable reference to the value associated with the given key.</p>
 <p>If the given key is not associated with a value, then <code>None</code> is
 returned.</p>
-<h1 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h1>
+<h5 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;hello&quot;</span>);
 
@@ -213,7 +213,7 @@ given keys simultaneously.</p>
 is returned.</p>
 <p>This function can be used to get two mutable references out of one slab,
 so that you can manipulate both of them at the same time, eg. swap them.</p>
-<h1 id="examples-14" class="section-header"><a href="#examples-14">Examples</a></h1>
+<h5 id="examples-14" class="section-header"><a href="#examples-14">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::mem</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
@@ -227,9 +227,9 @@ so that you can manipulate both of them at the same time, eg. swap them.</p>
 performing bounds checking.</p>
 <p>For a safe alternative see <a href="struct.Slab.html#method.get"><code>get</code></a>.</p>
 <p>This function should be used with care.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h5 id="safety" class="section-header"><a href="#safety">Safety</a></h5>
 <p>The key must be within bounds.</p>
-<h1 id="examples-15" class="section-header"><a href="#examples-15">Examples</a></h1>
+<h5 id="examples-15" class="section-header"><a href="#examples-15">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="number">2</span>);
 
@@ -240,9 +240,9 @@ performing bounds checking.</p>
 without performing bounds checking.</p>
 <p>For a safe alternative see <a href="struct.Slab.html#method.get_mut"><code>get_mut</code></a>.</p>
 <p>This function should be used with care.</p>
-<h1 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h1>
+<h5 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h5>
 <p>The key must be within bounds.</p>
-<h1 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h1>
+<h5 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="number">2</span>);
 
@@ -257,12 +257,12 @@ given keys simultaneously without performing bounds checking and safety
 condition checking.</p>
 <p>For a safe alternative see <a href="struct.Slab.html#method.get2_mut"><code>get2_mut</code></a>.</p>
 <p>This function should be used with care.</p>
-<h1 id="safety-2" class="section-header"><a href="#safety-2">Safety</a></h1>
+<h5 id="safety-2" class="section-header"><a href="#safety-2">Safety</a></h5>
 <ul>
 <li>Both keys must be within bounds.</li>
 <li>The condition <code>key1 != key2</code> must hold.</li>
 </ul>
-<h1 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h1>
+<h5 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::mem</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
@@ -277,10 +277,10 @@ condition checking.</p>
 Otherwise this function will panic.
 This is a constant-time operation because the key can be calculated
 from the reference with pointer arithmetic.</p>
-<h1 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h1>
+<h5 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h5>
 <p>This function will panic if the reference does not point to an element
 of the slab.</p>
-<h1 id="examples-18" class="section-header"><a href="#examples-18">Examples</a></h1>
+<h5 id="examples-18" class="section-header"><a href="#examples-18">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="ident">String::from</span>(<span class="string">&quot;foo&quot;</span>));
@@ -299,9 +299,9 @@ will result in a panic:</p>
 <p>The returned key can later be used to retrieve or remove the value using indexed
 lookup and <code>remove</code>. Additional capacity is allocated if needed. See
 <a href="index.html#capacity-and-reallocation">Capacity and reallocation</a>.</p>
-<h1 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h1>
+<h5 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h5>
 <p>Panics if the number of elements in the vector overflows a <code>usize</code>.</p>
-<h1 id="examples-19" class="section-header"><a href="#examples-19">Examples</a></h1>
+<h5 id="examples-19" class="section-header"><a href="#examples-19">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;hello&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">slab</span>[<span class="ident">key</span>], <span class="string">&quot;hello&quot;</span>);</code></pre></div>
@@ -309,7 +309,7 @@ lookup and <code>remove</code>. Additional capacity is allocated if needed. See
 <p>This function is useful when creating values that must contain their
 slab key. The returned <code>VacantEntry</code> reserves a slot in the slab and is
 able to query the associated key.</p>
-<h1 id="examples-20" class="section-header"><a href="#examples-20">Examples</a></h1>
+<h5 id="examples-20" class="section-header"><a href="#examples-20">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">let</span> <span class="ident">hello</span> <span class="op">=</span> {
@@ -326,7 +326,7 @@ able to query the associated key.</p>
 returning the value if the key existed.</p>
 <p>The key is then released and may be associated with future stored
 values.</p>
-<h1 id="examples-21" class="section-header"><a href="#examples-21">Examples</a></h1>
+<h5 id="examples-21" class="section-header"><a href="#examples-21">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">let</span> <span class="ident">hello</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;hello&quot;</span>);
@@ -336,9 +336,9 @@ values.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.remove" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#1013-1015" title="goto source code">[src]</a></div><a href="#method.remove" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.remove" class="fnname">remove</a>(&amp;mut self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; T</h4></div></summary><div class="docblock"><p>Remove and return the value associated with the given key.</p>
 <p>The key is then released and may be associated with future stored
 values.</p>
-<h1 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h1>
+<h5 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h5>
 <p>Panics if <code>key</code> is not associated with a value.</p>
-<h1 id="examples-22" class="section-header"><a href="#examples-22">Examples</a></h1>
+<h5 id="examples-22" class="section-header"><a href="#examples-22">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">let</span> <span class="ident">hello</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;hello&quot;</span>);
@@ -346,7 +346,7 @@ values.</p>
 <span class="macro">assert_eq!</span>(<span class="ident">slab</span>.<span class="ident">remove</span>(<span class="ident">hello</span>), <span class="string">&quot;hello&quot;</span>);
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">slab</span>.<span class="ident">contains</span>(<span class="ident">hello</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.contains" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#1032-1037" title="goto source code">[src]</a></div><a href="#method.contains" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.contains" class="fnname">contains</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Return <code>true</code> if a value is associated with the given key.</p>
-<h1 id="examples-23" class="section-header"><a href="#examples-23">Examples</a></h1>
+<h5 id="examples-23" class="section-header"><a href="#examples-23">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">let</span> <span class="ident">hello</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;hello&quot;</span>);
@@ -359,7 +359,7 @@ values.</p>
 <p>In other words, remove all elements <code>e</code> such that <code>f(usize, &amp;mut e)</code>
 returns false. This method operates in place and preserves the key
 associated with the retained values.</p>
-<h1 id="examples-24" class="section-header"><a href="#examples-24">Examples</a></h1>
+<h5 id="examples-24" class="section-header"><a href="#examples-24">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">let</span> <span class="ident">k1</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="number">0</span>);
@@ -377,7 +377,7 @@ associated with the retained values.</p>
 yields the removed items.</p>
 <p>Note: Elements are removed even if the iterator is only partially
 consumed or not consumed at all.</p>
-<h1 id="examples-25" class="section-header"><a href="#examples-25">Examples</a></h1>
+<h5 id="examples-25" class="section-header"><a href="#examples-25">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
 
 <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="number">0</span>);
@@ -404,7 +404,7 @@ The keys does not need to be sorted beforehand, and this function always
 takes O(n) time.
 Note that the returned slab will use space proportional to the largest key,
 so don’t use <code>Slab</code> with untrusted keys.</p>
-<h1 id="examples-26" class="section-header"><a href="#examples-26">Examples</a></h1>
+<h2 id="examples-26" class="section-header"><a href="#examples-26">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">vec</span> <span class="op">=</span> <span class="macro">vec!</span>[(<span class="number">2</span>,<span class="string">&#39;a&#39;</span>), (<span class="number">6</span>,<span class="string">&#39;b&#39;</span>), (<span class="number">7</span>,<span class="string">&#39;c&#39;</span>)];
 <span class="kw">let</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">vec</span>.<span class="ident">into_iter</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Slab</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span><span class="op">&gt;</span>();

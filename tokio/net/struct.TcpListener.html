@@ -2,13 +2,13 @@
 <p>You can accept a new connection by using the <a href="struct.TcpListener.html#method.accept"><code>accept</code></a>
 method.</p>
 <p>A <code>TcpListener</code> can be turned into a <code>Stream</code> with <a href="https://docs.rs/tokio-stream/0.1/tokio_stream/wrappers/struct.TcpListenerStream.html"><code>TcpListenerStream</code></a>.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h2 id="errors" class="section-header"><a href="#errors">Errors</a></h2>
 <p>Note that accepting a connection can lead to various errors and not all
 of them are necessarily fatal ‒ for example having too many open file
 descriptors or the other side closing the connection while it waits in
 an accept queue. These would terminate the stream if not handled in any
 way.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Using <code>accept</code>:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::TcpListener</span>;
@@ -41,7 +41,7 @@ the last attempt (the last address) is returned.</p>
 <p>This function sets the <code>SO_REUSEADDR</code> option on the socket.</p>
 <p>To configure the socket before binding, you can use the <a href="struct.TcpSocket.html"><code>TcpSocket</code></a>
 type.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::TcpListener</span>;
 
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -58,12 +58,12 @@ type.</p>
 <p>This function will yield once a new TCP connection is established. When
 established, the corresponding <a href="struct.TcpStream.html"><code>TcpStream</code></a> and the remote peer’s
 address will be returned.</p>
-<h1 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h1>
+<h5 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h5>
 <p>This method is cancel safe. If the method is used as the event in a
 <a href="../macro.select.html"><code>tokio::select!</code></a> statement and some other branch
 completes first, then it is guaranteed that no new connections were
 accepted by this method.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::TcpListener</span>;
 
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -93,7 +93,7 @@ non-blocking mode.</p>
 type to build up and customize a listener before it’s shipped off to the
 backing event loop. This allows configuration of options like
 <code>SO_REUSEPORT</code>, binding to multiple addresses, etc.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">tokio::net::TcpListener</span>;
 
@@ -104,7 +104,7 @@ backing event loop. This allows configuration of options like
     <span class="kw">let</span> <span class="ident">listener</span> <span class="op">=</span> <span class="ident">TcpListener::from_std</span>(<span class="ident">std_listener</span>)<span class="question-mark">?</span>;
     <span class="prelude-val">Ok</span>(())
 }</code></pre></div>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function panics if thread-local runtime is not set.</p>
 <p>The runtime is usually set implicitly when this function is called
 from a future driven by a tokio runtime, otherwise runtime can be set
@@ -112,7 +112,7 @@ explicitly with <a href="../runtime/struct.Runtime.html#method.enter"><code>Runt
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.into_std" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/tcp/listener.rs.html#252-270" title="goto source code">[src]</a></div><a href="#method.into_std" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_std" class="fnname">into_std</a>(self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/net/tcp/struct.TcpListener.html" title="struct std::net::tcp::TcpListener">TcpListener</a>&gt;</h4></div></summary><div class="docblock"><p>Turn a <a href="struct.TcpListener.html"><code>tokio::net::TcpListener</code></a> into a <a href="https://doc.rust-lang.org/nightly/std/net/tcp/struct.TcpListener.html"><code>std::net::TcpListener</code></a>.</p>
 <p>The returned <a href="https://doc.rust-lang.org/nightly/std/net/tcp/struct.TcpListener.html"><code>std::net::TcpListener</code></a> will have nonblocking mode set as
 <code>true</code>.  Use <a href="https://doc.rust-lang.org/nightly/std/net/tcp/struct.TcpListener.html#method.set_nonblocking"><code>set_nonblocking</code></a> to change the blocking mode if needed.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::error::Error</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -125,7 +125,7 @@ explicitly with <a href="../runtime/struct.Runtime.html#method.enter"><code>Runt
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.local_addr" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/tcp/listener.rs.html#300-302" title="goto source code">[src]</a></div><a href="#method.local_addr" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.local_addr" class="fnname">local_addr</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/std/net/addr/enum.SocketAddr.html" title="enum std::net::addr::SocketAddr">SocketAddr</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the local address that this listener is bound to.</p>
 <p>This can be useful, for example, when binding to port 0 to figure out
 which port was actually bound.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::TcpListener</span>;
 
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -142,7 +142,7 @@ which port was actually bound.</p>
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.ttl" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/tcp/listener.rs.html#327-329" title="goto source code">[src]</a></div><a href="#method.ttl" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ttl" class="fnname">ttl</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the value of the <code>IP_TTL</code> option for this socket.</p>
 <p>For more information about this option, see <a href="struct.TcpListener.html#method.set_ttl"><code>set_ttl</code></a>.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::TcpListener</span>;
 
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -159,7 +159,7 @@ which port was actually bound.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_ttl" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/tcp/listener.rs.html#352-354" title="goto source code">[src]</a></div><a href="#method.set_ttl" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_ttl" class="fnname">set_ttl</a>(&amp;self, ttl: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</h4></div></summary><div class="docblock"><p>Sets the value for the <code>IP_TTL</code> option on this socket.</p>
 <p>This value sets the time-to-live field that is used in every packet sent
 from this socket.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::TcpListener</span>;
 
 <span class="kw">use</span> <span class="ident">std::io</span>;

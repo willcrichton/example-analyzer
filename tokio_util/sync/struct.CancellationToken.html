@@ -3,7 +3,7 @@ tasks.</p>
 <p>Tasks can call <a href="struct.CancellationToken.html#method.cancelled" title="CancellationToken::cancelled()"><code>CancellationToken::cancelled()</code></a> in order to
 obtain a Future which will be resolved when cancellation is requested.</p>
 <p>Cancellation can be requested through the <a href="struct.CancellationToken.html#method.cancel" title="CancellationToken::cancel"><code>CancellationToken::cancel</code></a> method.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">tokio::select</span>;
 <span class="kw">use</span> <span class="ident">tokio::scope::CancellationToken</span>;
 
@@ -37,7 +37,7 @@ obtain a Future which will be resolved when cancellation is requested.</p>
 current token gets cancelled.</p>
 <p>If the current token is already cancelled, the child token will get
 returned in cancelled state.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">tokio::select</span>;
 <span class="kw">use</span> <span class="ident">tokio::scope::CancellationToken</span>;
 

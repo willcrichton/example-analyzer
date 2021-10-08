@@ -2,9 +2,9 @@
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/uri/path.rs.html#19-276" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.PathAndQuery.html" title="struct http::uri::PathAndQuery">PathAndQuery</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_static" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/uri/path.rs.html#124-128" title="goto source code">[src]</a></div><a href="#method.from_static" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_static" class="fnname">from_static</a>(src: &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Convert a <code>PathAndQuery</code> from a static string.</p>
 <p>This function will not perform any copying, however the string is
 checked to ensure that it is valid.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function panics if the argument is an invalid path and query.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">PathAndQuery::from_static</span>(<span class="string">&quot;/hello?world&quot;</span>);
 
 <span class="macro">assert_eq!</span>(<span class="ident">v</span>.<span class="ident">path</span>(), <span class="string">&quot;/hello&quot;</span>);
@@ -19,7 +19,7 @@ internally, and will copy the data if it is not.</p>
                                             |
                                           path</code></pre></div>
 <p>If the URI is <code>*</code> then the path component is equal to <code>*</code>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">path_and_query</span>: <span class="ident">PathAndQuery</span> <span class="op">=</span> <span class="string">&quot;/hello/world&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
 
@@ -33,7 +33,7 @@ number sign (“#”) character or by the end of the URI.</p>
 <div class="example-wrap"><pre class="language-notrust"><code>abc://username:password@example.com:123/path/data?key=value&amp;key2=value2#fragid1
                                                   |-------------------|
                                                             |
-                                                          query</code></pre></div><h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+                                                          query</code></pre></div><h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <p>With a query string component</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">path_and_query</span>: <span class="ident">PathAndQuery</span> <span class="op">=</span> <span class="string">&quot;/hello/world?key=value&amp;foo=bar&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
@@ -45,7 +45,7 @@ number sign (“#”) character or by the end of the URI.</p>
 
 <span class="macro">assert!</span>(<span class="ident">path_and_query</span>.<span class="ident">query</span>().<span class="ident">is_none</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.as_str" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/uri/path.rs.html#269-275" title="goto source code">[src]</a></div><a href="#method.as_str" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.as_str" class="fnname">as_str</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></h4></div></summary><div class="docblock"><p>Returns the path and query as a string component.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <p>With a query string component</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">path_and_query</span>: <span class="ident">PathAndQuery</span> <span class="op">=</span> <span class="string">&quot;/hello/world?key=value&amp;foo=bar&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();

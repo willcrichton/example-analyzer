@@ -15,7 +15,7 @@ from completing, even if the semaphore has enough permits complete the call
 to <code>acquire</code>.</p>
 <p>To use the <code>Semaphore</code> in a poll function, you can use the <a href="https://docs.rs/tokio-util/0.6/tokio_util/sync/struct.PollSemaphore.html"><code>PollSemaphore</code></a>
 utility.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">Semaphore</span>, <span class="ident">TryAcquireError</span>};
@@ -63,11 +63,11 @@ utility.</p>
 <p>If the semaphore has been closed, this returns an <a href="struct.AcquireError.html"><code>AcquireError</code></a>.
 Otherwise, this returns a <a href="struct.SemaphorePermit.html"><code>SemaphorePermit</code></a> representing the
 acquired permit.</p>
-<h1 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h1>
+<h5 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h5>
 <p>This method uses a queue to fairly distribute permits in the order they
 were requested. Cancelling a call to <code>acquire</code> makes you lose your place
 in the queue.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::Semaphore</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -87,11 +87,11 @@ in the queue.</p>
 <p>If the semaphore has been closed, this returns an <a href="struct.AcquireError.html"><code>AcquireError</code></a>.
 Otherwise, this returns a <a href="struct.SemaphorePermit.html"><code>SemaphorePermit</code></a> representing the
 acquired permits.</p>
-<h1 id="cancel-safety-1" class="section-header"><a href="#cancel-safety-1">Cancel safety</a></h1>
+<h5 id="cancel-safety-1" class="section-header"><a href="#cancel-safety-1">Cancel safety</a></h5>
 <p>This method uses a queue to fairly distribute permits in the order they
 were requested. Cancelling a call to <code>acquire_many</code> makes you lose your
 place in the queue.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::Semaphore</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -105,7 +105,7 @@ place in the queue.</p>
 <p>If the semaphore has been closed, this returns a <a href="enum.TryAcquireError.html#variant.Closed"><code>TryAcquireError::Closed</code></a>
 and a <a href="enum.TryAcquireError.html#variant.NoPermits"><code>TryAcquireError::NoPermits</code></a> if there are no permits left. Otherwise,
 this returns a <a href="struct.SemaphorePermit.html"><code>SemaphorePermit</code></a> representing the acquired permits.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">Semaphore</span>, <span class="ident">TryAcquireError</span>};
 
 <span class="kw">let</span> <span class="ident">semaphore</span> <span class="op">=</span> <span class="ident">Semaphore::new</span>(<span class="number">2</span>);
@@ -122,7 +122,7 @@ this returns a <a href="struct.SemaphorePermit.html"><code>SemaphorePermit</code
 <p>If the semaphore has been closed, this returns a <a href="enum.TryAcquireError.html#variant.Closed"><code>TryAcquireError::Closed</code></a>
 and a <a href="enum.TryAcquireError.html#variant.NoPermits"><code>TryAcquireError::NoPermits</code></a> if there are not enough permits left.
 Otherwise, this returns a <a href="struct.SemaphorePermit.html"><code>SemaphorePermit</code></a> representing the acquired permits.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">Semaphore</span>, <span class="ident">TryAcquireError</span>};
 
 <span class="kw">let</span> <span class="ident">semaphore</span> <span class="op">=</span> <span class="ident">Semaphore::new</span>(<span class="number">4</span>);
@@ -137,11 +137,11 @@ Otherwise, this returns a <a href="struct.SemaphorePermit.html"><code>SemaphoreP
 If the semaphore has been closed, this returns an <a href="struct.AcquireError.html"><code>AcquireError</code></a>.
 Otherwise, this returns a <a href="struct.OwnedSemaphorePermit.html"><code>OwnedSemaphorePermit</code></a> representing the
 acquired permit.</p>
-<h1 id="cancel-safety-2" class="section-header"><a href="#cancel-safety-2">Cancel safety</a></h1>
+<h5 id="cancel-safety-2" class="section-header"><a href="#cancel-safety-2">Cancel safety</a></h5>
 <p>This method uses a queue to fairly distribute permits in the order they
 were requested. Cancelling a call to <code>acquire_owned</code> makes you lose your
 place in the queue.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync::Semaphore</span>;
 
@@ -168,11 +168,11 @@ place in the queue.</p>
 If the semaphore has been closed, this returns an <a href="struct.AcquireError.html"><code>AcquireError</code></a>.
 Otherwise, this returns a <a href="struct.OwnedSemaphorePermit.html"><code>OwnedSemaphorePermit</code></a> representing the
 acquired permit.</p>
-<h1 id="cancel-safety-3" class="section-header"><a href="#cancel-safety-3">Cancel safety</a></h1>
+<h5 id="cancel-safety-3" class="section-header"><a href="#cancel-safety-3">Cancel safety</a></h5>
 <p>This method uses a queue to fairly distribute permits in the order they
 were requested. Cancelling a call to <code>acquire_many_owned</code> makes you lose
 your place in the queue.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync::Semaphore</span>;
 
@@ -200,7 +200,7 @@ the semaphore has been closed, this returns a <a href="enum.TryAcquireError.html
 and a <a href="enum.TryAcquireError.html#variant.NoPermits"><code>TryAcquireError::NoPermits</code></a> if there are no permits left.
 Otherwise, this returns a <a href="struct.OwnedSemaphorePermit.html"><code>OwnedSemaphorePermit</code></a> representing the
 acquired permit.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">Semaphore</span>, <span class="ident">TryAcquireError</span>};
 
@@ -220,7 +220,7 @@ the semaphore has been closed, this returns a <a href="enum.TryAcquireError.html
 and a <a href="enum.TryAcquireError.html#variant.NoPermits"><code>TryAcquireError::NoPermits</code></a> if there are no permits left.
 Otherwise, this returns a <a href="struct.OwnedSemaphorePermit.html"><code>OwnedSemaphorePermit</code></a> representing the
 acquired permit.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">Semaphore</span>, <span class="ident">TryAcquireError</span>};
 
@@ -233,7 +233,7 @@ acquired permit.</p>
 <span class="macro">assert_eq!</span>(<span class="ident">permit_2</span>.<span class="ident">err</span>(), <span class="prelude-val">Some</span>(<span class="ident">TryAcquireError::NoPermits</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.close" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/sync/semaphore.rs.html#526-528" title="goto source code">[src]</a></div><a href="#method.close" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.close" class="fnname">close</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Closes the semaphore.</p>
 <p>This prevents the semaphore from issuing new permits and notifies all pending waiters.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::Semaphore</span>;
 <span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync::TryAcquireError</span>;

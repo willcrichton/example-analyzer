@@ -6,7 +6,7 @@ I/O resource readiness states.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="associatedconstant.WRITABLE" class="associatedconstant has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/driver/interest.rs.html#25" title="goto source code">[src]</a></div><a href="#associatedconstant.WRITABLE" class="anchor"></a><h4 class="code-header">pub const <a href="#associatedconstant.WRITABLE" class="constant">WRITABLE</a>: <a class="struct" href="struct.Interest.html" title="struct tokio::io::Interest">Interest</a></h4></div></summary><div class="docblock"><p>Interest in all writable events</p>
 <p>Writable interest includes write-closed events.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_readable" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/driver/interest.rs.html#40-42" title="goto source code">[src]</a></div><a href="#method.is_readable" class="anchor"></a><h4 class="code-header">pub const fn <a href="#method.is_readable" class="fnname">is_readable</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Returns true if the value includes readable interest.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::io::Interest</span>;
 
 <span class="macro">assert!</span>(<span class="ident">Interest::READABLE</span>.<span class="ident">is_readable</span>());
@@ -15,7 +15,7 @@ I/O resource readiness states.</p>
 <span class="kw">let</span> <span class="ident">both</span> <span class="op">=</span> <span class="ident">Interest::READABLE</span> <span class="op">|</span> <span class="ident">Interest::WRITABLE</span>;
 <span class="macro">assert!</span>(<span class="ident">both</span>.<span class="ident">is_readable</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_writable" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/driver/interest.rs.html#57-59" title="goto source code">[src]</a></div><a href="#method.is_writable" class="anchor"></a><h4 class="code-header">pub const fn <a href="#method.is_writable" class="fnname">is_writable</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Returns true if the value includes writable interest.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::io::Interest</span>;
 
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">Interest::READABLE</span>.<span class="ident">is_writable</span>());
@@ -25,7 +25,7 @@ I/O resource readiness states.</p>
 <span class="macro">assert!</span>(<span class="ident">both</span>.<span class="ident">is_writable</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.add" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/driver/interest.rs.html#74-76" title="goto source code">[src]</a></div><a href="#method.add" class="anchor"></a><h4 class="code-header">pub const fn <a href="#method.add" class="fnname">add</a>(self, other: <a class="struct" href="struct.Interest.html" title="struct tokio::io::Interest">Interest</a>) -&gt; <a class="struct" href="struct.Interest.html" title="struct tokio::io::Interest">Interest</a></h4></div></summary><div class="docblock"><p>Add together two <code>Interest</code> values.</p>
 <p>This function works from a <code>const</code> context.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::io::Interest</span>;
 
 <span class="kw">const</span> <span class="ident">BOTH</span>: <span class="ident">Interest</span> <span class="op">=</span> <span class="ident">Interest::READABLE</span>.<span class="ident">add</span>(<span class="ident">Interest::WRITABLE</span>);

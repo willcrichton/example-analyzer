@@ -20,11 +20,11 @@ of accepting a seed as input:</p>
 <p>In practice the majority of deserialization is stateless. An API expecting a
 seed can be appeased by passing <code>std::marker::PhantomData</code> as a seed in the
 case of stateless deserialization.</p>
-<h1 id="lifetime" class="section-header"><a href="#lifetime">Lifetime</a></h1>
+<h2 id="lifetime" class="section-header"><a href="#lifetime">Lifetime</a></h2>
 <p>The <code>'de</code> lifetime of this trait is the lifetime of data that may be
 borrowed by <code>Self::Value</code> when deserialized. See the page <a href="https://serde.rs/lifetimes.html">Understanding
 deserializer lifetimes</a> for a more detailed explanation of these lifetimes.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <p>Suppose we have JSON that looks like <code>[[1, 2], [3, 4, 5], [6]]</code> and we need
 to deserialize it into a flat representation like <code>vec![1, 2, 3, 4, 5, 6]</code>.
 Allocating a brand new <code>Vec&lt;T&gt;</code> for each subarray would be slow. Instead we

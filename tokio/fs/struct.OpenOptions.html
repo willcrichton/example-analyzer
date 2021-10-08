@@ -12,7 +12,7 @@ on.</p>
 the Tokio runtime.</p>
 <p><code>From&lt;std::fs::OpenOptions&gt;</code> is implemented for more advanced configuration
 than the methods provided here.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Opening a file to read:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
@@ -47,7 +47,7 @@ doesn’t exist:</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/fs/open_options.rs.html#81-397" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.OpenOptions.html" title="struct tokio::fs::OpenOptions">OpenOptions</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/fs/open_options.rs.html#98-100" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; <a class="struct" href="struct.OpenOptions.html" title="struct tokio::fs::OpenOptions">OpenOptions</a></h4></div></summary><div class="docblock"><p>Creates a blank new set of options ready for configuration.</p>
 <p>All options are initially set to <code>false</code>.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.new"><code>std::fs::OpenOptions::new</code></a></p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">options</span> <span class="op">=</span> <span class="ident">OpenOptions::new</span>();
@@ -56,7 +56,7 @@ doesn’t exist:</p>
 <p>This option, when true, will indicate that the file should be
 <code>read</code>-able if opened.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.read"><code>std::fs::OpenOptions::read</code></a></p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -73,7 +73,7 @@ doesn’t exist:</p>
 <p>This option, when true, will indicate that the file should be
 <code>write</code>-able if opened.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.write"><code>std::fs::OpenOptions::write</code></a></p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -104,10 +104,10 @@ opening, and after every write, the position for reading may be set at the
 end of the file. So, before writing, save the current position (using
 <a href="../io/trait.AsyncSeekExt.html#method.seek"><code>seek</code></a><code>(</code><a href="https://doc.rust-lang.org/nightly/std/io/enum.SeekFrom.html"><code>SeekFrom</code></a><code>::</code><a href="https://doc.rust-lang.org/nightly/std/io/enum.SeekFrom.html#variant.Current"><code>Current</code></a><code>(0))</code>), and restore it before the next read.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.append"><code>std::fs::OpenOptions::append</code></a></p>
-<h2 id="note" class="section-header"><a href="#note">Note</a></h2>
+<h6 id="note" class="section-header"><a href="#note">Note</a></h6>
 <p>This function doesn’t create the file if it doesn’t exist. Use the <a href="struct.OpenOptions.html#method.create"><code>create</code></a>
 method to do so.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -125,7 +125,7 @@ method to do so.</p>
 the file to 0 length if it already exists.</p>
 <p>The file must be opened with write access for truncate to work.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.truncate"><code>std::fs::OpenOptions::truncate</code></a></p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -145,7 +145,7 @@ does not yet already exist.</p>
 <p>In order for the file to be created, <a href="struct.OpenOptions.html#method.write"><code>write</code></a> or <a href="struct.OpenOptions.html#method.append"><code>append</code></a> access must
 be used.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.create"><code>std::fs::OpenOptions::create</code></a></p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -170,7 +170,7 @@ ignored.</p>
 <p>The file must be opened with write or append access in order to create a
 new file.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.create_new"><code>std::fs::OpenOptions::create_new</code></a></p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -186,7 +186,7 @@ new file.</p>
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.open" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/fs/open_options.rs.html#385-391" title="goto source code">[src]</a></div><a href="#method.open" class="anchor"></a><h4 class="code-header">pub async fn <a href="#method.open" class="fnname">open</a>(&amp;self, path: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.File.html" title="struct tokio::fs::File">File</a>&gt;</h4></div></summary><div class="docblock"><p>Opens a file at <code>path</code> with the options specified by <code>self</code>.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.open"><code>std::fs::OpenOptions::open</code></a></p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h5 id="errors" class="section-header"><a href="#errors">Errors</a></h5>
 <p>This function will return an error under a number of different
 circumstances. Some of these error conditions are listed here, together
 with their <a href="https://doc.rust-lang.org/nightly/std/io/error/enum.ErrorKind.html"><code>ErrorKind</code></a>. The mapping to <a href="https://doc.rust-lang.org/nightly/std/io/error/enum.ErrorKind.html"><code>ErrorKind</code></a>s is not part of
@@ -212,7 +212,7 @@ requested on a read-only file system, exceeded disk quota, too many
 open files, too long filename, too many symbolic links in the
 specified path (Unix-like systems only), etc.</li>
 </ul>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -227,7 +227,7 @@ specified <code>mode</code> will be used as the permission bits for the new file
 If no <code>mode</code> is set, the default of <code>0o666</code> will be used.
 The operating system masks out bits with the system’s <code>umask</code>, to produce
 the final permissions.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -244,7 +244,7 @@ the final permissions.</p>
 ensure they do not interfere with the access mode set by Rusts options.</p>
 <p>Custom flags can only set flags, not remove flags set by Rusts options.
 This options overwrites any previously set custom flags.</p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">libc</span>;
 <span class="kw">use</span> <span class="ident">tokio::fs::OpenOptions</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;

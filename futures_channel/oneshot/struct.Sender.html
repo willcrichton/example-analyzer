@@ -9,7 +9,7 @@ then <code>Ok(())</code> is returned. If the receiving end was dropped before
 this function was called, however, then <code>Err(t)</code> is returned.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.poll_canceled" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_channel/oneshot.rs.html#357-359" title="goto source code">[src]</a></div><a href="#method.poll_canceled" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.poll_canceled" class="fnname">poll_canceled</a>(&amp;mut self, cx: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Context.html" title="struct core::task::wake::Context">Context</a>&lt;'_&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/task/poll/enum.Poll.html" title="enum core::task::poll::Poll">Poll</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</h4></div></summary><div class="docblock"><p>Polls this <code>Sender</code> half to detect whether its associated
 <a href="struct.Receiver.html"><code>Receiver</code></a> has been dropped.</p>
-<h1 id="return-values" class="section-header"><a href="#return-values">Return values</a></h1>
+<h5 id="return-values" class="section-header"><a href="#return-values">Return values</a></h5>
 <p>If <code>Ready(())</code> is returned then the associated <code>Receiver</code> has been
 dropped, which means any work required for sending should be canceled.</p>
 <p>If <code>Pending</code> is returned then the associated <code>Receiver</code> is still

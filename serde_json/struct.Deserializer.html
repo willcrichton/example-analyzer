@@ -42,7 +42,7 @@ when deserializing into Rust UTF-8 string types such as String, and
 succeed with non-UTF-8 bytes when deserializing using this method.</p>
 <p>Escape sequences are processed as usual, and for <code>\uXXXX</code> escapes it is
 still checked if the hex number represents a valid Unicode code point.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>You can use this to parse JSON strings containing invalid UTF-8 bytes.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">serde_bytes::ByteBuf</span>;

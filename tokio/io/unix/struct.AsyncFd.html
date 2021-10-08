@@ -37,14 +37,14 @@ ready. The <a href="struct.AsyncFdReadyGuard.html"><code>AsyncFdReadyGuard</code
 serves this function; after calling a readiness-checking async function,
 you must use this <a href="struct.AsyncFdReadyGuard.html"><code>AsyncFdReadyGuard</code></a> to signal to tokio whether the file
 descriptor is no longer in a ready state.</p>
-<h2 id="use-with-to-a-poll-based-api" class="section-header"><a href="#use-with-to-a-poll-based-api">Use with to a poll-based API</a></h2>
+<h3 id="use-with-to-a-poll-based-api" class="section-header"><a href="#use-with-to-a-poll-based-api">Use with to a poll-based API</a></h3>
 <p>In some cases it may be desirable to use <code>AsyncFd</code> from APIs similar to
 <a href="../../net/struct.TcpStream.html"><code>TcpStream::poll_read_ready</code></a>. The <a href="struct.AsyncFd.html#method.poll_read_ready" title="AsyncFd::poll_read_ready"><code>AsyncFd::poll_read_ready</code></a> and
 <a href="struct.AsyncFd.html#method.poll_write_ready" title="AsyncFd::poll_write_ready"><code>AsyncFd::poll_write_ready</code></a> functions are provided for this purpose.
 Because these functions don’t create a future to hold their state, they have
 the limitation that only one task can wait on each direction (read or write)
 at a time.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>This example shows how to turn <a href="https://doc.rust-lang.org/nightly/std/net/tcp/struct.TcpStream.html" title="std::net::TcpStream"><code>std::net::TcpStream</code></a> asynchronous using
 <code>AsyncFd</code>.  It implements <code>read</code> as an async fn, and <code>AsyncWrite</code> as a trait
 to show how to implement both approaches.</p>

@@ -4,7 +4,7 @@ continuous view across both buffers. It is able to sequence either immutable
 buffers (<a href="trait.Buf.html"><code>Buf</code></a> values) or mutable buffers (<a href="trait.BufMut.html"><code>BufMut</code></a> values).</p>
 <p>This struct is generally created by calling <a href="trait.Buf.html#method.chain"><code>Buf::chain</code></a>. Please see that
 function’s documentation for more detail.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">bytes</span>::{<span class="ident">Bytes</span>, <span class="ident">Buf</span>};
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="string">b&quot;hello &quot;</span>[..])
@@ -13,7 +13,7 @@ function’s documentation for more detail.</p>
 <span class="kw">let</span> <span class="ident">full</span>: <span class="ident">Bytes</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">copy_to_bytes</span>(<span class="number">11</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">full</span>[..], <span class="string">b&quot;hello world&quot;</span>[..]);</code></pre></div>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/bytes/buf/chain.rs.html#37-130" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="struct" href="struct.Chain.html" title="struct bytes::buf::Chain">Chain</a>&lt;T, U&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.first_ref" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/bytes/buf/chain.rs.html#55-57" title="goto source code">[src]</a></div><a href="#method.first_ref" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.first_ref" class="fnname">first_ref</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T</h4></div></summary><div class="docblock"><p>Gets a reference to the first underlying <code>Buf</code>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">bytes::Buf</span>;
 
 <span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="string">b&quot;hello&quot;</span>[..])
@@ -21,7 +21,7 @@ function’s documentation for more detail.</p>
 
 <span class="macro">assert_eq!</span>(<span class="ident">buf</span>.<span class="ident">first_ref</span>()[..], <span class="string">b&quot;hello&quot;</span>[..]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.first_mut" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/bytes/buf/chain.rs.html#74-76" title="goto source code">[src]</a></div><a href="#method.first_mut" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.first_mut" class="fnname">first_mut</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>T</h4></div></summary><div class="docblock"><p>Gets a mutable reference to the first underlying <code>Buf</code>.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">bytes::Buf</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="string">b&quot;hello&quot;</span>[..])
@@ -32,7 +32,7 @@ function’s documentation for more detail.</p>
 <span class="kw">let</span> <span class="ident">full</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">copy_to_bytes</span>(<span class="number">9</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">full</span>, <span class="string">b&quot;elloworld&quot;</span>[..]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.last_ref" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/bytes/buf/chain.rs.html#90-92" title="goto source code">[src]</a></div><a href="#method.last_ref" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.last_ref" class="fnname">last_ref</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>U</h4></div></summary><div class="docblock"><p>Gets a reference to the last underlying <code>Buf</code>.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">bytes::Buf</span>;
 
 <span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="string">b&quot;hello&quot;</span>[..])
@@ -40,7 +40,7 @@ function’s documentation for more detail.</p>
 
 <span class="macro">assert_eq!</span>(<span class="ident">buf</span>.<span class="ident">last_ref</span>()[..], <span class="string">b&quot;world&quot;</span>[..]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.last_mut" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/bytes/buf/chain.rs.html#109-111" title="goto source code">[src]</a></div><a href="#method.last_mut" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.last_mut" class="fnname">last_mut</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>U</h4></div></summary><div class="docblock"><p>Gets a mutable reference to the last underlying <code>Buf</code>.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">bytes::Buf</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="string">b&quot;hello &quot;</span>[..])
@@ -51,7 +51,7 @@ function’s documentation for more detail.</p>
 <span class="kw">let</span> <span class="ident">full</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">copy_to_bytes</span>(<span class="number">10</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">full</span>, <span class="string">b&quot;hello orld&quot;</span>[..]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.into_inner" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/bytes/buf/chain.rs.html#127-129" title="goto source code">[src]</a></div><a href="#method.into_inner" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_inner" class="fnname">into_inner</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>T, U<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Consumes this <code>Chain</code>, returning the underlying values.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">bytes::Buf</span>;
 
 <span class="kw">let</span> <span class="ident">chain</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="string">b&quot;hello&quot;</span>[..])

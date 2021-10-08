@@ -14,13 +14,13 @@ the lifetime of its needle.</p>
 haystack.</p>
 <p>The haystack may be any type that can be cheaply converted into a
 <code>&amp;[u8]</code>. This includes, but is not limited to, <code>&amp;str</code> and <code>&amp;[u8]</code>.</p>
-<h1 id="complexity" class="section-header"><a href="#complexity">Complexity</a></h1>
+<h5 id="complexity" class="section-header"><a href="#complexity">Complexity</a></h5>
 <p>This routine is guaranteed to have worst case linear time complexity
 with respect to both the needle and the haystack. That is, this runs
 in <code>O(needle.len() + haystack.len())</code> time.</p>
 <p>This routine is also guaranteed to have worst case constant space
 complexity.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">memchr::memmem::FinderRev</span>;
@@ -31,13 +31,13 @@ complexity.</p>
 <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">FinderRev::new</span>(<span class="string">&quot;quux&quot;</span>).<span class="ident">rfind</span>(<span class="ident">haystack</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.rfind_iter" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/memchr/memmem/mod.rs.html#609-614" title="goto source code">[src]</a></div><a href="#method.rfind_iter" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.rfind_iter" class="fnname">rfind_iter</a>&lt;'a, 'h&gt;(&amp;'a self, haystack: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'h [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="struct" href="struct.FindRevIter.html" title="struct memchr::memmem::FindRevIter">FindRevIter</a>&lt;'h, 'a&gt;<span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<div class="notable-traits-tooltiptext"><span class="docblock"><div class="notable">Notable traits for <a class="struct" href="struct.FindRevIter.html" title="struct memchr::memmem::FindRevIter">FindRevIter</a>&lt;'h, 'n&gt;</div><code class="content"><span class="where fmt-newline">impl&lt;'h, 'n&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html" title="trait core::iter::traits::iterator::Iterator">Iterator</a> for <a class="struct" href="struct.FindRevIter.html" title="struct memchr::memmem::FindRevIter">FindRevIter</a>&lt;'h, 'n&gt;</span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#associatedtype.Item" class="type">Item</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>;</span></code></span></div></span></span></h4></div></summary><div class="docblock"><p>Returns a reverse iterator over all occurrences of a substring in a
 haystack.</p>
-<h1 id="complexity-1" class="section-header"><a href="#complexity-1">Complexity</a></h1>
+<h5 id="complexity-1" class="section-header"><a href="#complexity-1">Complexity</a></h5>
 <p>This routine is guaranteed to have worst case linear time complexity
 with respect to both the needle and the haystack. That is, this runs
 in <code>O(needle.len() + haystack.len())</code> time.</p>
 <p>This routine is also guaranteed to have worst case constant space
 complexity.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">memchr::memmem::FinderRev</span>;

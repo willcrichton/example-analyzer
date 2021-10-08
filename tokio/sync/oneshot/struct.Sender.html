@@ -15,7 +15,7 @@ return value of <code>Err</code> means that the data will never be received, but
 a return value of <code>Ok</code> does <em>not</em> mean that the data will be received.
 It is possible for the corresponding receiver to hang up immediately
 after this function returns <code>Ok</code>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Send a value to another task</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::oneshot</span>;
@@ -40,9 +40,9 @@ after this function returns <code>Ok</code>.</p>
 <a href="struct.Receiver.html"><code>Receiver</code></a> value is dropped.</p>
 <p>This function is useful when paired with <code>select!</code> to abort a
 computation when the receiver is no longer interested in the result.</p>
-<h1 id="return" class="section-header"><a href="#return">Return</a></h1>
+<h5 id="return" class="section-header"><a href="#return">Return</a></h5>
 <p>Returns a <code>Future</code> which must be awaited on.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Basic usage</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::oneshot</span>;
@@ -91,7 +91,7 @@ computation when the receiver is no longer interested in the result.</p>
 <p>A <a href="struct.Receiver.html"><code>Receiver</code></a> is closed by either calling <a href="struct.Receiver.html#method.close"><code>close</code></a> explicitly or the
 <a href="struct.Receiver.html"><code>Receiver</code></a> value is dropped.</p>
 <p>If <code>true</code> is returned, a call to <code>send</code> will always result in an error.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::oneshot</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -112,13 +112,13 @@ closed.</p>
 <a href="struct.Receiver.html"><code>Receiver</code></a> value is dropped.</p>
 <p>Note that on multiple calls to poll, only the <code>Waker</code> from the <code>Context</code> passed
 to the most recent call will be scheduled to receive a wakeup.</p>
-<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
+<h5 id="return-value" class="section-header"><a href="#return-value">Return value</a></h5>
 <p>This function returns:</p>
 <ul>
 <li><code>Poll::Pending</code> if the channel is still open.</li>
 <li><code>Poll::Ready(())</code> if the channel is closed.</li>
 </ul>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::oneshot</span>;
 
 <span class="kw">use</span> <span class="ident">futures::future::poll_fn</span>;

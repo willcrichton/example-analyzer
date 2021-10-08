@@ -6,7 +6,7 @@ and are used to guarantee channel capacity before generating a message to send.<
 to the receiver and the permit is consumed. The operation will succeed
 even if the receiver half has been closed. See <a href="struct.Receiver.html#method.close"><code>Receiver::close</code></a> for
 more details on performing a clean shutdown.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::mpsc</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

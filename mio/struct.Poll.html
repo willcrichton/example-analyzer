@@ -11,7 +11,7 @@ specific operations on the handle to monitor for readiness. A <code>Token</code>
 also passed to the <a href="struct.Registry.html#method.register"><code>register</code></a> function. When <code>Poll</code> returns a readiness
 event, it will include this token.  This associates the event with the
 event source that generated the event.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>A basic example – establishing a <code>TcpStream</code> connection.</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Events</span>, <span class="ident">Poll</span>, <span class="ident">Interest</span>, <span class="ident">Token</span>};
@@ -46,10 +46,10 @@ event source that generated the event.</p>
         }
     }
 }</code></pre></div>
-<h1 id="portability" class="section-header"><a href="#portability">Portability</a></h1>
+<h2 id="portability" class="section-header"><a href="#portability">Portability</a></h2>
 <p>Using <code>Poll</code> provides a portable interface across supported platforms as
 long as the caller takes the following into consideration:</p>
-<h3 id="spurious-events" class="section-header"><a href="#spurious-events">Spurious events</a></h3>
+<h4 id="spurious-events" class="section-header"><a href="#spurious-events">Spurious events</a></h4>
 <p><a href="struct.Poll.html#method.poll"><code>Poll::poll</code></a> may return readiness events even if the associated
 event source is not actually ready. Given the same code, this may
 happen more on some platforms than others. It is important to never assume
@@ -58,12 +58,12 @@ operation will succeed as well.</p>
 <p>If operation fails with <a href="https://doc.rust-lang.org/nightly/std/io/error/enum.ErrorKind.html#variant.WouldBlock"><code>WouldBlock</code></a>, then the caller should not treat
 this as an error, but instead should wait until another readiness event is
 received.</p>
-<h3 id="draining-readiness" class="section-header"><a href="#draining-readiness">Draining readiness</a></h3>
+<h4 id="draining-readiness" class="section-header"><a href="#draining-readiness">Draining readiness</a></h4>
 <p>Once a readiness event is received, the corresponding operation must be
 performed repeatedly until it returns <a href="https://doc.rust-lang.org/nightly/std/io/error/enum.ErrorKind.html#variant.WouldBlock"><code>WouldBlock</code></a>. Unless this is done,
 there is no guarantee that another readiness event will be delivered, even
 if further data is received for the event source.</p>
-<h3 id="readiness-operations" class="section-header"><a href="#readiness-operations">Readiness operations</a></h3>
+<h4 id="readiness-operations" class="section-header"><a href="#readiness-operations">Readiness operations</a></h4>
 <p>The only readiness operations that are guaranteed to be present on all
 supported platforms are <a href="./event/struct.Event.html#method.is_readable"><code>readable</code></a> and <a href="./event/struct.Event.html#method.is_writable"><code>writable</code></a>. All other readiness
 operations may have false negatives and as such should be considered
@@ -78,7 +78,7 @@ matching the readiness event.</p>
 <a href="./event/struct.Event.html#method.is_write_closed"><code>write_closed</code></a>, or <a href="./event/struct.Event.html#method.is_error"><code>error</code></a> readiness should be doing so as an
 <strong>optimization</strong> and always be able to handle an error or close situation
 when performing the actual read operation.</p>
-<h3 id="registering-handles" class="section-header"><a href="#registering-handles">Registering handles</a></h3>
+<h4 id="registering-handles" class="section-header"><a href="#registering-handles">Registering handles</a></h4>
 <p>Unless otherwise noted, it should be assumed that types implementing
 <a href="./event/trait.Source.html"><code>event::Source</code></a> will never become ready unless they are registered with
 <code>Poll</code>.</p>
@@ -101,13 +101,13 @@ when performing the actual read operation.</p>
 <span class="comment">// The connect is not guaranteed to have started until it is registered at</span>
 <span class="comment">// this point</span>
 <span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">register</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sock</span>, <span class="ident">Token</span>(<span class="number">0</span>), <span class="ident">Interest::READABLE</span> <span class="op">|</span> <span class="ident">Interest::WRITABLE</span>)<span class="question-mark">?</span>;</code></pre></div>
-<h3 id="dropping-poll" class="section-header"><a href="#dropping-poll">Dropping <code>Poll</code></a></h3>
+<h4 id="dropping-poll" class="section-header"><a href="#dropping-poll">Dropping <code>Poll</code></a></h4>
 <p>When the <code>Poll</code> instance is dropped it may cancel in-flight operations for
 the registered <a href="./event/trait.Source.html">event sources</a>, meaning that no further events for them may
 be received. It also means operations on the registered event sources may no
 longer work. It is up to the user to keep the <code>Poll</code> instance alive while
 registered event sources are being used.</p>
-<h1 id="implementation-notes" class="section-header"><a href="#implementation-notes">Implementation notes</a></h1>
+<h2 id="implementation-notes" class="section-header"><a href="#implementation-notes">Implementation notes</a></h2>
 <p><code>Poll</code> is backed by the selector provided by the operating system.</p>
 <div><table><thead><tr><th>OS</th><th>Selector</th></tr></thead><tbody>
 <tr><td>Android</td><td><a href="http://man7.org/linux/man-pages/man7/epoll.7.html">epoll</a></td></tr>
@@ -158,11 +158,11 @@ granularity (usually 1ms), and kernel scheduling delays mean that
 the blocking interval may be overrun by a small amount.</p>
 <p>See the <a href="struct.Poll.html">struct</a> level documentation for a higher level discussion of
 polling.</p>
-<h1 id="notes" class="section-header"><a href="#notes">Notes</a></h1>
+<h5 id="notes" class="section-header"><a href="#notes">Notes</a></h5>
 <p>This returns any errors without attempting to retry, previous versions
 of Mio would automatically retry the poll call if it was interrupted
 (if <code>EINTR</code> was returned).</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>A basic example – establishing a <code>TcpStream</code> connection.</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Events</span>, <span class="ident">Poll</span>, <span class="ident">Interest</span>, <span class="ident">Token</span>};
@@ -212,7 +212,7 @@ of Mio would automatically retry the poll call if it was interrupted
 the system selector. If this syscall fails, <code>Poll::new</code> will return
 with the error.</p>
 <p>See <a href="struct.Poll.html">struct</a> level docs for more details.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Poll</span>, <span class="ident">Events</span>};
 <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
 

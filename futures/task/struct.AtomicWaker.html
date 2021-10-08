@@ -11,13 +11,13 @@ differs from the usual <code>thread::park</code> pattern). It is also permitted 
 <code>wake</code> to be called <strong>before</strong> <code>register</code>. This results in a no-op.</p>
 <p>A single <code>AtomicWaker</code> may be reused for any number of calls to <code>register</code> or
 <code>wake</code>.</p>
-<h1 id="memory-ordering" class="section-header"><a href="#memory-ordering">Memory ordering</a></h1>
+<h2 id="memory-ordering" class="section-header"><a href="#memory-ordering">Memory ordering</a></h2>
 <p>Calling <code>register</code> “acquires” all memory “released” by calls to <code>wake</code>
 before the call to <code>register</code>.  Later calls to <code>wake</code> will wake the
 registered waker (on contention this wake might be triggered in <code>register</code>).</p>
 <p>For concurrent calls to <code>register</code> (should be avoided) the ordering is only
 guaranteed for the winning call.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Here is a simple example providing a <code>Flag</code> that can be signalled manually
 when it is ready.</p>
 
@@ -85,7 +85,7 @@ task being notified once.</p>
 idea. Concurrent calls to <code>register</code> will attempt to register different
 tasks to be notified. One of the callers will win and have its task set,
 but there is no guarantee as to which caller will succeed.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Here is how <code>register</code> is used when implementing a flag.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::future::Future</span>;

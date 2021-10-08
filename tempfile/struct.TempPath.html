@@ -4,9 +4,9 @@ for example.</p>
 <p>When dropped, the temporary file is deleted.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/tempfile/file/mod.rs.html#144-354" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.TempPath.html" title="struct tempfile::TempPath">TempPath</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.close" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tempfile/file/mod.rs.html#178-183" title="goto source code">[src]</a></div><a href="#method.close" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.close" class="fnname">close</a>(self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</h4></div></summary><div class="docblock"><p>Close and remove the temporary file.</p>
 <p>Use this if you want to detect errors in deleting the file.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h5 id="errors" class="section-header"><a href="#errors">Errors</a></h5>
 <p>If the file cannot be deleted, <code>Err</code> is returned.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tempfile::NamedTempFile</span>;
 
 <span class="kw">let</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">NamedTempFile::new</span>()<span class="question-mark">?</span>;
@@ -27,13 +27,13 @@ If this method fails, it will return <code>self</code> in the resulting
 neither the file contents nor the containing directory are
 synchronized, so the update may not yet have reached the disk when
 <code>persist</code> returns.</p>
-<h1 id="security" class="section-header"><a href="#security">Security</a></h1>
+<h5 id="security" class="section-header"><a href="#security">Security</a></h5>
 <p>Only use this method if you’re positive that a temporary file cleaner
 won’t have deleted your file. Otherwise, you might end up persisting an
 attacker controlled file.</p>
-<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
+<h5 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h5>
 <p>If the file cannot be moved to the new location, <code>Err</code> is returned.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tempfile::NamedTempFile</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">NamedTempFile::new</span>()<span class="question-mark">?</span>;
@@ -47,14 +47,14 @@ return <code>self</code> in the resulting <a href="struct.PathPersistError.html"
 <p>Note: Temporary files cannot be persisted across filesystems. Also Note:
 This method is not atomic. It can leave the original link to the
 temporary file behind.</p>
-<h1 id="security-1" class="section-header"><a href="#security-1">Security</a></h1>
+<h5 id="security-1" class="section-header"><a href="#security-1">Security</a></h5>
 <p>Only use this method if you’re positive that a temporary file cleaner
 won’t have deleted your file. Otherwise, you might end up persisting an
 attacker controlled file.</p>
-<h1 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h1>
+<h5 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h5>
 <p>If the file cannot be moved to the new location or a file already exists
 there, <code>Err</code> is returned.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tempfile::NamedTempFile</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">NamedTempFile::new</span>()<span class="question-mark">?</span>;
@@ -64,10 +64,10 @@ there, <code>Err</code> is returned.</p>
 <span class="ident">path</span>.<span class="ident">persist_noclobber</span>(<span class="string">&quot;./saved_file.txt&quot;</span>)<span class="question-mark">?</span>;</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.keep" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tempfile/file/mod.rs.html#338-353" title="goto source code">[src]</a></div><a href="#method.keep" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.keep" class="fnname">keep</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>, <a class="struct" href="struct.PathPersistError.html" title="struct tempfile::PathPersistError">PathPersistError</a>&gt;</h4></div></summary><div class="docblock"><p>Keep the temporary file from being deleted. This function will turn the
 temporary file into a non-temporary file without moving it.</p>
-<h1 id="errors-3" class="section-header"><a href="#errors-3">Errors</a></h1>
+<h5 id="errors-3" class="section-header"><a href="#errors-3">Errors</a></h5>
 <p>On some platforms (e.g., Windows), we need to mark the file as
 non-temporary. This operation could fail.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tempfile::NamedTempFile</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">NamedTempFile::new</span>()<span class="question-mark">?</span>;

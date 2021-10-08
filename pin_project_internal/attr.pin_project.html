@@ -37,7 +37,7 @@ an additional lifetime at the beginning of generics.</p>
 original type. However, if the visibility of the original type is <code>pub</code>, the
 visibility of the projected types and the projection methods is downgraded
 to <code>pub(crate)</code>.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h2 id="safety" class="section-header"><a href="#safety">Safety</a></h2>
 <p>This attribute is completely safe. In the absence of other <code>unsafe</code> code
 <em>that you write</em>, it is impossible to cause <a href="https://doc.rust-lang.org/reference/behavior-considered-undefined.html">undefined
 behavior</a> with this attribute.</p>
@@ -101,7 +101,7 @@ code.</p>
 <p>Pin projections are also incompatible with <a href="https://doc.rust-lang.org/nomicon/other-reprs.html#reprpacked"><code>#[repr(packed)]</code></a>
 types. Attempting to use this attribute on a <code>#[repr(packed)]</code> type results
 in a compile-time error.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p><code>#[pin_project]</code> can be used on structs and enums.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
@@ -198,7 +198,7 @@ consuming the <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.htm
         <span class="self">self</span>.<span class="ident">as_mut</span>().<span class="ident">project</span>();
     }
 }</code></pre></div>
-<h1 id="unpin" class="section-header"><a href="#unpin"><code>!Unpin</code></a></h1>
+<h2 id="unpin" class="section-header"><a href="#unpin"><code>!Unpin</code></a></h2>
 <p>If you want to ensure that <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="Unpin"><code>Unpin</code></a> is not implemented, use the <code>!Unpin</code>
 argument to <code>#[pin_project]</code>.</p>
 
@@ -222,7 +222,7 @@ field.</p>
     <span class="ident">_pin</span>: <span class="ident">PhantomPinned</span>,
 }</code></pre></div>
 <p>Note that using <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html"><code>PhantomPinned</code></a> without <code>#[pin]</code> attribute has no effect.</p>
-<h1 id="unsafeunpin" class="section-header"><a href="#unsafeunpin"><code>UnsafeUnpin</code></a></h1>
+<h2 id="unsafeunpin" class="section-header"><a href="#unsafeunpin"><code>UnsafeUnpin</code></a></h2>
 <p>If you want to implement <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="Unpin"><code>Unpin</code></a> manually, you must use the <code>UnsafeUnpin</code>
 argument to <code>#[pin_project]</code>.</p>
 
@@ -243,7 +243,7 @@ projections are being used. If you implement <a href="https://docs.rs/pin-projec
 ensure that it is only implemented when all pin-projected fields implement
 <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="Unpin"><code>Unpin</code></a>.</p>
 <p>See <a href="https://docs.rs/pin-project/1/pin_project/trait.UnsafeUnpin.html"><code>UnsafeUnpin</code></a> trait for more details.</p>
-<h1 id="pinned_drop" class="section-header"><a href="#pinned_drop"><code>#[pinned_drop]</code></a></h1>
+<h2 id="pinned_drop" class="section-header"><a href="#pinned_drop"><code>#[pinned_drop]</code></a></h2>
 <p>In order to correctly implement pin projections, a type’s <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="Drop"><code>Drop</code></a> impl must
 not move out of any structurally pinned fields. Unfortunately,
 <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop" title="Drop::drop"><code>Drop::drop</code></a> takes <code>&amp;mut Self</code>, not <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html"><code>Pin</code></a><code>&lt;&amp;mut Self&gt;</code>.</p>
@@ -291,7 +291,7 @@ function just like dropping a type that directly implements <a href="https://doc
     <span class="kw">let</span> <span class="ident">_x</span> <span class="op">=</span> <span class="ident">PrintOnDrop</span> { <span class="ident">pinned_field</span>: <span class="bool-val">true</span>, <span class="ident">unpin_field</span>: <span class="number">40</span> };
 }</code></pre></div>
 <p>See also <a href="attr.pinned_drop.html" title="pinned_drop"><code>#[pinned_drop]</code></a> attribute.</p>
-<h1 id="project_replace-method" class="section-header"><a href="#project_replace-method"><code>project_replace</code> method</a></h1>
+<h2 id="project_replace-method" class="section-header"><a href="#project_replace-method"><code>project_replace</code> method</a></h2>
 <p>In addition to the <code>project</code> and <code>project_ref</code> methods which are always
 provided when you use the <code>#[pin_project]</code> attribute, there is a third
 method, <code>project_replace</code> which can be useful in some situations. It is

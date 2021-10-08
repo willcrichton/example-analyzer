@@ -16,7 +16,7 @@ are of lower quality than the high bits.</p>
 <p>Implementations must sample in <code>[low, high)</code> range for
 <code>Uniform::new(low, high)</code>, i.e., excluding <code>high</code>. In particular, care must
 be taken to ensure that rounding never results values <code>&lt; low</code> or <code>&gt;= high</code>.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">rand::distributions</span>::{<span class="ident">Distribution</span>, <span class="ident">Uniform</span>};
 
 <span class="kw">let</span> <span class="ident">between</span> <span class="op">=</span> <span class="ident">Uniform::from</span>(<span class="number">10</span>..<span class="number">10000</span>);

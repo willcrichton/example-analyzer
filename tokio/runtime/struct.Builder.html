@@ -5,7 +5,7 @@ Runtime is constructed by calling <a href="struct.Builder.html#method.build"><co
 or <a href="struct.Builder.html#method.new_current_thread"><code>Builder::new_current_thread</code></a>.</p>
 <p>See function level documentation for details on the various configuration
 settings.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Builder</span>;
 
 <span class="kw">fn</span> <span class="ident">main</span>() {
@@ -29,7 +29,7 @@ settings.</p>
 <p>Doing this is a shorthand for calling <code>enable_io</code> and <code>enable_time</code>
 individually. If additional components are added to Tokio in the future,
 <code>enable_all</code> will include these future components.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime</span>;
 
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()
@@ -39,12 +39,12 @@ individually. If additional components are added to Tokio in the future,
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.worker_threads" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#217-221" title="goto source code">[src]</a></div><a href="#method.worker_threads" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.worker_threads" class="fnname">worker_threads</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Sets the number of worker threads the <code>Runtime</code> will use.</p>
 <p>This can be any number above 0 though it is advised to keep this value
 on the smaller side.</p>
-<h1 id="default" class="section-header"><a href="#default">Default</a></h1>
+<h5 id="default" class="section-header"><a href="#default">Default</a></h5>
 <p>The default value is the number of cores available to the system.</p>
-<h1 id="panic" class="section-header"><a href="#panic">Panic</a></h1>
+<h5 id="panic" class="section-header"><a href="#panic">Panic</a></h5>
 <p>When using the <code>current_thread</code> runtime this method will panic, since
 those variants do not allow setting worker thread counts.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1><h2 id="multi-threaded-runtime-with-4-threads" class="section-header"><a href="#multi-threaded-runtime-with-4-threads">Multi threaded runtime with 4 threads</a></h2>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5><h6 id="multi-threaded-runtime-with-4-threads" class="section-header"><a href="#multi-threaded-runtime-with-4-threads">Multi threaded runtime with 4 threads</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime</span>;
 
 <span class="comment">// This will spawn a work-stealing runtime with 4 worker threads.</span>
@@ -54,7 +54,7 @@ those variants do not allow setting worker thread counts.</p>
     .<span class="ident">unwrap</span>();
 
 <span class="ident">rt</span>.<span class="ident">spawn</span>(<span class="kw">async</span> <span class="kw">move</span> {});</code></pre></div>
-<h2 id="current-thread-runtime-will-only-run-on-the-current-thread-via-runtimeblock_on" class="section-header"><a href="#current-thread-runtime-will-only-run-on-the-current-thread-via-runtimeblock_on">Current thread runtime (will only run on the current thread via <code>Runtime::block_on</code>)</a></h2>
+<h6 id="current-thread-runtime-will-only-run-on-the-current-thread-via-runtimeblock_on" class="section-header"><a href="#current-thread-runtime-will-only-run-on-the-current-thread-via-runtimeblock_on">Current thread runtime (will only run on the current thread via <code>Runtime::block_on</code>)</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime</span>;
 
 <span class="comment">// Create a runtime that _must_ be driven from a call</span>
@@ -65,7 +65,7 @@ those variants do not allow setting worker thread counts.</p>
 
 <span class="comment">// This will run the runtime and future on the current thread</span>
 <span class="ident">rt</span>.<span class="ident">block_on</span>(<span class="kw">async</span> <span class="kw">move</span> {});</code></pre></div>
-<h1 id="panic-1" class="section-header"><a href="#panic-1">Panic</a></h1>
+<h5 id="panic-1" class="section-header"><a href="#panic-1">Panic</a></h5>
 <p>This will panic if <code>val</code> is not larger than <code>0</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.max_blocking_threads" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#245-249" title="goto source code">[src]</a></div><a href="#method.max_blocking_threads" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.max_blocking_threads" class="fnname">max_blocking_threads</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Specifies the limit for additional threads spawned by the Runtime.</p>
 <p>These threads are used for blocking operations like tasks spawned
@@ -73,21 +73,21 @@ through <a href="../task/fn.spawn_blocking.html"><code>spawn_blocking</code></a>
 always active and will exit if left idle for too long. You can change
 this timeout duration with <a href="struct.Builder.html#method.thread_keep_alive"><code>thread_keep_alive</code></a>.</p>
 <p>The default value is 512.</p>
-<h1 id="panic-2" class="section-header"><a href="#panic-2">Panic</a></h1>
+<h5 id="panic-2" class="section-header"><a href="#panic-2">Panic</a></h5>
 <p>This will panic if <code>val</code> is not larger than <code>0</code>.</p>
-<h1 id="upgrading-from-0x" class="section-header"><a href="#upgrading-from-0x">Upgrading from 0.x</a></h1>
+<h5 id="upgrading-from-0x" class="section-header"><a href="#upgrading-from-0x">Upgrading from 0.x</a></h5>
 <p>In old versions <code>max_threads</code> limited both blocking and worker threads, but the
 current <code>max_blocking_threads</code> does not include async worker threads in the count.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.thread_name" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#266-270" title="goto source code">[src]</a></div><a href="#method.thread_name" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.thread_name" class="fnname">thread_name</a>(&amp;mut self, val: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Sets name of threads spawned by the <code>Runtime</code>’s thread pool.</p>
 <p>The default name is “tokio-runtime-worker”.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()
     .<span class="ident">thread_name</span>(<span class="string">&quot;my-pool&quot;</span>)
     .<span class="ident">build</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.thread_name_fn" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#292-298" title="goto source code">[src]</a></div><a href="#method.thread_name_fn" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.thread_name_fn" class="fnname">thread_name_fn</a>&lt;F&gt;(&amp;mut self, f: F) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>() -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static,&nbsp;</span></h4></div></summary><div class="docblock"><p>Sets a function used to generate the name of threads spawned by the <code>Runtime</code>’s thread pool.</p>
 <p>The default name fn is <code>|| &quot;tokio-runtime-worker&quot;.into()</code>.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()
     .<span class="ident">thread_name_fn</span>(<span class="op">|</span><span class="op">|</span> {
@@ -101,7 +101,7 @@ current <code>max_blocking_threads</code> does not include async worker threads 
 specifies minimal stack size.</p>
 <p>The default stack size for spawned threads is 2 MiB, though this
 particular stack size is subject to change in the future.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()
     .<span class="ident">thread_stack_size</span>(<span class="number">32</span> <span class="op">*</span> <span class="number">1024</span>)
@@ -109,7 +109,7 @@ particular stack size is subject to change in the future.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.on_thread_start" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#343-349" title="goto source code">[src]</a></div><a href="#method.on_thread_start" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.on_thread_start" class="fnname">on_thread_start</a>&lt;F&gt;(&amp;mut self, f: F) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>() + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static,&nbsp;</span></h4></div></summary><div class="docblock"><p>Executes function <code>f</code> after each thread is started but before it starts
 doing work.</p>
 <p>This is intended for bookkeeping and monitoring use cases.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">runtime</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()
     .<span class="ident">on_thread_start</span>(<span class="op">|</span><span class="op">|</span> {
@@ -118,7 +118,7 @@ doing work.</p>
     .<span class="ident">build</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.on_thread_stop" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#369-375" title="goto source code">[src]</a></div><a href="#method.on_thread_stop" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.on_thread_stop" class="fnname">on_thread_stop</a>&lt;F&gt;(&amp;mut self, f: F) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>() + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static,&nbsp;</span></h4></div></summary><div class="docblock"><p>Executes function <code>f</code> before each thread stops.</p>
 <p>This is intended for bookkeeping and monitoring use cases.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">runtime</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()
     .<span class="ident">on_thread_stop</span>(<span class="op">|</span><span class="op">|</span> {
@@ -127,7 +127,7 @@ doing work.</p>
     .<span class="ident">build</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.build" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#392-398" title="goto source code">[src]</a></div><a href="#method.build" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.build" class="fnname">build</a>(&amp;mut self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.Runtime.html" title="struct tokio::runtime::Runtime">Runtime</a>&gt;</h4></div></summary><div class="docblock"><p>Creates the configured <code>Runtime</code>.</p>
 <p>The returned <code>Runtime</code> instance is ready to spawn tasks.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Builder</span>;
 
 <span class="kw">let</span> <span class="ident">rt</span>  <span class="op">=</span> <span class="ident">Builder::new_multi_thread</span>().<span class="ident">build</span>().<span class="ident">unwrap</span>();
@@ -138,7 +138,7 @@ doing work.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.thread_keep_alive" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#430-433" title="goto source code">[src]</a></div><a href="#method.thread_keep_alive" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.thread_keep_alive" class="fnname">thread_keep_alive</a>(&amp;mut self, duration: <a class="struct" href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html" title="struct core::time::Duration">Duration</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Sets a custom timeout for a thread in the blocking pool.</p>
 <p>By default, the timeout for a thread is set to 10 seconds. This can
 be overridden using .thread_keep_alive().</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()
     .<span class="ident">thread_keep_alive</span>(<span class="ident">Duration::from_millis</span>(<span class="number">100</span>))
@@ -146,7 +146,7 @@ be overridden using .thread_keep_alive().</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#467-487" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Builder.html" title="struct tokio::runtime::Builder">Builder</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.enable_io" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#483-486" title="goto source code">[src]</a></div><a href="#method.enable_io" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.enable_io" class="fnname">enable_io</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Enables the I/O driver.</p>
 <p>Doing this enables using net, process, signal, and some I/O types on
 the runtime.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime</span>;
 
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()
@@ -155,7 +155,7 @@ the runtime.</p>
     .<span class="ident">unwrap</span>();</code></pre></div>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-2" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#491-510" title="goto source code">[src]</a></div><a href="#impl-2" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Builder.html" title="struct tokio::runtime::Builder">Builder</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.enable_time" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/builder.rs.html#506-509" title="goto source code">[src]</a></div><a href="#method.enable_time" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.enable_time" class="fnname">enable_time</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Enables the time driver.</p>
 <p>Doing this enables using <code>tokio::time</code> on the runtime.</p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime</span>;
 
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">runtime::Builder::new_multi_thread</span>()

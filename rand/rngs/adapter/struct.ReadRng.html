@@ -4,7 +4,7 @@
 <p>This will work best with an infinite reader, but that is not required.</p>
 <p>This can be used with <code>/dev/urandom</code> on Unix but it is recommended to use
 <a href="../struct.OsRng.html"><code>OsRng</code></a> instead.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h2 id="panics" class="section-header"><a href="#panics">Panics</a></h2>
 <p><code>ReadRng</code> uses <a href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.read_exact" title="std::io::Read::read_exact"><code>std::io::Read::read_exact</code></a>, which retries on interrupts.
 All other errors from the underlying reader, including when it does not
 have enough data, will only be reported through <a href="../../trait.RngCore.html#tymethod.try_fill_bytes"><code>try_fill_bytes</code></a>.

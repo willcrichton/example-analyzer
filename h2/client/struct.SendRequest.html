@@ -22,7 +22,7 @@ ready to send a request.</p>
 <p>This is a functional combinator for <a href="#method.poll_ready"><code>poll_ready</code></a>. The returned future
 will call <code>SendStream::poll_ready</code> until <code>Ready</code>, then returns <code>self</code> to
 the caller.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// First, wait until the `send_request` handle is ready to send a new</span>
 <span class="comment">// request</span>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">send_request</span> <span class="op">=</span> <span class="ident">send_request</span>.<span class="ident">ready</span>().<span class="kw">await</span>.<span class="ident">unwrap</span>();
@@ -43,7 +43,7 @@ then attempting to call <a href="../struct.SendStream.html#method.send_data"><co
 <a href="../struct.SendStream.html#method.send_trailers"><code>SendStream::send_trailers</code></a> will result in an error.</p>
 <p>If no request body or trailers are to be sent, set <code>end_of_stream</code> to
 <code>true</code> and drop the returned <a href="../struct.SendStream.html"><code>SendStream</code></a> instance.</p>
-<h1 id="a-note-on-http-versions" class="section-header"><a href="#a-note-on-http-versions">A note on HTTP versions</a></h1>
+<h5 id="a-note-on-http-versions" class="section-header"><a href="#a-note-on-http-versions">A note on HTTP versions</a></h5>
 <p>The provided <code>Request</code> will be encoded differently depending on the
 value of its version field. If the version is set to 2.0, then the
 request is encoded as per the specification recommends.</p>
@@ -53,7 +53,7 @@ headers are permitted and the <code>:authority</code> pseudo header is not
 included.</p>
 <p>The caller should always set the request’s version field to 2.0 unless
 specifically transmitting an HTTP 1.1 request over 2.0.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Sending a request with no body</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// First, wait until the `send_request` handle is ready to send a new</span>

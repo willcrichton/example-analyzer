@@ -10,7 +10,7 @@ locked the data.</p>
 the same name on the contents of the locked data.</p>
 <p>This is an asynchronous version of <a href="https://docs.rs/lock_api/latest/lock_api/struct.RwLockWriteGuard.html#method.map"><code>RwLockWriteGuard::map</code></a> from the
 <a href="https://crates.io/crates/parking_lot"><code>parking_lot</code> crate</a>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">RwLock</span>, <span class="ident">RwLockWriteGuard</span>};
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
@@ -34,7 +34,7 @@ used as <code>RwLockWriteGuard::try_map(...)</code>. A method would interfere wi
 methods of the same name on the contents of the locked data.</p>
 <p>This is an asynchronous version of <a href="https://docs.rs/lock_api/latest/lock_api/struct.RwLockWriteGuard.html#method.try_map"><code>RwLockWriteGuard::try_map</code></a> from
 the <a href="https://crates.io/crates/parking_lot"><code>parking_lot</code> crate</a>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">RwLock</span>, <span class="ident">RwLockWriteGuard</span>};
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
@@ -60,7 +60,7 @@ locks, since <a href="struct.RwLock.html"><code>RwLock</code></a> is fair and it
 in line.</p>
 <p>Returns an RAII guard which will drop this read access of the <code>RwLock</code>
 when dropped.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">lock</span> <span class="op">=</span> <span class="ident">Arc::new</span>(<span class="ident">RwLock::new</span>(<span class="number">1</span>));
 
 <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">lock</span>.<span class="ident">write</span>().<span class="kw">await</span>;

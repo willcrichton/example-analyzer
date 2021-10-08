@@ -23,7 +23,7 @@ sending close frame since the peer still may send some data before confirming cl
 <code>write_pending</code> before trying to read in order to make sure that those responses
 make progress even if you never call <code>write_pending</code>. That does mean that they
 get sent out earliest on the next call to <code>read_message</code>, <code>write_message</code> or <code>write_pending</code>.</p>
-<h2 id="closing-the-connection" class="section-header"><a href="#closing-the-connection">Closing the connection</a></h2>
+<h6 id="closing-the-connection" class="section-header"><a href="#closing-the-connection">Closing the connection</a></h6>
 <p>When the remote endpoint decides to close the connection this will return
 the close message with an optional close frame.</p>
 <p>You should continue calling <code>read_message</code>, <code>write_message</code> or <code>write_pending</code> to drive
@@ -43,7 +43,7 @@ as described in <a href="https://tools.ietf.org/html/rfc6455#section-5.5.3">RFC 
 if <code>read_message</code> returns a ping, you should call <code>write_pending</code> until it doesn’t return
 WouldBlock before passing a pong to <code>write_message</code>, otherwise the response to the
 ping will not be sent, but rather replaced by your custom pong message.</p>
-<h2 id="errors" class="section-header"><a href="#errors">Errors</a></h2>
+<h6 id="errors" class="section-header"><a href="#errors">Errors</a></h6>
 <ul>
 <li>If the WebSocket’s send queue is full, <code>SendQueueFull</code> will be returned
 along with the passed message. Otherwise, the message is queued and Ok(()) is returned.</li>

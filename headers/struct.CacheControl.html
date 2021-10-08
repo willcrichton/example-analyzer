@@ -3,14 +3,14 @@
 caches along the request/response chain.  Such cache directives are
 unidirectional in that the presence of a directive in a request does
 not imply that the same directive is to be given in the response.</p>
-<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Cache-Control   = 1#cache-directive
-cache-directive = token [ &quot;=&quot; ( token / quoted-string ) ]</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
+<h3 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h3><div class="example-wrap"><pre class="language-text"><code>Cache-Control   = 1#cache-directive
+cache-directive = token [ &quot;=&quot; ( token / quoted-string ) ]</code></pre></div><h3 id="example-values" class="section-header"><a href="#example-values">Example values</a></h3>
 <ul>
 <li><code>no-cache</code></li>
 <li><code>private, community=&quot;UCI&quot;</code></li>
 <li><code>max-age=30</code></li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::CacheControl</span>;
 
 <span class="kw">let</span> <span class="ident">cc</span> <span class="op">=</span> <span class="ident">CacheControl::new</span>();</code></pre></div>

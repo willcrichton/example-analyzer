@@ -45,11 +45,11 @@ an additional lifetime at the beginning of generics.</p>
 original type. However, if the visibility of the original type is <code>pub</code>, the
 visibility of the projected types and the projection methods is downgraded
 to <code>pub(crate)</code>.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h2 id="safety" class="section-header"><a href="#safety">Safety</a></h2>
 <p><code>pin_project!</code> macro guarantees safety in much the same way as <a href="https://github.com/taiki-e/pin-project">pin-project</a> crate.
 Both are completely safe unless you write other unsafe code.</p>
 <p>See <a href="https://github.com/taiki-e/pin-project">pin-project</a> crate for more details.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
 
 <span class="kw">use</span> <span class="ident">pin_project_lite::pin_project</span>;
@@ -119,7 +119,7 @@ consuming the <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.htm
         <span class="self">self</span>.<span class="ident">as_mut</span>().<span class="ident">project</span>();
     }
 }</code></pre></div>
-<h1 id="unpin" class="section-header"><a href="#unpin"><code>!Unpin</code></a></h1>
+<h2 id="unpin" class="section-header"><a href="#unpin"><code>!Unpin</code></a></h2>
 <p>If you want to ensure that <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="Unpin"><code>Unpin</code></a> is not implemented, use <code>#[pin]</code>
 attribute for a <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html"><code>PhantomPinned</code></a> field.</p>
 

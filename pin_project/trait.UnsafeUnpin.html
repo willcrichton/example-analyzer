@@ -26,7 +26,7 @@ This is effectively the same thing as adding a <a href="https://doc.rust-lang.or
 type.</p>
 <p>Since this trait is <code>unsafe</code>, impls of it will be detected by the
 <code>unsafe_code</code> lint, and by tools like <a href="https://github.com/rust-secure-code/cargo-geiger"><code>cargo geiger</code></a>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>An <code>UnsafeUnpin</code> impl which, in addition to requiring that structurally
 pinned fields be <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="Unpin"><code>Unpin</code></a>, imposes an additional requirement:</p>
 

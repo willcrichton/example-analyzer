@@ -5,12 +5,12 @@ control options for the current connection.  In order to avoid
 confusing downstream recipients, a proxy or gateway MUST remove or
 replace any received connection options before forwarding the
 message.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Connection        = 1#connection-option
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Connection        = 1#connection-option
 connection-option = token
 
 * `close`
 * `keep-alive`
-* `upgrade`</code></pre></div><h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+* `upgrade`</code></pre></div><h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::Connection</span>;
 
 <span class="kw">let</span> <span class="ident">keep_alive</span> <span class="op">=</span> <span class="ident">Connection::keep_alive</span>();</code></pre></div>
@@ -24,7 +24,7 @@ connection-option = token
 <li><code>&amp;HeaderName</code></li>
 <li><code>HeaderName</code></li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">http</span>;
 
 <span class="kw">use</span> <span class="ident">http::header::UPGRADE</span>;

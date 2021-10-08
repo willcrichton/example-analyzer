@@ -7,23 +7,23 @@ around or tailor responses to avoid particular user agent
 limitations, and for analytics regarding browser or operating system
 use.  A user agent SHOULD send a User-Agent field in each request
 unless specifically configured not to do so.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>User-Agent = product *( RWS ( product / comment ) )
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>User-Agent = product *( RWS ( product / comment ) )
 product         = token [&quot;/&quot; product-version]
-product-version = token</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+product-version = token</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>CERN-LineMode/2.15 libwww/2.17b3</code></li>
 <li><code>Bunnies</code></li>
 </ul>
-<h1 id="notes" class="section-header"><a href="#notes">Notes</a></h1>
+<h2 id="notes" class="section-header"><a href="#notes">Notes</a></h2>
 <ul>
 <li>The parser does not split the value</li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::UserAgent</span>;
 
 <span class="kw">let</span> <span class="ident">ua</span> <span class="op">=</span> <span class="ident">UserAgent::from_static</span>(<span class="string">&quot;hyper/0.12.2&quot;</span>);</code></pre></div>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/headers/common/user_agent.rs.html#50-64" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.UserAgent.html" title="struct headers::UserAgent">UserAgent</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_static" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/headers/common/user_agent.rs.html#56-58" title="goto source code">[src]</a></div><a href="#method.from_static" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_static" class="fnname">from_static</a>(src: &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="struct.UserAgent.html" title="struct headers::UserAgent">UserAgent</a></h4></div></summary><div class="docblock"><p>Create a <code>UserAgent</code> from a static string.</p>
-<h1 id="panic" class="section-header"><a href="#panic">Panic</a></h1>
+<h5 id="panic" class="section-header"><a href="#panic">Panic</a></h5>
 <p>Panics if the static string is not a legal header value.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.as_str" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/headers/common/user_agent.rs.html#61-63" title="goto source code">[src]</a></div><a href="#method.as_str" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.as_str" class="fnname">as_str</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></h4></div></summary><div class="docblock"><p>View this <code>UserAgent</code> as a <code>&amp;str</code>.</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/headers/common/user_agent.rs.html#42" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.UserAgent.html" title="struct headers::UserAgent">UserAgent</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/headers/common/user_agent.rs.html#42" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.UserAgent.html" title="struct headers::UserAgent">UserAgent</a></h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>

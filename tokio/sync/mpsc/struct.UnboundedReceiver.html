@@ -5,12 +5,12 @@
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio/sync/mpsc/unbounded.rs.html#75-188" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="struct" href="struct.UnboundedReceiver.html" title="struct tokio::sync::mpsc::UnboundedReceiver">UnboundedReceiver</a>&lt;T&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.recv" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio/sync/mpsc/unbounded.rs.html#126-130" title="goto source code">[src]</a></div><a href="#method.recv" class="anchor"></a><h4 class="code-header">pub async fn <a href="#method.recv" class="fnname">recv</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;</h4></div></summary><div class="docblock"><p>Receives the next value for this receiver.</p>
 <p><code>None</code> is returned when all <code>Sender</code> halves have dropped, indicating
 that no further values can be sent on the channel.</p>
-<h1 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h1>
+<h5 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h5>
 <p>This method is cancel safe. If <code>recv</code> is used as the event in a
 <a href="../../macro.select.html"><code>tokio::select!</code></a> statement and some other branch
 completes first, it is guaranteed that no messages were received on this
 channel.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::mpsc</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -39,10 +39,10 @@ channel.</p>
     <span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;world&quot;</span>), <span class="ident">rx</span>.<span class="ident">recv</span>().<span class="kw">await</span>);
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.blocking_recv" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio/sync/mpsc/unbounded.rs.html#158-160" title="goto source code">[src]</a></div><a href="#method.blocking_recv" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.blocking_recv" class="fnname">blocking_recv</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;</h4></div></summary><div class="docblock"><p>Blocking receive to call outside of asynchronous contexts.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function panics if called within an asynchronous execution
 context.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::thread</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync::mpsc</span>;
 

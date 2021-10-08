@@ -6,7 +6,7 @@ This is a legacy concept only relevant for HTML.</p>
 when it occurs during parsing. Note that since the provided function is
 <code>Fn</code>, the caller might need to utilize <em>interior mutability</em>, such as with
 a <code>RefCell</code>, to collect the violations.</p>
-<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
+<h6 id="example" class="section-header"><a href="#example">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::cell::RefCell</span>;
 <span class="kw">use</span> <span class="ident">url</span>::{<span class="ident">Url</span>, <span class="ident">SyntaxViolation</span>};
 <span class="kw">let</span> <span class="ident">violations</span> <span class="op">=</span> <span class="ident">RefCell::new</span>(<span class="ident">Vec::new</span>());

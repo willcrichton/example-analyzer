@@ -6,12 +6,12 @@ buffer based on the file size when available, so it is generally faster than
 reading into a vector created with <code>Vec::new()</code>.</p>
 <p>This operation is implemented by running the equivalent blocking operation
 on a separate thread pool using <a href="../task/fn.spawn_blocking.html"><code>spawn_blocking</code></a>.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h2 id="errors" class="section-header"><a href="#errors">Errors</a></h2>
 <p>This function will return an error if <code>path</code> does not already exist.
 Other errors may also be returned according to <a href="struct.OpenOptions.html#method.open"><code>OpenOptions::open</code></a>.</p>
 <p>It will also return an error if it encounters while reading an error
 of a kind other than <a href="https://doc.rust-lang.org/nightly/std/io/error/enum.ErrorKind.html#variant.Interrupted"><code>ErrorKind::Interrupted</code></a>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs</span>;
 <span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
 

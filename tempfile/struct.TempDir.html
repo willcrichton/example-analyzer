@@ -14,7 +14,7 @@ value is dropped, the directory at the path will be deleted, along
 with any files and directories it contains. It is your responsibility
 to ensure that no further file system operations are attempted
 inside the temporary directory once it has been deleted.</p>
-<h1 id="resource-leaking" class="section-header"><a href="#resource-leaking">Resource Leaking</a></h1>
+<h2 id="resource-leaking" class="section-header"><a href="#resource-leaking">Resource Leaking</a></h2>
 <p>Various platform-specific conditions may cause <code>TempDir</code> to fail
 to delete the underlying directory. It’s important to ensure that
 handles (like <a href="http://doc.rust-lang.org/std/fs/struct.File.html"><code>File</code></a> and <a href="http://doc.rust-lang.org/std/fs/struct.ReadDir.html"><code>ReadDir</code></a>) to files inside the
@@ -25,7 +25,7 @@ the directory; to instead handle errors call <a href="struct.TempDir.html#method
 run, such as via <a href="http://doc.rust-lang.org/std/process/fn.exit.html"><code>std::process::exit()</code></a>, by segfaulting, or by
 receiving a signal like <code>SIGINT</code>, then the temporary directory
 will not be deleted.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Create a temporary directory with a generated name:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::fs::File</span>;
@@ -47,9 +47,9 @@ will not be deleted.</p>
 <p>See <a href="struct.Builder.html"><code>Builder</code></a> for more configuration.</p>
 <p>The directory and everything inside it will be automatically deleted
 once the returned <code>TempDir</code> is destroyed.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h5 id="errors" class="section-header"><a href="#errors">Errors</a></h5>
 <p>If the directory can not be created, <code>Err</code> is returned.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::fs::File</span>;
 <span class="kw">use</span> <span class="ident">std::io::Write</span>;
 <span class="kw">use</span> <span class="ident">tempfile::TempDir</span>;
@@ -66,9 +66,9 @@ once the returned <code>TempDir</code> is destroyed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new_in" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tempfile/dir.rs.html#262-264" title="goto source code">[src]</a></div><a href="#method.new_in" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new_in" class="fnname">new_in</a>&lt;P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;&gt;(dir: P) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.TempDir.html" title="struct tempfile::TempDir">TempDir</a>&gt;</h4></div></summary><div class="docblock"><p>Attempts to make a temporary directory inside of <code>dir</code>.
 The directory and everything inside it will be automatically
 deleted once the returned <code>TempDir</code> is destroyed.</p>
-<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
+<h5 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h5>
 <p>If the directory can not be created, <code>Err</code> is returned.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::fs</span>::{<span class="self">self</span>, <span class="ident">File</span>};
 <span class="kw">use</span> <span class="ident">std::io::Write</span>;
 <span class="kw">use</span> <span class="ident">tempfile::TempDir</span>;
@@ -79,7 +79,7 @@ deleted once the returned <code>TempDir</code> is destroyed.</p>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tmp_file</span> <span class="op">=</span> <span class="ident">File::create</span>(<span class="ident">file_path</span>)<span class="question-mark">?</span>;
 <span class="macro">writeln!</span>(<span class="ident">tmp_file</span>, <span class="string">&quot;Brian was here. Briefly.&quot;</span>)<span class="question-mark">?</span>;</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.path" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tempfile/dir.rs.html#294-296" title="goto source code">[src]</a></div><a href="#method.path" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.path" class="fnname">path</a>(&amp;self) -&gt; &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a></h4></div></summary><div class="docblock"><p>Accesses the <a href="http://doc.rust-lang.org/std/path/struct.Path.html"><code>Path</code></a> to the temporary directory.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tempfile::TempDir</span>;
 
 <span class="kw">let</span> <span class="ident">tmp_path</span>;
@@ -99,7 +99,7 @@ deleted once the returned <code>TempDir</code> is destroyed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.into_path" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tempfile/dir.rs.html#325-327" title="goto source code">[src]</a></div><a href="#method.into_path" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_path" class="fnname">into_path</a>(self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a></h4></div></summary><div class="docblock"><p>Persist the temporary directory to disk, returning the <a href="http://doc.rust-lang.org/std/path/struct.PathBuf.html"><code>PathBuf</code></a> where it is located.</p>
 <p>This consumes the <a href="struct.TempDir.html"><code>TempDir</code></a> without deleting directory on the filesystem, meaning that
 the directory will no longer be automatically deleted.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::fs</span>;
 <span class="kw">use</span> <span class="ident">tempfile::TempDir</span>;
 
@@ -115,12 +115,12 @@ the directory will no longer be automatically deleted.</p>
 <p>Although <code>TempDir</code> removes the directory on drop, in the destructor
 any errors are ignored. To detect errors cleaning up the temporary
 directory, call <code>close</code> instead.</p>
-<h1 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h1>
+<h5 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h5>
 <p>This function may return a variety of <a href="http://doc.rust-lang.org/std/io/struct.Error.html"><code>std::io::Error</code></a>s that result from deleting
 the files and directories contained with the temporary directory,
 as well as from deleting the temporary directory itself. These errors
 may be platform specific.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::fs::File</span>;
 <span class="kw">use</span> <span class="ident">std::io::Write</span>;
 <span class="kw">use</span> <span class="ident">tempfile::TempDir</span>;

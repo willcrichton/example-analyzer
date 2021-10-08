@@ -11,7 +11,7 @@ even if the receiver half has been closed. See <a href="struct.Receiver.html#met
 more details on performing a clean shutdown.</p>
 <p>Unlike <a href="struct.Permit.html#method.send" title="Permit::send"><code>Permit::send</code></a>, this method returns the <a href="struct.Sender.html" title="Sender"><code>Sender</code></a> from which
 the <code>OwnedPermit</code> was reserved.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::mpsc</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -32,7 +32,7 @@ the <code>OwnedPermit</code> was reserved.</p>
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.release" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio/sync/mpsc/bounded.rs.html#1098-1108" title="goto source code">[src]</a></div><a href="#method.release" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.release" class="fnname">release</a>(self) -&gt; <a class="struct" href="struct.Sender.html" title="struct tokio::sync::mpsc::Sender">Sender</a>&lt;T&gt;</h4></div></summary><div class="docblock"><p>Release the reserved capacity <em>without</em> sending a message, returning the
 <a href="struct.Sender.html"><code>Sender</code></a>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::mpsc</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

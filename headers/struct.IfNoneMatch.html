@@ -9,7 +9,7 @@ match any of those listed in the field-value.</p>
 entity-tags for If-None-Match (Section 2.3.2), since weak entity-tags
 can be used for cache validation even if there have been changes to
 the representation data.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>If-None-Match = &quot;*&quot; / 1#entity-tag</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>If-None-Match = &quot;*&quot; / 1#entity-tag</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>&quot;xyzzy&quot;</code></li>
 <li><code>W/&quot;xyzzy&quot;</code></li>
@@ -17,7 +17,7 @@ the representation data.</p>
 <li><code>W/&quot;xyzzy&quot;, W/&quot;r2d2xxxx&quot;, W/&quot;c3piozzzz&quot;</code></li>
 <li><code>*</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::IfNoneMatch</span>;
 
 <span class="kw">let</span> <span class="ident">if_none_match</span> <span class="op">=</span> <span class="ident">IfNoneMatch::any</span>();</code></pre></div>

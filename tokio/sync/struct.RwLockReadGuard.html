@@ -10,7 +10,7 @@ used as <code>RwLockReadGuard::map(...)</code>. A method would interfere with
 methods of the same name on the contents of the locked data.</p>
 <p>This is an asynchronous version of <a href="https://docs.rs/lock_api/latest/lock_api/struct.RwLockReadGuard.html#method.map"><code>RwLockReadGuard::map</code></a> from the
 <a href="https://crates.io/crates/parking_lot"><code>parking_lot</code> crate</a>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">RwLock</span>, <span class="ident">RwLockReadGuard</span>};
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
@@ -32,7 +32,7 @@ locked the data.</p>
 same name on the contents of the locked data.</p>
 <p>This is an asynchronous version of <a href="https://docs.rs/lock_api/latest/lock_api/struct.RwLockReadGuard.html#method.try_map"><code>RwLockReadGuard::try_map</code></a> from the
 <a href="https://crates.io/crates/parking_lot"><code>parking_lot</code> crate</a>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">RwLock</span>, <span class="ident">RwLockReadGuard</span>};
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>

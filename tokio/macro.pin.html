@@ -36,7 +36,7 @@ with the <code>pin!</code> macro.</p>
     (<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">future</span>).<span class="kw">await</span>;
 }</code></pre></div>
 <p>Pinning is useful when using <code>select!</code> and stream operators that require <code>T: Stream + Unpin</code>.</p>
-<h1 id="usage" class="section-header"><a href="#usage">Usage</a></h1>
+<h2 id="usage" class="section-header"><a href="#usage">Usage</a></h2>
 <p>The <code>pin!</code> macro takes <strong>identifiers</strong> as arguments. It does <strong>not</strong> work
 with expressions.</p>
 <p>The following does not compile as an expression is passed to <code>pin!</code>.</p>
@@ -50,7 +50,7 @@ with expressions.</p>
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">future</span> <span class="op">=</span> <span class="macro">pin!</span>(<span class="ident">my_async_fn</span>());
     (<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">future</span>).<span class="kw">await</span>;
 }</code></pre></div>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Using with select:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio</span>::{<span class="ident">pin</span>, <span class="ident">select</span>};

@@ -2,7 +2,7 @@
 <p>This may require copying the data into a single buffer. If you don’t need
 a contiguous buffer, prefer the <a href="fn.aggregate.html"><code>aggregate</code></a>
 function.</p>
-<h1 id="note" class="section-header"><a href="#note">Note</a></h1>
+<h2 id="note" class="section-header"><a href="#note">Note</a></h2>
 <p>Care needs to be taken if the remote is untrusted. The function doesn’t implement any length
 checks and an malicious peer might make it consume arbitrary amounts of memory. Checking the
 <code>Content-Length</code> is a possibility, but it is not strictly mandated to be present.</p>

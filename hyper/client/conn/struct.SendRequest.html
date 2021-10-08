@@ -3,7 +3,7 @@
 <p>If the associated connection is closed, this returns an Error.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../../src/hyper/client/conn.rs.html#244-327" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl&lt;B&gt; <a class="struct" href="struct.SendRequest.html" title="struct hyper::client::conn::SendRequest">SendRequest</a>&lt;B&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="../../body/trait.HttpBody.html" title="trait hyper::body::HttpBody">HttpBody</a> + 'static,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.send_request" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/hyper/client/conn.rs.html#289-300" title="goto source code">[src]</a></div><a href="#method.send_request" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.send_request" class="fnname">send_request</a>(&amp;mut self, req: <a class="struct" href="../../struct.Request.html" title="struct hyper::Request">Request</a>&lt;B&gt;) -&gt; <a class="struct" href="struct.ResponseFuture.html" title="struct hyper::client::conn::ResponseFuture">ResponseFuture</a><span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<div class="notable-traits-tooltiptext"><span class="docblock"><div class="notable">Notable traits for <a class="struct" href="struct.ResponseFuture.html" title="struct hyper::client::conn::ResponseFuture">ResponseFuture</a></div><code class="content"><span class="where fmt-newline">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a> for <a class="struct" href="struct.ResponseFuture.html" title="struct hyper::client::conn::ResponseFuture">ResponseFuture</a></span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html#associatedtype.Output" class="type">Output</a> = <a class="type" href="../../type.Result.html" title="type hyper::Result">Result</a>&lt;<a class="struct" href="../../struct.Response.html" title="struct hyper::Response">Response</a>&lt;<a class="struct" href="../../body/struct.Body.html" title="struct hyper::body::Body">Body</a>&gt;&gt;;</span></code></span></div></span></span></h4></div></summary><div class="docblock"><p>Sends a <code>Request</code> on the associated connection.</p>
 <p>Returns a future that if successful, yields the <code>Response</code>.</p>
-<h1 id="note" class="section-header"><a href="#note">Note</a></h1>
+<h5 id="note" class="section-header"><a href="#note">Note</a></h5>
 <p>There are some key differences in what automatic things the <code>Client</code>
 does for you that will not be done here:</p>
 <ul>
@@ -15,7 +15,7 @@ before calling this method.</li>
 <li>Since absolute-form <code>Uri</code>s are not required, if received, they will
 be serialized as-is.</li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">hyper::Request</span>;
 
 <span class="comment">// build a Request</span>

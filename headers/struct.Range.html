@@ -3,7 +3,7 @@
 semantics to request transfer of only one or more subranges of the
 selected representation data, rather than the entire selected
 representation data.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Range =	byte-ranges-specifier / other-ranges-specifier
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Range =	byte-ranges-specifier / other-ranges-specifier
 other-ranges-specifier = other-range-unit &quot;=&quot; other-range-set
 other-range-set = 1*VCHAR
 
@@ -13,14 +13,14 @@ byte-ranges-specifier = bytes-unit &quot;=&quot; byte-range-set
 byte-range-set = 1#(byte-range-spec / suffix-byte-range-spec)
 byte-range-spec = first-byte-pos &quot;-&quot; [last-byte-pos]
 first-byte-pos = 1*DIGIT
-last-byte-pos = 1*DIGIT</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+last-byte-pos = 1*DIGIT</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>bytes=1000-</code></li>
 <li><code>bytes=-2000</code></li>
 <li><code>bytes=0-1,30-40</code></li>
 <li><code>bytes=0-10,20-90,-100</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::Range</span>;
 
 

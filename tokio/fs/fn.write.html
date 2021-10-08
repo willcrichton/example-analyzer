@@ -3,7 +3,7 @@ contents of <code>contents</code> to it.</p>
 <p>This is the async equivalent of <a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html"><code>std::fs::write</code></a>.</p>
 <p>This operation is implemented by running the equivalent blocking operation
 on a separate thread pool using <a href="../task/fn.spawn_blocking.html"><code>spawn_blocking</code></a>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs</span>;
 
 <span class="ident">fs::write</span>(<span class="string">&quot;foo.txt&quot;</span>, <span class="string">b&quot;Hello world!&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;</code></pre></div>

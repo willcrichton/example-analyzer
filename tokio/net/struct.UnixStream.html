@@ -14,12 +14,12 @@ handle.</p>
 <p>This function is usually paired with <code>try_read()</code> or <code>try_write()</code>. It
 can be used to concurrently read / write to the same socket on a single
 task without splitting the socket.</p>
-<h1 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h1>
+<h5 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h5>
 <p>This method is cancel safe. Once a readiness event occurs, the method
 will continue to return immediately until the readiness event is
 consumed by an attempt to read or write that fails with <code>WouldBlock</code> or
 <code>Poll::Pending</code>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Concurrently read and write to the stream on the same task without
 splitting.</p>
 
@@ -75,12 +75,12 @@ splitting.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.readable" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#188-191" title="goto source code">[src]</a></div><a href="#method.readable" class="anchor"></a><h4 class="code-header">pub async fn <a href="#method.readable" class="fnname">readable</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</h4></div></summary><div class="docblock"><p>Wait for the socket to become readable.</p>
 <p>This function is equivalent to <code>ready(Interest::READABLE)</code> and is usually
 paired with <code>try_read()</code>.</p>
-<h1 id="cancel-safety-1" class="section-header"><a href="#cancel-safety-1">Cancel safety</a></h1>
+<h5 id="cancel-safety-1" class="section-header"><a href="#cancel-safety-1">Cancel safety</a></h5>
 <p>This method is cancel safe. Once a readiness event occurs, the method
 will continue to return immediately until the readiness event is
 consumed by an attempt to read that fails with <code>WouldBlock</code> or
 <code>Poll::Pending</code>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -129,14 +129,14 @@ second, independent waker.)</p>
 <p>This function is intended for cases where creating and pinning a future
 via <a href="struct.UnixStream.html#method.readable"><code>readable</code></a> is not feasible. Where possible, using <a href="struct.UnixStream.html#method.readable"><code>readable</code></a> is
 preferred, as this supports polling from multiple tasks at once.</p>
-<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
+<h5 id="return-value" class="section-header"><a href="#return-value">Return value</a></h5>
 <p>The function returns:</p>
 <ul>
 <li><code>Poll::Pending</code> if the unix stream is not ready for reading.</li>
 <li><code>Poll::Ready(Ok(()))</code> if the unix stream is ready for reading.</li>
 <li><code>Poll::Ready(Err(e))</code> if an error is encountered.</li>
 </ul>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h5 id="errors" class="section-header"><a href="#errors">Errors</a></h5>
 <p>This function may encounter any standard I/O error except <code>WouldBlock</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_read" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#287-291" title="goto source code">[src]</a></div><a href="#method.try_read" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.try_read" class="fnname">try_read</a>(&amp;self, buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</h4></div></summary><div class="docblock"><p>Try to read data from the stream into the provided buffer, returning how
 many bytes were read.</p>
@@ -145,12 +145,12 @@ to arrive. On success, returns the number of bytes read. Because
 <code>try_read()</code> is non-blocking, the buffer does not have to be stored by
 the async task and can exist entirely on the stack.</p>
 <p>Usually, <a href="struct.UnixStream.html#method.readable"><code>readable()</code></a> or <a href="struct.UnixStream.html#method.ready"><code>ready()</code></a> is used with this function.</p>
-<h1 id="return" class="section-header"><a href="#return">Return</a></h1>
+<h5 id="return" class="section-header"><a href="#return">Return</a></h5>
 <p>If data is successfully read, <code>Ok(n)</code> is returned, where <code>n</code> is the
 number of bytes read. <code>Ok(0)</code> indicates the stream’s read half is closed
 and will no longer yield data. If the stream is not ready to read data
 <code>Err(io::ErrorKind::WouldBlock)</code> is returned.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -199,12 +199,12 @@ to arrive. On success, returns the number of bytes read. Because
 <code>try_read_vectored()</code> is non-blocking, the buffer does not have to be
 stored by the async task and can exist entirely on the stack.</p>
 <p>Usually, <a href="struct.UnixStream.html#method.readable"><code>readable()</code></a> or <a href="struct.UnixStream.html#method.ready"><code>ready()</code></a> is used with this function.</p>
-<h1 id="return-1" class="section-header"><a href="#return-1">Return</a></h1>
+<h5 id="return-1" class="section-header"><a href="#return-1">Return</a></h5>
 <p>If data is successfully read, <code>Ok(n)</code> is returned, where <code>n</code> is the
 number of bytes read. <code>Ok(0)</code> indicates the stream’s read half is closed
 and will no longer yield data. If the stream is not ready to read data
 <code>Err(io::ErrorKind::WouldBlock)</code> is returned.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>::{<span class="self">self</span>, <span class="ident">IoSliceMut</span>};
@@ -254,12 +254,12 @@ to arrive. On success, returns the number of bytes read. Because
 <code>try_read_buf()</code> is non-blocking, the buffer does not have to be stored by
 the async task and can exist entirely on the stack.</p>
 <p>Usually, <a href="struct.UnixStream.html#method.readable"><code>readable()</code></a> or <a href="struct.UnixStream.html#method.ready"><code>ready()</code></a> is used with this function.</p>
-<h1 id="return-2" class="section-header"><a href="#return-2">Return</a></h1>
+<h5 id="return-2" class="section-header"><a href="#return-2">Return</a></h5>
 <p>If data is successfully read, <code>Ok(n)</code> is returned, where <code>n</code> is the
 number of bytes read. <code>Ok(0)</code> indicates the stream’s read half is closed
 and will no longer yield data. If the stream is not ready to read data
 <code>Err(io::ErrorKind::WouldBlock)</code> is returned.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -298,12 +298,12 @@ and will no longer yield data. If the stream is not ready to read data
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.writable" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#500-503" title="goto source code">[src]</a></div><a href="#method.writable" class="anchor"></a><h4 class="code-header">pub async fn <a href="#method.writable" class="fnname">writable</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</h4></div></summary><div class="docblock"><p>Wait for the socket to become writable.</p>
 <p>This function is equivalent to <code>ready(Interest::WRITABLE)</code> and is usually
 paired with <code>try_write()</code>.</p>
-<h1 id="cancel-safety-2" class="section-header"><a href="#cancel-safety-2">Cancel safety</a></h1>
+<h5 id="cancel-safety-2" class="section-header"><a href="#cancel-safety-2">Cancel safety</a></h5>
 <p>This method is cancel safe. Once a readiness event occurs, the method
 will continue to return immediately until the readiness event is
 consumed by an attempt to write that fails with <code>WouldBlock</code> or
 <code>Poll::Pending</code>.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -348,25 +348,25 @@ second, independent waker.)</p>
 <p>This function is intended for cases where creating and pinning a future
 via <a href="struct.UnixStream.html#method.writable"><code>writable</code></a> is not feasible. Where possible, using <a href="struct.UnixStream.html#method.writable"><code>writable</code></a> is
 preferred, as this supports polling from multiple tasks at once.</p>
-<h1 id="return-value-1" class="section-header"><a href="#return-value-1">Return value</a></h1>
+<h5 id="return-value-1" class="section-header"><a href="#return-value-1">Return value</a></h5>
 <p>The function returns:</p>
 <ul>
 <li><code>Poll::Pending</code> if the unix stream is not ready for writing.</li>
 <li><code>Poll::Ready(Ok(()))</code> if the unix stream is ready for writing.</li>
 <li><code>Poll::Ready(Err(e))</code> if an error is encountered.</li>
 </ul>
-<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
+<h5 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h5>
 <p>This function may encounter any standard I/O error except <code>WouldBlock</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_write" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#588-592" title="goto source code">[src]</a></div><a href="#method.try_write" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.try_write" class="fnname">try_write</a>(&amp;self, buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</h4></div></summary><div class="docblock"><p>Try to write a buffer to the stream, returning how many bytes were
 written.</p>
 <p>The function will attempt to write the entire contents of <code>buf</code>, but
 only part of the buffer may be written.</p>
 <p>This function is usually paired with <code>writable()</code>.</p>
-<h1 id="return-3" class="section-header"><a href="#return-3">Return</a></h1>
+<h5 id="return-3" class="section-header"><a href="#return-3">Return</a></h5>
 <p>If data is successfully written, <code>Ok(n)</code> is returned, where <code>n</code> is the
 number of bytes written. If the stream is not ready to write data,
 <code>Err(io::ErrorKind::WouldBlock)</code> is returned.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -406,11 +406,11 @@ from possible being only partially consumed. This method behaves
 equivalently to a single call to <a href="struct.UnixStream.html#method.try_write"><code>try_write()</code></a> with concatenated
 buffers.</p>
 <p>This function is usually paired with <code>writable()</code>.</p>
-<h1 id="return-4" class="section-header"><a href="#return-4">Return</a></h1>
+<h5 id="return-4" class="section-header"><a href="#return-4">Return</a></h5>
 <p>If data is successfully written, <code>Ok(n)</code> is returned, where <code>n</code> is the
 number of bytes written. If the stream is not ready to write data,
 <code>Err(io::ErrorKind::WouldBlock)</code> is returned.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -463,21 +463,21 @@ behave incorrectly.</p>
 defined on the Tokio <code>UnixStream</code> type, as this will mess with the
 readiness flag and can cause the socket to behave incorrectly.</p>
 <p>Usually, <a href="struct.UnixStream.html#method.readable"><code>readable()</code></a>, <a href="struct.UnixStream.html#method.writable"><code>writable()</code></a> or <a href="struct.UnixStream.html#method.ready"><code>ready()</code></a> is used with this function.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_std" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#705-710" title="goto source code">[src]</a></div><a href="#method.from_std" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_std" class="fnname">from_std</a>(stream: <a class="struct" href="https://doc.rust-lang.org/nightly/std/os/imp/unix/net/stream/struct.UnixStream.html" title="struct std::os::imp::unix::net::stream::UnixStream">UnixStream</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.UnixStream.html" title="struct tokio::net::UnixStream">UnixStream</a>&gt;</h4></div></summary><div class="docblock"><p>Creates new <code>UnixStream</code> from a <code>std::os::unix::net::UnixStream</code>.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_std" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#705-710" title="goto source code">[src]</a></div><a href="#method.from_std" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_std" class="fnname">from_std</a>(stream: <a class="struct" href="https://doc.rust-lang.org/nightly/std/os/unix/net/stream/struct.UnixStream.html" title="struct std::os::unix::net::stream::UnixStream">UnixStream</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.UnixStream.html" title="struct tokio::net::UnixStream">UnixStream</a>&gt;</h4></div></summary><div class="docblock"><p>Creates new <code>UnixStream</code> from a <code>std::os::unix::net::UnixStream</code>.</p>
 <p>This function is intended to be used to wrap a UnixStream from the
 standard library in the Tokio equivalent. The conversion assumes
 nothing about the underlying stream; it is left up to the user to set
 it in non-blocking mode.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function panics if thread-local runtime is not set.</p>
 <p>The runtime is usually set implicitly when this function is called
 from a future driven by a tokio runtime, otherwise runtime can be set
 explicitly with <a href="../runtime/struct.Runtime.html#method.enter"><code>Runtime::enter</code></a> function.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.into_std" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#750-755" title="goto source code">[src]</a></div><a href="#method.into_std" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_std" class="fnname">into_std</a>(self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/os/imp/unix/net/stream/struct.UnixStream.html" title="struct std::os::imp::unix::net::stream::UnixStream">UnixStream</a>&gt;</h4></div></summary><div class="docblock"><p>Turn a <a href="struct.UnixStream.html"><code>tokio::net::UnixStream</code></a> into a <a href="https://doc.rust-lang.org/nightly/std/os/imp/unix/net/stream/struct.UnixStream.html"><code>std::os::unix::net::UnixStream</code></a>.</p>
-<p>The returned <a href="https://doc.rust-lang.org/nightly/std/os/imp/unix/net/stream/struct.UnixStream.html"><code>std::os::unix::net::UnixStream</code></a> will have nonblocking
-mode set as <code>true</code>.  Use <a href="https://doc.rust-lang.org/nightly/std/os/imp/unix/net/stream/struct.UnixStream.html#method.set_nonblocking"><code>set_nonblocking</code></a> to change the blocking
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.into_std" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#750-755" title="goto source code">[src]</a></div><a href="#method.into_std" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_std" class="fnname">into_std</a>(self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/os/unix/net/stream/struct.UnixStream.html" title="struct std::os::unix::net::stream::UnixStream">UnixStream</a>&gt;</h4></div></summary><div class="docblock"><p>Turn a <a href="struct.UnixStream.html"><code>tokio::net::UnixStream</code></a> into a <a href="https://doc.rust-lang.org/nightly/std/os/unix/net/stream/struct.UnixStream.html"><code>std::os::unix::net::UnixStream</code></a>.</p>
+<p>The returned <a href="https://doc.rust-lang.org/nightly/std/os/unix/net/stream/struct.UnixStream.html"><code>std::os::unix::net::UnixStream</code></a> will have nonblocking
+mode set as <code>true</code>.  Use <a href="https://doc.rust-lang.org/nightly/std/os/unix/net/stream/struct.UnixStream.html#method.set_nonblocking"><code>set_nonblocking</code></a> to change the blocking
 mode if needed.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::error::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io::Read</span>;
 <span class="kw">use</span> <span class="ident">tokio::net::UnixListener</span>;
@@ -528,7 +528,7 @@ their destination. <a href="../io/trait.AsyncWrite.html#tymethod.poll_flush">Rea
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.poll_shutdown" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#881-884" title="goto source code">[src]</a></div><a href="#method.poll_shutdown" class="anchor"></a><h4 class="code-header">fn <a href="../io/trait.AsyncWrite.html#tymethod.poll_shutdown" class="fnname">poll_shutdown</a>(self: <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self&gt;, _: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Context.html" title="struct core::task::wake::Context">Context</a>&lt;'_&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/task/poll/enum.Poll.html" title="enum core::task::poll::Poll">Poll</a>&lt;<a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;&gt;</h4></div></summary><div class='docblock'><p>Initiates or attempts to shut down this writer, returning success when
 the I/O connection has completely shut down. <a href="../io/trait.AsyncWrite.html#tymethod.poll_shutdown">Read more</a></p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Debug" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#920-924" title="goto source code">[src]</a></div><a href="#impl-Debug" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="struct.UnixStream.html" title="struct tokio::net::UnixStream">UnixStream</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.fmt" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#921-923" title="goto source code">[src]</a></div><a href="#method.fmt" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt" class="fnname">fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>&lt;'_&gt;) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></h4></div></summary><div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
-</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-TryFrom%3CUnixStream%3E" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#834-844" title="goto source code">[src]</a></div><a href="#impl-TryFrom%3CUnixStream%3E" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/os/imp/unix/net/stream/struct.UnixStream.html" title="struct std::os::imp::unix::net::stream::UnixStream">UnixStream</a>&gt; for <a class="struct" href="struct.UnixStream.html" title="struct tokio::net::UnixStream">UnixStream</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_from" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#841-843" title="goto source code">[src]</a></div><a href="#method.try_from" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(stream: <a class="struct" href="https://doc.rust-lang.org/nightly/std/os/imp/unix/net/stream/struct.UnixStream.html" title="struct std::os::imp::unix::net::stream::UnixStream">UnixStream</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;Self&gt;</h4></div></summary><div class="docblock"><p>Consumes stream, returning the tokio I/O object.</p>
+</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-TryFrom%3CUnixStream%3E" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#834-844" title="goto source code">[src]</a></div><a href="#impl-TryFrom%3CUnixStream%3E" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/os/unix/net/stream/struct.UnixStream.html" title="struct std::os::unix::net::stream::UnixStream">UnixStream</a>&gt; for <a class="struct" href="struct.UnixStream.html" title="struct tokio::net::UnixStream">UnixStream</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_from" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/net/unix/stream.rs.html#841-843" title="goto source code">[src]</a></div><a href="#method.try_from" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(stream: <a class="struct" href="https://doc.rust-lang.org/nightly/std/os/unix/net/stream/struct.UnixStream.html" title="struct std::os::unix::net::stream::UnixStream">UnixStream</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;Self&gt;</h4></div></summary><div class="docblock"><p>Consumes stream, returning the tokio I/O object.</p>
 <p>This is equivalent to
 <a href="struct.UnixStream.html#method.from_std"><code>UnixStream::from_std(stream)</code></a>.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="associatedtype.Error" class="type trait-impl has-srclink"><a href="#associatedtype.Error" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" class="type">Error</a> = <a class="struct" href="https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html" title="struct std::io::error::Error">Error</a></h4></div></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>

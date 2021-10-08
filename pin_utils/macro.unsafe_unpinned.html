@@ -2,12 +2,12 @@
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f</span> : <span class="ident">tt</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span> : <span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
 }</code></pre></div>
 </div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>An unpinned projection of a struct field.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h2 id="safety" class="section-header"><a href="#safety">Safety</a></h2>
 <p>This macro is unsafe because it creates a method that returns a normal
 non-pin reference to the struct field. It is up to the programmer to ensure
 that the contained value can be considered not pinned in the current
 context.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">pin_utils::unsafe_unpinned</span>;
 <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
 

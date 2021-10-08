@@ -10,12 +10,12 @@ the field-value.</p>
 comparing entity-tags for <code>If-Match</code>, since the client
 intends this precondition to prevent the method from being applied if
 there have been any changes to the representation data.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>If-Match = &quot;*&quot; / 1#entity-tag</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>If-Match = &quot;*&quot; / 1#entity-tag</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>&quot;xyzzy&quot;</code></li>
 <li>“xyzzy”, “r2d2xxxx”, “c3piozzzz”</li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::IfMatch</span>;
 
 <span class="kw">let</span> <span class="ident">if_match</span> <span class="op">=</span> <span class="ident">IfMatch::any</span>();</code></pre></div>

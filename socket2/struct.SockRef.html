@@ -5,7 +5,7 @@ be configured using all the additional methods found in the <a href="struct.Sock
 <p><code>SockRef</code> can be created from any socket type that implements <a href="https://doc.rust-lang.org/stable/std/os/unix/io/trait.AsRawFd.html"><code>AsRawFd</code></a>
 (Unix) or <a href="https://doc.rust-lang.org/stable/std/os/windows/io/trait.AsRawSocket.html"><code>AsRawSocket</code></a> (Windows) using the <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="From"><code>From</code></a> implementation, but
 the caller must ensure the file descriptor/socket is a valid.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Below is an example of converting a <a href="https://doc.rust-lang.org/nightly/std/net/tcp/struct.TcpStream.html"><code>TcpStream</code></a> into a <a href="struct.SockRef.html" title="SockRef"><code>SockRef</code></a>.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::net</span>::{<span class="ident">TcpStream</span>, <span class="ident">SocketAddr</span>};
@@ -47,7 +47,7 @@ and Unix.</p>
 Windows and Unix.</p>
 <p>An error will be returned if <code>listen</code> or <code>connect</code> has already been
 called on this builder.</p>
-<h1 id="notes" class="section-header"><a href="#notes">Notes</a></h1>
+<h5 id="notes" class="section-header"><a href="#notes">Notes</a></h5>
 <p>When using a non-blocking connect (by setting the socket into
 non-blocking mode before calling this function), socket option can’t be
 set <em>while connecting</em>. This will cause errors on Windows. Socket
@@ -61,7 +61,7 @@ connect(2), and then waits for the connection to complete with poll(2)
 on Unix and select on Windows. When the connection is complete, the
 socket is set back to blocking mode. On Unix, this will loop over
 <code>EINTR</code> errors.</p>
-<h1 id="warnings" class="section-header"><a href="#warnings">Warnings</a></h1>
+<h5 id="warnings" class="section-header"><a href="#warnings">Warnings</a></h5>
 <p>The non-blocking state of the socket is overridden by this function -
 it will be returned in blocking mode on success, and in an indeterminate
 state on failure.</p>
@@ -82,16 +82,16 @@ called on this builder.</p>
 <p>This function directly corresponds to the <code>accept(2)</code> function on
 Windows and Unix.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.local_addr" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#306-308" title="goto source code">[src]</a></div><a href="#method.local_addr" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.local_addr" class="fnname">local_addr</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the socket address of the local half of this socket.</p>
-<h1 id="notes-1" class="section-header"><a href="#notes-1">Notes</a></h1>
+<h5 id="notes-1" class="section-header"><a href="#notes-1">Notes</a></h5>
 <p>Depending on the OS this may return an error if the socket is not
 <a href="struct.Socket.html#method.bind">bound</a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.peer_addr" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#317-319" title="goto source code">[src]</a></div><a href="#method.peer_addr" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.peer_addr" class="fnname">peer_addr</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the socket address of the remote peer of this socket.</p>
-<h1 id="notes-2" class="section-header"><a href="#notes-2">Notes</a></h1>
+<h5 id="notes-2" class="section-header"><a href="#notes-2">Notes</a></h5>
 <p>This returns an error if the socket is not <a href="struct.Socket.html#method.connect"><code>connect</code>ed</a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.type" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#323-325" title="goto source code">[src]</a></div><a href="#method.type" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.type" class="fnname">type</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.Type.html" title="struct socket2::Type">Type</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the <a href="struct.Type.html" title="Type"><code>Type</code></a> of this socket by checking the <code>SO_TYPE</code> option on
 this socket.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_clone" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#340-342" title="goto source code">[src]</a></div><a href="#method.try_clone" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.try_clone" class="fnname">try_clone</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.Socket.html" title="struct socket2::Socket">Socket</a>&gt;</h4></div></summary><div class="docblock"><p>Creates a new independently owned handle to the underlying socket.</p>
-<h1 id="notes-3" class="section-header"><a href="#notes-3">Notes</a></h1>
+<h5 id="notes-3" class="section-header"><a href="#notes-3">Notes</a></h5>
 <p>On Unix this uses <code>F_DUPFD_CLOEXEC</code> and thus sets the <code>FD_CLOEXEC</code> on
 the returned socket.</p>
 <p>On Windows this uses <code>WSA_FLAG_NO_HANDLE_INHERIT</code> setting inheriting to
@@ -100,7 +100,7 @@ false.</p>
 QOS-enabled socket, see
 <a href="https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-wsaduplicatesocketw">https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-wsaduplicatesocketw</a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_nonblocking" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#352-354" title="goto source code">[src]</a></div><a href="#method.set_nonblocking" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_nonblocking" class="fnname">set_nonblocking</a>(&amp;self, nonblocking: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</h4></div></summary><div class="docblock"><p>Moves this TCP stream into or out of nonblocking mode.</p>
-<h1 id="notes-4" class="section-header"><a href="#notes-4">Notes</a></h1>
+<h5 id="notes-4" class="section-header"><a href="#notes-4">Notes</a></h5>
 <p>On Unix this corresponds to calling <code>fcntl</code> (un)setting <code>O_NONBLOCK</code>.</p>
 <p>On Windows this corresponds to calling <code>ioctlsocket</code> (un)setting
 <code>FIONBIO</code>.</p>
@@ -111,7 +111,7 @@ portions to return immediately with an appropriate value.</p>
 connected.</p>
 <p>The <a href="struct.Socket.html#method.connect"><code>connect</code></a> method will connect this socket to a remote address.
 This method might fail if the socket is not connected.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h5 id="safety" class="section-header"><a href="#safety">Safety</a></h5>
 <p>Normally casting a <code>&amp;mut [u8]</code> to <code>&amp;mut [MaybeUninit&lt;u8&gt;]</code> would be
 unsound, as that allows us to write uninitialised bytes to the buffer.
 However this implementation promises to not write uninitialised bytes to
@@ -133,7 +133,7 @@ This method might fail if the socket is not connected.</p>
 <p>In addition to the number of bytes read, this function returns the flags
 for the received message. See <a href="struct.RecvFlags.html" title="RecvFlags"><code>RecvFlags</code></a> for more information about
 the returned flags.</p>
-<h1 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h1>
+<h5 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h5>
 <p>Normally casting a <code>IoSliceMut</code> to <code>MaybeUninitSlice</code> would be unsound,
 as that allows us to write uninitialised bytes to the buffer. However
 this implementation promises to not write uninitialised bytes to the
@@ -144,7 +144,7 @@ function with <code>buf</code>s of type <code>&amp;mut [IoSliceMut]</code>, allo
 buffers to be used without using <code>unsafe</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.recv_vectored_with_flags" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#458-464" title="goto source code">[src]</a></div><a href="#method.recv_vectored_with_flags" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.recv_vectored_with_flags" class="fnname">recv_vectored_with_flags</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;bufs: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="struct" href="struct.MaybeUninitSlice.html" title="struct socket2::MaybeUninitSlice">MaybeUninitSlice</a>&lt;'_&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="type" href="../libc/unix/type.c_int.html" title="type libc::unix::c_int">c_int</a><br>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="struct" href="struct.RecvFlags.html" title="struct socket2::RecvFlags">RecvFlags</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</h4></div></summary><div class="docblock"><p>Identical to <a href="struct.Socket.html#method.recv_vectored"><code>recv_vectored</code></a> but allows for specification of arbitrary
 flags to the underlying <code>recvmsg</code>/<code>WSARecv</code> call.</p>
-<h1 id="safety-2" class="section-header"><a href="#safety-2">Safety</a></h1>
+<h5 id="safety-2" class="section-header"><a href="#safety-2">Safety</a></h5>
 <p><code>recv_from_vectored</code> makes the same safety guarantees regarding <code>bufs</code>
 as <a href="struct.Socket.html#method.recv_vectored"><code>recv_vectored</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.peek" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#479-481" title="goto source code">[src]</a></div><a href="#method.peek" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.peek" class="fnname">peek</a>(&amp;self, buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="union" href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html" title="union core::mem::maybe_uninit::MaybeUninit">MaybeUninit</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</h4></div></summary><div class="docblock"><p>Receives data on the socket from the remote adress to which it is
@@ -152,12 +152,12 @@ connected, without removing that data from the queue. On success,
 returns the number of bytes peeked.</p>
 <p>Successive calls return the same data. This is accomplished by passing
 <code>MSG_PEEK</code> as a flag to the underlying <code>recv</code> system call.</p>
-<h1 id="safety-3" class="section-header"><a href="#safety-3">Safety</a></h1>
+<h5 id="safety-3" class="section-header"><a href="#safety-3">Safety</a></h5>
 <p><code>peek</code> makes the same safety guarantees regarding the <code>buf</code>fer as
 <a href="struct.Socket.html#method.recv"><code>recv</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.recv_from" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#492-494" title="goto source code">[src]</a></div><a href="#method.recv_from" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.recv_from" class="fnname">recv_from</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="union" href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html" title="union core::mem::maybe_uninit::MaybeUninit">MaybeUninit</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a><br>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</h4></div></summary><div class="docblock"><p>Receives data from the socket. On success, returns the number of bytes
 read and the address from whence the data came.</p>
-<h1 id="safety-4" class="section-header"><a href="#safety-4">Safety</a></h1>
+<h5 id="safety-4" class="section-header"><a href="#safety-4">Safety</a></h5>
 <p><code>recv_from</code> makes the same safety guarantees regarding the <code>buf</code>fer as
 <a href="struct.Socket.html#method.recv"><code>recv</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.recv_from_with_flags" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#500-506" title="goto source code">[src]</a></div><a href="#method.recv_from_with_flags" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.recv_from_with_flags" class="fnname">recv_from_with_flags</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="union" href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html" title="union core::mem::maybe_uninit::MaybeUninit">MaybeUninit</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="type" href="../libc/unix/type.c_int.html" title="type libc::unix::c_int">c_int</a><br>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</h4></div></summary><div class="docblock"><p>Identical to <a href="struct.Socket.html#method.recv_from"><code>recv_from</code></a> but allows for specification of arbitrary
@@ -165,12 +165,12 @@ flags to the underlying <code>recvfrom</code> call.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.recv_from_vectored" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#522-527" title="goto source code">[src]</a></div><a href="#method.recv_from_vectored" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.recv_from_vectored" class="fnname">recv_from_vectored</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;bufs: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="struct" href="struct.MaybeUninitSlice.html" title="struct socket2::MaybeUninitSlice">MaybeUninitSlice</a>&lt;'_&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a><br>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="struct" href="struct.RecvFlags.html" title="struct socket2::RecvFlags">RecvFlags</a>, <a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</h4></div></summary><div class="docblock"><p>Receives data from the socket. Returns the amount of bytes read, the
 <a href="struct.RecvFlags.html" title="RecvFlags"><code>RecvFlags</code></a> and the remote address from the data is coming. Unlike
 <a href="struct.Socket.html#method.recv_from"><code>recv_from</code></a> this allows passing multiple buffers.</p>
-<h1 id="safety-5" class="section-header"><a href="#safety-5">Safety</a></h1>
+<h5 id="safety-5" class="section-header"><a href="#safety-5">Safety</a></h5>
 <p><code>recv_from_vectored</code> makes the same safety guarantees regarding <code>bufs</code>
 as <a href="struct.Socket.html#method.recv_vectored"><code>recv_vectored</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.recv_from_vectored_with_flags" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#542-548" title="goto source code">[src]</a></div><a href="#method.recv_from_vectored_with_flags" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.recv_from_vectored_with_flags" class="fnname">recv_from_vectored_with_flags</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;bufs: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="struct" href="struct.MaybeUninitSlice.html" title="struct socket2::MaybeUninitSlice">MaybeUninitSlice</a>&lt;'_&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="type" href="../libc/unix/type.c_int.html" title="type libc::unix::c_int">c_int</a><br>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="struct" href="struct.RecvFlags.html" title="struct socket2::RecvFlags">RecvFlags</a>, <a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</h4></div></summary><div class="docblock"><p>Identical to <a href="struct.Socket.html#method.recv_from_vectored"><code>recv_from_vectored</code></a> but allows for specification of
 arbitrary flags to the underlying <code>recvmsg</code>/<code>WSARecvFrom</code> call.</p>
-<h1 id="safety-6" class="section-header"><a href="#safety-6">Safety</a></h1>
+<h5 id="safety-6" class="section-header"><a href="#safety-6">Safety</a></h5>
 <p><code>recv_from_vectored</code> makes the same safety guarantees regarding <code>bufs</code>
 as <a href="struct.Socket.html#method.recv_vectored"><code>recv_vectored</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.peek_from" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#564-566" title="goto source code">[src]</a></div><a href="#method.peek_from" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.peek_from" class="fnname">peek_from</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="union" href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html" title="union core::mem::maybe_uninit::MaybeUninit">MaybeUninit</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a><br>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</h4></div></summary><div class="docblock"><p>Receives data from the socket, without removing it from the queue.</p>
@@ -178,7 +178,7 @@ as <a href="struct.Socket.html#method.recv_vectored"><code>recv_vectored</code><
 <code>MSG_PEEK</code> as a flag to the underlying <code>recvfrom</code> system call.</p>
 <p>On success, returns the number of bytes peeked and the address from
 whence the data came.</p>
-<h1 id="safety-7" class="section-header"><a href="#safety-7">Safety</a></h1>
+<h5 id="safety-7" class="section-header"><a href="#safety-7">Safety</a></h5>
 <p><code>peek_from</code> makes the same safety guarantees regarding the <code>buf</code>fer as
 <a href="struct.Socket.html#method.recv"><code>recv</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.send" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/socket.rs.html#574-576" title="goto source code">[src]</a></div><a href="#method.send" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.send" class="fnname">send</a>(&amp;self, buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</h4></div></summary><div class="docblock"><p>Sends data on the socket to a connected peer.</p>
@@ -223,7 +223,7 @@ until all queued messages for the socket have been successfully sent or
 the linger timeout has been reached. Otherwise, the call returns
 immediately and the closing is done in the background. When the socket
 is closed as part of exit(2), it always lingers in the background.</p>
-<h1 id="notes-5" class="section-header"><a href="#notes-5">Notes</a></h1>
+<h5 id="notes-5" class="section-header"><a href="#notes-5">Notes</a></h5>
 <p>On most OSs the duration only has a precision of seconds and will be
 silently truncated.</p>
 <p>On Apple platforms (e.g. macOS, iOS, etc) this uses <code>SO_LINGER_SEC</code>.</p>
@@ -362,7 +362,7 @@ operating systems.</p>
 configured using the <a href="struct.TcpKeepalive.html" title="TcpKeepalive"><code>TcpKeepalive</code></a> struct. At a minimum, all systems
 support configuring the <a href="struct.TcpKeepalive.html#method.with_time">keepalive time</a>: the time after which the OS
 will start sending keepalive messages on an idle connection.</p>
-<h1 id="notes-6" class="section-header"><a href="#notes-6">Notes</a></h1>
+<h5 id="notes-6" class="section-header"><a href="#notes-6">Notes</a></h5>
 <ul>
 <li>This will enable <code>SO_KEEPALIVE</code> on this socket, if it is not already
 enabled.</li>
@@ -372,7 +372,7 @@ overwritten with their default values. Therefore, this function should
 either only be called once per socket, or the same parameters should
 be passed every time it is called.</li>
 </ul>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::time::Duration</span>;
 
 <span class="kw">use</span> <span class="ident">socket2</span>::{<span class="ident">Socket</span>, <span class="ident">TcpKeepalive</span>, <span class="ident">Domain</span>, <span class="ident">Type</span>};

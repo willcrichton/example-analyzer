@@ -12,17 +12,17 @@ expressions and evaluates them concurrently on the same task. Each async
 expression evaluates to a future and the futures from each expression are
 multiplexed on the current task. The <code>try_join!</code> macro returns when <strong>all</strong>
 branches return with <code>Ok</code> or when the <strong>first</strong> branch returns with <code>Err</code>.</p>
-<h1 id="notes" class="section-header"><a href="#notes">Notes</a></h1>
+<h2 id="notes" class="section-header"><a href="#notes">Notes</a></h2>
 <p>The supplied futures are stored inline and does not require allocating a
 <code>Vec</code>.</p>
-<h3 id="runtime-characteristics" class="section-header"><a href="#runtime-characteristics">Runtime characteristics</a></h3>
+<h4 id="runtime-characteristics" class="section-header"><a href="#runtime-characteristics">Runtime characteristics</a></h4>
 <p>By running all async expressions on the current task, the expressions are
 able to run <strong>concurrently</strong> but not in <strong>parallel</strong>. This means all
 expressions are run on the same thread and if one branch blocks the thread,
 all other expressions will be unable to continue. If parallelism is
 required, spawn each async expression using <a href="task/fn.spawn.html"><code>tokio::spawn</code></a> and pass the
 join handle to <code>try_join!</code>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Basic try_join with two branches.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">do_stuff_async</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {

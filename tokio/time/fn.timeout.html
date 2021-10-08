@@ -2,12 +2,12 @@
 <p>If the future completes before the duration has elapsed, then the completed
 value is returned. Otherwise, an error is returned and the future is
 canceled.</p>
-<h1 id="cancelation" class="section-header"><a href="#cancelation">Cancelation</a></h1>
+<h2 id="cancelation" class="section-header"><a href="#cancelation">Cancelation</a></h2>
 <p>Cancelling a timeout is done by dropping the future. No additional cleanup
 or other work is required.</p>
 <p>The original future may be obtained by calling <a href="struct.Timeout.html#method.into_inner" title="Timeout::into_inner"><code>Timeout::into_inner</code></a>. This
 consumes the <code>Timeout</code>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Create a new <code>Timeout</code> set to expire in 10 milliseconds.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time::timeout</span>;

@@ -8,7 +8,7 @@ if there was an error.</p>
 ready to receive a message.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.poll_ready" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_channel/mpsc/mod.rs.html#725-728" title="goto source code">[src]</a></div><a href="#method.poll_ready" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.poll_ready" class="fnname">poll_ready</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;cx: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Context.html" title="struct core::task::wake::Context">Context</a>&lt;'_&gt;<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/task/poll/enum.Poll.html" title="enum core::task::poll::Poll">Poll</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="struct.SendError.html" title="struct futures_channel::mpsc::SendError">SendError</a>&gt;&gt;</h4></div></summary><div class="docblock"><p>Polls the channel to determine if there is guaranteed capacity to send
 at least one item without waiting.</p>
-<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
+<h5 id="return-value" class="section-header"><a href="#return-value">Return value</a></h5>
 <p>This method returns:</p>
 <ul>
 <li><code>Poll::Ready(Ok(_))</code> if there is sufficient capacity;</li>

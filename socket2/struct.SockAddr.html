@@ -2,12 +2,12 @@
 <p><code>SockAddr</code>s may be constructed directly to and from the standard library
 <a href="https://doc.rust-lang.org/nightly/std/net/addr/enum.SocketAddr.html" title="SocketAddr"><code>SocketAddr</code></a>, <a href="https://doc.rust-lang.org/nightly/std/net/addr/struct.SocketAddrV4.html" title="SocketAddrV4"><code>SocketAddrV4</code></a>, and <a href="https://doc.rust-lang.org/nightly/std/net/addr/struct.SocketAddrV6.html" title="SocketAddrV6"><code>SocketAddrV6</code></a> types.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/sockaddr.rs.html#22-211" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/socket2/sockaddr.rs.html#68-70" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub const unsafe fn <a href="#method.new" class="fnname">new</a>(storage: <a class="struct" href="../libc/unix/linux_like/struct.sockaddr_storage.html" title="struct libc::unix::linux_like::sockaddr_storage">sockaddr_storage</a>, len: <a class="type" href="../libc/unix/linux_like/linux/type.socklen_t.html" title="type libc::unix::linux_like::linux::socklen_t">socklen_t</a>) -&gt; <a class="struct" href="struct.SockAddr.html" title="struct socket2::SockAddr">SockAddr</a></h4></div></summary><div class="docblock"><p>Create a <code>SockAddr</code> from the underlying storage and its length.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h5 id="safety" class="section-header"><a href="#safety">Safety</a></h5>
 <p>Caller must ensure that the address family and length match the type of
 storage address. For example if <code>storage.ss_family</code> is set to <code>AF_INET</code>
 the <code>storage</code> must be initialised as <code>sockaddr_in</code>, setting the content
 and length appropriately.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::io</span>;
 <span class="kw">use</span> <span class="ident">std::mem</span>;
 <span class="kw">use</span> <span class="ident">std::os::unix::io::AsRawFd</span>;
@@ -40,12 +40,12 @@ is OS/architecture specific.</p>
 <p>The address is zeroed before <code>init</code> is called and is thus valid to
 dereference and read from. The length initialised to the maximum length
 of the storage.</p>
-<h1 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h1>
+<h5 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h5>
 <p>Caller must ensure that the address family and length match the type of
 storage address. For example if <code>storage.ss_family</code> is set to <code>AF_INET</code>
 the <code>storage</code> must be initialised as <code>sockaddr_in</code>, setting the content
 and length appropriately.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::io</span>;
 <span class="kw">use</span> <span class="ident">std::os::unix::io::AsRawFd</span>;
 

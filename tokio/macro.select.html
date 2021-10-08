@@ -62,14 +62,14 @@ and for the remainder of the current call to <code>select!</code>. Continue from
 <li>If <strong>all</strong> branches are disabled, evaluate the <code>else</code> expression. If no
 else branch is provided, panic.</li>
 </ol>
-<h1 id="runtime-characteristics" class="section-header"><a href="#runtime-characteristics">Runtime characteristics</a></h1>
+<h2 id="runtime-characteristics" class="section-header"><a href="#runtime-characteristics">Runtime characteristics</a></h2>
 <p>By running all async expressions on the current task, the expressions are
 able to run <strong>concurrently</strong> but not in <strong>parallel</strong>. This means all
 expressions are run on the same thread and if one branch blocks the thread,
 all other expressions will be unable to continue. If parallelism is
 required, spawn each async expression using <a href="task/fn.spawn.html"><code>tokio::spawn</code></a> and pass the
 join handle to <code>select!</code>.</p>
-<h1 id="fairness" class="section-header"><a href="#fairness">Fairness</a></h1>
+<h2 id="fairness" class="section-header"><a href="#fairness">Fairness</a></h2>
 <p>By default, <code>select!</code> randomly picks a branch to check first. This provides
 some level of fairness when calling <code>select!</code> in a loop with branches that
 are always ready.</p>
@@ -88,12 +88,12 @@ huge volume of messages and zero or nearly zero time between them, you should
 place the shutdown future earlier in the <code>select!</code> list to ensure that it is
 always polled, and will not be ignored due to the stream being constantly
 ready.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h2 id="panics" class="section-header"><a href="#panics">Panics</a></h2>
 <p>The <code>select!</code> macro panics if all branches are disabled <strong>and</strong> there is no
 provided <code>else</code> branch. A branch is disabled when the provided <code>if</code>
 precondition returns <code>false</code> <strong>or</strong> when the pattern does not match the
 result of <code>&lt;async expression&gt;</code>.</p>
-<h1 id="cancellation-safety" class="section-header"><a href="#cancellation-safety">Cancellation safety</a></h1>
+<h2 id="cancellation-safety" class="section-header"><a href="#cancellation-safety">Cancellation safety</a></h2>
 <p>When using <code>select!</code> in a loop to receive messages from multiple sources,
 you should make sure that the receive call is cancellation safe to avoid
 losing messages. This section goes through various common methods and
@@ -139,7 +139,7 @@ cancellation safe.</p>
 necessarily wrong. For example, if you are cancelling a task because the
 application is shutting down, then you probably don’t care that partially
 read data is lost.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Basic select with two branches.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">do_stuff_async</span>() {
@@ -299,7 +299,7 @@ future can be made <a href="https://doc.rust-lang.org/nightly/core/marker/trait.
         };
     }
 }</code></pre></div>
-<h2 id="avoid-racy-if-preconditions" class="section-header"><a href="#avoid-racy-if-preconditions">Avoid racy <code>if</code> preconditions</a></h2>
+<h3 id="avoid-racy-if-preconditions" class="section-header"><a href="#avoid-racy-if-preconditions">Avoid racy <code>if</code> preconditions</a></h3>
 <p>Given that <code>if</code> preconditions are used to disable <code>select!</code> branches, some
 caution must be used to avoid missing values.</p>
 <p>For example, here is <strong>incorrect</strong> usage of <code>sleep</code> with <code>if</code>. The objective

@@ -3,7 +3,7 @@
 <a href="struct.Receiver.html#method.recv" title="Receiver::recv"><code>recv</code></a>.</p>
 <p>To turn this receiver into a <code>Stream</code>, you can use the <a href="https://docs.rs/tokio-stream/0.1/tokio_stream/wrappers/struct.BroadcastStream.html"><code>BroadcastStream</code></a>
 wrapper.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::broadcast</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -35,12 +35,12 @@ will return with <code>Err(RecvError::Lagged)</code> and the <a href="struct.Rec
 internal cursor is updated to point to the oldest value still held by
 the channel. A subsequent call to <a href="struct.Receiver.html#method.recv"><code>recv</code></a> will return this value
 <strong>unless</strong> it has been since overwritten.</p>
-<h1 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h1>
+<h5 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h5>
 <p>This method is cancel safe. If <code>recv</code> is used as the event in a
 <a href="../../macro.select.html"><code>tokio::select!</code></a> statement and some other branch
 completes first, it is guaranteed that no messages were received on this
 channel.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::broadcast</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -95,7 +95,7 @@ internal cursor is updated to point to the oldest value still held by
 the channel. A subsequent call to <a href="struct.Receiver.html#method.try_recv"><code>try_recv</code></a> will return this value
 <strong>unless</strong> it has been since overwritten. If there are no values to
 receive, <code>Err(TryRecvError::Empty)</code> is returned.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::broadcast</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

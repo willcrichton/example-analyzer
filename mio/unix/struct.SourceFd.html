@@ -8,7 +8,7 @@ not</strong> take ownership of the FD. Specifically, it will not manage any
 lifecycle related operations, such as closing the FD on drop. It is expected
 that the <code>SourceFd</code> is constructed right before a call to
 <a href="../struct.Registry.html#method.register"><code>Registry::register</code></a>. See the examples for more detail.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Basic usage.</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Interest</span>, <span class="ident">Poll</span>, <span class="ident">Token</span>};

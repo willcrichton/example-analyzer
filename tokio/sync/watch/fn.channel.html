@@ -2,7 +2,7 @@
 <p>All values sent by <a href="struct.Sender.html"><code>Sender</code></a> will become visible to the <a href="struct.Receiver.html"><code>Receiver</code></a> handles.
 Only the last value sent is made available to the <a href="struct.Receiver.html"><code>Receiver</code></a> half. All
 intermediate values are dropped.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::watch</span>;
 
     <span class="kw">let</span> (<span class="ident">tx</span>, <span class="kw-2">mut</span> <span class="ident">rx</span>) <span class="op">=</span> <span class="ident">watch::channel</span>(<span class="string">&quot;hello&quot;</span>);

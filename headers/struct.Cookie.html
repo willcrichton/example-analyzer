@@ -4,13 +4,13 @@ request, the user agent must send the cookie-string
 as the value of the header field.</p>
 <p>When the user agent generates an HTTP request, the user agent MUST NOT
 attach more than one Cookie header field.</p>
-<h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>SID=31d4d96e407aad42</code></li>
 <li><code>SID=31d4d96e407aad42; lang=en-US</code></li>
 </ul>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/headers/common/cookie.rs.html#24-65" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Cookie.html" title="struct headers::Cookie">Cookie</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.get" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/headers/common/cookie.rs.html#45-49" title="goto source code">[src]</a></div><a href="#method.get" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.get" class="fnname">get</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</h4></div></summary><div class="docblock"><p>Lookup a value for a cookie name.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers</span>::{<span class="ident">Cookie</span>, <span class="ident">HeaderMap</span>, <span class="ident">HeaderMapExt</span>, <span class="ident">HeaderValue</span>};
 
 <span class="comment">// Setup the header map with strings...</span>

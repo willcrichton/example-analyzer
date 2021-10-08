@@ -6,17 +6,17 @@ secure connections.  This overall policy is referred to as HTTP Strict
 Transport Security (HSTS).  The policy is declared by web sites via the
 Strict-Transport-Security HTTP response header field and/or by other means,
 such as user agent configuration, for example.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>     [ directive ]  *( &quot;;&quot; [ directive ] )
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>     [ directive ]  *( &quot;;&quot; [ directive ] )
 
      directive                 = directive-name [ &quot;=&quot; directive-value ]
      directive-name            = token
      directive-value           = token | quoted-string
-</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>max-age=31536000</code></li>
 <li><code>max-age=15768000 ; includeSubdomains</code></li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::time::Duration</span>;
 <span class="kw">use</span> <span class="ident">headers::StrictTransportSecurity</span>;
 

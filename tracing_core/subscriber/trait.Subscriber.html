@@ -42,7 +42,7 @@ point, the subscriber <em>may</em> choose to store the associated data if it wil
 be referenced again. However, if the data has already been recorded and will
 not be needed by the implementations of <code>enter</code> and <code>exit</code>, the subscriber
 may freely discard that data without allocating space to store it.</p>
-<h2 id="overriding-default-impls" class="section-header"><a href="#overriding-default-impls">Overriding default impls</a></h2>
+<h3 id="overriding-default-impls" class="section-header"><a href="#overriding-default-impls">Overriding default impls</a></h3>
 <p>Some trait methods on <code>Subscriber</code> have default implementations, either in
 order to reduce the surface area of implementing <code>Subscriber</code>, or for
 backward-compatibility reasons. However, many subscribers will likely want
@@ -104,7 +104,7 @@ but the actual behaviour is defined by the subscriber implementation.</p>
 for each field it declares.</p>
 <p>The subscriber is expected to provide a <a href="../field/trait.Visit.html">visitor</a> to the <code>Record</code>’s
 <a href="../span/struct.Record.html#method.record"><code>record</code> method</a> in order to record the added values.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <p>“foo = 3” will be recorded when <a href="../span/struct.Attributes.html#method.record"><code>record</code></a> is called on the
 <code>Attributes</code> passed to <code>new_span</code>.
 Since values are not provided for the <code>bar</code> and <code>baz</code> fields,
@@ -205,7 +205,7 @@ returning <code>Interest::never</code> only if <em>all</em> such children return
 broadcast may change dynamically, the subscriber should also never
 return <code>Interest::Never</code>, as a new subscriber may be added that <em>is</em>
 interested.</p>
-<h1 id="notes" class="section-header"><a href="#notes">Notes</a></h1>
+<h5 id="notes" class="section-header"><a href="#notes">Notes</a></h5>
 <p>This function may be called again when a new subscriber is created or
 when the registry is invalidated.</p>
 <p>If a subscriber returns <code>Interest::never</code> for a particular callsite, it
@@ -296,7 +296,7 @@ implementations could not override the downcasting behavior</p>
 implementations which consist of multiple composed types. Such
 subscribers might allow <code>downcast_raw</code> by returning references to those
 component if they contain components with the given <code>TypeId</code>.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h5 id="safety" class="section-header"><a href="#safety">Safety</a></h5>
 <p>The <a href="#method.downcast_ref"><code>downcast_ref</code></a> method expects that the pointer returned by
 <code>downcast_raw</code> is non-null and points to a valid instance of the type
 with the provided <code>TypeId</code>. Failure to ensure this will result in

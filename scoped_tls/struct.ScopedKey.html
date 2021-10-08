@@ -10,7 +10,7 @@ duration of a closure.</p>
 this function is called recursively inside of <code>cb</code>.</p>
 <p>Upon return, this function will restore the previous value, if any
 was available.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">scoped_tls</span>;
 
@@ -32,9 +32,9 @@ was available.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.with" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/scoped_tls/lib.rs.html#164-173" title="goto source code">[src]</a></div><a href="#method.with" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.with" class="fnname">with</a>&lt;F, R&gt;(&amp;'static self, f: F) -&gt; R <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; R,&nbsp;</span></h4></div></summary><div class="docblock"><p>Gets a value out of this scoped variable.</p>
 <p>This function takes a closure which receives the value of this
 variable.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function will panic if <code>set</code> has not previously been called.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">scoped_tls</span>;
 

@@ -4,11 +4,11 @@ response is considered stale.</p>
 <p>The presence of an Expires field does not imply that the original
 resource will change or cease to exist at, before, or after that
 time.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Expires = HTTP-date</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Expires = HTTP-date</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>Thu, 01 Dec 1994 16:00:00 GMT</code></li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::Expires</span>;
 <span class="kw">use</span> <span class="ident">std::time</span>::{<span class="ident">SystemTime</span>, <span class="ident">Duration</span>};
 

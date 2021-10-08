@@ -4,7 +4,7 @@ selected element from the iterator used when the <code>WeightedIndex</code> was
 created. The chance of a given element being picked is proportional to the
 value of the element. The weights can use any type <code>X</code> for which an
 implementation of <a href="../struct.Uniform.html"><code>Uniform&lt;X&gt;</code></a> exists.</p>
-<h1 id="performance" class="section-header"><a href="#performance">Performance</a></h1>
+<h2 id="performance" class="section-header"><a href="#performance">Performance</a></h2>
 <p>Time complexity of sampling from <code>WeightedIndex</code> is <code>O(log N)</code> where
 <code>N</code> is the number of weights. As an alternative,
 <a href="https://docs.rs/rand_distr/*/rand_distr/weighted_alias/index.html"><code>rand_distr::weighted_alias</code></a>
@@ -21,7 +21,7 @@ types, <a href="../struct.Uniform.html"><code>Uniform&lt;X&gt;</code></a> doesnâ
 <code>Uniform&lt;X&gt;::sample</code> (method of the <a href="../trait.Distribution.html" title="Distribution"><code>Distribution</code></a> trait), which typically
 will request a single value from the underlying <a href="../../trait.RngCore.html"><code>RngCore</code></a>, though the
 exact number depends on the implementation of <code>Uniform&lt;X&gt;::sample</code>.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">rand::prelude</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">rand::distributions::WeightedIndex</span>;
 

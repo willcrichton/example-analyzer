@@ -9,10 +9,10 @@ an <code>Err</code> if the header value contains non visible ascii characters.</
 <p>This function will not perform any copying, however the string is
 checked to ensure that no invalid characters are present. Only visible
 ASCII characters (32-127) are permitted.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function panics if the argument contains invalid header value
 characters.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;hello&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">val</span>, <span class="string">&quot;hello&quot;</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_str" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/value.rs.html#100" title="goto source code">[src]</a></div><a href="#method.from_str" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_str" class="fnname">from_str</a>(src: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../struct.HeaderValue.html" title="struct headers_core::HeaderValue">HeaderValue</a>, <a class="struct" href="struct.InvalidHeaderValue.html" title="struct headers_core::header::InvalidHeaderValue">InvalidHeaderValue</a>&gt;</h4></div></summary><div class="docblock"><p>Attempt to convert a string to a <code>HeaderValue</code>.</p>
@@ -22,7 +22,7 @@ returned. Only visible ASCII characters (32-127) are permitted. Use
 (128-255).</p>
 <p>This function is intended to be replaced in the future by a <code>TryFrom</code>
 implementation once the trait is stabilized in std.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_str</span>(<span class="string">&quot;hello&quot;</span>).<span class="ident">unwrap</span>();
 <span class="macro">assert_eq!</span>(<span class="ident">val</span>, <span class="string">&quot;hello&quot;</span>);</code></pre></div>
 <p>An invalid value</p>
@@ -31,7 +31,7 @@ implementation once the trait is stabilized in std.</p>
 <span class="macro">assert!</span>(<span class="ident">val</span>.<span class="ident">is_err</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_name" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/value.rs.html#117" title="goto source code">[src]</a></div><a href="#method.from_name" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_name" class="fnname">from_name</a>(name: <a class="struct" href="../struct.HeaderName.html" title="struct headers_core::HeaderName">HeaderName</a>) -&gt; <a class="struct" href="../struct.HeaderValue.html" title="struct headers_core::HeaderValue">HeaderValue</a></h4></div></summary><div class="docblock"><p>Converts a HeaderName into a HeaderValue</p>
 <p>Since every valid HeaderName is a valid HeaderValue this is done infallibly.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_name</span>(<span class="ident">ACCEPT</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">val</span>, <span class="ident">HeaderValue::from_bytes</span>(<span class="string">b&quot;accept&quot;</span>).<span class="ident">unwrap</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_bytes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/value.rs.html#146" title="goto source code">[src]</a></div><a href="#method.from_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_bytes" class="fnname">from_bytes</a>(src: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../struct.HeaderValue.html" title="struct headers_core::HeaderValue">HeaderValue</a>, <a class="struct" href="struct.InvalidHeaderValue.html" title="struct headers_core::header::InvalidHeaderValue">InvalidHeaderValue</a>&gt;</h4></div></summary><div class="docblock"><p>Attempt to convert a byte slice to a <code>HeaderValue</code>.</p>
@@ -40,7 +40,7 @@ returned. Only byte values between 32 and 255 (inclusive) are permitted,
 excluding byte 127 (DEL).</p>
 <p>This function is intended to be replaced in the future by a <code>TryFrom</code>
 implementation once the trait is stabilized in std.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_bytes</span>(<span class="string">b&quot;hello\xfa&quot;</span>).<span class="ident">unwrap</span>();
 <span class="macro">assert_eq!</span>(<span class="ident">val</span>, <span class="kw-2">&amp;</span><span class="string">b&quot;hello\xfa&quot;</span>[..]);</code></pre></div>
 <p>An invalid value</p>
@@ -57,27 +57,27 @@ within the buffer.</p>
 chars.</p>
 <p>This function will perform a scan of the header value, checking all the
 characters.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;hello&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">val</span>.<span class="ident">to_str</span>().<span class="ident">unwrap</span>(), <span class="string">&quot;hello&quot;</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.len" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/value.rs.html#250" title="goto source code">[src]</a></div><a href="#method.len" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.len" class="fnname">len</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></div></summary><div class="docblock"><p>Returns the length of <code>self</code>.</p>
 <p>This length is in bytes.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;hello&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">val</span>.<span class="ident">len</span>(), <span class="number">5</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_empty" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/value.rs.html#267" title="goto source code">[src]</a></div><a href="#method.is_empty" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_empty" class="fnname">is_empty</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Returns true if the <code>HeaderValue</code> has a length of zero bytes.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;&quot;</span>);
 <span class="macro">assert!</span>(<span class="ident">val</span>.<span class="ident">is_empty</span>());
 
 <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;hello&quot;</span>);
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">val</span>.<span class="ident">is_empty</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.as_bytes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/value.rs.html#281" title="goto source code">[src]</a></div><a href="#method.as_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.as_bytes" class="fnname">as_bytes</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></h4></div></summary><div class="docblock"><p>Converts a <code>HeaderValue</code> to a byte slice.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;hello&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">val</span>.<span class="ident">as_bytes</span>(), <span class="string">b&quot;hello&quot;</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_sensitive" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/value.rs.html#300" title="goto source code">[src]</a></div><a href="#method.set_sensitive" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_sensitive" class="fnname">set_sensitive</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</h4></div></summary><div class="docblock"><p>Mark that the header value represents sensitive information.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;my secret&quot;</span>);
 
 <span class="ident">val</span>.<span class="ident">set_sensitive</span>(<span class="bool-val">true</span>);
@@ -95,7 +95,7 @@ can choose not to compress them.</p>
 <p>Additionally, sensitive values will be masked by the <code>Debug</code>
 implementation of <code>HeaderValue</code>.</p>
 <p>Note that sensitivity is not factored into equality or ordering.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;my secret&quot;</span>);
 
 <span class="ident">val</span>.<span class="ident">set_sensitive</span>(<span class="bool-val">true</span>);

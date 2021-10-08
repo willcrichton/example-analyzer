@@ -19,7 +19,7 @@
 </details>}</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A pattern in a local binding, function signature, match expression, or
 various other places.</p>
 <p><em>This type is available only if Syn is built with the <code>&quot;full&quot;</code> feature.</em></p>
-<h1 id="syntax-tree-enum" class="section-header"><a href="#syntax-tree-enum">Syntax tree enum</a></h1>
+<h2 id="syntax-tree-enum" class="section-header"><a href="#syntax-tree-enum">Syntax tree enum</a></h2>
 <p>This type is a <a href="enum.Expr.html#syntax-tree-enums">syntax tree enum</a>.</p>
 </div></details><h2 id="variants" class="variants small-section-header">Variants<a href="#variants" class="anchor"></a></h2><div id="variant.Box" class="variant small-section-header"><a href="#variant.Box" class="anchor field"></a><code>Box(<a class="struct" href="struct.PatBox.html" title="struct syn::PatBox">PatBox</a>)</code></div><div class="docblock"><p>A box pattern: <code>box v</code>.</p>
 </div><div class="sub-variant" id="variant.Box.fields"><h3>Tuple Fields of <b>Box</b></h3><div><span id="variant.Box.field.0" class="variant small-section-header"><a href="#variant.Box.field.0" class="anchor field"></a><code>0:&nbsp;<a class="struct" href="struct.PatBox.html" title="struct syn::PatBox">PatBox</a></code></span></div></div><div id="variant.Ident" class="variant small-section-header"><a href="#variant.Ident" class="anchor field"></a><code>Ident(<a class="struct" href="struct.PatIdent.html" title="struct syn::PatIdent">PatIdent</a>)</code></div><div class="docblock"><p>A pattern that binds a new variable: <code>ref mut binding @ SUBPATTERN</code>.</p>

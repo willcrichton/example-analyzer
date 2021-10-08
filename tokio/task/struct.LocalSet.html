@@ -22,7 +22,7 @@ futures to run together on the same thread.</p>
         <span class="comment">// ...</span>
     }).<span class="kw">await</span>.<span class="ident">unwrap</span>();
 }</code></pre></div>
-<h1 id="use-with-run_until" class="section-header"><a href="#use-with-run_until">Use with <code>run_until</code></a></h1>
+<h2 id="use-with-run_until" class="section-header"><a href="#use-with-run_until">Use with <code>run_until</code></a></h2>
 <p>To spawn <code>!Send</code> futures, we can use a local task set to schedule them
 on the thread calling <a href="../runtime/struct.Runtime.html#method.block_on"><code>Runtime::block_on</code></a>. When running inside of the
 local task set, we can use <a href="fn.spawn_local.html"><code>task::spawn_local</code></a>, which can spawn
@@ -52,7 +52,7 @@ local task set, we can use <a href="fn.spawn_local.html"><code>task::spawn_local
 <p><strong>Note:</strong> The <code>run_until</code> method can only be used in <code>#[tokio::main]</code>,
 <code>#[tokio::test]</code> or directly inside a call to <a href="../runtime/struct.Runtime.html#method.block_on"><code>Runtime::block_on</code></a>. It
 cannot be used inside a task spawned with <code>tokio::spawn</code>.</p>
-<h2 id="awaiting-a-localset" class="section-header"><a href="#awaiting-a-localset">Awaiting a <code>LocalSet</code></a></h2>
+<h3 id="awaiting-a-localset" class="section-header"><a href="#awaiting-a-localset">Awaiting a <code>LocalSet</code></a></h3>
 <p>Additionally, a <code>LocalSet</code> itself implements <code>Future</code>, completing when
 <em>all</em> tasks spawned on the <code>LocalSet</code> complete. This can be used to run
 several futures on a <code>LocalSet</code> and drive the whole set until they
@@ -85,7 +85,7 @@ complete. For example,</p>
 <code>#[tokio::main]</code>, <code>#[tokio::test]</code> or directly inside a call to
 <a href="../runtime/struct.Runtime.html#method.block_on"><code>Runtime::block_on</code></a>. It cannot be used inside a task spawned with
 <code>tokio::spawn</code>.</p>
-<h2 id="use-inside-tokiospawn" class="section-header"><a href="#use-inside-tokiospawn">Use inside <code>tokio::spawn</code></a></h2>
+<h3 id="use-inside-tokiospawn" class="section-header"><a href="#use-inside-tokiospawn">Use inside <code>tokio::spawn</code></a></h3>
 <p>The two methods mentioned above cannot be used inside <code>tokio::spawn</code>, so
 to spawn <code>!Send</code> futures from inside <code>tokio::spawn</code>, we need to do
 something else. The solution is to create the <code>LocalSet</code> somewhere else,
@@ -212,10 +212,10 @@ the future spawns internally will be executed on the runtime. The future
 may also call <a href="fn.spawn_local.html"><code>spawn_local</code></a> to spawn_local additional local futures on the
 current thread.</p>
 <p>This method should not be called from an asynchronous context.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function panics if the executor is at capacity, if the provided
 future panics, or if called within an asynchronous execution context.</p>
-<h1 id="notes" class="section-header"><a href="#notes">Notes</a></h1>
+<h5 id="notes" class="section-header"><a href="#notes">Notes</a></h5>
 <p>Since this function internally calls <a href="../runtime/struct.Runtime.html#method.block_on"><code>Runtime::block_on</code></a>, and drives
 futures in the local task set inside that call to <code>block_on</code>, the local
 futures may not use <a href="fn.block_in_place.html">in-place blocking</a>. If a blocking call needs to be
@@ -260,7 +260,7 @@ background until the future passed to <code>run_until</code> completes. When the
 passed to <code>run</code> finishes, any local futures which have not completed
 will remain on the local set, and will be driven on subsequent calls to
 <code>run_until</code> or when <a href="#awaiting-a-localset">awaiting the local set</a> itself.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::task</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

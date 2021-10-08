@@ -7,11 +7,11 @@ order to obtain data in the media type referenced by the Content-Type
 header field.  Content-Encoding is primarily used to allow a
 representation’s data to be compressed without losing the identity of
 its underlying media type.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Content-Encoding = 1#content-coding</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Content-Encoding = 1#content-coding</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>gzip</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::ContentEncoding</span>;
 
 <span class="kw">let</span> <span class="ident">content_enc</span> <span class="op">=</span> <span class="ident">ContentEncoding::gzip</span>();</code></pre></div>
@@ -21,7 +21,7 @@ its underlying media type.</p>
 <ul>
 <li><code>&amp;str</code></li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::ContentEncoding</span>;
 
 <span class="kw">let</span> <span class="ident">content_enc</span> <span class="op">=</span> <span class="ident">ContentEncoding::gzip</span>();

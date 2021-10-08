@@ -5,7 +5,7 @@ handle that will back the HTTP/2.0 server.</p>
 <p>New instances of <code>Builder</code> are obtained via <a href="struct.Builder.html#method.new"><code>Builder::new</code></a>.</p>
 <p>See function level documentation for details on the various client
 configuration settings.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>    <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>((<span class="ident">SendRequest</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span>, <span class="ident">Connection</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Bytes</span><span class="op">&gt;</span>)), <span class="ident">h2::Error</span><span class="op">&gt;</span>
 <span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
@@ -16,7 +16,7 @@ configuration settings.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/h2/client.rs.html#588-1071" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Builder.html" title="struct h2::client::Builder">Builder</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/h2/client.rs.html#615-624" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; <a class="struct" href="struct.Builder.html" title="struct h2::client::Builder">Builder</a></h4></div></summary><div class="docblock"><p>Returns a new client builder instance initialized with default
 configuration values.</p>
 <p>Configuration methods can be chained on the return value.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -28,7 +28,7 @@ flow control for received data.</p>
 <p>The initial window of a stream is used as part of flow control. For more
 details, see <a href="../struct.FlowControl.html"><code>FlowControl</code></a>.</p>
 <p>The default value is 65,535.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -39,7 +39,7 @@ for received data.</p>
 <p>The initial window of a connection is used as part of flow control. For more details,
 see <a href="../struct.FlowControl.html"><code>FlowControl</code></a>.</p>
 <p>The default value is 65,535.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -51,13 +51,13 @@ configured client is able to accept.</p>
 but any data larger than <code>max</code> will be broken up into multiple <code>DATA</code>
 frames.</p>
 <p>The value <strong>must</strong> be between 16,384 and 16,777,215. The default value is 16,384.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
     .<span class="ident">max_frame_size</span>(<span class="number">1_000_000</span>)
     .<span class="ident">handshake</span>(<span class="ident">my_io</span>);</code></pre></div>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function panics if <code>max</code> is not within the legal range specified
 above.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.max_header_list_size" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/h2/client.rs.html#765-768" title="goto source code">[src]</a></div><a href="#method.max_header_list_size" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.max_header_list_size" class="fnname">max_header_list_size</a>(&amp;mut self, max: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Sets the max size of received header frames.</p>
@@ -67,7 +67,7 @@ the uncompressed size of header fields, including the length of the name
 and value in octets plus an overhead of 32 octets for each header field.</p>
 <p>This setting is also used to limit the maximum amount of data that is
 buffered to decode HEADERS frames.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -89,7 +89,7 @@ setting.</p>
 a protocol level error. Instead, the <code>h2</code> library will immediately reset
 the stream.</p>
 <p>See <a href="https://http2.github.io/http2-spec/#rfc.section.5.1.2">Section 5.1.2</a> in the HTTP/2.0 spec for more details.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -104,7 +104,7 @@ streams that are counted towards the concurrency limit.</p>
 <p>Sending streams past the limit returned by the peer will be treated
 as a stream error of type PROTOCOL_ERROR or REFUSED_STREAM.</p>
 <p>See <a href="https://http2.github.io/http2-spec/#rfc.section.5.1.2">Section 5.1.2</a> in the HTTP/2.0 spec for more details.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -124,7 +124,7 @@ reached, the oldest reset stream is purged from memory.</p>
 received for that stream will result in a connection level protocol
 error, forcing the connection to terminate.</p>
 <p>The default value is 10.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -144,7 +144,7 @@ stream state is purged from memory.</p>
 received for that stream will result in a connection level protocol
 error, forcing the connection to terminate.</p>
 <p>The default value is 30 seconds.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -158,7 +158,7 @@ will never send a push promise.</p>
 <p>This setting can be changed during the life of a single HTTP/2.0
 connection by sending another settings frame updating the value.</p>
 <p>Default value: <code>true</code>.</p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// `client_fut` is a future representing the completion of the HTTP/2.0</span>
 <span class="comment">// handshake.</span>
 <span class="kw">let</span> <span class="ident">client_fut</span> <span class="op">=</span> <span class="ident">Builder::new</span>()
@@ -174,7 +174,7 @@ server.</p>
 tuple once the HTTP/2.0 handshake has been completed.</p>
 <p>This function also allows the caller to configure the send payload data
 type. See <a href="../index.html#outbound-data-type.">Outbound data type</a> for more details.</p>
-<h1 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h1>
+<h5 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>    <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>((<span class="ident">SendRequest</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span>, <span class="ident">Connection</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Bytes</span><span class="op">&gt;</span>)), <span class="ident">h2::Error</span><span class="op">&gt;</span>

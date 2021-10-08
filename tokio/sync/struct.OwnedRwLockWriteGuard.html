@@ -9,7 +9,7 @@ already locked the data.</p>
 <p>This is an associated function that needs to be used as
 <code>OwnedRwLockWriteGuard::map(..)</code>. A method would interfere with methods
 of the same name on the contents of the locked data.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">RwLock</span>, <span class="ident">OwnedRwLockWriteGuard</span>};
 
@@ -33,7 +33,7 @@ already locked the data.</p>
 <p>This is an associated function that needs to be
 used as <code>OwnedRwLockWriteGuard::try_map(...)</code>. A method would interfere
 with methods of the same name on the contents of the locked data.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">RwLock</span>, <span class="ident">OwnedRwLockWriteGuard</span>};
 
@@ -60,7 +60,7 @@ locks, since <a href="struct.RwLock.html" title="RwLock"><code>RwLock</code></a>
 in line.</p>
 <p>Returns an RAII guard which will drop this read access of the <code>RwLock</code>
 when dropped.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">lock</span> <span class="op">=</span> <span class="ident">Arc::new</span>(<span class="ident">RwLock::new</span>(<span class="number">1</span>));
 
 <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">lock</span>.<span class="ident">clone</span>().<span class="ident">write_owned</span>().<span class="kw">await</span>;

@@ -4,7 +4,7 @@ as GET, POST, etc.</p>
 <p>Currently includes 8 variants representing the 8 methods defined in
 <a href="https://tools.ietf.org/html/rfc7231#section-4.1">RFC 7230</a>, plus PATCH,
 and an Extension variant for all extensions.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">http::Method</span>;
 
 <span class="macro">assert_eq!</span>(<span class="ident">Method::GET</span>, <span class="ident">Method::from_bytes</span>(<span class="string">b&quot;GET&quot;</span>).<span class="ident">unwrap</span>());

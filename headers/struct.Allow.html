@@ -3,13 +3,13 @@
 supported by the target resource.  The purpose of this field is
 strictly to inform the recipient of valid request methods associated
 with the resource.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Allow = #method</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Allow = #method</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>GET, HEAD, PUT</code></li>
 <li><code>OPTIONS, GET, PUT, POST, DELETE, HEAD, TRACE, CONNECT, PATCH, fOObAr</code></li>
 <li>``</li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">http</span>;
 <span class="kw">use</span> <span class="ident">headers::Allow</span>;
 <span class="kw">use</span> <span class="ident">http::Method</span>;

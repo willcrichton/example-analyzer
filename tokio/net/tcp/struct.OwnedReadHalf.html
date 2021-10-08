@@ -11,7 +11,7 @@ available.</p>
 <code>Waker</code> from the <code>Context</code> passed to the most recent call is scheduled
 to receive a wakeup.</p>
 <p>See the <a href="../struct.TcpStream.html#method.poll_peek"><code>TcpStream::poll_peek</code></a> level documentation for more details.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="self">self</span>, <span class="ident">ReadBuf</span>};
 <span class="kw">use</span> <span class="ident">tokio::net::TcpStream</span>;
 
@@ -34,7 +34,7 @@ to receive a wakeup.</p>
 connected, without removing that data from the queue. On success,
 returns the number of bytes peeked.</p>
 <p>See the <a href="../struct.TcpStream.html#method.peek"><code>TcpStream::peek</code></a> level documentation for more details.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::net::TcpStream</span>;
 <span class="kw">use</span> <span class="ident">tokio::io::AsyncReadExt</span>;
 <span class="kw">use</span> <span class="ident">std::error::Error</span>;

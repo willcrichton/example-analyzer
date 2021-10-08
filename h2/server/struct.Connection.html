@@ -7,7 +7,7 @@ internal state forward.</p>
 <code>Connection</code> value is obtained, the caller must call <a href="struct.Connection.html#method.poll"><code>poll</code></a> or
 <a href="struct.Connection.html#method.poll_close"><code>poll_close</code></a> in order to drive the internal connection state forward.</p>
 <p>See <a href="index.html">module level</a> documentation for more details</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">server</span> <span class="op">=</span> <span class="ident">server::handshake</span>(<span class="ident">my_io</span>).<span class="kw">await</span>.<span class="ident">unwrap</span>();
 <span class="kw">while</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">request</span>) <span class="op">=</span> <span class="ident">server</span>.<span class="ident">accept</span>().<span class="kw">await</span> {
     <span class="ident">tokio::spawn</span>(<span class="kw">async</span> <span class="kw">move</span> {
@@ -33,7 +33,7 @@ flow control for received data.</p>
 remote acknowledges the change.</p>
 <p>This can be used to increase or decrease the window size for existing
 streams.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h5 id="errors" class="section-header"><a href="#errors">Errors</a></h5>
 <p>Returns an error if a previous call is still pending acknowledgement
 from the remote endpoint.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.poll_closed" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/h2/server.rs.html#486-488" title="goto source code">[src]</a></div><a href="#method.poll_closed" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.poll_closed" class="fnname">poll_closed</a>(&amp;mut self, cx: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Context.html" title="struct core::task::wake::Context">Context</a>&lt;'_&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/task/poll/enum.Poll.html" title="enum core::task::poll::Poll">Poll</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../struct.Error.html" title="struct h2::Error">Error</a>&gt;&gt;</h4></div></summary><div class="docblock"><p>Returns <code>Ready</code> when the underlying connection has closed.</p>
@@ -58,7 +58,7 @@ they might have been in-flight from the client already. After about
 1 RTT, no new requests should be accepted. Once all active streams
 have completed, the connection is closed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.ping_pong" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/h2/server.rs.html#531-533" title="goto source code">[src]</a></div><a href="#method.ping_pong" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ping_pong" class="fnname">ping_pong</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.PingPong.html" title="struct h2::PingPong">PingPong</a>&gt;</h4></div></summary><div class="docblock"><p>Takes a <code>PingPong</code> instance from the connection.</p>
-<h1 id="note" class="section-header"><a href="#note">Note</a></h1>
+<h5 id="note" class="section-header"><a href="#note">Note</a></h5>
 <p>This may only be called once. Calling multiple times will return <code>None</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.max_concurrent_send_streams" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/h2/server.rs.html#544-546" title="goto source code">[src]</a></div><a href="#method.max_concurrent_send_streams" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.max_concurrent_send_streams" class="fnname">max_concurrent_send_streams</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></div></summary><div class="docblock"><p>Returns the maximum number of concurrent streams that may be initiated
 by the server on this connection.</p>

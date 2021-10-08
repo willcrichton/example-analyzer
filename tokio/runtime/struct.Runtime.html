@@ -5,7 +5,7 @@ blocking pool, necessary for running asynchronous tasks.</p>
 However, most users will use the <code>#[tokio::main]</code> annotation on their
 entry point instead.</p>
 <p>See <a href="index.html">module level</a> documentation for more details.</p>
-<h1 id="shutdown" class="section-header"><a href="#shutdown">Shutdown</a></h1>
+<h2 id="shutdown" class="section-header"><a href="#shutdown">Shutdown</a></h2>
 <p>Shutting down the runtime is done by dropping the value. The current
 thread will block until the shut down operation has completed.</p>
 <ul>
@@ -16,7 +16,7 @@ thread will block until the shut down operation has completed.</p>
 <p>Once the reactor has dropped, any outstanding I/O resources bound to
 that reactor will no longer function. Calling any method on them will
 result in an error.</p>
-<h1 id="sharing" class="section-header"><a href="#sharing">Sharing</a></h1>
+<h2 id="sharing" class="section-header"><a href="#sharing">Sharing</a></h2>
 <p>The Tokio runtime implements <code>Sync</code> and <code>Send</code> to allow you to wrap it
 in a <code>Arc</code>. Most fn take <code>&amp;self</code> to allow you to call them concurrently
 across multiple threads.</p>
@@ -30,7 +30,7 @@ initialized.</p>
 they will use the  <a href="../attr.main.html"><code>#[tokio::main]</code> attribute</a>. When a more complex
 configuration is necessary, the <a href="struct.Builder.html">runtime builder</a> may be used.</p>
 <p>See <a href="index.html">module level</a> documentation for more details.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Creating a new <code>Runtime</code> with default configuration values.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
@@ -42,7 +42,7 @@ configuration is necessary, the <a href="struct.Builder.html">runtime builder</a
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.handle" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/mod.rs.html#342-344" title="goto source code">[src]</a></div><a href="#method.handle" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.handle" class="fnname">handle</a>(&amp;self) -&gt; &amp;<a class="struct" href="struct.Handle.html" title="struct tokio::runtime::Handle">Handle</a></h4></div></summary><div class="docblock"><p>Return a handle to the runtime’s spawner.</p>
 <p>The returned handle can be used to spawn tasks that run on this runtime, and can
 be cloned to allow moving the <code>Handle</code> to other threads.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">Runtime::new</span>()
@@ -56,7 +56,7 @@ be cloned to allow moving the <code>Handle</code> to other threads.</p>
 thread pool. The thread pool is then responsible for polling the future
 until it completes.</p>
 <p>See <a href="index.html">module level</a> documentation for more details.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="comment">// Create the runtime</span>
@@ -67,7 +67,7 @@ until it completes.</p>
     <span class="macro">println!</span>(<span class="string">&quot;now running on a worker thread&quot;</span>);
 });</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.spawn_blocking" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/runtime/mod.rs.html#397-403" title="goto source code">[src]</a></div><a href="#method.spawn_blocking" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.spawn_blocking" class="fnname">spawn_blocking</a>&lt;F, R&gt;(&amp;self, func: F) -&gt; <a class="struct" href="../task/struct.JoinHandle.html" title="struct tokio::task::JoinHandle">JoinHandle</a>&lt;R&gt;<span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<div class="notable-traits-tooltiptext"><span class="docblock"><div class="notable">Notable traits for <a class="struct" href="../task/struct.JoinHandle.html" title="struct tokio::task::JoinHandle">JoinHandle</a>&lt;T&gt;</div><code class="content"><span class="where fmt-newline">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a> for <a class="struct" href="../task/struct.JoinHandle.html" title="struct tokio::task::JoinHandle">JoinHandle</a>&lt;T&gt;</span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html#associatedtype.Output" class="type">Output</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="struct" href="../task/struct.JoinError.html" title="struct tokio::task::JoinError">JoinError</a>&gt;;</span></code></span></div></span></span> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>() -&gt; R + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'static,<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'static,&nbsp;</span></h4></div></summary><div class="docblock"><p>Run the provided function on an executor dedicated to blocking operations.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="comment">// Create the runtime</span>
@@ -82,20 +82,20 @@ runtime’s entry point.</p>
 <p>This runs the given future on the current thread, blocking until it is
 complete, and yielding its resolved result. Any tasks or timers
 which the future spawns internally will be executed on the runtime.</p>
-<h1 id="multi-thread-scheduler" class="section-header"><a href="#multi-thread-scheduler">Multi thread scheduler</a></h1>
+<h5 id="multi-thread-scheduler" class="section-header"><a href="#multi-thread-scheduler">Multi thread scheduler</a></h5>
 <p>When the multi thread scheduler is used this will allow futures
 to run within the io driver and timer context of the overall runtime.</p>
-<h1 id="current-thread-scheduler" class="section-header"><a href="#current-thread-scheduler">Current thread scheduler</a></h1>
+<h5 id="current-thread-scheduler" class="section-header"><a href="#current-thread-scheduler">Current thread scheduler</a></h5>
 <p>When the current thread scheduler is enabled <code>block_on</code>
 can be called concurrently from multiple threads. The first call
 will take ownership of the io and timer drivers. This means
 other threads which do not own the drivers will hook into that one.
 When the first <code>block_on</code> completes, other threads will be able to
 “steal” the driver to allow continued execution of their futures.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function panics if the provided future panics, or if called within an
 asynchronous execution context.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="comment">// Create the runtime</span>
@@ -109,7 +109,7 @@ asynchronous execution context.</p>
 <p>This allows you to construct types that must have an executor
 available on creation such as <a href="../time/struct.Sleep.html"><code>Sleep</code></a> or <a href="../net/struct.TcpStream.html"><code>TcpStream</code></a>. It will
 also allow you to call methods such as <a href="../task/fn.spawn.html"><code>tokio::spawn</code></a>.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="kw">fn</span> <span class="ident">function_that_spawns</span>(<span class="ident">msg</span>: <span class="ident">String</span>) {
@@ -139,7 +139,7 @@ can work. The <code>shutdown_timeout</code> will signal all tasks to shutdown an
 will wait for at most <code>duration</code> for all spawned tasks to terminate. If
 <code>timeout</code> elapses before all tasks are dropped, the function returns and
 outstanding tasks are potentially leaked.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 <span class="kw">use</span> <span class="ident">tokio::task</span>;
 

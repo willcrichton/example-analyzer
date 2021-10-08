@@ -9,7 +9,7 @@
 Heap(<a href="https://doc.rust-lang.org/alloc/vec/struct.Vec.html"><code>Vec</code></a>). The
 interface for the type as a whole is a bunch of methods that just match on
 the enum variant and then call the same method on the inner vec.</p>
-<h2 id="construction" class="section-header"><a href="#construction">Construction</a></h2>
+<h3 id="construction" class="section-header"><a href="#construction">Construction</a></h3>
 <p>Because it’s an enum, you can construct a <code>TinyVec</code> simply by making an
 <code>ArrayVec</code> or <code>Vec</code> and then putting it into the enum.</p>
 <p>There is also a macro</p>
@@ -78,11 +78,11 @@ get an inline vec. If it’s greater than you get a heap vec.</p>
 <span class="macro">assert!</span>(<span class="ident">t</span>.<span class="ident">capacity</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">20</span>);</code></pre></div>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#390-916" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl&lt;A:&nbsp;<a class="trait" href="trait.Array.html" title="trait tinyvec::Array">Array</a>&gt; <a class="enum" href="enum.TinyVec.html" title="enum tinyvec::TinyVec">TinyVec</a>&lt;A&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.append" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#408-413" title="goto source code">[src]</a></div><a href="#method.append" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.append" class="fnname">append</a>(&amp;mut self, other: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.reference.html">&amp;mut </a>Self)</h4></div></summary><div class="docblock"><p>Move all values from <code>other</code> into this vec.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.swap_remove" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#415-499" title="goto source code">[src]</a></div><a href="#method.swap_remove" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.swap_remove" class="fnname">swap_remove</a>(&amp;mut self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.usize.html">usize</a>) -&gt; A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a></h4></div></summary><div class="docblock"><p>Remove an element, swapping the end of the vec into its place.</p>
-<h2 id="panics" class="section-header"><a href="#panics">Panics</a></h2>
+<h6 id="panics" class="section-header"><a href="#panics">Panics</a></h6>
 <ul>
 <li>If the index is out of bounds.</li>
 </ul>
-<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
+<h6 id="example" class="section-header"><a href="#example">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="kw-2">&amp;</span><span class="ident">str</span>; <span class="number">4</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;quack&quot;</span>, <span class="string">&quot;zap&quot;</span>);
 
@@ -92,15 +92,15 @@ get an inline vec. If it’s greater than you get a heap vec.</p>
 <span class="macro">assert_eq!</span>(<span class="ident">tv</span>.<span class="ident">swap_remove</span>(<span class="number">0</span>), <span class="string">&quot;foo&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">tv</span>.<span class="ident">as_slice</span>(), <span class="kw-2">&amp;</span>[<span class="string">&quot;quack&quot;</span>, <span class="string">&quot;zap&quot;</span>][..]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.pop" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#415-499" title="goto source code">[src]</a></div><a href="#method.pop" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.pop" class="fnname">pop</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a>&gt;</h4></div></summary><div class="docblock"><p>Remove and return the last element of the vec, if there is one.</p>
-<h2 id="failure" class="section-header"><a href="#failure">Failure</a></h2>
+<h6 id="failure" class="section-header"><a href="#failure">Failure</a></h6>
 <ul>
 <li>If the vec is empty you get <code>None</code>.</li>
 </ul>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.remove" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#415-499" title="goto source code">[src]</a></div><a href="#method.remove" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.remove" class="fnname">remove</a>(&amp;mut self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.usize.html">usize</a>) -&gt; A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a></h4></div></summary><div class="docblock"><p>Removes the item at <code>index</code>, shifting all others down by one index.</p>
 <p>Returns the removed element.</p>
-<h2 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h2>
+<h6 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h6>
 <p>If the index is out of bounds.</p>
-<h2 id="example-1" class="section-header"><a href="#example-1">Example</a></h2>
+<h6 id="example-1" class="section-header"><a href="#example-1">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="ident">i32</span>; <span class="number">4</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">tv</span>.<span class="ident">remove</span>(<span class="number">1</span>), <span class="number">2</span>);
@@ -112,13 +112,13 @@ Otherwise its the result of the underlying Vec::capacity.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.truncate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#415-499" title="goto source code">[src]</a></div><a href="#method.truncate" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.truncate" class="fnname">truncate</a>(&amp;mut self, new_len: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.usize.html">usize</a>)</h4></div></summary><div class="docblock"><p>Reduces the vec’s length to the given value.</p>
 <p>If the vec is already shorter than the input, nothing happens.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.as_mut_ptr" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#415-499" title="goto source code">[src]</a></div><a href="#method.as_mut_ptr" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.as_mut_ptr" class="fnname">as_mut_ptr</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.pointer.html">*mut </a>A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a></h4></div></summary><div class="docblock"><p>A mutable pointer to the backing array.</p>
-<h2 id="safety" class="section-header"><a href="#safety">Safety</a></h2>
+<h6 id="safety" class="section-header"><a href="#safety">Safety</a></h6>
 <p>This pointer has provenance over the <em>entire</em> backing array/buffer.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.as_ptr" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#415-499" title="goto source code">[src]</a></div><a href="#method.as_ptr" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.as_ptr" class="fnname">as_ptr</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.pointer.html">*const </a>A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a></h4></div></summary><div class="docblock"><p>A const pointer to the backing array.</p>
-<h2 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h2>
+<h6 id="safety-1" class="section-header"><a href="#safety-1">Safety</a></h6>
 <p>This pointer has provenance over the <em>entire</em> backing array/buffer.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.retain" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#513-518" title="goto source code">[src]</a></div><a href="#method.retain" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.retain" class="fnname">retain</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut">FnMut</a>(&amp;A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.bool.html">bool</a>&gt;(&amp;mut self, acceptable: F)</h4></div></summary><div class="docblock"><p>Walk the vec and keep only the elements that pass the predicate given.</p>
-<h2 id="example-2" class="section-header"><a href="#example-2">Example</a></h2>
+<h6 id="example-2" class="section-header"><a href="#example-2">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="ident">i32</span>; <span class="number">10</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);
@@ -133,12 +133,12 @@ and yields the removed items.</p>
 matching on the TinyVec and then calling drain on the Inline or Heap value
 inside. The draining iterator has to branch on every single access. It is
 provided for simplicity and compatability only.</strong></p>
-<h2 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h2>
+<h6 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h6>
 <ul>
 <li>If the start is greater than the end</li>
 <li>If the end is past the edge of the vec.</li>
 </ul>
-<h2 id="example-3" class="section-header"><a href="#example-3">Example</a></h2>
+<h6 id="example-3" class="section-header"><a href="#example-3">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="ident">i32</span>; <span class="number">4</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
 <span class="kw">let</span> <span class="ident">tv2</span>: <span class="ident">TinyVec</span><span class="op">&lt;</span>[<span class="ident">i32</span>; <span class="number">4</span>]<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">tv</span>.<span class="ident">drain</span>(<span class="number">1</span>..).<span class="ident">collect</span>();
@@ -155,15 +155,15 @@ provided for simplicity and compatability only.</strong></p>
 <span class="macro">assert_eq!</span>(<span class="ident">tv</span>.<span class="ident">as_slice</span>(), [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_array_len" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#637-644" title="goto source code">[src]</a></div><a href="#method.from_array_len" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_array_len" class="fnname">from_array_len</a>(data: A, len: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.usize.html">usize</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Wraps up an array and uses the given length as the initial length.</p>
 <p>Note that the <code>From</code> impl for arrays assumes the full length is used.</p>
-<h2 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h2>
+<h6 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h6>
 <p>The length must be less than or equal to the capacity of the array.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.insert" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#675-697" title="goto source code">[src]</a></div><a href="#method.insert" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.insert" class="fnname">insert</a>(&amp;mut self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.usize.html">usize</a>, item: A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a>)</h4></div></summary><div class="docblock"><p>Inserts an item at the position given, moving all following elements +1
 index.</p>
-<h2 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h2>
+<h6 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h6>
 <ul>
 <li>If <code>index</code> &gt; <code>len</code></li>
 </ul>
-<h2 id="example-4" class="section-header"><a href="#example-4">Example</a></h2>
+<h6 id="example-4" class="section-header"><a href="#example-4">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="ident">i32</span>; <span class="number">10</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
 <span class="ident">tv</span>.<span class="ident">insert</span>(<span class="number">1</span>, <span class="number">4</span>);
@@ -173,7 +173,7 @@ index.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_empty" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#702-704" title="goto source code">[src]</a></div><a href="#method.is_empty" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_empty" class="fnname">is_empty</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>If the vec is empty.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#709-711" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; Self</h4></div></summary><div class="docblock"><p>Makes a new, empty vec.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.push" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#723-751" title="goto source code">[src]</a></div><a href="#method.push" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.push" class="fnname">push</a>(&amp;mut self, val: A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a>)</h4></div></summary><div class="docblock"><p>Place an element onto the end of the vec.</p>
-<h2 id="panics-5" class="section-header"><a href="#panics-5">Panics</a></h2>
+<h6 id="panics-5" class="section-header"><a href="#panics-5">Panics</a></h6>
 <ul>
 <li>If the length of the vec would overflow the capacity.</li>
 </ul>
@@ -185,7 +185,7 @@ index.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.resize" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#772-777" title="goto source code">[src]</a></div><a href="#method.resize" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.resize" class="fnname">resize</a>(&amp;mut self, new_len: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.usize.html">usize</a>, new_val: A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a>) <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Resize the vec to the new length.</p>
 <p>If it needs to be longer, it’s filled with clones of the provided value.
 If it needs to be shorter, it’s truncated.</p>
-<h2 id="example-5" class="section-header"><a href="#example-5">Example</a></h2>
+<h6 id="example-5" class="section-header"><a href="#example-5">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="kw-2">&amp;</span><span class="ident">str</span>; <span class="number">10</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;hello&quot;</span>);
@@ -198,7 +198,7 @@ If it needs to be shorter, it’s truncated.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.resize_with" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#802-812" title="goto source code">[src]</a></div><a href="#method.resize_with" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.resize_with" class="fnname">resize_with</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut">FnMut</a>() -&gt; A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a>&gt;(&amp;mut self, new_len: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.usize.html">usize</a>, f: F)</h4></div></summary><div class="docblock"><p>Resize the vec to the new length.</p>
 <p>If it needs to be longer, it’s filled with repeated calls to the provided
 function. If it needs to be shorter, it’s truncated.</p>
-<h2 id="example-6" class="section-header"><a href="#example-6">Example</a></h2>
+<h6 id="example-6" class="section-header"><a href="#example-6">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="ident">i32</span>; <span class="number">3</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
@@ -217,11 +217,11 @@ function. If it needs to be shorter, it’s truncated.</p>
 <li><code>[0, at)</code> stays in this vec</li>
 <li><code>[at, len)</code> ends up in the new vec.</li>
 </ul>
-<h2 id="panics-6" class="section-header"><a href="#panics-6">Panics</a></h2>
+<h6 id="panics-6" class="section-header"><a href="#panics-6">Panics</a></h6>
 <ul>
 <li>if at &gt; len</li>
 </ul>
-<h2 id="example-7" class="section-header"><a href="#example-7">Example</a></h2>
+<h6 id="example-7" class="section-header"><a href="#example-7">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="ident">i32</span>; <span class="number">4</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
 <span class="kw">let</span> <span class="ident">tv2</span> <span class="op">=</span> <span class="ident">tv</span>.<span class="ident">split_off</span>(<span class="number">1</span>);
@@ -232,13 +232,13 @@ vector, yields the removed items, and replaces them with elements from
 the provided iterator.</p>
 <p><code>splice</code> fuses the provided iterator, so elements after the first <code>None</code>
 are ignored.</p>
-<h2 id="panics-7" class="section-header"><a href="#panics-7">Panics</a></h2>
+<h6 id="panics-7" class="section-header"><a href="#panics-7">Panics</a></h6>
 <ul>
 <li>If the start is greater than the end.</li>
 <li>If the end is past the edge of the vec.</li>
 <li>If the provided iterator panics.</li>
 </ul>
-<h2 id="example-8" class="section-header"><a href="#example-8">Example</a></h2>
+<h6 id="example-8" class="section-header"><a href="#example-8">Example</a></h6>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tinyvec</span>::<span class="kw-2">*</span>;
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tv</span> <span class="op">=</span> <span class="macro">tiny_vec!</span>([<span class="ident">i32</span>; <span class="number">4</span>] <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
 <span class="kw">let</span> <span class="ident">tv2</span>: <span class="ident">TinyVec</span><span class="op">&lt;</span>[<span class="ident">i32</span>; <span class="number">4</span>]<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">tv</span>.<span class="ident">splice</span>(<span class="number">1</span>.., <span class="number">4</span>..<span class="op">=</span><span class="number">6</span>).<span class="ident">collect</span>();
@@ -250,7 +250,7 @@ are ignored.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_from_array_len" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#912-915" title="goto source code">[src]</a></div><a href="#method.try_from_array_len" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.try_from_array_len" class="fnname">try_from_array_len</a>(data: A, len: <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.usize.html">usize</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, A&gt;</h4></div></summary><div class="docblock"><p>Wraps an array, using the given length as the starting length.</p>
 <p>If you want to use the whole length of the array, you can just use the
 <code>From</code> impl.</p>
-<h2 id="failure-1" class="section-header"><a href="#failure-1">Failure</a></h2>
+<h6 id="failure-1" class="section-header"><a href="#failure-1">Failure</a></h6>
 <p>If the given length is greater than the capacity of the array this will
 error, and you’ll get the array back in the <code>Err</code>.</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-AsMut%3C%5B%3CA%20as%20Array%3E%3A%3AItem%5D%3E" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#1079-1085" title="goto source code">[src]</a></div><a href="#impl-AsMut%3C%5B%3CA%20as%20Array%3E%3A%3AItem%5D%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;A:&nbsp;<a class="trait" href="trait.Array.html" title="trait tinyvec::Array">Array</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html" title="trait core::convert::AsMut">AsMut</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.slice.html">[</a>&lt;A as <a class="trait" href="trait.Array.html" title="trait tinyvec::Array">Array</a>&gt;::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a><a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.slice.html">]</a>&gt; for <a class="enum" href="enum.TinyVec.html" title="enum tinyvec::TinyVec">TinyVec</a>&lt;A&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.as_mut" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/tinyvec/tinyvec.rs.html#1082-1084" title="goto source code">[src]</a></div><a href="#method.as_mut" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut" class="fnname">as_mut</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.slice.html">&amp;mut [</a>A::<a class="type" href="trait.Array.html#associatedtype.Item" title="type tinyvec::Array::Item">Item</a><a class="primitive" href="https://doc.rust-lang.org/nightly/core/primitive.slice.html">]</a></h4></div></summary><div class='docblock'><p>Performs the conversion.</p>

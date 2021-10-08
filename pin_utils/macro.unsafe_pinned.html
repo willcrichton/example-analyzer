@@ -2,7 +2,7 @@
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f</span> : <span class="ident">tt</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span> : <span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
 }</code></pre></div>
 </div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A pinned projection of a struct field.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h2 id="safety" class="section-header"><a href="#safety">Safety</a></h2>
 <p>To make using this macro safe, three things need to be ensured:</p>
 <ul>
 <li>If the struct implements <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop"><code>Drop</code></a>, the <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop"><code>drop</code></a> method is not allowed to
@@ -11,7 +11,7 @@ move the value of the field.</li>
 The struct can only implement <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html"><code>Unpin</code></a> if the field’s type is <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html"><code>Unpin</code></a>.</li>
 <li>The struct must not be <code>#[repr(packed)]</code>.</li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">pin_utils::unsafe_pinned</span>;
 <span class="kw">use</span> <span class="ident">std::marker::Unpin</span>;
 <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;

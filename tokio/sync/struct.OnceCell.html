@@ -2,7 +2,7 @@
 <p>A <code>OnceCell</code> is typically used for global variables that need to be
 initialized once on first use, but need no further changes. The <code>OnceCell</code>
 in Tokio allows the initialization procedure to be asynchronous.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::OnceCell</span>;
 
 <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">some_computation</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span> {

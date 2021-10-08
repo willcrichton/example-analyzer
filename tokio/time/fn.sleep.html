@@ -6,10 +6,10 @@ operates at millisecond granularity and should not be used for tasks that
 require high-resolution timers.</p>
 <p>To run something regularly on a schedule, see <a href="fn.interval.html"><code>interval</code></a>.</p>
 <p>The maximum duration for a sleep is 68719476734 milliseconds (approximately 2.2 years).</p>
-<h1 id="cancellation" class="section-header"><a href="#cancellation">Cancellation</a></h1>
+<h2 id="cancellation" class="section-header"><a href="#cancellation">Cancellation</a></h2>
 <p>Canceling a sleep instance is done by dropping the returned future. No additional
 cleanup work is required.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Wait 100ms and print “100 ms have elapsed”.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time</span>::{<span class="ident">sleep</span>, <span class="ident">Duration</span>};

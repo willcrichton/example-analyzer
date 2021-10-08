@@ -2,17 +2,17 @@
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/fn.hard_link.html"><code>std::fs::hard_link</code></a></p>
 <p>The <code>dst</code> path will be a link pointing to the <code>src</code> path. Note that systems
 often require these two paths to both be located on the same filesystem.</p>
-<h1 id="platform-specific-behavior" class="section-header"><a href="#platform-specific-behavior">Platform-specific behavior</a></h1>
+<h2 id="platform-specific-behavior" class="section-header"><a href="#platform-specific-behavior">Platform-specific behavior</a></h2>
 <p>This function currently corresponds to the <code>link</code> function on Unix
 and the <code>CreateHardLink</code> function on Windows.
 Note that, this <a href="https://doc.rust-lang.org/std/io/index.html#platform-specific-behavior">may change in the future</a>.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h2 id="errors" class="section-header"><a href="#errors">Errors</a></h2>
 <p>This function will return an error in the following situations, but is not
 limited to just these cases:</p>
 <ul>
 <li>The <code>src</code> path is not a file or doesn’t exist.</li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

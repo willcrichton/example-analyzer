@@ -4,7 +4,7 @@
 readiness state changes. When it notices a state change, it will return
 a readiness event for the handle the next time <a href="struct.Poll.html#method.poll"><code>poll</code></a> is called.</p>
 <p>See <a href="struct.Poll.html#method.poll"><code>Poll</code></a> docs for a high level overview.</p>
-<h1 id="arguments" class="section-header"><a href="#arguments">Arguments</a></h1>
+<h5 id="arguments" class="section-header"><a href="#arguments">Arguments</a></h5>
 <p><code>source: &amp;S: event::Source</code>: This is the source of events that the
 <code>Poll</code> instance should monitor for readiness state changes.</p>
 <p><code>token: Token</code>: The caller picks a token to associate with the socket.
@@ -21,7 +21,7 @@ specified by this argument.</p>
 writable, no event will be returned from <a href="struct.Poll.html#method.poll"><code>poll</code></a>.</p>
 <p>The readiness interest for an <code>event::Source</code> can be changed at any time
 by calling <a href="struct.Registry.html#method.reregister"><code>reregister</code></a>.</p>
-<h1 id="notes" class="section-header"><a href="#notes">Notes</a></h1>
+<h5 id="notes" class="section-header"><a href="#notes">Notes</a></h5>
 <p>Callers must ensure that if a source being registered with a <code>Poll</code>
 instance was previously registered with that <code>Poll</code> instance, then a
 call to <a href="struct.Registry.html#method.deregister"><code>deregister</code></a> has already occurred. Consecutive calls to
@@ -31,7 +31,7 @@ source is registered with a <code>Poll</code> instance, it is bound to that <cod
 instance for the lifetime of the event source. This remains true even
 if the event source is deregistered from the poll instance using
 <a href="struct.Registry.html#method.deregister"><code>deregister</code></a>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Events</span>, <span class="ident">Poll</span>, <span class="ident">Interest</span>, <span class="ident">Token</span>};
 <span class="kw">use</span> <span class="ident">mio::net::TcpStream</span>;
 <span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
@@ -84,7 +84,7 @@ of <code>Poll</code>, otherwise the behavior is undefined.</p>
 <p>See the <a href="struct.Registry.html#method.register"><code>register</code></a> documentation for details about the function
 arguments and see the <a href="struct.Poll.html"><code>struct</code></a> docs for a high level overview of
 polling.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Poll</span>, <span class="ident">Interest</span>, <span class="ident">Token</span>};
 <span class="kw">use</span> <span class="ident">mio::net::TcpStream</span>;
 <span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
@@ -120,7 +120,7 @@ of <code>Poll</code>, otherwise the behavior is undefined.</p>
 <p>A handle can be passed back to <code>register</code> after it has been
 deregistered; however, it must be passed back to the <strong>same</strong> <code>Poll</code>
 instance, otherwise the behavior is undefined.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Events</span>, <span class="ident">Poll</span>, <span class="ident">Interest</span>, <span class="ident">Token</span>};
 <span class="kw">use</span> <span class="ident">mio::net::TcpStream</span>;
 <span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;

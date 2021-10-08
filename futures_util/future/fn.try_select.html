@@ -7,7 +7,7 @@ wrapped version of them.</p>
 <p>Also note that if both this and the second future have the same
 success/error type you can use the <code>Either::factor_first</code> method to
 conveniently extract out the value at the end.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::future</span>::{<span class="self">self</span>, <span class="ident">Either</span>, <span class="ident">Future</span>, <span class="ident">FutureExt</span>, <span class="ident">TryFuture</span>, <span class="ident">TryFutureExt</span>};
 
 <span class="comment">// A poor-man&#39;s try_join implemented on top of select</span>

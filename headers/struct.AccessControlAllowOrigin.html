@@ -3,13 +3,13 @@ part of <a href="http://www.w3.org/TR/cors/#access-control-allow-origin-response
 <p>The <code>Access-Control-Allow-Origin</code> header indicates whether a resource
 can be shared based by returning the value of the Origin request header,
 <code>*</code>, or <code>null</code> in the response.</p>
-<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Access-Control-Allow-Origin = &quot;Access-Control-Allow-Origin&quot; &quot;:&quot; origin-list-or-null | &quot;*&quot;</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
+<h3 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h3><div class="example-wrap"><pre class="language-text"><code>Access-Control-Allow-Origin = &quot;Access-Control-Allow-Origin&quot; &quot;:&quot; origin-list-or-null | &quot;*&quot;</code></pre></div><h3 id="example-values" class="section-header"><a href="#example-values">Example values</a></h3>
 <ul>
 <li><code>null</code></li>
 <li><code>*</code></li>
 <li><code>http://google.com/</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::AccessControlAllowOrigin</span>;
 
 <span class="kw">let</span> <span class="ident">any_origin</span> <span class="op">=</span> <span class="ident">AccessControlAllowOrigin::ANY</span>;

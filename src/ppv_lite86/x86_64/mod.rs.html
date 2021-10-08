@@ -540,7 +540,7 @@
 <span class="doccomment">/// aligned than a particular impl requires.</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="ident">union</span> <span class="ident">vec128_storage</span> {
+<span class="kw">pub</span> <span class="kw">union</span> <span class="ident">vec128_storage</span> {
     <span class="ident">u32x4</span>: [<span class="ident">u32</span>; <span class="number">4</span>],
     <span class="ident">u64x2</span>: [<span class="ident">u64</span>; <span class="number">2</span>],
     <span class="ident">u128x1</span>: [<span class="ident">u128</span>; <span class="number">1</span>],
@@ -580,7 +580,7 @@
 
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="ident">union</span> <span class="ident">vec256_storage</span> {
+<span class="kw">pub</span> <span class="kw">union</span> <span class="ident">vec256_storage</span> {
     <span class="ident">u32x8</span>: [<span class="ident">u32</span>; <span class="number">8</span>],
     <span class="ident">u64x4</span>: [<span class="ident">u64</span>; <span class="number">4</span>],
     <span class="ident">u128x2</span>: [<span class="ident">u128</span>; <span class="number">2</span>],
@@ -617,7 +617,7 @@
 
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="ident">union</span> <span class="ident">vec512_storage</span> {
+<span class="kw">pub</span> <span class="kw">union</span> <span class="ident">vec512_storage</span> {
     <span class="ident">u32x16</span>: [<span class="ident">u32</span>; <span class="number">16</span>],
     <span class="ident">u64x8</span>: [<span class="ident">u64</span>; <span class="number">8</span>],
     <span class="ident">u128x4</span>: [<span class="ident">u128</span>; <span class="number">4</span>],

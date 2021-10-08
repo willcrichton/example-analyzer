@@ -2,11 +2,11 @@
 <a href="http://www.w3.org/TR/cors/#access-control-expose-headers-response-header">CORS</a></p>
 <p>The Access-Control-Expose-Headers header indicates which headers are safe to expose to the
 API of a CORS API specification.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Access-Control-Expose-Headers = &quot;Access-Control-Expose-Headers&quot; &quot;:&quot; #field-name</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Access-Control-Expose-Headers = &quot;Access-Control-Expose-Headers&quot; &quot;:&quot; #field-name</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>ETag, Content-Length</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">http</span>;
 <span class="kw">use</span> <span class="ident">http::header</span>::{<span class="ident">CONTENT_LENGTH</span>, <span class="ident">ETAG</span>};
 <span class="kw">use</span> <span class="ident">headers::AccessControlExposeHeaders</span>;

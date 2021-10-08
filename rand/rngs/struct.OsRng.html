@@ -5,7 +5,7 @@ operating system.</p>
 <a href="https://crates.io/crates/getrandom">getrandom</a> documentation for details.</p>
 <p>This struct is only available when specifying the crate feature <code>getrandom</code>
 or <code>std</code>. When using the <code>rand</code> lib, it is also available as <code>rand::rngs::OsRng</code>.</p>
-<h1 id="blocking-and-error-handling" class="section-header"><a href="#blocking-and-error-handling">Blocking and error handling</a></h1>
+<h2 id="blocking-and-error-handling" class="section-header"><a href="#blocking-and-error-handling">Blocking and error handling</a></h2>
 <p>It is possible that when used during early boot the first call to <code>OsRng</code>
 will block until the system’s RNG is initialised. It is also possible
 (though highly unlikely) for <code>OsRng</code> to fail on some platforms, most
@@ -13,7 +13,7 @@ likely due to system mis-configuration.</p>
 <p>After the first successful call, it is highly unlikely that failures or
 significant delays will occur (although performance should be expected to
 be much slower than a user-space PRNG).</p>
-<h1 id="usage-example" class="section-header"><a href="#usage-example">Usage example</a></h1>
+<h2 id="usage-example" class="section-header"><a href="#usage-example">Usage example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">rand_core</span>::{<span class="ident">RngCore</span>, <span class="ident">OsRng</span>};
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">key</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">16</span>];

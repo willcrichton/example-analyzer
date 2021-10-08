@@ -9,7 +9,7 @@ point <code>lock</code> will succeed yet again.</p>
 <p>This operation cannot fail as the <a href="struct.MutexGuard.html"><code>MutexGuard</code></a> passed in already locked the mutex.</p>
 <p>This is an associated function that needs to be used as <code>MutexGuard::map(...)</code>. A method
 would interfere with methods of the same name on the contents of the locked data.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">Mutex</span>, <span class="ident">MutexGuard</span>};
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
@@ -28,7 +28,7 @@ original guard is returned if the closure returns <code>None</code>.</p>
 <p>This operation cannot fail as the <a href="struct.MutexGuard.html"><code>MutexGuard</code></a> passed in already locked the mutex.</p>
 <p>This is an associated function that needs to be used as <code>MutexGuard::try_map(...)</code>. A
 method would interfere with methods of the same name on the contents of the locked data.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">Mutex</span>, <span class="ident">MutexGuard</span>};
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>

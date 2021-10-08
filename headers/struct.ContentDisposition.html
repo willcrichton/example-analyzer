@@ -3,7 +3,7 @@
 additional information about how to process the response payload, and
 also can be used to attach additional metadata, such as the filename
 to use when saving the response payload locally.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>content-disposition = &quot;Content-Disposition&quot; &quot;:&quot;
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>content-disposition = &quot;Content-Disposition&quot; &quot;:&quot;
                       disposition-type *( &quot;;&quot; disposition-parm )
 
 disposition-type    = &quot;inline&quot; | &quot;attachment&quot; | disp-ext-type
@@ -19,7 +19,7 @@ filename-parm       = &quot;filename&quot; &quot;=&quot; value
 disp-ext-parm       = token &quot;=&quot; value
                     | ext-token &quot;=&quot; ext-value
 
-ext-token           = &lt;the characters in token, followed by &quot;*&quot;&gt;</code></pre></div><h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+ext-token           = &lt;the characters in token, followed by &quot;*&quot;&gt;</code></pre></div><h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::ContentDisposition</span>;
 
 <span class="kw">let</span> <span class="ident">cd</span> <span class="op">=</span> <span class="ident">ContentDisposition::inline</span>();</code></pre></div>

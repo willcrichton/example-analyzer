@@ -9,7 +9,7 @@ wait for the lock to become ready, like with a <code>Mutex</code>.</p>
 <code>None</code>. You can try to acquire again whenever you want, perhaps
 by spinning a few times, or by using some other means of
 notification.</p>
-<h1 id="note" class="section-header"><a href="#note">Note</a></h1>
+<h5 id="note" class="section-header"><a href="#note">Note</a></h5>
 <p>The default memory ordering is to use <code>Acquire</code> to lock, and <code>Release</code>
 to unlock. If different ordering is required, use
 <a href="struct.TryLock.html#method.try_lock_explicit"><code>try_lock_explicit</code></a> or
@@ -26,7 +26,7 @@ unlock orderings.</p>
 <code>None</code>. You can try to acquire again whenever you want, perhaps
 by spinning a few times, or by using some other means of
 notification.</p>
-<h1 id="panic" class="section-header"><a href="#panic">Panic</a></h1>
+<h5 id="panic" class="section-header"><a href="#panic">Panic</a></h5>
 <p>This method panics if <code>lock_order</code> is not any of <code>Acquire</code>, <code>AcqRel</code>,
 and <code>SeqCst</code>, or <code>unlock_order</code> is not any of <code>Release</code> and <code>SeqCst</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_lock_explicit_unchecked" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/try_lock/lib.rs.html#165-174" title="goto source code">[src]</a></div><a href="#method.try_lock_explicit_unchecked" class="anchor"></a><h4 class="code-header">pub unsafe fn <a href="#method.try_lock_explicit_unchecked" class="fnname">try_lock_explicit_unchecked</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;lock_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html" title="enum core::sync::atomic::Ordering">Ordering</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;unlock_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html" title="enum core::sync::atomic::Ordering">Ordering</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.Locked.html" title="struct try_lock::Locked">Locked</a>&lt;'_, T&gt;&gt;</h4></div></summary><div class="docblock"><p>Try to acquire the lock of this value using the specified lock and
@@ -36,7 +36,7 @@ strong enough to be safe.</p>
 <code>None</code>. You can try to acquire again whenever you want, perhaps
 by spinning a few times, or by using some other means of
 notification.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h5 id="safety" class="section-header"><a href="#safety">Safety</a></h5>
 <p>Unlike <a href="struct.TryLock.html#method.try_lock_explicit"><code>try_lock_explicit</code></a>, this method is unsafe because it does not
 check that the given memory orderings are strong enough to prevent data
 race.</p>

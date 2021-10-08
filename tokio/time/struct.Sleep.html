@@ -2,7 +2,7 @@
 <p>This type does not implement the <code>Unpin</code> trait, which means that if you
 use it with <a href="../macro.select.html"><code>select!</code></a> or by calling <code>poll</code>, you have to pin it first.
 If you use it with <code>.await</code>, this does not apply.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Wait 100ms and print “100 ms have elapsed”.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time</span>::{<span class="ident">sleep</span>, <span class="ident">Duration</span>};
@@ -84,7 +84,7 @@ completed.</p>
 <p>To call this method, you will usually combine the call with
 <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.as_mut"><code>Pin::as_mut</code></a>, which lets you call the method without consuming the
 <code>Sleep</code> itself.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time</span>::{<span class="ident">Duration</span>, <span class="ident">Instant</span>};
 
 <span class="kw">let</span> <span class="ident">sleep</span> <span class="op">=</span> <span class="ident">tokio::time::sleep</span>(<span class="ident">Duration::from_millis</span>(<span class="number">10</span>));

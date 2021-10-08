@@ -9,7 +9,7 @@ value with a call to <code>borrow</code>.</p>
 <p>Outstanding borrows hold a read lock. This means that long lived borrows
 could cause the send half to block. It is recommended to keep the borrow
 as short lived as possible.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::watch</span>;
 
 <span class="kw">let</span> (<span class="kw">_</span>, <span class="ident">rx</span>) <span class="op">=</span> <span class="ident">watch::channel</span>(<span class="string">&quot;hello&quot;</span>);
@@ -29,12 +29,12 @@ immediately. If the newest value has already been marked seen, then the
 method sleeps until a new message is sent by the <a href="struct.Sender.html"><code>Sender</code></a> connected to
 this <code>Receiver</code>, or until the <a href="struct.Sender.html"><code>Sender</code></a> is dropped.</p>
 <p>This method returns an error if and only if the <a href="struct.Sender.html"><code>Sender</code></a> is dropped.</p>
-<h1 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h1>
+<h5 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h5>
 <p>This method is cancel safe. If you use it as the event in a
 <a href="../../macro.select.html"><code>tokio::select!</code></a> statement and some other branch
 completes first, then it is guaranteed that no values have been marked
 seen by this call to <code>changed</code>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::watch</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

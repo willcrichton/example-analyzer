@@ -14,23 +14,23 @@ allows measuring the duration between two instants (or comparing two
 instants).</p>
 <p>The size of an <code>Instant</code> struct may vary depending on the target operating
 system.</p>
-<h1 id="note" class="section-header"><a href="#note">Note</a></h1>
+<h2 id="note" class="section-header"><a href="#note">Note</a></h2>
 <p>This type wraps the inner <code>std</code> variant and is used to align the Tokio
 clock for uses of <code>now()</code>. This can be useful for testing where you can
 take advantage of <code>time::pause()</code> and <code>time::advance()</code>.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/time/instant.rs.html#38-159" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Instant.html" title="struct tokio::time::Instant">Instant</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.now" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/time/instant.rs.html#48-50" title="goto source code">[src]</a></div><a href="#method.now" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.now" class="fnname">now</a>() -&gt; <a class="struct" href="struct.Instant.html" title="struct tokio::time::Instant">Instant</a></h4></div></summary><div class="docblock"><p>Returns an instant corresponding to “now”.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time::Instant</span>;
 
 <span class="kw">let</span> <span class="ident">now</span> <span class="op">=</span> <span class="ident">Instant::now</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_std" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/time/instant.rs.html#53-55" title="goto source code">[src]</a></div><a href="#method.from_std" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_std" class="fnname">from_std</a>(std: <a class="struct" href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html" title="struct std::time::Instant">Instant</a>) -&gt; <a class="struct" href="struct.Instant.html" title="struct tokio::time::Instant">Instant</a></h4></div></summary><div class="docblock"><p>Create a <code>tokio::time::Instant</code> from a <code>std::time::Instant</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.into_std" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/time/instant.rs.html#66-68" title="goto source code">[src]</a></div><a href="#method.into_std" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_std" class="fnname">into_std</a>(self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html" title="struct std::time::Instant">Instant</a></h4></div></summary><div class="docblock"><p>Convert the value into a <code>std::time::Instant</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.duration_since" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/time/instant.rs.html#75-77" title="goto source code">[src]</a></div><a href="#method.duration_since" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.duration_since" class="fnname">duration_since</a>(&amp;self, earlier: <a class="struct" href="struct.Instant.html" title="struct tokio::time::Instant">Instant</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html" title="struct core::time::Duration">Duration</a></h4></div></summary><div class="docblock"><p>Returns the amount of time elapsed from another instant to this one.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This function will panic if <code>earlier</code> is later than <code>self</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.checked_duration_since" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/time/instant.rs.html#96-98" title="goto source code">[src]</a></div><a href="#method.checked_duration_since" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.checked_duration_since" class="fnname">checked_duration_since</a>(&amp;self, earlier: <a class="struct" href="struct.Instant.html" title="struct tokio::time::Instant">Instant</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html" title="struct core::time::Duration">Duration</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the amount of time elapsed from another instant to this one, or
 None if that instant is later than this one.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time</span>::{<span class="ident">Duration</span>, <span class="ident">Instant</span>, <span class="ident">sleep</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -43,7 +43,7 @@ None if that instant is later than this one.</p>
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.saturating_duration_since" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/time/instant.rs.html#117-119" title="goto source code">[src]</a></div><a href="#method.saturating_duration_since" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.saturating_duration_since" class="fnname">saturating_duration_since</a>(&amp;self, earlier: <a class="struct" href="struct.Instant.html" title="struct tokio::time::Instant">Instant</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html" title="struct core::time::Duration">Duration</a></h4></div></summary><div class="docblock"><p>Returns the amount of time elapsed from another instant to this one, or
 zero duration if that instant is later than this one.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time</span>::{<span class="ident">Duration</span>, <span class="ident">Instant</span>, <span class="ident">sleep</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -55,11 +55,11 @@ zero duration if that instant is later than this one.</p>
     <span class="macro">println!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">now</span>.<span class="ident">saturating_duration_since</span>(<span class="ident">new_now</span>)); <span class="comment">// 0ns</span>
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.elapsed" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/time/instant.rs.html#142-144" title="goto source code">[src]</a></div><a href="#method.elapsed" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.elapsed" class="fnname">elapsed</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html" title="struct core::time::Duration">Duration</a></h4></div></summary><div class="docblock"><p>Returns the amount of time elapsed since this instant was created.</p>
-<h1 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h1>
+<h5 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h5>
 <p>This function may panic if the current time is earlier than this
 instant, which is something that can happen if an <code>Instant</code> is
 produced synthetically.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time</span>::{<span class="ident">Duration</span>, <span class="ident">Instant</span>, <span class="ident">sleep</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

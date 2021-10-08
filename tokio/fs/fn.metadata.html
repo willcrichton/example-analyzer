@@ -3,18 +3,18 @@ directory, etc.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/fn.metadata.html"><code>std::fs::metadata</code></a></p>
 <p>This function will traverse symbolic links to query information about the
 destination file.</p>
-<h1 id="platform-specific-behavior" class="section-header"><a href="#platform-specific-behavior">Platform-specific behavior</a></h1>
+<h2 id="platform-specific-behavior" class="section-header"><a href="#platform-specific-behavior">Platform-specific behavior</a></h2>
 <p>This function currently corresponds to the <code>stat</code> function on Unix and the
 <code>GetFileAttributesEx</code> function on Windows.  Note that, this <a href="https://doc.rust-lang.org/std/io/index.html#platform-specific-behavior">may change in
 the future</a>.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h2 id="errors" class="section-header"><a href="#errors">Errors</a></h2>
 <p>This function will return an error in the following situations, but is not
 limited to just these cases:</p>
 <ul>
 <li>The user lacks permissions to perform <code>metadata</code> call on <code>path</code>.</li>
 <li><code>path</code> does not exist.</li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::fs</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

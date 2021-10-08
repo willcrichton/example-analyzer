@@ -4,12 +4,12 @@ itself with an origin server – usually, but not necessarily, after
 receiving a 401 (Unauthorized) response.  Its value consists of
 credentials containing the authentication information of the user
 agent for the realm of the resource being requested.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Authorization = credentials</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Authorization = credentials</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</code></li>
 <li><code>Bearer fpKL54jvWmEGVoRdCNjG</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::Authorization</span>;
 
 <span class="kw">let</span> <span class="ident">basic</span> <span class="op">=</span> <span class="ident">Authorization::basic</span>(<span class="string">&quot;Aladdin&quot;</span>, <span class="string">&quot;open sesame&quot;</span>);

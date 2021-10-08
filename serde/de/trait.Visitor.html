@@ -57,11 +57,11 @@
 <div class="item-spacer"></div>    fn <a href="#method.visit_enum" class="fnname">visit_enum</a>&lt;A&gt;(self, data: A) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self::<a class="type" href="trait.Visitor.html#associatedtype.Value" title="type serde::de::Visitor::Value">Value</a>, A::<a class="type" href="trait.EnumAccess.html#associatedtype.Error" title="type serde::de::EnumAccess::Error">Error</a>&gt;<br>&nbsp;&nbsp;&nbsp; <span class="where">where<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="trait.EnumAccess.html" title="trait serde::de::EnumAccess">EnumAccess</a>&lt;'de&gt;</span>,
     { ... }
 </details>}</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This trait represents a visitor that walks through a deserializer.</p>
-<h1 id="lifetime" class="section-header"><a href="#lifetime">Lifetime</a></h1>
+<h2 id="lifetime" class="section-header"><a href="#lifetime">Lifetime</a></h2>
 <p>The <code>'de</code> lifetime of this trait is the requirement for lifetime of data
 that may be borrowed by <code>Self::Value</code>. See the page <a href="https://serde.rs/lifetimes.html">Understanding
 deserializer lifetimes</a> for a more detailed explanation of these lifetimes.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class='information'><div class='tooltip edition' data-edition="2018">ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered edition"><code><span class="doccomment">/// A visitor that deserializes a long string - a string containing at least</span>
 <span class="doccomment">/// some minimum number of bytes.</span>
 <span class="kw">struct</span> <span class="ident">LongString</span> {

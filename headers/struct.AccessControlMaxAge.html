@@ -2,11 +2,11 @@
 <a href="http://www.w3.org/TR/cors/#access-control-max-age-response-header">CORS</a></p>
 <p>The <code>Access-Control-Max-Age</code> header indicates how long the results of a
 preflight request can be cached in a preflight result cache.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Access-Control-Max-Age = \&quot;Access-Control-Max-Age\&quot; \&quot;:\&quot; delta-seconds</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Access-Control-Max-Age = \&quot;Access-Control-Max-Age\&quot; \&quot;:\&quot; delta-seconds</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>531</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::time::Duration</span>;
 <span class="kw">use</span> <span class="ident">headers::AccessControlMaxAge</span>;
 

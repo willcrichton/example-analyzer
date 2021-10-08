@@ -4,7 +4,7 @@ that not all configuration settings apply to both encoding and decoding. See
 the documentation for specific methods for more detail.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#632-971" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Builder.html" title="struct tokio_util::codec::length_delimited::Builder">Builder</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#652-672" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; <a class="struct" href="struct.Builder.html" title="struct tokio_util::codec::length_delimited::Builder">Builder</a></h4></div></summary><div class="docblock"><p>Creates a new length delimited codec builder with default configuration
 values.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -16,7 +16,7 @@ values.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.big_endian" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#693-696" title="goto source code">[src]</a></div><a href="#method.big_endian" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.big_endian" class="fnname">big_endian</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Read the length field as a big endian integer</p>
 <p>This is the default setting.</p>
 <p>This configuration option applies to both encoding and decoding.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -25,7 +25,7 @@ values.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.little_endian" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#717-720" title="goto source code">[src]</a></div><a href="#method.little_endian" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.little_endian" class="fnname">little_endian</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Read the length field as a little endian integer</p>
 <p>The default setting is big endian.</p>
 <p>This configuration option applies to both encoding and decoding.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -34,7 +34,7 @@ values.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.native_endian" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#741-747" title="goto source code">[src]</a></div><a href="#method.native_endian" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.native_endian" class="fnname">native_endian</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Read the length field as a native endian integer</p>
 <p>The default setting is big endian.</p>
 <p>This configuration option applies to both encoding and decoding.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -49,7 +49,7 @@ encoding, the length of the submitted payload is checked against this
 setting.</p>
 <p>When frames exceed the max length, an <code>io::Error</code> with the custom value
 of the <code>LengthDelimitedCodecError</code> type will be returned.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -58,7 +58,7 @@ of the <code>LengthDelimitedCodecError</code> type will be returned.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.length_field_length" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#799-803" title="goto source code">[src]</a></div><a href="#method.length_field_length" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.length_field_length" class="fnname">length_field_length</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Sets the number of bytes used to represent the length field</p>
 <p>The default value is <code>4</code>. The max value is <code>8</code>.</p>
 <p>This configuration option applies to both encoding and decoding.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -66,7 +66,7 @@ of the <code>LengthDelimitedCodecError</code> type will be returned.</p>
     .<span class="ident">new_read</span>(<span class="ident">io</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.length_field_offset" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#822-825" title="goto source code">[src]</a></div><a href="#method.length_field_offset" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.length_field_offset" class="fnname">length_field_offset</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Sets the number of bytes in the header before the length field</p>
 <p>This configuration option only applies to decoding.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -74,7 +74,7 @@ of the <code>LengthDelimitedCodecError</code> type will be returned.</p>
     .<span class="ident">new_read</span>(<span class="ident">io</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.length_adjustment" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#843-846" title="goto source code">[src]</a></div><a href="#method.length_adjustment" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.length_adjustment" class="fnname">length_adjustment</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Delta between the payload length specified in the header and the real
 payload length</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -83,14 +83,14 @@ payload length</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.num_skip" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#867-870" title="goto source code">[src]</a></div><a href="#method.num_skip" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.num_skip" class="fnname">num_skip</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Sets the number of bytes to skip before reading the payload</p>
 <p>Default value is <code>length_field_len + length_field_offset</code></p>
 <p>This configuration option only applies to decoding</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
     .<span class="ident">num_skip</span>(<span class="number">4</span>)
     .<span class="ident">new_read</span>(<span class="ident">io</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new_codec" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#887-892" title="goto source code">[src]</a></div><a href="#method.new_codec" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new_codec" class="fnname">new_codec</a>(&amp;self) -&gt; <a class="struct" href="struct.LengthDelimitedCodec.html" title="struct tokio_util::codec::length_delimited::LengthDelimitedCodec">LengthDelimitedCodec</a></h4></div></summary><div class="docblock"><p>Create a configured length delimited <code>LengthDelimitedCodec</code></p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 <span class="ident">LengthDelimitedCodec::builder</span>()
     .<span class="ident">length_field_offset</span>(<span class="number">0</span>)
@@ -99,7 +99,7 @@ payload length</p>
     .<span class="ident">num_skip</span>(<span class="number">0</span>)
     .<span class="ident">new_codec</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new_read" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#912-917" title="goto source code">[src]</a></div><a href="#method.new_read" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new_read" class="fnname">new_read</a>&lt;T&gt;(&amp;self, upstream: T) -&gt; <a class="struct" href="../struct.FramedRead.html" title="struct tokio_util::codec::FramedRead">FramedRead</a>&lt;T, <a class="struct" href="struct.LengthDelimitedCodec.html" title="struct tokio_util::codec::length_delimited::LengthDelimitedCodec">LengthDelimitedCodec</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../../tokio/io/async_read/trait.AsyncRead.html" title="trait tokio::io::async_read::AsyncRead">AsyncRead</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Create a configured length delimited <code>FramedRead</code></p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio_util::codec::LengthDelimitedCodec</span>;
 
 <span class="ident">LengthDelimitedCodec::builder</span>()
@@ -109,12 +109,12 @@ payload length</p>
     .<span class="ident">num_skip</span>(<span class="number">0</span>)
     .<span class="ident">new_read</span>(<span class="ident">io</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new_write" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#933-938" title="goto source code">[src]</a></div><a href="#method.new_write" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new_write" class="fnname">new_write</a>&lt;T&gt;(&amp;self, inner: T) -&gt; <a class="struct" href="../struct.FramedWrite.html" title="struct tokio_util::codec::FramedWrite">FramedWrite</a>&lt;T, <a class="struct" href="struct.LengthDelimitedCodec.html" title="struct tokio_util::codec::length_delimited::LengthDelimitedCodec">LengthDelimitedCodec</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../../tokio/io/async_write/trait.AsyncWrite.html" title="trait tokio::io::async_write::AsyncWrite">AsyncWrite</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Create a configured length delimited <code>FramedWrite</code></p>
-<h1 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h1>
+<h5 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">LengthDelimitedCodec::builder</span>()
     .<span class="ident">length_field_length</span>(<span class="number">2</span>)
     .<span class="ident">new_write</span>(<span class="ident">io</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new_framed" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio_util/codec/length_delimited.rs.html#955-960" title="goto source code">[src]</a></div><a href="#method.new_framed" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new_framed" class="fnname">new_framed</a>&lt;T&gt;(&amp;self, inner: T) -&gt; <a class="struct" href="../struct.Framed.html" title="struct tokio_util::codec::Framed">Framed</a>&lt;T, <a class="struct" href="struct.LengthDelimitedCodec.html" title="struct tokio_util::codec::length_delimited::LengthDelimitedCodec">LengthDelimitedCodec</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../../tokio/io/async_read/trait.AsyncRead.html" title="trait tokio::io::async_read::AsyncRead">AsyncRead</a> + <a class="trait" href="../../../tokio/io/async_write/trait.AsyncWrite.html" title="trait tokio::io::async_write::AsyncWrite">AsyncWrite</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Create a configured length delimited <code>Framed</code></p>
-<h1 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h1>
+<h5 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">LengthDelimitedCodec::builder</span>()
     .<span class="ident">length_field_length</span>(<span class="number">2</span>)
     .<span class="ident">new_framed</span>(<span class="ident">io</span>);</code></pre></div>

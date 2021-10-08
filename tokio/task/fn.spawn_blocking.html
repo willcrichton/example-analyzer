@@ -25,7 +25,7 @@ are simply allowed to keep running after the method returns.</p>
 <p>Note that if you are using the single threaded runtime, this function will
 still spawn additional threads for blocking operations. The basic
 scheduler’s single thread is only used for asynchronous code.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::task</span>;
 
 <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">task::spawn_blocking</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {

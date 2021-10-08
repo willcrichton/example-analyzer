@@ -15,11 +15,11 @@ representation.</p>
 <p>A sender MUST NOT send a Content-Length header field in any message
 that contains a Transfer-Encoding header field.</p>
 </blockquote>
-<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Content-Length = 1*DIGIT</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
+<h3 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h3><div class="example-wrap"><pre class="language-text"><code>Content-Length = 1*DIGIT</code></pre></div><h3 id="example-values" class="section-header"><a href="#example-values">Example values</a></h3>
 <ul>
 <li><code>3495</code></li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::ContentLength</span>;
 
 <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">ContentLength</span>(<span class="number">1_000</span>);</code></pre></div>

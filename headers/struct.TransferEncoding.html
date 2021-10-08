@@ -11,12 +11,12 @@ body.</p>
 <p>A sender MUST NOT send a Content-Length header field in any message
 that contains a Transfer-Encoding header field.</p>
 </blockquote>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Transfer-Encoding = 1#transfer-coding</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Transfer-Encoding = 1#transfer-coding</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>chunked</code></li>
 <li><code>gzip, chunked</code></li>
 </ul>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::TransferEncoding</span>;
 
 <span class="kw">let</span> <span class="ident">transfer</span> <span class="op">=</span> <span class="ident">TransferEncoding::chunked</span>();</code></pre></div>

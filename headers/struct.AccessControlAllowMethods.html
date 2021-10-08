@@ -3,11 +3,11 @@
 <p>The <code>Access-Control-Allow-Methods</code> header indicates, as part of the
 response to a preflight request, which methods can be used during the
 actual request.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Access-Control-Allow-Methods: &quot;Access-Control-Allow-Methods&quot; &quot;:&quot; #Method</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Access-Control-Allow-Methods: &quot;Access-Control-Allow-Methods&quot; &quot;:&quot; #Method</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>PUT, DELETE, XMODIFY</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">http</span>;
 <span class="kw">use</span> <span class="ident">http::Method</span>;
 <span class="kw">use</span> <span class="ident">headers::AccessControlAllowMethods</span>;

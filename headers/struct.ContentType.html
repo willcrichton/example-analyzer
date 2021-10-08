@@ -10,12 +10,12 @@ codings indicated by Content-Encoding are decoded.</p>
 <p>Although the <code>mime</code> crate allows the mime options to be any slice, this crate
 forces the use of Vec. This is to make sure the same header can’t have more than 1 type. If
 this is an issue, it’s possible to implement <code>Header</code> on a custom struct.</p>
-<h1 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h1><div class="example-wrap"><pre class="language-text"><code>Content-Type = media-type</code></pre></div><h1 id="example-values" class="section-header"><a href="#example-values">Example values</a></h1>
+<h2 id="abnf" class="section-header"><a href="#abnf">ABNF</a></h2><div class="example-wrap"><pre class="language-text"><code>Content-Type = media-type</code></pre></div><h2 id="example-values" class="section-header"><a href="#example-values">Example values</a></h2>
 <ul>
 <li><code>text/html; charset=utf-8</code></li>
 <li><code>application/json</code></li>
 </ul>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">headers::ContentType</span>;
 
 <span class="kw">let</span> <span class="ident">ct</span> <span class="op">=</span> <span class="ident">ContentType::json</span>();</code></pre></div>

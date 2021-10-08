@@ -55,7 +55,7 @@ be read.</p>
 <p>Finally, if the bytes in the buffer are malformed then an error is
 returned indicating why. This informs <a href="struct.Framed.html"><code>Framed</code></a> that the stream is now
 corrupt and should be terminated.</p>
-<h1 id="buffer-management" class="section-header"><a href="#buffer-management">Buffer management</a></h1>
+<h5 id="buffer-management" class="section-header"><a href="#buffer-management">Buffer management</a></h5>
 <p>Before returning from the function, implementations should ensure that
 the buffer has appropriate capacity in anticipation of future calls to
 <code>decode</code>. Failing to do so leads to inefficiency.</p>

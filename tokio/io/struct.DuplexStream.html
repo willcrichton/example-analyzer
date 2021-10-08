@@ -2,13 +2,13 @@
 <p>A pair of <code>DuplexStream</code>s are created together, and they act as a “channel”
 that can be used as in-memory IO types. Writing to one of the pairs will
 allow that data to be read from the other, and vice versa.</p>
-<h1 id="closing-a-duplexstream" class="section-header"><a href="#closing-a-duplexstream">Closing a <code>DuplexStream</code></a></h1>
+<h2 id="closing-a-duplexstream" class="section-header"><a href="#closing-a-duplexstream">Closing a <code>DuplexStream</code></a></h2>
 <p>If one end of the <code>DuplexStream</code> channel is dropped, any pending reads on
 the other side will continue to read data until the buffer is drained, then
 they will signal EOF by returning 0 bytes. Any writes to the other side,
 including pending ones (that are waiting for free space in the buffer) will
 return <code>Err(BrokenPipe)</code> immediately.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">client</span>, <span class="kw-2">mut</span> <span class="ident">server</span>) <span class="op">=</span> <span class="ident">tokio::io::duplex</span>(<span class="number">64</span>);
 
 <span class="ident">client</span>.<span class="ident">write_all</span>(<span class="string">b&quot;ping&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;

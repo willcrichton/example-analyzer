@@ -6,7 +6,7 @@
 </div><div class="sub-variant" id="variant.Occupied.fields"><h3>Tuple Fields of <b>Occupied</b></h3><div><span id="variant.Occupied.field.0" class="variant small-section-header"><a href="#variant.Occupied.field.0" class="anchor field"></a><code>0:&nbsp;<a class="struct" href="struct.OccupiedEntry.html" title="struct http::header::OccupiedEntry">OccupiedEntry</a>&lt;'a, T&gt;</code></span></div></div><div id="variant.Vacant" class="variant small-section-header"><a href="#variant.Vacant" class="anchor field"></a><code>Vacant(<a class="struct" href="struct.VacantEntry.html" title="struct http::header::VacantEntry">VacantEntry</a>&lt;'a, T&gt;)</code></div><div class="docblock"><p>A vacant entry</p>
 </div><div class="sub-variant" id="variant.Vacant.fields"><h3>Tuple Fields of <b>Vacant</b></h3><div><span id="variant.Vacant.field.0" class="variant small-section-header"><a href="#variant.Vacant.field.0" class="anchor field"></a><code>0:&nbsp;<a class="struct" href="struct.VacantEntry.html" title="struct http::header::VacantEntry">VacantEntry</a>&lt;'a, T&gt;</code></span></div></div><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/map.rs.html#2264-2361" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl&lt;'a, T&gt; <a class="enum" href="enum.Entry.html" title="enum http::header::Entry">Entry</a>&lt;'a, T&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.or_insert" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/map.rs.html#2291-2298" title="goto source code">[src]</a></div><a href="#method.or_insert" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.or_insert" class="fnname">or_insert</a>(self, default: T) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'a mut </a>T</h4></div></summary><div class="docblock"><p>Ensures a value is in the entry by inserting the default if empty.</p>
 <p>Returns a mutable reference to the <strong>first</strong> value in the entry.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map</span>: <span class="ident">HeaderMap</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">HeaderMap::default</span>();
 
 <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="kw-2">&amp;</span>[
@@ -28,7 +28,7 @@
 function if empty.</p>
 <p>The default function is not called if the entry exists in the map.
 Returns a mutable reference to the <strong>first</strong> value in the entry.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Basic usage.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map</span> <span class="op">=</span> <span class="ident">HeaderMap::new</span>();
@@ -48,7 +48,7 @@ Returns a mutable reference to the <strong>first</strong> value in the entry.</p
 
 <span class="macro">assert_eq!</span>(<span class="ident">res</span>, <span class="string">&quot;world&quot;</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.key" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/http/header/map.rs.html#2353-2360" title="goto source code">[src]</a></div><a href="#method.key" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.key" class="fnname">key</a>(&amp;self) -&gt; &amp;<a class="struct" href="struct.HeaderName.html" title="struct http::header::HeaderName">HeaderName</a></h4></div></summary><div class="docblock"><p>Returns a reference to the entry’s key</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map</span> <span class="op">=</span> <span class="ident">HeaderMap::new</span>();
 
 <span class="macro">assert_eq!</span>(<span class="ident">map</span>.<span class="ident">entry</span>(<span class="string">&quot;x-hello&quot;</span>).<span class="ident">key</span>(), <span class="string">&quot;x-hello&quot;</span>);</code></pre></div>
