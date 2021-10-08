@@ -2,7 +2,7 @@
 <p>This will return a <code>Peek</code>, which allows access to the rest of the path
 that previous filters have not already matched. This differs from <code>tail</code>
 in that <code>peek</code> will <strong>not</strong> set the entire path as matched.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
 <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;foo&quot;</span>)
@@ -12,5 +12,5 @@ in that <code>peek</code> will <strong>not</strong> set the entire path as match
         <span class="macro">format!</span>(<span class="string">&quot;The path after foo is {:?}&quot;</span>, <span class="ident">peek</span>)
     });</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script>
+    <script src="../../../main.js"></script><script src="../../../scrape-examples.js"></script>
 </body></html>

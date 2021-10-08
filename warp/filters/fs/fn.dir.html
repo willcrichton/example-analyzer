@@ -3,7 +3,7 @@ by the request path.</p>
 <p>This can be used to serve “static files” from a directory. By far the most
 common pattern of serving static files is for <code>GET</code> requests, so this
 filter automatically includes a <code>GET</code> check.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
 <span class="comment">// Matches requests that start with `/static`,</span>
@@ -15,37 +15,20 @@ filter automatically includes a <code>GET</code> check.</p>
 <span class="comment">// For example:</span>
 <span class="comment">// - `GET /static/app.js` would serve the file `/www/static/app.js`</span>
 <span class="comment">// - `GET /static/css/app.css` would serve the file `/www/static/css/app.css`</span></code></pre></div>
-</div></details><div class="docblock scraped-example-list">
-          <h1 id="scraped-examples" class="small-section-header">
-             <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[1,1]]" data-offset="6">
-                <div class="scraped-example-title">
-                   examples/returning.rs (<a href="../../../src/returning/returning.rs.html#8" target="_blank">line 8</a>)
-                </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="7">7</span>
-<span id="8">8</span>
-<span id="9">9</span>
+</div></details><div class="docblock scraped-example-list"><span></span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[1,1]]"><div class="scraped-example-title">examples/returning.rs (<a href="../../../src/returning/returning.rs.html#8">line 8</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>7</span>
+<span>8</span>
+<span>9</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">assets_filter</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BoxedFilter</span><span class="op">&lt;</span>(<span class="kw">impl</span> <span class="ident">Reply</span>,)<span class="op">&gt;</span> {
     <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>)</span>).<span class="ident">boxed</span>()
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle">
-                  <summary class="hideme">
-                     <span>More examples</span>
-                  </summary>
-                  <div class="more-scraped-examples">
-                    <div class="toggle-line"><div class="toggle-line-inner"></div></div>
-                    <div class="more-scraped-examples-inner">
-<div class="scraped-example" data-locs="[[3,3]]" data-offset="3">
-                <div class="scraped-example-title">
-                   examples/dir.rs (<a href="../../../src/dir/dir.rs.html#7" target="_blank">line 7</a>)
-                </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="4">4</span>
-<span id="5">5</span>
-<span id="6">6</span>
-<span id="7">7</span>
-<span id="8">8</span>
-<span id="9">9</span>
-<span id="10">10</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[3,3]]"><div class="scraped-example-title">examples/dir.rs (<a href="../../../src/dir/dir.rs.html#7">line 7</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+<span>8</span>
+<span>9</span>
+<span>10</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
@@ -53,22 +36,18 @@ filter automatically includes a <code>GET</code> check.</p>
         .<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))
         .<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[8,8]]" data-offset="4">
-                <div class="scraped-example-title">
-                   examples/unix_socket.rs (<a href="../../../src/unix_socket/unix_socket.rs.html#13" target="_blank">line 13</a>)
-                </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
+</div></div><div class="scraped-example " data-locs="[[8,8]]"><div class="scraped-example-title">examples/unix_socket.rs (<a href="../../../src/unix_socket/unix_socket.rs.html#13">line 13</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 5</span>
+<span> 6</span>
+<span> 7</span>
+<span> 8</span>
+<span> 9</span>
+<span>10</span>
+<span>11</span>
+<span>12</span>
+<span>13</span>
+<span>14</span>
+<span>15</span>
+<span>16</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">use</span> <span class="ident">tokio::net::UnixListener</span>;
     <span class="kw">use</span> <span class="ident">tokio_stream::wrappers::UnixListenerStream</span>;
@@ -81,26 +60,22 @@ filter automatically includes a <code>GET</code> check.</p>
         .<span class="ident">run_incoming</span>(<span class="ident">incoming</span>)
         .<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example" data-locs="[[8,8]]" data-offset="5">
-                <div class="scraped-example-title">
-                   examples/file.rs (<a href="../../../src/file/file.rs.html#14" target="_blank">line 14</a>)
-                </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
+</div></div><div class="scraped-example " data-locs="[[8,8]]"><div class="scraped-example-title">examples/file.rs (<a href="../../../src/file/file.rs.html#14">line 14</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
+<span> 7</span>
+<span> 8</span>
+<span> 9</span>
+<span>10</span>
+<span>11</span>
+<span>12</span>
+<span>13</span>
+<span>14</span>
+<span>15</span>
+<span>16</span>
+<span>17</span>
+<span>18</span>
+<span>19</span>
+<span>20</span>
+<span>21</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
@@ -118,5 +93,5 @@ filter automatically includes a <code>GET</code> check.</p>
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
 </div></div></div></div></details></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script>
+    <script src="../../../main.js"></script><script src="../../../scrape-examples.js"></script>
 </body></html>

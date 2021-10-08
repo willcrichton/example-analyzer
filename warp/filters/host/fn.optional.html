@@ -5,7 +5,7 @@ and port) in the request.</p>
 extracting <code>None</code>.</p>
 <p>Rejects with <code>400 Bad Request</code> if the <code>Host</code> header is malformed or if there
 is a mismatch between the <code>Host</code> header and the target URI.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp</span>::{<span class="ident">Filter</span>, <span class="ident">host::Authority</span>};
 
 <span class="kw">let</span> <span class="ident">host</span> <span class="op">=</span> <span class="ident">warp::host::optional</span>()
@@ -17,5 +17,5 @@ is a mismatch between the <code>Host</code> header and the target URI.</p>
         }
     });</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script>
+    <script src="../../../main.js"></script><script src="../../../scrape-examples.js"></script>
 </body></html>

@@ -3,7 +3,7 @@
 useful to convert a <code>Filter</code> into a <a href="https://docs.rs/hyper/0.13.*/hyper/service/trait.Service.html"><code>Service</code></a>, such as if
 further customizing a <code>hyper::Service</code>, or if wanting to make use of
 the greater <a href="https://docs.rs/tower">Tower</a> set of middleware.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <p>Running a <code>warp::Filter</code> on a regular <code>hyper::Server</code>:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::convert::Infallible</span>;
@@ -23,40 +23,34 @@ the greater <a href="https://docs.rs/tower">Tower</a> set of middleware.</p>
 <span class="ident">hyper::Server::bind</span>(<span class="kw-2">&amp;</span>([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>).<span class="ident">into</span>())
     .<span class="ident">serve</span>(<span class="ident">make_svc</span>)
     .<span class="kw">await</span><span class="question-mark">?</span>;</code></pre></div>
-</div></details><div class="docblock scraped-example-list">
-          <h1 id="scraped-examples" class="small-section-header">
-             <a href="#scraped-examples">Examples found in repository</a>
-          </h1><div class="scraped-example" data-locs="[[7,7]]" data-offset="16">
-                <div class="scraped-example-title">
-                   examples/autoreload.rs (<a href="../src/autoreload/autoreload.rs.html#24" target="_blank">line 24</a>)
-                </div>
-                <div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-<span id="22">22</span>
-<span id="23">23</span>
-<span id="24">24</span>
-<span id="25">25</span>
-<span id="26">26</span>
-<span id="27">27</span>
-<span id="28">28</span>
-<span id="29">29</span>
-<span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
+</div></details><div class="docblock scraped-example-list"><span></span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[7,7]]"><div class="scraped-example-title">examples/autoreload.rs (<a href="../src/autoreload/autoreload.rs.html#24">line 24</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>17</span>
+<span>18</span>
+<span>19</span>
+<span>20</span>
+<span>21</span>
+<span>22</span>
+<span>23</span>
+<span>24</span>
+<span>25</span>
+<span>26</span>
+<span>27</span>
+<span>28</span>
+<span>29</span>
+<span>30</span>
+<span>31</span>
+<span>32</span>
+<span>33</span>
+<span>34</span>
+<span>35</span>
+<span>36</span>
+<span>37</span>
+<span>38</span>
+<span>39</span>
+<span>40</span>
+<span>41</span>
+<span>42</span>
+<span>43</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// Match any request and return hello world!</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::any</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>);
@@ -85,5 +79,5 @@ the greater <a href="https://docs.rs/tower">Tower</a> set of middleware.</p>
     <span class="ident">server</span>.<span class="ident">serve</span>(<span class="ident">make_svc</span>).<span class="kw">await</span>.<span class="ident">unwrap</span>();
 }</code></pre></div>
 </div></div></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="warp" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>
-    <script src="../main.js"></script>
+    <script src="../main.js"></script><script src="../scrape-examples.js"></script>
 </body></html>

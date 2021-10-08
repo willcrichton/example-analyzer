@@ -6,7 +6,7 @@
 each separated by a forward slash (<code>/</code>). Strings will be used to match
 path segments exactly, and type identifiers are used just like
 <a href="filters/path/fn.param.html"><code>param</code></a> filters.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
 <span class="comment">// Match `/sum/:a/:b`</span>
@@ -25,7 +25,7 @@ path segments exactly, and type identifiers are used just like
     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> {
         <span class="macro">format!</span>(<span class="string">&quot;{} + {} = {}&quot;</span>, <span class="ident">a</span>, <span class="ident">b</span>, <span class="ident">a</span> <span class="op">+</span> <span class="ident">b</span>)
     });</code></pre></div>
-<h1 id="path-prefixes" class="section-header"><a href="#path-prefixes">Path Prefixes</a></h1>
+<h2 id="path-prefixes" class="section-header"><a href="#path-prefixes">Path Prefixes</a></h2>
 <p>The <code>path!</code> macro automatically assumes the path should include an <code>end()</code>
 filter. To build up a path filter <em>prefix</em>, such that the <code>end()</code> isn’t
 included, use the <code>/ ..</code> syntax.</p>
@@ -44,5 +44,5 @@ included, use the <code>/ ..</code> syntax.</p>
 
 <span class="kw">let</span> <span class="ident">api</span> <span class="op">=</span> <span class="ident">prefix</span>.<span class="ident">and</span>(<span class="ident">sum</span>.<span class="ident">or</span>(<span class="ident">help</span>));</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="warp" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>
-    <script src="../main.js"></script>
+    <script src="../main.js"></script><script src="../scrape-examples.js"></script>
 </body></html>

@@ -2,10 +2,10 @@
 aggregated body.</p>
 <p>The <code>Buf</code> may contain multiple, non-contiguous buffers. This can be more
 performant (by reducing copies) when receiving large bodies.</p>
-<h1 id="warning" class="section-header"><a href="#warning">Warning</a></h1>
+<h2 id="warning" class="section-header"><a href="#warning">Warning</a></h2>
 <p>This does not have a default size limit, it would be wise to use one to
 prevent a overly large request from using too much memory.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp</span>::{<span class="ident">Buf</span>, <span class="ident">Filter</span>};
 
 <span class="kw">fn</span> <span class="ident">full_body</span>(<span class="kw-2">mut</span> <span class="ident">body</span>: <span class="kw">impl</span> <span class="ident">Buf</span>) {
@@ -21,5 +21,5 @@ prevent a overly large request from using too much memory.</p>
     .<span class="ident">and</span>(<span class="ident">warp::body::aggregate</span>())
     .<span class="ident">map</span>(<span class="ident">full_body</span>);</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script>
+    <script src="../../../main.js"></script><script src="../../../scrape-examples.js"></script>
 </body></html>
