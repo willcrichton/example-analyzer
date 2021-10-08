@@ -18,7 +18,7 @@ return a reply with:</p>
 <li>Header <code>sec-websocket-accept</code> with the hash value of the received key.</li>
 </ul>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[5,5]]"><div class="scraped-example-title">examples/websockets.rs (<a href="../../../src/websockets/websockets.rs.html#12">line 12</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 7</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[5,5],&quot;../../../src/websockets/websockets.rs.html#12&quot;,&quot;line 12&quot;]]"><div class="scraped-example-title">examples/websockets.rs (<a href="../../../src/websockets/websockets.rs.html#12">line 12</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 7</span>
 <span> 8</span>
 <span> 9</span>
 <span>10</span>
@@ -44,7 +44,7 @@ return a reply with:</p>
 
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;echo&quot;</span>)
         <span class="comment">// The `ws()` filter will prepare the Websocket handshake.</span>
-        .<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::ws</span>()</span>)
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::ws</span>()</span>)
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">ws</span>: <span class="ident">warp::ws::Ws</span><span class="op">|</span> {
             <span class="comment">// And then our closure will be called when it completes...</span>
             <span class="ident">ws</span>.<span class="ident">on_upgrade</span>(<span class="op">|</span><span class="ident">websocket</span><span class="op">|</span> {
@@ -60,7 +60,7 @@ return a reply with:</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[12,12]]"><div class="scraped-example-title">examples/websockets_chat.rs (<a href="../../../src/websockets_chat/websockets_chat.rs.html#36">line 36</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>24</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[12,12],&quot;../../../src/websockets_chat/websockets_chat.rs.html#36&quot;,&quot;line 36&quot;]]"><div class="scraped-example-title">examples/websockets_chat.rs (<a href="../../../src/websockets_chat/websockets_chat.rs.html#36">line 36</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>24</span>
 <span>25</span>
 <span>26</span>
 <span>27</span>
@@ -98,7 +98,7 @@ return a reply with:</p>
     <span class="comment">// GET /chat -&gt; websocket upgrade</span>
     <span class="kw">let</span> <span class="ident">chat</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;chat&quot;</span>)
         <span class="comment">// The `ws()` filter will prepare Websocket handshake...</span>
-        .<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::ws</span>()</span>)
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::ws</span>()</span>)
         .<span class="ident">and</span>(<span class="ident">users</span>)
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">ws</span>: <span class="ident">warp::ws::Ws</span>, <span class="ident">users</span><span class="op">|</span> {
             <span class="comment">// This will call our function if the handshake succeeds.</span>

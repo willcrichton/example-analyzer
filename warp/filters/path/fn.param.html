@@ -11,17 +11,17 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
         <span class="macro">format!</span>(<span class="string">&quot;You asked for /{}&quot;</span>, <span class="ident">id</span>)
     });</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[1,1]]"><div class="scraped-example-title">examples/dyn_reply.rs (<a href="../../../src/dyn_reply/dyn_reply.rs.html#14">line 14</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>13</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../../../src/dyn_reply/dyn_reply.rs.html#14&quot;,&quot;line 14&quot;]]"><div class="scraped-example-title">examples/dyn_reply.rs (<a href="../../../src/dyn_reply/dyn_reply.rs.html#14">line 14</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>13</span>
 <span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::path::param</span>()</span>.<span class="ident">and_then</span>(<span class="ident">dyn_reply</span>);
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::path::param</span>()</span>.<span class="ident">and_then</span>(<span class="ident">dyn_reply</span>);
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[2,2]]"><div class="scraped-example-title">examples/futures.rs (<a href="../../../src/futures/futures.rs.html#11">line 11</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>9</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[2,2],&quot;../../../src/futures/futures.rs.html#11&quot;,&quot;line 11&quot;]]"><div class="scraped-example-title">examples/futures.rs (<a href="../../../src/futures/futures.rs.html#11">line 11</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>9</span>
 <span>10</span>
 <span>11</span>
 <span>12</span>
@@ -31,13 +31,13 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
 <span>16</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// Match `/:Seconds`...</span>
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::path::param</span>()</span>
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::path::param</span>()</span>
         <span class="comment">// and_then create a `Future` that will simply wait N seconds...</span>
         .<span class="ident">and_then</span>(<span class="ident">sleepy</span>);
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[3,3],[17,17]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#74">line 74</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>71</span>
+</div></div><div class="scraped-example " data-locs="[[[3,3],&quot;../../../src/todos/todos.rs.html#74&quot;,&quot;line 74&quot;],[[17,17],&quot;../../../src/todos/todos.rs.html#88&quot;,&quot;line 88&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#74">line 74</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>71</span>
 <span>72</span>
 <span>73</span>
 <span>74</span>
@@ -67,7 +67,7 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">todos_update</span>(
         <span class="ident">db</span>: <span class="ident">Db</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
-        <span class="highlight"><span class="macro">warp::path!</span>(<span class="string">&quot;todos&quot;</span> <span class="op">/</span> <span class="ident">u64</span>)</span>
+        <span class="highlight focus"><span class="macro">warp::path!</span>(<span class="string">&quot;todos&quot;</span> <span class="op">/</span> <span class="ident">u64</span>)</span>
             .<span class="ident">and</span>(<span class="ident">warp::put</span>())
             .<span class="ident">and</span>(<span class="ident">json_body</span>())
             .<span class="ident">and</span>(<span class="ident">with_db</span>(<span class="ident">db</span>))
@@ -91,7 +91,7 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
             .<span class="ident">and</span>(<span class="ident">with_db</span>(<span class="ident">db</span>))
             .<span class="ident">and_then</span>(<span class="ident">handlers::delete_todo</span>)
     }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[6,6]]"><div class="scraped-example-title">examples/body.rs (<a href="../../../src/body/body.rs.html#20">line 20</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><div class="scraped-example " data-locs="[[[6,6],&quot;../../../src/body/body.rs.html#20&quot;,&quot;line 20&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../../../src/body/body.rs.html#20">line 20</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -114,7 +114,7 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
     <span class="comment">// POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}</span>
     <span class="kw">let</span> <span class="ident">promote</span> <span class="op">=</span> <span class="ident">warp::post</span>()
         .<span class="ident">and</span>(<span class="ident">warp::path</span>(<span class="string">&quot;employees&quot;</span>))
-        .<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>()</span>)
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>()</span>)
         <span class="comment">// Only accept bodies smaller than 16kb...</span>
         .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>))
         .<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
@@ -125,7 +125,7 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
 
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[1,1]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#15">line 15</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><div class="scraped-example " data-locs="[[[1,1],&quot;../../../src/rejections/rejections.rs.html#15&quot;,&quot;line 15&quot;]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#15">line 15</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -152,7 +152,7 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
 <span>38</span>
 <span>39</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="highlight"><span class="macro">warp::path!</span>(<span class="string">&quot;math&quot;</span> <span class="op">/</span> <span class="ident">u16</span>)</span>;
+    <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="highlight focus"><span class="macro">warp::path!</span>(<span class="string">&quot;math&quot;</span> <span class="op">/</span> <span class="ident">u16</span>)</span>;
     <span class="kw">let</span> <span class="ident">div_with_header</span> <span class="op">=</span> <span class="ident">math</span>
         .<span class="ident">and</span>(<span class="ident">warp::get</span>())
         .<span class="ident">and</span>(<span class="ident">div_by</span>())
@@ -177,7 +177,7 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[12,12]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#24">line 24</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><div class="scraped-example " data-locs="[[[12,12],&quot;../../../src/sse_chat/sse_chat.rs.html#24&quot;,&quot;line 24&quot;]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#24">line 24</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -234,7 +234,7 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
     <span class="comment">// POST /chat -&gt; send message</span>
     <span class="kw">let</span> <span class="ident">chat_send</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;chat&quot;</span>)
         .<span class="ident">and</span>(<span class="ident">warp::post</span>())
-        .<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>()</span>)
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>()</span>)
         .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">500</span>))
         .<span class="ident">and</span>(
             <span class="ident">warp::body::bytes</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
@@ -267,6 +267,6 @@ segment, and if successful, the value is returned as the <code>Filter</code>’s
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../../../src/routing/routing.rs.html#26">examples/routing.rs</a></li></ul></div></div></div></details></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
+</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../../../src/routing/routing.rs.html">examples/routing.rs</a></li></ul></div></div></div></details></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
     <script src="../../../main.js"></script><script src="../../../scrape-examples.js"></script>
 </body></html>

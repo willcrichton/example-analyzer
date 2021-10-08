@@ -9,7 +9,7 @@ specific file as the body.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Always serves this file from the file system.</span>
 <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">warp::fs::file</span>(<span class="string">&quot;/www/static/app.js&quot;</span>);</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[5,5]]"><div class="scraped-example-title">examples/file.rs (<a href="../../../src/file/file.rs.html#11">line 11</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[5,5],&quot;../../../src/file/file.rs.html#11&quot;,&quot;line 11&quot;]]"><div class="scraped-example-title">examples/file.rs (<a href="../../../src/file/file.rs.html#11">line 11</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
 <span> 7</span>
 <span> 8</span>
 <span> 9</span>
@@ -30,7 +30,7 @@ specific file as the body.</p>
 
     <span class="kw">let</span> <span class="ident">readme</span> <span class="op">=</span> <span class="ident">warp::get</span>()
         .<span class="ident">and</span>(<span class="ident">warp::path::end</span>())
-        .<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>)</span>);
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>)</span>);
 
     <span class="comment">// dir already requires GET...</span>
     <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./examples/&quot;</span>));

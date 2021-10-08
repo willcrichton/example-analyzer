@@ -24,7 +24,7 @@ the greater <a href="https://docs.rs/tower">Tower</a> set of middleware.</p>
     .<span class="ident">serve</span>(<span class="ident">make_svc</span>)
     .<span class="kw">await</span><span class="question-mark">?</span>;</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[7,7]]"><div class="scraped-example-title">examples/autoreload.rs (<a href="../src/autoreload/autoreload.rs.html#24">line 24</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>17</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[7,7],&quot;../src/autoreload/autoreload.rs.html#24&quot;,&quot;line 24&quot;]]"><div class="scraped-example-title">examples/autoreload.rs (<a href="../src/autoreload/autoreload.rs.html#24">line 24</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>17</span>
 <span>18</span>
 <span>19</span>
 <span>20</span>
@@ -58,7 +58,7 @@ the greater <a href="https://docs.rs/tower">Tower</a> set of middleware.</p>
     <span class="comment">// hyper let&#39;s us build a server from a TcpListener (which will be</span>
     <span class="comment">// useful shortly). Thus, we&#39;ll need to convert our `warp::Filter` into</span>
     <span class="comment">// a `hyper::service::MakeService` for use with a `hyper::server::Server`.</span>
-    <span class="kw">let</span> <span class="ident">svc</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::service</span>(<span class="ident">routes</span>)</span>;
+    <span class="kw">let</span> <span class="ident">svc</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::service</span>(<span class="ident">routes</span>)</span>;
 
     <span class="kw">let</span> <span class="ident">make_svc</span> <span class="op">=</span> <span class="ident">hyper::service::make_service_fn</span>(<span class="op">|</span><span class="kw">_</span>: <span class="kw">_</span><span class="op">|</span> {
         <span class="comment">// the clone is there because not all warp filters impl Copy</span>

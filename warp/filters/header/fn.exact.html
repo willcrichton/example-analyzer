@@ -5,7 +5,7 @@ value, otherwise rejects the request.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Require `dnt: 1` header to be set.</span>
 <span class="kw">let</span> <span class="ident">must_dnt</span> <span class="op">=</span> <span class="ident">warp::header::exact</span>(<span class="string">&quot;dnt&quot;</span>, <span class="string">&quot;1&quot;</span>);</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[8,8]]"><div class="scraped-example-title">examples/headers.rs (<a href="../../../src/headers/headers.rs.html#20">line 20</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[8,8],&quot;../../../src/headers/headers.rs.html#20&quot;,&quot;line 20&quot;]]"><div class="scraped-example-title">examples/headers.rs (<a href="../../../src/headers/headers.rs.html#20">line 20</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -29,7 +29,7 @@ value, otherwise rejects the request.</p>
     <span class="kw">let</span> <span class="ident">host</span> <span class="op">=</span> <span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">SocketAddr</span><span class="op">&gt;</span>(<span class="string">&quot;host&quot;</span>);
 
     <span class="comment">// Match when we get `accept: */*` exactly.</span>
-    <span class="kw">let</span> <span class="ident">accept_stars</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::header::exact</span>(<span class="string">&quot;accept&quot;</span>, <span class="string">&quot;*/*&quot;</span>)</span>;
+    <span class="kw">let</span> <span class="ident">accept_stars</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::header::exact</span>(<span class="string">&quot;accept&quot;</span>, <span class="string">&quot;*/*&quot;</span>)</span>;
 
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">host</span>
         .<span class="ident">and</span>(<span class="ident">accept_stars</span>)
@@ -37,7 +37,7 @@ value, otherwise rejects the request.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[4,4]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#86">line 86</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>82</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[4,4],&quot;../../../src/todos/todos.rs.html#86&quot;,&quot;line 86&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#86">line 86</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>82</span>
 <span>83</span>
 <span>84</span>
 <span>85</span>
@@ -57,7 +57,7 @@ value, otherwise rejects the request.</p>
         <span class="ident">db</span>: <span class="ident">Db</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
         <span class="comment">// We&#39;ll make one of our endpoints admin-only to show how authentication filters are used</span>
-        <span class="kw">let</span> <span class="ident">admin_only</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::header::exact</span>(<span class="string">&quot;authorization&quot;</span>, <span class="string">&quot;Bearer admin&quot;</span>)</span>;
+        <span class="kw">let</span> <span class="ident">admin_only</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::header::exact</span>(<span class="string">&quot;authorization&quot;</span>, <span class="string">&quot;Bearer admin&quot;</span>)</span>;
 
         <span class="macro">warp::path!</span>(<span class="string">&quot;todos&quot;</span> <span class="op">/</span> <span class="ident">u64</span>)
             <span class="comment">// It is important to put the auth check _after_ the path filters.</span>

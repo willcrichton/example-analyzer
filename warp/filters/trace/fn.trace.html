@@ -14,7 +14,7 @@
         )
     }));</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[35,38]]"><div class="scraped-example-title">examples/tracing.rs (<a href="../../../src/tracing/tracing.rs.html#47-50">lines 47-50</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[35,38],&quot;../../../src/tracing/tracing.rs.html#47-50&quot;,&quot;lines 47-50&quot;]]"><div class="scraped-example-title">examples/tracing.rs (<a href="../../../src/tracing/tracing.rs.html#47-50">lines 47-50</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -97,7 +97,7 @@
             <span class="string">&quot;So long and thanks for all the fish!&quot;</span>
         })
         <span class="comment">// We can also provide our own custom `tracing` spans to wrap a route.</span>
-        .<span class="ident">with</span>(<span class="highlight"><span class="ident">warp::trace</span>(<span class="op">|</span><span class="ident">info</span><span class="op">|</span> {
+        .<span class="ident">with</span>(<span class="highlight focus"><span class="ident">warp::trace</span>(<span class="op">|</span><span class="ident">info</span><span class="op">|</span> {
             <span class="comment">// Construct our own custom span for this route.</span>
             <span class="macro">tracing::info_span!</span>(<span class="string">&quot;goodbye&quot;</span>, <span class="ident">req</span>.<span class="ident">path</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">info</span>.<span class="ident">path</span>())
         })</span>);

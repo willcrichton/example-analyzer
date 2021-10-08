@@ -2,7 +2,7 @@
 <p>A <a href="../trait.Filter.html#method.recover"><code>recover</code></a> filter should convert this <code>Rejection</code> into a <code>Reply</code>,
 or else this will be returned as a <code>500 Internal Server Error</code>.</p>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[5,5]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../../src/rejections/rejections.rs.html#47">line 47</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>42</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[5,5],&quot;../../src/rejections/rejections.rs.html#47&quot;,&quot;line 47&quot;]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../../src/rejections/rejections.rs.html#47">line 47</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>42</span>
 <span>43</span>
 <span>44</span>
 <span>45</span>
@@ -16,11 +16,11 @@ or else this will be returned as a <code>500 Internal Server Error</code>.</p>
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">denom</span>) <span class="op">=</span> <span class="ident">NonZeroU16::new</span>(<span class="ident">n</span>) {
             <span class="prelude-val">Ok</span>(<span class="ident">denom</span>)
         } <span class="kw">else</span> {
-            <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::custom</span>(<span class="ident">DivideByZero</span>)</span>)
+            <span class="prelude-val">Err</span>(<span class="highlight focus"><span class="ident">reject::custom</span>(<span class="ident">DivideByZero</span>)</span>)
         }
     })
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[18,18]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../src/sse_chat/sse_chat.rs.html#30">line 30</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[18,18],&quot;../../src/sse_chat/sse_chat.rs.html#30&quot;,&quot;line 30&quot;]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../src/sse_chat/sse_chat.rs.html#30">line 30</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -83,7 +83,7 @@ or else this will be returned as a <code>500 Internal Server Error</code>.</p>
             <span class="ident">warp::body::bytes</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
                 <span class="ident">std::str::from_utf8</span>(<span class="kw-2">&amp;</span><span class="ident">body</span>)
                     .<span class="ident">map</span>(<span class="ident">String::from</span>)
-                    .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">_e</span><span class="op">|</span> <span class="highlight"><span class="ident">warp::reject::custom</span>(<span class="ident">NotUtf8</span>)</span>)
+                    .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">_e</span><span class="op">|</span> <span class="highlight focus"><span class="ident">warp::reject::custom</span>(<span class="ident">NotUtf8</span>)</span>)
             }),
         )
         .<span class="ident">and</span>(<span class="ident">users</span>.<span class="ident">clone</span>())

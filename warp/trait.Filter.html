@@ -49,13 +49,13 @@ combined with the other.</p>
 <span class="ident">warp::path</span>(<span class="string">&quot;hello&quot;</span>)
     .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>());</code></pre></div>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[1,1]]"><div class="scraped-example-title">examples/returning.rs (<a href="../src/returning/returning.rs.html#8">line 8</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>7</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../src/returning/returning.rs.html#8&quot;,&quot;line 8&quot;]]"><div class="scraped-example-title">examples/returning.rs (<a href="../src/returning/returning.rs.html#8">line 8</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>7</span>
 <span>8</span>
 <span>9</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">assets_filter</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BoxedFilter</span><span class="op">&lt;</span>(<span class="kw">impl</span> <span class="ident">Reply</span>,)<span class="op">&gt;</span> {
-    <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>))</span>.<span class="ident">boxed</span>()
+    <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="highlight focus"><span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>))</span>.<span class="ident">boxed</span>()
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[3,3],[3,3],[4,4],[5,5],[6,6],[14,14],[14,14],[15,15],[16,16],[17,17],[25,25],[25,25],[25,25],[26,26],[27,27],[28,28],[39,39],[39,39],[39,39],[44,44],[45,45],[46,46],[57,57]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#52">line 52</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>49</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[3,3],&quot;../src/todos/todos.rs.html#52&quot;,&quot;line 52&quot;],[[3,3],&quot;../src/todos/todos.rs.html#52&quot;,&quot;line 52&quot;],[[4,4],&quot;../src/todos/todos.rs.html#53&quot;,&quot;line 53&quot;],[[5,5],&quot;../src/todos/todos.rs.html#54&quot;,&quot;line 54&quot;],[[6,6],&quot;../src/todos/todos.rs.html#55&quot;,&quot;line 55&quot;],[[14,14],&quot;../src/todos/todos.rs.html#63&quot;,&quot;line 63&quot;],[[14,14],&quot;../src/todos/todos.rs.html#63&quot;,&quot;line 63&quot;],[[15,15],&quot;../src/todos/todos.rs.html#64&quot;,&quot;line 64&quot;],[[16,16],&quot;../src/todos/todos.rs.html#65&quot;,&quot;line 65&quot;],[[17,17],&quot;../src/todos/todos.rs.html#66&quot;,&quot;line 66&quot;],[[25,25],&quot;../src/todos/todos.rs.html#74&quot;,&quot;line 74&quot;],[[25,25],&quot;../src/todos/todos.rs.html#74&quot;,&quot;line 74&quot;],[[25,25],&quot;../src/todos/todos.rs.html#74&quot;,&quot;line 74&quot;],[[26,26],&quot;../src/todos/todos.rs.html#75&quot;,&quot;line 75&quot;],[[27,27],&quot;../src/todos/todos.rs.html#76&quot;,&quot;line 76&quot;],[[28,28],&quot;../src/todos/todos.rs.html#77&quot;,&quot;line 77&quot;],[[39,39],&quot;../src/todos/todos.rs.html#88&quot;,&quot;line 88&quot;],[[39,39],&quot;../src/todos/todos.rs.html#88&quot;,&quot;line 88&quot;],[[39,39],&quot;../src/todos/todos.rs.html#88&quot;,&quot;line 88&quot;],[[44,44],&quot;../src/todos/todos.rs.html#93&quot;,&quot;line 93&quot;],[[45,45],&quot;../src/todos/todos.rs.html#94&quot;,&quot;line 94&quot;],[[46,46],&quot;../src/todos/todos.rs.html#95&quot;,&quot;line 95&quot;],[[57,57],&quot;../src/todos/todos.rs.html#106&quot;,&quot;line 106&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#52">line 52</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>49</span>
 <span>50</span>
 <span>51</span>
 <span>52</span>
@@ -117,7 +117,7 @@ combined with the other.</p>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">todos_list</span>(
         <span class="ident">db</span>: <span class="ident">Db</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
-        <span class="highlight"><span class="highlight"><span class="macro">warp::path!</span>(<span class="string">&quot;todos&quot;</span>)</span></span>
+        <span class="highlight focus"><span class="highlight"><span class="macro">warp::path!</span>(<span class="string">&quot;todos&quot;</span>)</span></span>
             .<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::get</span>())</span>
             .<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::query</span>::<span class="op">&lt;</span><span class="ident">ListOptions</span><span class="op">&gt;</span>())</span>
             .<span class="highlight"><span class="ident">and</span>(<span class="ident">with_db</span>(<span class="ident">db</span>))</span>
@@ -173,7 +173,7 @@ combined with the other.</p>
         <span class="comment">// (and to reject huge payloads)...</span>
         <span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>).<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::body::json</span>())</span>
     }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[4,4],[5,5],[8,8]]"><div class="scraped-example-title">examples/file.rs (<a href="../src/file/file.rs.html#10">line 10</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
+</div></div><div class="scraped-example " data-locs="[[[4,4],&quot;../src/file/file.rs.html#10&quot;,&quot;line 10&quot;],[[5,5],&quot;../src/file/file.rs.html#11&quot;,&quot;line 11&quot;],[[8,8],&quot;../src/file/file.rs.html#14&quot;,&quot;line 14&quot;]]"><div class="scraped-example-title">examples/file.rs (<a href="../src/file/file.rs.html#10">line 10</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
 <span> 7</span>
 <span> 8</span>
 <span> 9</span>
@@ -193,7 +193,7 @@ combined with the other.</p>
     <span class="ident">pretty_env_logger::init</span>();
 
     <span class="kw">let</span> <span class="ident">readme</span> <span class="op">=</span> <span class="ident">warp::get</span>()
-        .<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::path::end</span>())</span>
+        .<span class="highlight focus"><span class="ident">and</span>(<span class="ident">warp::path::end</span>())</span>
         .<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>))</span>;
 
     <span class="comment">// dir already requires GET...</span>
@@ -205,7 +205,7 @@ combined with the other.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[12,12]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#16">line 16</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 4</span>
+</div></div><div class="scraped-example " data-locs="[[[12,12],&quot;../src/wrapping/wrapping.rs.html#16&quot;,&quot;line 16&quot;]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#16">line 16</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 4</span>
 <span> 5</span>
 <span> 6</span>
 <span> 7</span>
@@ -232,10 +232,10 @@ combined with the other.</p>
             <span class="macro">println!</span>(<span class="string">&quot;before filter&quot;</span>);
         })
         .<span class="ident">untuple_one</span>()
-        .<span class="highlight"><span class="ident">and</span>(<span class="ident">filter</span>)</span>
+        .<span class="highlight focus"><span class="ident">and</span>(<span class="ident">filter</span>)</span>
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">_arg</span><span class="op">|</span> <span class="string">&quot;wrapped hello world&quot;</span>)
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[11,11]]"><div class="scraped-example-title">examples/headers.rs (<a href="../src/headers/headers.rs.html#23">line 23</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><div class="scraped-example " data-locs="[[[11,11],&quot;../src/headers/headers.rs.html#23&quot;,&quot;line 23&quot;]]"><div class="scraped-example-title">examples/headers.rs (<a href="../src/headers/headers.rs.html#23">line 23</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -262,12 +262,12 @@ combined with the other.</p>
     <span class="kw">let</span> <span class="ident">accept_stars</span> <span class="op">=</span> <span class="ident">warp::header::exact</span>(<span class="string">&quot;accept&quot;</span>, <span class="string">&quot;*/*&quot;</span>);
 
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">host</span>
-        .<span class="highlight"><span class="ident">and</span>(<span class="ident">accept_stars</span>)</span>
+        .<span class="highlight focus"><span class="ident">and</span>(<span class="ident">accept_stars</span>)</span>
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">addr</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;accepting stars on {}&quot;</span>, <span class="ident">addr</span>));
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[5,5],[6,6],[8,8],[9,9]]"><div class="scraped-example-title">examples/body.rs (<a href="../src/body/body.rs.html#19">line 19</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><div class="scraped-example " data-locs="[[[5,5],&quot;../src/body/body.rs.html#19&quot;,&quot;line 19&quot;],[[6,6],&quot;../src/body/body.rs.html#20&quot;,&quot;line 20&quot;],[[8,8],&quot;../src/body/body.rs.html#22&quot;,&quot;line 22&quot;],[[9,9],&quot;../src/body/body.rs.html#23&quot;,&quot;line 23&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../src/body/body.rs.html#19">line 19</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -289,7 +289,7 @@ combined with the other.</p>
 
     <span class="comment">// POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}</span>
     <span class="kw">let</span> <span class="ident">promote</span> <span class="op">=</span> <span class="ident">warp::post</span>()
-        .<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::path</span>(<span class="string">&quot;employees&quot;</span>))</span>
+        .<span class="highlight focus"><span class="ident">and</span>(<span class="ident">warp::path</span>(<span class="string">&quot;employees&quot;</span>))</span>
         .<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>())</span>
         <span class="comment">// Only accept bodies smaller than 16kb...</span>
         .<span class="highlight"><span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>))</span>
@@ -301,7 +301,7 @@ combined with the other.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
 }</code></pre></div>
-</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../src/sse/sse.rs.html#17">examples/sse.rs</a></li><li><a href="../src/websockets/websockets.rs.html#12">examples/websockets.rs</a></li><li><a href="../src/rejections/rejections.rs.html#15">examples/rejections.rs</a></li><li><a href="../src/websockets_chat/websockets_chat.rs.html#36">examples/websockets_chat.rs</a></li><li><a href="../src/handlebars_template/handlebars_template.rs.html#50">examples/handlebars_template.rs</a></li><li><a href="../src/sse_chat/sse_chat.rs.html#23">examples/sse_chat.rs</a></li><li><a href="../src/query_string/query_string.rs.html#21">examples/query_string.rs</a></li><li><a href="../src/tracing/tracing.rs.html#30">examples/tracing.rs</a></li><li><a href="../src/routing/routing.rs.html#21">examples/routing.rs</a></li></ul></div></div></div></details></div></details><details class="rustdoc-toggle" open><summary><div id="method.or" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/warp/filter/mod.rs.html#136-146" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.or" class="fnname">or</a>&lt;F&gt;(self, other: F) -&gt; Or&lt;Self, F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Error = <a class="struct" href="reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="trait.Filter.html" title="trait warp::Filter">Filter</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F::Error: CombineRejection&lt;Self::Error&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Composes a new <code>Filter</code> of either this or the other filter.</p>
+</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../src/sse/sse.rs.html">examples/sse.rs</a></li><li><a href="../src/websockets/websockets.rs.html">examples/websockets.rs</a></li><li><a href="../src/rejections/rejections.rs.html">examples/rejections.rs</a></li><li><a href="../src/websockets_chat/websockets_chat.rs.html">examples/websockets_chat.rs</a></li><li><a href="../src/handlebars_template/handlebars_template.rs.html">examples/handlebars_template.rs</a></li><li><a href="../src/sse_chat/sse_chat.rs.html">examples/sse_chat.rs</a></li><li><a href="../src/query_string/query_string.rs.html">examples/query_string.rs</a></li><li><a href="../src/tracing/tracing.rs.html">examples/tracing.rs</a></li><li><a href="../src/routing/routing.rs.html">examples/routing.rs</a></li></ul></div></div></div></details></div></details><details class="rustdoc-toggle" open><summary><div id="method.or" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/warp/filter/mod.rs.html#136-146" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.or" class="fnname">or</a>&lt;F&gt;(self, other: F) -&gt; Or&lt;Self, F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Error = <a class="struct" href="reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="trait.Filter.html" title="trait warp::Filter">Filter</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F::Error: CombineRejection&lt;Self::Error&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Composes a new <code>Filter</code> of either this or the other filter.</p>
 <h5 id="example-1" class="section-header"><a href="#example-1">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
 <span class="kw">use</span> <span class="ident">warp::Filter</span>;
@@ -310,15 +310,15 @@ combined with the other.</p>
 <span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>()
     .<span class="ident">or</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">SocketAddr</span><span class="op">&gt;</span>());</code></pre></div>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples-1" class="section-header"><a href="#scraped-examples-1">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[1,1]]"><div class="scraped-example-title">examples/returning.rs (<a href="../src/returning/returning.rs.html#18">line 18</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>17</span>
+          <h5 id="scraped-examples-1" class="section-header"><a href="#scraped-examples-1">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../src/returning/returning.rs.html#18&quot;,&quot;line 18&quot;]]"><div class="scraped-example-title">examples/returning.rs (<a href="../src/returning/returning.rs.html#18">line 18</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>17</span>
 <span>18</span>
 <span>19</span>
 <span>20</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index_filter</span>().<span class="highlight"><span class="ident">or</span>(<span class="ident">assets_filter</span>())</span>;
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index_filter</span>().<span class="highlight focus"><span class="ident">or</span>(<span class="ident">assets_filter</span>())</span>;
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[4,4],[5,5],[6,6]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#43">line 43</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>39</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[4,4],&quot;../src/todos/todos.rs.html#43&quot;,&quot;line 43&quot;],[[5,5],&quot;../src/todos/todos.rs.html#44&quot;,&quot;line 44&quot;],[[6,6],&quot;../src/todos/todos.rs.html#45&quot;,&quot;line 45&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#43">line 43</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>39</span>
 <span>40</span>
 <span>41</span>
 <span>42</span>
@@ -330,11 +330,11 @@ combined with the other.</p>
         <span class="ident">db</span>: <span class="ident">Db</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
         <span class="ident">todos_list</span>(<span class="ident">db</span>.<span class="ident">clone</span>())
-            .<span class="highlight"><span class="ident">or</span>(<span class="ident">todos_create</span>(<span class="ident">db</span>.<span class="ident">clone</span>()))</span>
+            .<span class="highlight focus"><span class="ident">or</span>(<span class="ident">todos_create</span>(<span class="ident">db</span>.<span class="ident">clone</span>()))</span>
             .<span class="highlight"><span class="ident">or</span>(<span class="ident">todos_update</span>(<span class="ident">db</span>.<span class="ident">clone</span>()))</span>
             .<span class="highlight"><span class="ident">or</span>(<span class="ident">todos_delete</span>(<span class="ident">db</span>))</span>
     }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[12,12]]"><div class="scraped-example-title">examples/file.rs (<a href="../src/file/file.rs.html#18">line 18</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
+</div></div><div class="scraped-example " data-locs="[[[12,12],&quot;../src/file/file.rs.html#18&quot;,&quot;line 18&quot;]]"><div class="scraped-example-title">examples/file.rs (<a href="../src/file/file.rs.html#18">line 18</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
 <span> 7</span>
 <span> 8</span>
 <span> 9</span>
@@ -362,11 +362,11 @@ combined with the other.</p>
 
     <span class="comment">// GET / =&gt; README.md</span>
     <span class="comment">// GET /ex/... =&gt; ./examples/..</span>
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">readme</span>.<span class="highlight"><span class="ident">or</span>(<span class="ident">examples</span>)</span>;
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">readme</span>.<span class="highlight focus"><span class="ident">or</span>(<span class="ident">examples</span>)</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[22,22]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../src/rejections/rejections.rs.html#36">line 36</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><div class="scraped-example " data-locs="[[[22,22],&quot;../src/rejections/rejections.rs.html#36&quot;,&quot;line 36&quot;]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../src/rejections/rejections.rs.html#36">line 36</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -414,11 +414,11 @@ combined with the other.</p>
                 })
             });
 
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">div_with_header</span>.<span class="highlight"><span class="ident">or</span>(<span class="ident">div_with_body</span>)</span>.<span class="ident">recover</span>(<span class="ident">handle_rejection</span>);
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">div_with_header</span>.<span class="highlight focus"><span class="ident">or</span>(<span class="ident">div_with_body</span>)</span>.<span class="ident">recover</span>(<span class="ident">handle_rejection</span>);
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[22,22]]"><div class="scraped-example-title">examples/websockets_chat.rs (<a href="../src/websockets_chat/websockets_chat.rs.html#46">line 46</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>24</span>
+</div></div><div class="scraped-example " data-locs="[[[22,22],&quot;../src/websockets_chat/websockets_chat.rs.html#46&quot;,&quot;line 46&quot;]]"><div class="scraped-example-title">examples/websockets_chat.rs (<a href="../src/websockets_chat/websockets_chat.rs.html#46">line 46</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>24</span>
 <span>25</span>
 <span>26</span>
 <span>27</span>
@@ -466,11 +466,11 @@ combined with the other.</p>
     <span class="comment">// GET / -&gt; index html</span>
     <span class="kw">let</span> <span class="ident">index</span> <span class="op">=</span> <span class="ident">warp::path::end</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">warp::reply::html</span>(<span class="ident">INDEX_HTML</span>));
 
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index</span>.<span class="highlight"><span class="ident">or</span>(<span class="ident">chat</span>)</span>;
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index</span>.<span class="highlight focus"><span class="ident">or</span>(<span class="ident">chat</span>)</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[41,41],[41,41]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../src/sse_chat/sse_chat.rs.html#53">line 53</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><div class="scraped-example " data-locs="[[[41,41],&quot;../src/sse_chat/sse_chat.rs.html#53&quot;,&quot;line 53&quot;],[[41,41],&quot;../src/sse_chat/sse_chat.rs.html#53&quot;,&quot;line 53&quot;]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../src/sse_chat/sse_chat.rs.html#53">line 53</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -556,11 +556,11 @@ combined with the other.</p>
             .<span class="ident">body</span>(<span class="ident">INDEX_HTML</span>)
     });
 
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index</span>.<span class="highlight"><span class="ident">or</span>(<span class="ident">chat_recv</span>)</span>.<span class="highlight"><span class="ident">or</span>(<span class="ident">chat_send</span>)</span>;
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index</span>.<span class="highlight focus"><span class="ident">or</span>(<span class="ident">chat_recv</span>)</span>.<span class="highlight"><span class="ident">or</span>(<span class="ident">chat_send</span>)</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../src/query_string/query_string.rs.html#56">examples/query_string.rs</a></li><li><a href="../src/tracing/tracing.rs.html#53">examples/tracing.rs</a></li><li><a href="../src/routing/routing.rs.html#63">examples/routing.rs</a></li></ul></div></div></div></details></div></details><details class="rustdoc-toggle" open><summary><div id="method.map" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/warp/filter/mod.rs.html#189-198" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.map" class="fnname">map</a>&lt;F&gt;(self, fun: F) -&gt; Map&lt;Self, F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: Func&lt;Self::Extract&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Composes this <code>Filter</code> with a function receiving the extracted value.</p>
+</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../src/query_string/query_string.rs.html">examples/query_string.rs</a></li><li><a href="../src/tracing/tracing.rs.html">examples/tracing.rs</a></li><li><a href="../src/routing/routing.rs.html">examples/routing.rs</a></li></ul></div></div></div></details></div></details><details class="rustdoc-toggle" open><summary><div id="method.map" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/warp/filter/mod.rs.html#189-198" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.map" class="fnname">map</a>&lt;F&gt;(self, fun: F) -&gt; Map&lt;Self, F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: Func&lt;Self::Extract&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Composes this <code>Filter</code> with a function receiving the extracted value.</p>
 <h5 id="example-2" class="section-header"><a href="#example-2">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
@@ -591,19 +591,19 @@ this is a bother to you. What’s more, the types are enforced at
 compile-time, and tuple flattening is optimized away to nothing by
 LLVM.</p>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples-2" class="section-header"><a href="#scraped-examples-2">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[1,1]]"><div class="scraped-example-title">examples/returning.rs (<a href="../src/returning/returning.rs.html#13">line 13</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+          <h5 id="scraped-examples-2" class="section-header"><a href="#scraped-examples-2">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../src/returning/returning.rs.html#13&quot;,&quot;line 13&quot;]]"><div class="scraped-example-title">examples/returning.rs (<a href="../src/returning/returning.rs.html#13">line 13</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index_filter</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
-    <span class="ident">warp::path::end</span>().<span class="highlight"><span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Index page&quot;</span>)</span>
+    <span class="ident">warp::path::end</span>().<span class="highlight focus"><span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Index page&quot;</span>)</span>
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[1,1]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#100">line 100</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>99</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../src/todos/todos.rs.html#100&quot;,&quot;line 100&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#100">line 100</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>99</span>
 <span>100</span>
 <span>101</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">with_db</span>(<span class="ident">db</span>: <span class="ident">Db</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">Db</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">std::convert::Infallible</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
-        <span class="ident">warp::any</span>().<span class="highlight"><span class="ident">map</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="ident">db</span>.<span class="ident">clone</span>())</span>
+        <span class="ident">warp::any</span>().<span class="highlight focus"><span class="ident">map</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="ident">db</span>.<span class="ident">clone</span>())</span>
     }</code></pre></div>
-</div></div><div class="scraped-example expanded" data-locs="[[2,2]]"><div class="scraped-example-title">examples/hello.rs (<a href="../src/hello/hello.rs.html#7">line 7</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>5</span>
+</div></div><div class="scraped-example expanded" data-locs="[[[2,2],&quot;../src/hello/hello.rs.html#7&quot;,&quot;line 7&quot;]]"><div class="scraped-example-title">examples/hello.rs (<a href="../src/hello/hello.rs.html#7">line 7</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>5</span>
 <span>6</span>
 <span>7</span>
 <span>8</span>
@@ -611,11 +611,11 @@ LLVM.</p>
 <span>10</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// Match any request and return hello world!</span>
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::any</span>().<span class="highlight"><span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>)</span>;
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::any</span>().<span class="highlight focus"><span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;Hello, World!&quot;</span>)</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[8,10],[13,13],[20,20]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#12-14">lines 12-14</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 4</span>
+</div></div><div class="scraped-example " data-locs="[[[8,10],&quot;../src/wrapping/wrapping.rs.html#12-14&quot;,&quot;lines 12-14&quot;],[[13,13],&quot;../src/wrapping/wrapping.rs.html#17&quot;,&quot;line 17&quot;],[[20,20],&quot;../src/wrapping/wrapping.rs.html#24&quot;,&quot;line 24&quot;]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#12-14">lines 12-14</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 4</span>
 <span> 5</span>
 <span> 6</span>
 <span> 7</span>
@@ -651,7 +651,7 @@ LLVM.</p>
     <span class="ident">F::Extract</span>: <span class="ident">warp::Reply</span>,
 {
     <span class="ident">warp::any</span>()
-        .<span class="highlight"><span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
+        .<span class="highlight focus"><span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
             <span class="macro">println!</span>(<span class="string">&quot;before filter&quot;</span>);
         })</span>
         .<span class="ident">untuple_one</span>()
@@ -671,7 +671,7 @@ LLVM.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[12,12]]"><div class="scraped-example-title">examples/headers.rs (<a href="../src/headers/headers.rs.html#24">line 24</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><div class="scraped-example " data-locs="[[[12,12],&quot;../src/headers/headers.rs.html#24&quot;,&quot;line 24&quot;]]"><div class="scraped-example-title">examples/headers.rs (<a href="../src/headers/headers.rs.html#24">line 24</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -699,11 +699,11 @@ LLVM.</p>
 
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">host</span>
         .<span class="ident">and</span>(<span class="ident">accept_stars</span>)
-        .<span class="highlight"><span class="ident">map</span>(<span class="op">|</span><span class="ident">addr</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;accepting stars on {}&quot;</span>, <span class="ident">addr</span>))</span>;
+        .<span class="highlight focus"><span class="ident">map</span>(<span class="op">|</span><span class="ident">addr</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;accepting stars on {}&quot;</span>, <span class="ident">addr</span>))</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[10,13]]"><div class="scraped-example-title">examples/body.rs (<a href="../src/body/body.rs.html#24-27">lines 24-27</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><div class="scraped-example " data-locs="[[[10,13],&quot;../src/body/body.rs.html#24-27&quot;,&quot;lines 24-27&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../src/body/body.rs.html#24-27">lines 24-27</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -730,14 +730,14 @@ LLVM.</p>
         <span class="comment">// Only accept bodies smaller than 16kb...</span>
         .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>))
         .<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
-        .<span class="highlight"><span class="ident">map</span>(<span class="op">|</span><span class="ident">rate</span>, <span class="kw-2">mut</span> <span class="ident">employee</span>: <span class="ident">Employee</span><span class="op">|</span> {
+        .<span class="highlight focus"><span class="ident">map</span>(<span class="op">|</span><span class="ident">rate</span>, <span class="kw-2">mut</span> <span class="ident">employee</span>: <span class="ident">Employee</span><span class="op">|</span> {
             <span class="ident">employee</span>.<span class="ident">rate</span> <span class="op">=</span> <span class="ident">rate</span>;
             <span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">employee</span>)
         })</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
 }</code></pre></div>
-</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../src/sse/sse.rs.html#17-28">examples/sse.rs</a></li><li><a href="../src/websockets/websockets.rs.html#13-24">examples/websockets.rs</a></li><li><a href="../src/rejections/rejections.rs.html#19-24">examples/rejections.rs</a></li><li><a href="../src/websockets_chat/websockets_chat.rs.html#31">examples/websockets_chat.rs</a></li><li><a href="../src/handlebars_template/handlebars_template.rs.html#51-54">examples/handlebars_template.rs</a></li><li><a href="../src/autoreload/autoreload.rs.html#19">examples/autoreload.rs</a></li><li><a href="../src/sse_chat/sse_chat.rs.html#19">examples/sse_chat.rs</a></li><li><a href="../src/query_string/query_string.rs.html#23-26">examples/query_string.rs</a></li><li><a href="../src/tracing/tracing.rs.html#32-35">examples/tracing.rs</a></li><li><a href="../src/routing/routing.rs.html#13">examples/routing.rs</a></li></ul></div></div></div></details></div></details><details class="rustdoc-toggle" open><summary><div id="method.and_then" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/warp/filter/mod.rs.html#221-232" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.and_then" class="fnname">and_then</a>&lt;F&gt;(self, fun: F) -&gt; AndThen&lt;Self, F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: Func&lt;Self::Extract&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F::Output: <a class="trait" href="../futures_core/future/trait.TryFuture.html" title="trait futures_core::future::TryFuture">TryFuture</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;F::Output as <a class="trait" href="../futures_core/future/trait.TryFuture.html" title="trait futures_core::future::TryFuture">TryFuture</a>&gt;::<a class="type" href="../futures_core/future/trait.TryFuture.html#associatedtype.Error" title="type futures_core::future::TryFuture::Error">Error</a>: CombineRejection&lt;Self::Error&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Composes this <code>Filter</code> with a function receiving the extracted value.</p>
+</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../src/sse/sse.rs.html">examples/sse.rs</a></li><li><a href="../src/websockets/websockets.rs.html">examples/websockets.rs</a></li><li><a href="../src/rejections/rejections.rs.html">examples/rejections.rs</a></li><li><a href="../src/websockets_chat/websockets_chat.rs.html">examples/websockets_chat.rs</a></li><li><a href="../src/handlebars_template/handlebars_template.rs.html">examples/handlebars_template.rs</a></li><li><a href="../src/autoreload/autoreload.rs.html">examples/autoreload.rs</a></li><li><a href="../src/sse_chat/sse_chat.rs.html">examples/sse_chat.rs</a></li><li><a href="../src/query_string/query_string.rs.html">examples/query_string.rs</a></li><li><a href="../src/tracing/tracing.rs.html">examples/tracing.rs</a></li><li><a href="../src/routing/routing.rs.html">examples/routing.rs</a></li></ul></div></div></div></details></div></details><details class="rustdoc-toggle" open><summary><div id="method.and_then" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/warp/filter/mod.rs.html#221-232" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.and_then" class="fnname">and_then</a>&lt;F&gt;(self, fun: F) -&gt; AndThen&lt;Self, F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: Func&lt;Self::Extract&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F::Output: <a class="trait" href="../futures_core/future/trait.TryFuture.html" title="trait futures_core::future::TryFuture">TryFuture</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;F::Output as <a class="trait" href="../futures_core/future/trait.TryFuture.html" title="trait futures_core::future::TryFuture">TryFuture</a>&gt;::<a class="type" href="../futures_core/future/trait.TryFuture.html#associatedtype.Error" title="type futures_core::future::TryFuture::Error">Error</a>: CombineRejection&lt;Self::Error&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Composes this <code>Filter</code> with a function receiving the extracted value.</p>
 <p>The function should return some <code>TryFuture</code> type.</p>
 <p>The <code>Error</code> type of the return <code>Future</code> needs be a <code>Rejection</code>, which
 means most futures will need to have their error mapped into one.</p>
@@ -753,17 +753,17 @@ means most futures will need to have their error mapped into one.</p>
     }
 });</code></pre></div>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples-3" class="section-header"><a href="#scraped-examples-3">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[1,1]]"><div class="scraped-example-title">examples/dyn_reply.rs (<a href="../src/dyn_reply/dyn_reply.rs.html#14">line 14</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>13</span>
+          <h5 id="scraped-examples-3" class="section-header"><a href="#scraped-examples-3">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../src/dyn_reply/dyn_reply.rs.html#14&quot;,&quot;line 14&quot;]]"><div class="scraped-example-title">examples/dyn_reply.rs (<a href="../src/dyn_reply/dyn_reply.rs.html#14">line 14</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>13</span>
 <span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path::param</span>().<span class="highlight"><span class="ident">and_then</span>(<span class="ident">dyn_reply</span>)</span>;
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path::param</span>().<span class="highlight focus"><span class="ident">and_then</span>(<span class="ident">dyn_reply</span>)</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[4,4]]"><div class="scraped-example-title">examples/futures.rs (<a href="../src/futures/futures.rs.html#13">line 13</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>9</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[4,4],&quot;../src/futures/futures.rs.html#13&quot;,&quot;line 13&quot;]]"><div class="scraped-example-title">examples/futures.rs (<a href="../src/futures/futures.rs.html#13">line 13</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>9</span>
 <span>10</span>
 <span>11</span>
 <span>12</span>
@@ -775,11 +775,11 @@ means most futures will need to have their error mapped into one.</p>
     <span class="comment">// Match `/:Seconds`...</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path::param</span>()
         <span class="comment">// and_then create a `Future` that will simply wait N seconds...</span>
-        .<span class="highlight"><span class="ident">and_then</span>(<span class="ident">sleepy</span>)</span>;
+        .<span class="highlight focus"><span class="ident">and_then</span>(<span class="ident">sleepy</span>)</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example expanded" data-locs="[[1,7]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../src/rejections/rejections.rs.html#43-49">lines 43-49</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>42</span>
+</div></div><div class="scraped-example expanded" data-locs="[[[1,7],&quot;../src/rejections/rejections.rs.html#43-49&quot;,&quot;lines 43-49&quot;]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../src/rejections/rejections.rs.html#43-49">lines 43-49</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>42</span>
 <span>43</span>
 <span>44</span>
 <span>45</span>
@@ -789,7 +789,7 @@ means most futures will need to have their error mapped into one.</p>
 <span>49</span>
 <span>50</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">div_by</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">NonZeroU16</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
-    <span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>(<span class="string">&quot;div-by&quot;</span>).<span class="highlight"><span class="ident">and_then</span>(<span class="op">|</span><span class="ident">n</span>: <span class="ident">u16</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
+    <span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>(<span class="string">&quot;div-by&quot;</span>).<span class="highlight focus"><span class="ident">and_then</span>(<span class="op">|</span><span class="ident">n</span>: <span class="ident">u16</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">denom</span>) <span class="op">=</span> <span class="ident">NonZeroU16::new</span>(<span class="ident">n</span>) {
             <span class="prelude-val">Ok</span>(<span class="ident">denom</span>)
         } <span class="kw">else</span> {
@@ -797,7 +797,7 @@ means most futures will need to have their error mapped into one.</p>
         }
     })</span>
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[7,7],[18,18],[29,29],[47,47]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#56">line 56</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>49</span>
+</div></div><div class="scraped-example " data-locs="[[[7,7],&quot;../src/todos/todos.rs.html#56&quot;,&quot;line 56&quot;],[[18,18],&quot;../src/todos/todos.rs.html#67&quot;,&quot;line 67&quot;],[[29,29],&quot;../src/todos/todos.rs.html#78&quot;,&quot;line 78&quot;],[[47,47],&quot;../src/todos/todos.rs.html#96&quot;,&quot;line 96&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#56">line 56</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>49</span>
 <span>50</span>
 <span>51</span>
 <span>52</span>
@@ -853,7 +853,7 @@ means most futures will need to have their error mapped into one.</p>
             .<span class="ident">and</span>(<span class="ident">warp::get</span>())
             .<span class="ident">and</span>(<span class="ident">warp::query</span>::<span class="op">&lt;</span><span class="ident">ListOptions</span><span class="op">&gt;</span>())
             .<span class="ident">and</span>(<span class="ident">with_db</span>(<span class="ident">db</span>))
-            .<span class="highlight"><span class="ident">and_then</span>(<span class="ident">handlers::list_todos</span>)</span>
+            .<span class="highlight focus"><span class="ident">and_then</span>(<span class="ident">handlers::list_todos</span>)</span>
     }
 
     <span class="doccomment">/// POST /todos with JSON body</span>
@@ -895,7 +895,7 @@ means most futures will need to have their error mapped into one.</p>
             .<span class="ident">and</span>(<span class="ident">with_db</span>(<span class="ident">db</span>))
             .<span class="highlight"><span class="ident">and_then</span>(<span class="ident">handlers::delete_todo</span>)</span>
     }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[15,19]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../src/sse_chat/sse_chat.rs.html#27-31">lines 27-31</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><div class="scraped-example " data-locs="[[[15,19],&quot;../src/sse_chat/sse_chat.rs.html#27-31&quot;,&quot;lines 27-31&quot;]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../src/sse_chat/sse_chat.rs.html#27-31">lines 27-31</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -955,7 +955,7 @@ means most futures will need to have their error mapped into one.</p>
         .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>())
         .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">500</span>))
         .<span class="ident">and</span>(
-            <span class="ident">warp::body::bytes</span>().<span class="highlight"><span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
+            <span class="ident">warp::body::bytes</span>().<span class="highlight focus"><span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
                 <span class="ident">std::str::from_utf8</span>(<span class="kw-2">&amp;</span><span class="ident">body</span>)
                     .<span class="ident">map</span>(<span class="ident">String::from</span>)
                     .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">_e</span><span class="op">|</span> <span class="ident">warp::reject::custom</span>(<span class="ident">NotUtf8</span>))
@@ -989,7 +989,7 @@ means most futures will need to have their error mapped into one.</p>
 <p>The function should return some <code>TryFuture</code> type yielding the
 same item and error types.</p>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples-4" class="section-header"><a href="#scraped-examples-4">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[24,24]]"><div class="scraped-example-title">examples/query_string.rs (<a href="../src/query_string/query_string.rs.html#39">line 39</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>15</span>
+          <h5 id="scraped-examples-4" class="section-header"><a href="#scraped-examples-4">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[24,24],&quot;../src/query_string/query_string.rs.html#39&quot;,&quot;line 39&quot;]]"><div class="scraped-example-title">examples/query_string.rs (<a href="../src/query_string/query_string.rs.html#39">line 39</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>15</span>
 <span>16</span>
 <span>17</span>
 <span>18</span>
@@ -1058,7 +1058,7 @@ same item and error types.</p>
 
     <span class="kw">let</span> <span class="ident">opt_query</span> <span class="op">=</span> <span class="ident">warp::query</span>::<span class="op">&lt;</span><span class="ident">MyObject</span><span class="op">&gt;</span>()
         .<span class="ident">map</span>(<span class="prelude-val">Some</span>)
-        .<span class="highlight"><span class="ident">or_else</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="kw">async</span> { <span class="prelude-val">Ok</span>::<span class="op">&lt;</span>(<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MyObject</span><span class="op">&gt;</span>,), <span class="ident">std::convert::Infallible</span><span class="op">&gt;</span>((<span class="prelude-val">None</span>,)) })</span>;
+        .<span class="highlight focus"><span class="ident">or_else</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="kw">async</span> { <span class="prelude-val">Ok</span>::<span class="op">&lt;</span>(<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MyObject</span><span class="op">&gt;</span>,), <span class="ident">std::convert::Infallible</span><span class="op">&gt;</span>((<span class="prelude-val">None</span>,)) })</span>;
 
     <span class="comment">// get /example3?key1=value&amp;key2=42</span>
     <span class="comment">// builds on example2 but adds custom error handling</span>
@@ -1084,7 +1084,7 @@ returning a <em>new</em> type, instead of the <em>same</em> type.</p>
 <p>This is useful for “customizing” rejections into new response types.
 See also the <a href="https://github.com/seanmonstar/warp/blob/master/examples/rejections.rs">rejections example</a>.</p>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples-5" class="section-header"><a href="#scraped-examples-5">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[5,5]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#26">line 26</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>21</span>
+          <h5 id="scraped-examples-5" class="section-header"><a href="#scraped-examples-5">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[5,5],&quot;../src/wrapping/wrapping.rs.html#26&quot;,&quot;line 26&quot;]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#26">line 26</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>21</span>
 <span>22</span>
 <span>23</span>
 <span>24</span>
@@ -1100,13 +1100,13 @@ See also the <a href="https://github.com/seanmonstar/warp/blob/master/examples/r
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::any</span>()
         .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;hello world&quot;</span>)
         .<span class="ident">boxed</span>()
-        .<span class="highlight"><span class="ident">recover</span>(<span class="op">|</span><span class="ident">_err</span><span class="op">|</span> <span class="kw">async</span> { <span class="prelude-val">Ok</span>(<span class="string">&quot;recovered&quot;</span>) })</span>
+        .<span class="highlight focus"><span class="ident">recover</span>(<span class="op">|</span><span class="ident">_err</span><span class="op">|</span> <span class="kw">async</span> { <span class="prelude-val">Ok</span>(<span class="string">&quot;recovered&quot;</span>) })</span>
         <span class="comment">// wrap the filter with hello_wrapper</span>
         .<span class="ident">with</span>(<span class="ident">warp::wrap_fn</span>(<span class="ident">hello_wrapper</span>));
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[22,22]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../src/rejections/rejections.rs.html#36">line 36</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[22,22],&quot;../src/rejections/rejections.rs.html#36&quot;,&quot;line 36&quot;]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../src/rejections/rejections.rs.html#36">line 36</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -1154,7 +1154,7 @@ See also the <a href="https://github.com/seanmonstar/warp/blob/master/examples/r
                 })
             });
 
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">div_with_header</span>.<span class="ident">or</span>(<span class="ident">div_with_body</span>).<span class="highlight"><span class="ident">recover</span>(<span class="ident">handle_rejection</span>)</span>;
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">div_with_header</span>.<span class="ident">or</span>(<span class="ident">div_with_body</span>).<span class="highlight focus"><span class="ident">recover</span>(<span class="ident">handle_rejection</span>)</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
@@ -1204,7 +1204,7 @@ but just <code>()</code>, since warp will wrap it up into a <code>((),)</code>.<
         <span class="macro">println!</span>(<span class="string">&quot;untupled: ({}, {})&quot;</span>, <span class="ident">is_enabled</span>, <span class="ident">count</span>);
     });</code></pre></div>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples-6" class="section-header"><a href="#scraped-examples-6">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[11,11]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#15">line 15</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 4</span>
+          <h5 id="scraped-examples-6" class="section-header"><a href="#scraped-examples-6">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[11,11],&quot;../src/wrapping/wrapping.rs.html#15&quot;,&quot;line 15&quot;]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#15">line 15</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 4</span>
 <span> 5</span>
 <span> 6</span>
 <span> 7</span>
@@ -1230,7 +1230,7 @@ but just <code>()</code>, since warp will wrap it up into a <code>((),)</code>.<
         .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
             <span class="macro">println!</span>(<span class="string">&quot;before filter&quot;</span>);
         })
-        .<span class="highlight"><span class="ident">untuple_one</span>()</span>
+        .<span class="highlight focus"><span class="ident">untuple_one</span>()</span>
         .<span class="ident">and</span>(<span class="ident">filter</span>)
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">_arg</span><span class="op">|</span> <span class="string">&quot;wrapped hello world&quot;</span>)
 }</code></pre></div>
@@ -1246,7 +1246,7 @@ and may do post-processing after the filter completes.</p>
 <span class="comment">// Wrap the route with a log wrapper.</span>
 <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">route</span>.<span class="ident">with</span>(<span class="ident">warp::log</span>(<span class="string">&quot;example&quot;</span>));</code></pre></div>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples-7" class="section-header"><a href="#scraped-examples-7">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[7,7]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#28">line 28</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>21</span>
+          <h5 id="scraped-examples-7" class="section-header"><a href="#scraped-examples-7">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[7,7],&quot;../src/wrapping/wrapping.rs.html#28&quot;,&quot;line 28&quot;]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#28">line 28</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>21</span>
 <span>22</span>
 <span>23</span>
 <span>24</span>
@@ -1264,11 +1264,11 @@ and may do post-processing after the filter completes.</p>
         .<span class="ident">boxed</span>()
         .<span class="ident">recover</span>(<span class="op">|</span><span class="ident">_err</span><span class="op">|</span> <span class="kw">async</span> { <span class="prelude-val">Ok</span>(<span class="string">&quot;recovered&quot;</span>) })
         <span class="comment">// wrap the filter with hello_wrapper</span>
-        .<span class="highlight"><span class="ident">with</span>(<span class="ident">warp::wrap_fn</span>(<span class="ident">hello_wrapper</span>))</span>;
+        .<span class="highlight focus"><span class="ident">with</span>(<span class="ident">warp::wrap_fn</span>(<span class="ident">hello_wrapper</span>))</span>;
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[13,13]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#28">line 28</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>15</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[13,13],&quot;../src/todos/todos.rs.html#28&quot;,&quot;line 28&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../src/todos/todos.rs.html#28">line 28</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>15</span>
 <span>16</span>
 <span>17</span>
 <span>18</span>
@@ -1298,11 +1298,11 @@ and may do post-processing after the filter completes.</p>
     <span class="kw">let</span> <span class="ident">api</span> <span class="op">=</span> <span class="ident">filters::todos</span>(<span class="ident">db</span>);
 
     <span class="comment">// View access logs by setting `RUST_LOG=todos`.</span>
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">api</span>.<span class="highlight"><span class="ident">with</span>(<span class="ident">warp::log</span>(<span class="string">&quot;todos&quot;</span>))</span>;
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">api</span>.<span class="highlight focus"><span class="ident">with</span>(<span class="ident">warp::log</span>(<span class="string">&quot;todos&quot;</span>))</span>;
     <span class="comment">// Start up the server...</span>
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[26,26],[35,38],[44,44]]"><div class="scraped-example-title">examples/tracing.rs (<a href="../src/tracing/tracing.rs.html#38">line 38</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><div class="scraped-example " data-locs="[[[26,26],&quot;../src/tracing/tracing.rs.html#38&quot;,&quot;line 38&quot;],[[35,38],&quot;../src/tracing/tracing.rs.html#47-50&quot;,&quot;lines 47-50&quot;],[[44,44],&quot;../src/tracing/tracing.rs.html#56&quot;,&quot;line 56&quot;]]"><div class="scraped-example-title">examples/tracing.rs (<a href="../src/tracing/tracing.rs.html#38">line 38</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -1376,7 +1376,7 @@ and may do post-processing after the filter completes.</p>
         })
         <span class="comment">// Wrap the route in a `tracing` span to add the route&#39;s name as context</span>
         <span class="comment">// to any events that occur inside it.</span>
-        .<span class="highlight"><span class="ident">with</span>(<span class="ident">warp::trace::named</span>(<span class="string">&quot;hello&quot;</span>))</span>;
+        .<span class="highlight focus"><span class="ident">with</span>(<span class="ident">warp::trace::named</span>(<span class="string">&quot;hello&quot;</span>))</span>;
 
     <span class="kw">let</span> <span class="ident">goodbye</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;goodbye&quot;</span>)
         .<span class="ident">and</span>(<span class="ident">warp::get</span>())
@@ -1419,13 +1419,13 @@ and may do post-processing after the filter completes.</p>
         .<span class="ident">boxed</span>()
 }</code></pre></div>
 </div><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples-8" class="section-header"><a href="#scraped-examples-8">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[1,1]]"><div class="scraped-example-title">examples/returning.rs (<a href="../src/returning/returning.rs.html#8">line 8</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>7</span>
+          <h5 id="scraped-examples-8" class="section-header"><a href="#scraped-examples-8">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../src/returning/returning.rs.html#8&quot;,&quot;line 8&quot;]]"><div class="scraped-example-title">examples/returning.rs (<a href="../src/returning/returning.rs.html#8">line 8</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>7</span>
 <span>8</span>
 <span>9</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">assets_filter</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BoxedFilter</span><span class="op">&lt;</span>(<span class="kw">impl</span> <span class="ident">Reply</span>,)<span class="op">&gt;</span> {
-    <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>)).<span class="highlight"><span class="ident">boxed</span>()</span>
+    <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>)).<span class="highlight focus"><span class="ident">boxed</span>()</span>
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[4,4]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#25">line 25</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>21</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[4,4],&quot;../src/wrapping/wrapping.rs.html#25&quot;,&quot;line 25&quot;]]"><div class="scraped-example-title">examples/wrapping.rs (<a href="../src/wrapping/wrapping.rs.html#25">line 25</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>21</span>
 <span>22</span>
 <span>23</span>
 <span>24</span>
@@ -1440,7 +1440,7 @@ and may do post-processing after the filter completes.</p>
     <span class="comment">// Match any request and return hello world!</span>
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::any</span>()
         .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;hello world&quot;</span>)
-        .<span class="highlight"><span class="ident">boxed</span>()</span>
+        .<span class="highlight focus"><span class="ident">boxed</span>()</span>
         .<span class="ident">recover</span>(<span class="op">|</span><span class="ident">_err</span><span class="op">|</span> <span class="kw">async</span> { <span class="prelude-val">Ok</span>(<span class="string">&quot;recovered&quot;</span>) })
         <span class="comment">// wrap the filter with hello_wrapper</span>
         .<span class="ident">with</span>(<span class="ident">warp::wrap_fn</span>(<span class="ident">hello_wrapper</span>));

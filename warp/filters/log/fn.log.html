@@ -11,7 +11,7 @@ will have their <code>target</code> set to <code>name</code>.</p>
     .<span class="ident">map</span>(<span class="ident">warp::reply</span>)
     .<span class="ident">with</span>(<span class="ident">log</span>);</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[13,13]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#28">line 28</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>15</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[13,13],&quot;../../../src/todos/todos.rs.html#28&quot;,&quot;line 28&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#28">line 28</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>15</span>
 <span>16</span>
 <span>17</span>
 <span>18</span>
@@ -41,7 +41,7 @@ will have their <code>target</code> set to <code>name</code>.</p>
     <span class="kw">let</span> <span class="ident">api</span> <span class="op">=</span> <span class="ident">filters::todos</span>(<span class="ident">db</span>);
 
     <span class="comment">// View access logs by setting `RUST_LOG=todos`.</span>
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">api</span>.<span class="ident">with</span>(<span class="highlight"><span class="ident">warp::log</span>(<span class="string">&quot;todos&quot;</span>)</span>);
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">api</span>.<span class="ident">with</span>(<span class="highlight focus"><span class="ident">warp::log</span>(<span class="string">&quot;todos&quot;</span>)</span>);
     <span class="comment">// Start up the server...</span>
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>

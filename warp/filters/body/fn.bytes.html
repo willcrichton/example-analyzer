@@ -15,7 +15,7 @@ prevent a overly large request from using too much memory.</p>
         <span class="macro">println!</span>(<span class="string">&quot;bytes = {:?}&quot;</span>, <span class="ident">bytes</span>);
     });</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[15,15]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#27">line 27</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[15,15],&quot;../../../src/sse_chat/sse_chat.rs.html#27&quot;,&quot;line 27&quot;]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#27">line 27</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -75,7 +75,7 @@ prevent a overly large request from using too much memory.</p>
         .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>())
         .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">500</span>))
         .<span class="ident">and</span>(
-            <span class="highlight"><span class="ident">warp::body::bytes</span>()</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
+            <span class="highlight focus"><span class="ident">warp::body::bytes</span>()</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
                 <span class="ident">std::str::from_utf8</span>(<span class="kw-2">&amp;</span><span class="ident">body</span>)
                     .<span class="ident">map</span>(<span class="ident">String::from</span>)
                     .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">_e</span><span class="op">|</span> <span class="ident">warp::reject::custom</span>(<span class="ident">NotUtf8</span>))

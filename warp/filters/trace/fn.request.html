@@ -9,7 +9,7 @@ event recording the request’s headers.</p>
     .<span class="ident">map</span>(<span class="ident">warp::reply</span>)
     .<span class="ident">with</span>(<span class="ident">warp::trace::request</span>());</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[44,44]]"><div class="scraped-example-title">examples/tracing.rs (<a href="../../../src/tracing/tracing.rs.html#56">line 56</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[44,44],&quot;../../../src/tracing/tracing.rs.html#56&quot;,&quot;line 56&quot;]]"><div class="scraped-example-title">examples/tracing.rs (<a href="../../../src/tracing/tracing.rs.html#56">line 56</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -101,7 +101,7 @@ event recording the request’s headers.</p>
         .<span class="ident">or</span>(<span class="ident">goodbye</span>)
         <span class="comment">// Wrap all the routes with a filter that creates a `tracing` span for</span>
         <span class="comment">// each request we receive, including data about the request.</span>
-        .<span class="ident">with</span>(<span class="highlight"><span class="ident">warp::trace::request</span>()</span>);
+        .<span class="ident">with</span>(<span class="highlight focus"><span class="ident">warp::trace::request</span>()</span>);
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>

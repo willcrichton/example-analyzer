@@ -39,7 +39,7 @@ as shown below.</p>
 }</code></pre></div>
 <p>See <a href="https://www.w3.org/TR/2009/WD-eventsource-20090421/#notes">notes</a>.</p>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[31,31]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#43">line 43</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[31,31],&quot;../../../src/sse_chat/sse_chat.rs.html#43&quot;,&quot;line 43&quot;]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#43">line 43</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -115,7 +115,7 @@ as shown below.</p>
     <span class="kw">let</span> <span class="ident">chat_recv</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;chat&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::get</span>()).<span class="ident">and</span>(<span class="ident">users</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">users</span><span class="op">|</span> {
         <span class="comment">// reply using server-sent events</span>
         <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">user_connected</span>(<span class="ident">users</span>);
-        <span class="ident">warp::sse::reply</span>(<span class="highlight"><span class="ident">warp::sse::keep_alive</span>()</span>.<span class="ident">stream</span>(<span class="ident">stream</span>))
+        <span class="ident">warp::sse::reply</span>(<span class="highlight focus"><span class="ident">warp::sse::keep_alive</span>()</span>.<span class="ident">stream</span>(<span class="ident">stream</span>))
     });
 
     <span class="comment">// GET / -&gt; index html</span>

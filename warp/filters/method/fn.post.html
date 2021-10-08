@@ -4,7 +4,7 @@
 
 <span class="kw">let</span> <span class="ident">post_only</span> <span class="op">=</span> <span class="ident">warp::post</span>().<span class="ident">map</span>(<span class="ident">warp::reply</span>);</code></pre></div>
 </div></details><div class="docblock scraped-example-list"><span></span>
-          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[4,4]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#64">line 64</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><div class="example-wrap"><pre class="line-numbers"><span>60</span>
+          <h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[4,4],&quot;../../../src/todos/todos.rs.html#64&quot;,&quot;line 64&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#64">line 64</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>60</span>
 <span>61</span>
 <span>62</span>
 <span>63</span>
@@ -17,12 +17,12 @@
         <span class="ident">db</span>: <span class="ident">Db</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
         <span class="macro">warp::path!</span>(<span class="string">&quot;todos&quot;</span>)
-            .<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::post</span>()</span>)
+            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::post</span>()</span>)
             .<span class="ident">and</span>(<span class="ident">json_body</span>())
             .<span class="ident">and</span>(<span class="ident">with_db</span>(<span class="ident">db</span>))
             .<span class="ident">and_then</span>(<span class="ident">handlers::create_todo</span>)
     }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[4,4]]"><div class="scraped-example-title">examples/body.rs (<a href="../../../src/body/body.rs.html#18">line 18</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[4,4],&quot;../../../src/body/body.rs.html#18&quot;,&quot;line 18&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../../../src/body/body.rs.html#18">line 18</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -43,7 +43,7 @@
     <span class="ident">pretty_env_logger::init</span>();
 
     <span class="comment">// POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}</span>
-    <span class="kw">let</span> <span class="ident">promote</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::post</span>()</span>
+    <span class="kw">let</span> <span class="ident">promote</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::post</span>()</span>
         .<span class="ident">and</span>(<span class="ident">warp::path</span>(<span class="string">&quot;employees&quot;</span>))
         .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>())
         <span class="comment">// Only accept bodies smaller than 16kb...</span>
@@ -56,7 +56,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[13,13]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#27">line 27</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><div class="scraped-example " data-locs="[[[13,13],&quot;../../../src/rejections/rejections.rs.html#27&quot;,&quot;line 27&quot;]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#27">line 27</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -95,7 +95,7 @@
         });
 
     <span class="kw">let</span> <span class="ident">div_with_body</span> <span class="op">=</span>
-        <span class="ident">math</span>.<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::post</span>()</span>)
+        <span class="ident">math</span>.<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::post</span>()</span>)
             .<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">num</span>: <span class="ident">u16</span>, <span class="ident">body</span>: <span class="ident">DenomRequest</span><span class="op">|</span> {
                 <span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">Math</span> {
@@ -108,7 +108,7 @@
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[11,11]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#23">line 23</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><div class="scraped-example " data-locs="[[[11,11],&quot;../../../src/sse_chat/sse_chat.rs.html#23&quot;,&quot;line 23&quot;]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#23">line 23</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -164,7 +164,7 @@
 
     <span class="comment">// POST /chat -&gt; send message</span>
     <span class="kw">let</span> <span class="ident">chat_send</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;chat&quot;</span>)
-        .<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::post</span>()</span>)
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::post</span>()</span>)
         .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>())
         .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">500</span>))
         .<span class="ident">and</span>(
