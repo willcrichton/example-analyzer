@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Require a `content-length` header to have a value no greater than some limit."><meta name="keywords" content="rust, rustlang, rust-lang, content_length_limit"><title>content_length_limit in warp::filters::body - Rust</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../warp/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><h2 class="location">Other items in<br><a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">body</a></h2><div id="sidebar-vars" data-name="content_length_limit" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">body</a>::<wbr><a class="fn" href="#">content_length_limit</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../../src/warp/filters/body.rs.html#51-66" title="goto source code">[src]</a></span></h1><div class="docblock item-decl"><pre class="rust fn"><code>pub fn content_length_limit(<br>&nbsp;&nbsp;&nbsp;&nbsp;limit: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a><br>) -&gt; impl <a class="trait" href="../../trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a></code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Require a <code>content-length</code> header to have a value no greater than some limit.</p>
+<p>Rejects if <code>content-length</code> header is missing, is invalid, or has a number
+larger than the limit provided.</p>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
+
+<span class="comment">// Limit the upload to 4kb...</span>
+<span class="kw">let</span> <span class="ident">upload</span> <span class="op">=</span> <span class="ident">warp::body::content_length_limit</span>(<span class="number">4096</span>)
+    .<span class="ident">and</span>(<span class="ident">warp::body::aggregate</span>());</code></pre></div>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[3,3],&quot;../../../src/todos/todos.rs.html#106&quot;,&quot;line 106&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#106">line 106</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>103</span>
+<span>104</span>
+<span>105</span>
+<span>106</span>
+<span>107</span>
+</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">json_body</span>() -&gt; <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">Todo</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
+        <span class="comment">// When accepting a body, we want a JSON body</span>
+        <span class="comment">// (and to reject huge payloads)...</span>
+        <span class="highlight focus"><span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>)</span>.<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
+    }</code></pre></div>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[8,8],&quot;../../../src/body/body.rs.html#22&quot;,&quot;line 22&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../../../src/body/body.rs.html#22">line 22</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+<span>15</span>
+<span>16</span>
+<span>17</span>
+<span>18</span>
+<span>19</span>
+<span>20</span>
+<span>21</span>
+<span>22</span>
+<span>23</span>
+<span>24</span>
+<span>25</span>
+<span>26</span>
+<span>27</span>
+<span>28</span>
+<span>29</span>
+<span>30</span>
+</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="ident">pretty_env_logger::init</span>();
+
+    <span class="comment">// POST /employees/:rate  {&quot;name&quot;:&quot;Sean&quot;,&quot;rate&quot;:2}</span>
+    <span class="kw">let</span> <span class="ident">promote</span> <span class="op">=</span> <span class="ident">warp::post</span>()
+        .<span class="ident">and</span>(<span class="ident">warp::path</span>(<span class="string">&quot;employees&quot;</span>))
+        .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>())
+        <span class="comment">// Only accept bodies smaller than 16kb...</span>
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>)</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
+        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">rate</span>, <span class="kw-2">mut</span> <span class="ident">employee</span>: <span class="ident">Employee</span><span class="op">|</span> {
+            <span class="ident">employee</span>.<span class="ident">rate</span> <span class="op">=</span> <span class="ident">rate</span>;
+            <span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">employee</span>)
+        });
+
+    <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
+}</code></pre></div>
+</div></div><div class="scraped-example " data-locs="[[[13,13],&quot;../../../src/sse_chat/sse_chat.rs.html#25&quot;,&quot;line 25&quot;]]"><div class="scraped-example-title">examples/sse_chat.rs (<a href="../../../src/sse_chat/sse_chat.rs.html#25">line 25</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+<span>13</span>
+<span>14</span>
+<span>15</span>
+<span>16</span>
+<span>17</span>
+<span>18</span>
+<span>19</span>
+<span>20</span>
+<span>21</span>
+<span>22</span>
+<span>23</span>
+<span>24</span>
+<span>25</span>
+<span>26</span>
+<span>27</span>
+<span>28</span>
+<span>29</span>
+<span>30</span>
+<span>31</span>
+<span>32</span>
+<span>33</span>
+<span>34</span>
+<span>35</span>
+<span>36</span>
+<span>37</span>
+<span>38</span>
+<span>39</span>
+<span>40</span>
+<span>41</span>
+<span>42</span>
+<span>43</span>
+<span>44</span>
+<span>45</span>
+<span>46</span>
+<span>47</span>
+<span>48</span>
+<span>49</span>
+<span>50</span>
+<span>51</span>
+<span>52</span>
+<span>53</span>
+<span>54</span>
+<span>55</span>
+<span>56</span>
+</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="ident">pretty_env_logger::init</span>();
+
+    <span class="comment">// Keep track of all connected users, key is usize, value</span>
+    <span class="comment">// is an event stream sender.</span>
+    <span class="kw">let</span> <span class="ident">users</span> <span class="op">=</span> <span class="ident">Arc::new</span>(<span class="ident">Mutex::new</span>(<span class="ident">HashMap::new</span>()));
+    <span class="comment">// Turn our &quot;state&quot; into a new Filter...</span>
+    <span class="kw">let</span> <span class="ident">users</span> <span class="op">=</span> <span class="ident">warp::any</span>().<span class="ident">map</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="ident">users</span>.<span class="ident">clone</span>());
+
+    <span class="comment">// POST /chat -&gt; send message</span>
+    <span class="kw">let</span> <span class="ident">chat_send</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;chat&quot;</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::post</span>())
+        .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>())
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::body::content_length_limit</span>(<span class="number">500</span>)</span>)
+        .<span class="ident">and</span>(
+            <span class="ident">warp::body::bytes</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
+                <span class="ident">std::str::from_utf8</span>(<span class="kw-2">&amp;</span><span class="ident">body</span>)
+                    .<span class="ident">map</span>(<span class="ident">String::from</span>)
+                    .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">_e</span><span class="op">|</span> <span class="ident">warp::reject::custom</span>(<span class="ident">NotUtf8</span>))
+            }),
+        )
+        .<span class="ident">and</span>(<span class="ident">users</span>.<span class="ident">clone</span>())
+        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">my_id</span>, <span class="ident">msg</span>, <span class="ident">users</span><span class="op">|</span> {
+            <span class="ident">user_message</span>(<span class="ident">my_id</span>, <span class="ident">msg</span>, <span class="kw-2">&amp;</span><span class="ident">users</span>);
+            <span class="ident">warp::reply</span>()
+        });
+
+    <span class="comment">// GET /chat -&gt; messages stream</span>
+    <span class="kw">let</span> <span class="ident">chat_recv</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;chat&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::get</span>()).<span class="ident">and</span>(<span class="ident">users</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">users</span><span class="op">|</span> {
+        <span class="comment">// reply using server-sent events</span>
+        <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">user_connected</span>(<span class="ident">users</span>);
+        <span class="ident">warp::sse::reply</span>(<span class="ident">warp::sse::keep_alive</span>().<span class="ident">stream</span>(<span class="ident">stream</span>))
+    });
+
+    <span class="comment">// GET / -&gt; index html</span>
+    <span class="kw">let</span> <span class="ident">index</span> <span class="op">=</span> <span class="ident">warp::path::end</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
+        <span class="ident">warp::http::Response::builder</span>()
+            .<span class="ident">header</span>(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html; charset=utf-8&quot;</span>)
+            .<span class="ident">body</span>(<span class="ident">INDEX_HTML</span>)
+    });
+
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index</span>.<span class="ident">or</span>(<span class="ident">chat_recv</span>).<span class="ident">or</span>(<span class="ident">chat_send</span>);
+
+    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
+}</code></pre></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
+    <script src="../../../main.js"></script><script src="../../../scrape-examples.js"></script>
+</body></html>

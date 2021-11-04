@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["permanent","A simple `308` permanent redirect to a different location."],["redirect","A simple `301` permanent redirect to a different location."],["see_other","A simple `303` redirect to a different location."],["temporary","A simple `307` temporary redirect to a different location."]]});

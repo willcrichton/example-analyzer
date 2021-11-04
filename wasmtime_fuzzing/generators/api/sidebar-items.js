@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["ApiCall","A call to one of Wasmtime’s public APIs."]],"struct":[["ApiCalls","A sequence of API calls."]]});

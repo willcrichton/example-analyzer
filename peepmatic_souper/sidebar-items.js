@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["convert_file","Convert a file containing Souper optimizations into Peepmatic DSL."],["convert_str","Convert a string of Souper optimizations into Peepmatic DSL."]]});

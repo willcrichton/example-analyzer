@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Frame","Holds the mutable elements of an interpreted function call."]]});

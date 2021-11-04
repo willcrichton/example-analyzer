@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["add_to_linker","Adds all instance items to the specified `Linker`."]],"struct":[["WasiNnCtx","This struct solely wraps [Ctx] in a `RefCell`."]]});

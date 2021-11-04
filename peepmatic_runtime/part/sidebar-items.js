@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["Constant","A constant value."],["Part","A part of an instruction, or a whole instruction itself."]]});

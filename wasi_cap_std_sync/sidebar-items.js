@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["ambient_authority","Return an `AmbientAuthority` value, which allows use of functions that include an `AmbientAuthority` argument."],["random_ctx",""]],"mod":[["clocks",""],["dir",""],["file",""],["sched",""],["stdio",""]],"struct":[["Dir","A reference to an open directory on a filesystem."],["WasiCtxBuilder",""]]});

@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["PeepholeOptimizer","A peephole optimizer instance that can apply a set of peephole optimizations to instructions."]]});

@@ -1,240 +1,120 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `crates&#x2F;wiggle&#x2F;test-helpers&#x2F;examples&#x2F;tracing.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>tracing.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../tracing/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
-<span id="2">  2</span>
-<span id="3">  3</span>
-<span id="4">  4</span>
-<span id="5">  5</span>
-<span id="6">  6</span>
-<span id="7">  7</span>
-<span id="8">  8</span>
-<span id="9">  9</span>
-<span id="10"> 10</span>
-<span id="11"> 11</span>
-<span id="12"> 12</span>
-<span id="13"> 13</span>
-<span id="14"> 14</span>
-<span id="15"> 15</span>
-<span id="16"> 16</span>
-<span id="17"> 17</span>
-<span id="18"> 18</span>
-<span id="19"> 19</span>
-<span id="20"> 20</span>
-<span id="21"> 21</span>
-<span id="22"> 22</span>
-<span id="23"> 23</span>
-<span id="24"> 24</span>
-<span id="25"> 25</span>
-<span id="26"> 26</span>
-<span id="27"> 27</span>
-<span id="28"> 28</span>
-<span id="29"> 29</span>
-<span id="30"> 30</span>
-<span id="31"> 31</span>
-<span id="32"> 32</span>
-<span id="33"> 33</span>
-<span id="34"> 34</span>
-<span id="35"> 35</span>
-<span id="36"> 36</span>
-<span id="37"> 37</span>
-<span id="38"> 38</span>
-<span id="39"> 39</span>
-<span id="40"> 40</span>
-<span id="41"> 41</span>
-<span id="42"> 42</span>
-<span id="43"> 43</span>
-<span id="44"> 44</span>
-<span id="45"> 45</span>
-<span id="46"> 46</span>
-<span id="47"> 47</span>
-<span id="48"> 48</span>
-<span id="49"> 49</span>
-<span id="50"> 50</span>
-<span id="51"> 51</span>
-<span id="52"> 52</span>
-<span id="53"> 53</span>
-<span id="54"> 54</span>
-<span id="55"> 55</span>
-<span id="56"> 56</span>
-<span id="57"> 57</span>
-<span id="58"> 58</span>
-<span id="59"> 59</span>
-<span id="60"> 60</span>
-<span id="61"> 61</span>
-<span id="62"> 62</span>
-<span id="63"> 63</span>
-<span id="64"> 64</span>
-<span id="65"> 65</span>
-<span id="66"> 66</span>
-<span id="67"> 67</span>
-<span id="68"> 68</span>
-<span id="69"> 69</span>
-<span id="70"> 70</span>
-<span id="71"> 71</span>
-<span id="72"> 72</span>
-<span id="73"> 73</span>
-<span id="74"> 74</span>
-<span id="75"> 75</span>
-<span id="76"> 76</span>
-<span id="77"> 77</span>
-<span id="78"> 78</span>
-<span id="79"> 79</span>
-<span id="80"> 80</span>
-<span id="81"> 81</span>
-<span id="82"> 82</span>
-<span id="83"> 83</span>
-<span id="84"> 84</span>
-<span id="85"> 85</span>
-<span id="86"> 86</span>
-<span id="87"> 87</span>
-<span id="88"> 88</span>
-<span id="89"> 89</span>
-<span id="90"> 90</span>
-<span id="91"> 91</span>
-<span id="92"> 92</span>
-<span id="93"> 93</span>
-<span id="94"> 94</span>
-<span id="95"> 95</span>
-<span id="96"> 96</span>
-<span id="97"> 97</span>
-<span id="98"> 98</span>
-<span id="99"> 99</span>
-<span id="100">100</span>
-<span id="101">101</span>
-<span id="102">102</span>
-<span id="103">103</span>
-<span id="104">104</span>
-<span id="105">105</span>
-<span id="106">106</span>
-<span id="107">107</span>
-<span id="108">108</span>
-<span id="109">109</span>
-<span id="110">110</span>
-<span id="111">111</span>
-<span id="112">112</span>
-<span id="113">113</span>
-<span id="114">114</span>
-<span id="115">115</span>
-<span id="116">116</span>
-<span id="117">117</span>
-<span id="118">118</span>
-<span id="119">119</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">wiggle_test</span>::{<span class="ident">impl_errno</span>, <span class="ident">HostMemory</span>, <span class="ident">WasiCtx</span>};
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `examples&#x2F;tracing.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>tracing.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../tracing/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+</pre><pre class="rust"><code><span class="doccomment">//! [`tracing`] is a framework for instrumenting Rust programs to</span>
+<span class="doccomment">//! collect scoped, structured, and async-aware diagnostics. This example</span>
+<span class="doccomment">//! demonstrates how the `warp::trace` module can be used to instrument `warp`</span>
+<span class="doccomment">//! applications with `tracing`.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! [`tracing`]: https://crates.io/crates/tracing</span>
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>)]</span>
+<span class="kw">use</span> <span class="ident">tracing_subscriber::fmt::format::FmtSpan</span>;
+<span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
-<span class="doccomment">/// The `errors` argument to the wiggle gives us a hook to map a rich error</span>
-<span class="doccomment">/// type like this one (typical of wiggle use cases in wasi-common and beyond)</span>
-<span class="doccomment">/// down to the flat error enums that witx can specify.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">thiserror::Error</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">RichError</span> {
-  <span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Invalid argument: {0}&quot;</span>)]</span>
-  <span class="ident">InvalidArg</span>(<span class="ident">String</span>),
-  <span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Won&#39;t cross picket line: {0}&quot;</span>)]</span>
-  <span class="ident">PicketLine</span>(<span class="ident">String</span>),
-}
+<span class="attribute">#[<span class="ident">tokio::main</span>]</span>
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="comment">// Filter traces based on the RUST_LOG env var, or, if it&#39;s not set,</span>
+    <span class="comment">// default to show the output of the example.</span>
+    <span class="kw">let</span> <span class="ident">filter</span> <span class="op">=</span> <span class="ident">std::env::var</span>(<span class="string">&quot;RUST_LOG&quot;</span>).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="string">&quot;tracing=info,warp=debug&quot;</span>.<span class="ident">to_owned</span>());
 
-<span class="comment">// Define an errno with variants corresponding to RichError. Use it in a</span>
-<span class="comment">// trivial function.</span>
-<span class="macro">wiggle::from_witx!</span>({
-<span class="ident">witx_literal</span>: <span class="string">&quot;
-(typename $errno (enum (@witx tag u8) $ok $invalid_arg $picket_line))
-(typename $s (record (field $f1 (@witx usize)) (field $f2 (@witx pointer u8))))
-(typename $t (record (field $f1 u32) (field $f2 f32)))
-(module $one_error_conversion
-  (@interface func (export \&quot;foo\&quot;)
-     (param $strike u32)
-     (param $s $s)
-     (result $err (expected $t (error $errno)))))
-    &quot;</span>,
-    <span class="ident">errors</span>: { <span class="ident">errno</span> =&gt; <span class="ident">RichError</span> },
-});
+    <span class="comment">// Configure the default `tracing` subscriber.</span>
+    <span class="comment">// The `fmt` subscriber from the `tracing-subscriber` crate logs `tracing`</span>
+    <span class="comment">// events to stdout. Other subscribers are available for integrating with</span>
+    <span class="comment">// distributed tracing systems such as OpenTelemetry.</span>
+    <span class="ident">tracing_subscriber::fmt</span>()
+        <span class="comment">// Use the filter we built above to determine which traces to record.</span>
+        .<span class="ident">with_env_filter</span>(<span class="ident">filter</span>)
+        <span class="comment">// Record an event when each span closes. This can be used to time our</span>
+        <span class="comment">// routes&#39; durations!</span>
+        .<span class="ident">with_span_events</span>(<span class="ident">FmtSpan::CLOSE</span>)
+        .<span class="ident">init</span>();
 
-<span class="macro">impl_errno!</span>(<span class="ident">types::Errno</span>);
+    <span class="kw">let</span> <span class="ident">hello</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;hello&quot;</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::get</span>())
+        <span class="comment">// When the `hello` route is called, emit a `tracing` event.</span>
+        .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
+            <span class="macro">tracing::info!</span>(<span class="string">&quot;saying hello...&quot;</span>);
+            <span class="string">&quot;Hello, World!&quot;</span>
+        })
+        <span class="comment">// Wrap the route in a `tracing` span to add the route&#39;s name as context</span>
+        <span class="comment">// to any events that occur inside it.</span>
+        .<span class="ident">with</span>(<span class="ident">warp::trace::named</span>(<span class="string">&quot;hello&quot;</span>));
 
-<span class="doccomment">/// When the `errors` mapping in witx is non-empty, we need to impl the</span>
-<span class="doccomment">/// types::UserErrorConversion trait that wiggle generates from that mapping.</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">types::UserErrorConversion</span> <span class="kw">for</span> <span class="ident">WasiCtx</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-  <span class="kw">fn</span> <span class="ident">errno_from_rich_error</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">e</span>: <span class="ident">RichError</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">types::Errno</span>, <span class="ident">wiggle::Trap</span><span class="op">&gt;</span> {
-    <span class="macro">wiggle::tracing::debug!</span>(
-      <span class="ident">rich_error</span> <span class="op">=</span> <span class="ident">wiggle::tracing::field::debug</span>(<span class="kw-2">&amp;</span><span class="ident">e</span>),
-      <span class="string">&quot;error conversion&quot;</span>
-    );
-    <span class="comment">// WasiCtx can collect a Vec&lt;String&gt; log so we can test this. We&#39;re</span>
-    <span class="comment">// logging the Display impl that `thiserror::Error` provides us.</span>
-    <span class="self">self</span>.<span class="ident">log</span>.<span class="ident">borrow_mut</span>().<span class="ident">push</span>(<span class="ident">e</span>.<span class="ident">to_string</span>());
-    <span class="comment">// Then do the trivial mapping down to the flat enum.</span>
-    <span class="kw">match</span> <span class="ident">e</span> {
-      <span class="ident">RichError::InvalidArg</span> { .. } =&gt; <span class="prelude-val">Ok</span>(<span class="ident">types::Errno::InvalidArg</span>),
-      <span class="ident">RichError::PicketLine</span> { .. } =&gt; <span class="prelude-val">Ok</span>(<span class="ident">types::Errno::PicketLine</span>),
-    }
-  }
-}
+    <span class="kw">let</span> <span class="ident">goodbye</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;goodbye&quot;</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::get</span>())
+        .<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
+            <span class="macro">tracing::info!</span>(<span class="string">&quot;saying goodbye...&quot;</span>);
+            <span class="string">&quot;So long and thanks for all the fish!&quot;</span>
+        })
+        <span class="comment">// We can also provide our own custom `tracing` spans to wrap a route.</span>
+        .<span class="ident">with</span>(<span class="ident">warp::trace</span>(<span class="op">|</span><span class="ident">info</span><span class="op">|</span> {
+            <span class="comment">// Construct our own custom span for this route.</span>
+            <span class="macro">tracing::info_span!</span>(<span class="string">&quot;goodbye&quot;</span>, <span class="ident">req</span>.<span class="ident">path</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">info</span>.<span class="ident">path</span>())
+        }));
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">one_error_conversion::OneErrorConversion</span> <span class="kw">for</span> <span class="ident">WasiCtx</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-  <span class="kw">fn</span> <span class="ident">foo</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">strike</span>: <span class="ident">u32</span>, <span class="ident">_s</span>: <span class="kw-2">&amp;</span><span class="ident">types::S</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">types::T</span>, <span class="ident">RichError</span><span class="op">&gt;</span> {
-    <span class="comment">// We use the argument to this function to exercise all of the</span>
-    <span class="comment">// possible error cases we could hit here</span>
-    <span class="kw">match</span> <span class="ident">strike</span> {
-      <span class="number">0</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">types::T</span> {
-        <span class="ident">f1</span>: <span class="number">123</span>,
-        <span class="ident">f2</span>: <span class="number">456.78</span>,
-      }),
-      <span class="number">1</span> =&gt; <span class="prelude-val">Err</span>(<span class="ident">RichError::PicketLine</span>(<span class="macro">format!</span>(<span class="string">&quot;I&#39;m not a scab&quot;</span>))),
-      <span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(<span class="ident">RichError::InvalidArg</span>(<span class="macro">format!</span>(<span class="string">&quot;out-of-bounds: {}&quot;</span>, <span class="ident">strike</span>))),
-    }
-  }
-}
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">hello</span>
+        .<span class="ident">or</span>(<span class="ident">goodbye</span>)
+        <span class="comment">// Wrap all the routes with a filter that creates a `tracing` span for</span>
+        <span class="comment">// each request we receive, including data about the request.</span>
+        .<span class="ident">with</span>(<span class="ident">warp::trace::request</span>());
 
-<span class="kw">fn</span> <span class="ident">main</span>() {
-  <span class="kw">if</span> <span class="ident">std::env::var</span>(<span class="string">&quot;RUST_LOG&quot;</span>).<span class="ident">is_err</span>() {
-    <span class="comment">// with no RUST_LOG env variable: use the tracing subscriber.</span>
-    <span class="kw">let</span> <span class="ident">subscriber</span> <span class="op">=</span> <span class="ident">tracing_subscriber::fmt</span>()
-      <span class="comment">// all spans/events with a level equal to or higher than TRACE (e.g, trace, debug, info, warn, etc.)</span>
-      <span class="comment">// will be written to stdout.</span>
-      .<span class="ident">with_max_level</span>(<span class="ident">tracing::Level::TRACE</span>)
-      <span class="comment">// builds the subscriber.</span>
-      .<span class="ident">finish</span>();
-    <span class="ident">tracing::subscriber::set_global_default</span>(<span class="ident">subscriber</span>).<span class="ident">expect</span>(<span class="string">&quot;set global tracing subscriber&quot;</span>);
-  } <span class="kw">else</span> {
-    <span class="comment">// with RUST_LOG set: use the env_logger backend to tracing.</span>
-    <span class="ident">env_logger::init</span>();
-  }
-
-  <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">WasiCtx::new</span>();
-  <span class="kw">let</span> <span class="ident">host_memory</span> <span class="op">=</span> <span class="ident">HostMemory::new</span>();
-
-  <span class="comment">// Exercise each of the branches in `foo`.</span>
-  <span class="comment">// Start with the success case:</span>
-  <span class="kw">let</span> <span class="ident">r0</span> <span class="op">=</span> <span class="ident">one_error_conversion::foo</span>(<span class="kw-2">&amp;mut</span> <span class="ident">ctx</span>, <span class="kw-2">&amp;</span><span class="ident">host_memory</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">8</span>);
-  <span class="macro">assert_eq!</span>(
-    <span class="ident">r0</span>,
-    <span class="prelude-val">Ok</span>(<span class="ident">types::Errno::Ok</span> <span class="kw">as</span> <span class="ident">i32</span>),
-    <span class="string">&quot;Expected return value for strike=0&quot;</span>
-  );
-  <span class="macro">assert!</span>(<span class="ident">ctx</span>.<span class="ident">log</span>.<span class="ident">borrow</span>().<span class="ident">is_empty</span>(), <span class="string">&quot;No error log for strike=0&quot;</span>);
-
-  <span class="comment">// First error case:</span>
-  <span class="kw">let</span> <span class="ident">r1</span> <span class="op">=</span> <span class="ident">one_error_conversion::foo</span>(<span class="kw-2">&amp;mut</span> <span class="ident">ctx</span>, <span class="kw-2">&amp;</span><span class="ident">host_memory</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">8</span>);
-  <span class="macro">assert_eq!</span>(
-    <span class="ident">r1</span>,
-    <span class="prelude-val">Ok</span>(<span class="ident">types::Errno::PicketLine</span> <span class="kw">as</span> <span class="ident">i32</span>),
-    <span class="string">&quot;Expected return value for strike=1&quot;</span>
-  );
-  <span class="macro">assert_eq!</span>(
-    <span class="ident">ctx</span>.<span class="ident">log</span>.<span class="ident">borrow_mut</span>().<span class="ident">pop</span>().<span class="ident">expect</span>(<span class="string">&quot;one log entry&quot;</span>),
-    <span class="string">&quot;Won&#39;t cross picket line: I&#39;m not a scab&quot;</span>,
-    <span class="string">&quot;Expected log entry for strike=1&quot;</span>,
-  );
-
-  <span class="comment">// Second error case:</span>
-  <span class="kw">let</span> <span class="ident">r2</span> <span class="op">=</span> <span class="ident">one_error_conversion::foo</span>(<span class="kw-2">&amp;mut</span> <span class="ident">ctx</span>, <span class="kw-2">&amp;</span><span class="ident">host_memory</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">8</span>);
-  <span class="macro">assert_eq!</span>(
-    <span class="ident">r2</span>,
-    <span class="prelude-val">Ok</span>(<span class="ident">types::Errno::InvalidArg</span> <span class="kw">as</span> <span class="ident">i32</span>),
-    <span class="string">&quot;Expected return value for strike=2&quot;</span>
-  );
-  <span class="macro">assert_eq!</span>(
-    <span class="ident">ctx</span>.<span class="ident">log</span>.<span class="ident">borrow_mut</span>().<span class="ident">pop</span>().<span class="ident">expect</span>(<span class="string">&quot;one log entry&quot;</span>),
-    <span class="string">&quot;Invalid argument: out-of-bounds: 2&quot;</span>,
-    <span class="string">&quot;Expected log entry for strike=2&quot;</span>,
-  );
+    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }
 </code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tracing" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>

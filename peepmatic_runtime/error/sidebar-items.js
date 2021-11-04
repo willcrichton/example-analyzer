@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Error","Errors that `peepmatic_runtime` may generate."]],"type":[["Result","A result type containing `Ok(T)` or `Err(peepmatic_runtime::Error)`."]]});

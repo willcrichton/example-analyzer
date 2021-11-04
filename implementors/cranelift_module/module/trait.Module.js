@@ -1,4 +1,0 @@
-(function() {var implementors = {};
-implementors["cranelift_jit"] = [{"text":"impl Module for <a class=\"struct\" href=\"cranelift_jit/struct.JITModule.html\" title=\"struct cranelift_jit::JITModule\">JITModule</a>","synthetic":false,"types":["cranelift_jit::backend::JITModule"]}];
-implementors["cranelift_object"] = [{"text":"impl Module for <a class=\"struct\" href=\"cranelift_object/struct.ObjectModule.html\" title=\"struct cranelift_object::ObjectModule\">ObjectModule</a>","synthetic":false,"types":["cranelift_object::backend::ObjectModule"]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

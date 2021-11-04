@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["DirCaps",""],["DirFdStat",""],["ReaddirCursor",""],["ReaddirEntity",""]],"trait":[["DirEntryExt",""],["WasiDir",""]]});
