@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["commands","The module for the Wasmtime CLI commands."]],"struct":[["WasiModules","Select which WASI modules are available at runtime for use by Wasm programs."]]});

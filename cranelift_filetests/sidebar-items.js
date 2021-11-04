@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["run","Main entry point for `clif-util test`."],["run_passes","Used for ‘pass’ subcommand. Commands are interpreted as test and executed."]],"mod":[["function_runner","Provides functionality for compiling and running CLIF IR for `run` tests."]]});
