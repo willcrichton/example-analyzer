@@ -19,7 +19,7 @@ prevent a overly large request from using too much memory.</p>
     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">simple_map</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">String</span><span class="op">&gt;</span><span class="op">|</span> {
         <span class="string">&quot;Got a JSON body!&quot;</span>
     });</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[3,3],&quot;../../../src/todos/todos.rs.html#106&quot;,&quot;line 106&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#106">line 106</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>103</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[3,3],&quot;../../../src/todos/todos.rs.html#106&quot;,&quot;line 106&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#106">line 106</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>103</span>
 <span>104</span>
 <span>105</span>
 <span>106</span>
@@ -27,9 +27,9 @@ prevent a overly large request from using too much memory.</p>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">json_body</span>() -&gt; <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">Todo</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
         <span class="comment">// When accepting a body, we want a JSON body</span>
         <span class="comment">// (and to reject huge payloads)...</span>
-        <span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::body::json</span>()</span>)
+        <span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::body::json</span></span>())
     }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[9,9],&quot;../../../src/body/body.rs.html#23&quot;,&quot;line 23&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../../../src/body/body.rs.html#23">line 23</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[9,9],&quot;../../../src/body/body.rs.html#23&quot;,&quot;line 23&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../../../src/body/body.rs.html#23">line 23</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -55,7 +55,7 @@ prevent a overly large request from using too much memory.</p>
         .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>())
         <span class="comment">// Only accept bodies smaller than 16kb...</span>
         .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">1024</span> <span class="op">*</span> <span class="number">16</span>))
-        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::body::json</span>()</span>)
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::body::json</span></span>())
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">rate</span>, <span class="kw-2">mut</span> <span class="ident">employee</span>: <span class="ident">Employee</span><span class="op">|</span> {
             <span class="ident">employee</span>.<span class="ident">rate</span> <span class="op">=</span> <span class="ident">rate</span>;
             <span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">employee</span>)
@@ -103,7 +103,7 @@ prevent a overly large request from using too much memory.</p>
 
     <span class="kw">let</span> <span class="ident">div_with_body</span> <span class="op">=</span>
         <span class="ident">math</span>.<span class="ident">and</span>(<span class="ident">warp::post</span>())
-            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::body::json</span>()</span>)
+            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::body::json</span></span>())
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">num</span>: <span class="ident">u16</span>, <span class="ident">body</span>: <span class="ident">DenomRequest</span><span class="op">|</span> {
                 <span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">Math</span> {
                     <span class="ident">op</span>: <span class="macro">format!</span>(<span class="string">&quot;{} / {}&quot;</span>, <span class="ident">num</span>, <span class="ident">body</span>.<span class="ident">denom</span>),
@@ -115,5 +115,5 @@ prevent a overly large request from using too much memory.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

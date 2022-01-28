@@ -14,7 +14,7 @@
     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">reply</span><span class="op">|</span> {
         <span class="ident">warp::reply::with_header</span>(<span class="ident">reply</span>, <span class="string">&quot;server&quot;</span>, <span class="string">&quot;warp&quot;</span>)
     });</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[1,5],&quot;../../src/warp/redirect.rs.html#24-28&quot;,&quot;lines 24-28&quot;],[[23,23],&quot;../../src/warp/redirect.rs.html#46&quot;,&quot;line 46&quot;],[[42,46],&quot;../../src/warp/redirect.rs.html#65-69&quot;,&quot;lines 65-69&quot;],[[65,69],&quot;../../src/warp/redirect.rs.html#88-92&quot;,&quot;lines 88-92&quot;]]"><div class="scraped-example-title">src/redirect.rs (<a href="../../src/warp/redirect.rs.html#24-28">lines 24-28</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>23</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example " data-locs="[[[1,5],&quot;../../src/warp/redirect.rs.html#24-28&quot;,&quot;lines 24-28&quot;],[[23,23],&quot;../../src/warp/redirect.rs.html#46&quot;,&quot;line 46&quot;],[[42,46],&quot;../../src/warp/redirect.rs.html#65-69&quot;,&quot;lines 65-69&quot;],[[65,69],&quot;../../src/warp/redirect.rs.html#88-92&quot;,&quot;lines 88-92&quot;]]"><div class="scraped-example-title">src/redirect.rs (<a href="../../src/warp/redirect.rs.html#24-28">lines 24-28</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>23</span>
 <span>24</span>
 <span>25</span>
 <span>26</span>
@@ -86,11 +86,11 @@
 <span>92</span>
 <span>93</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">redirect</span>(<span class="ident">uri</span>: <span class="kw">impl</span> <span class="ident">AsLocation</span>) -&gt; <span class="kw">impl</span> <span class="ident">Reply</span> {
-    <span class="highlight focus"><span class="ident">reply::with_header</span>(
+    <span class="highlight focus"><span class="ident">reply::with_header</span></span>(
         <span class="ident">StatusCode::MOVED_PERMANENTLY</span>,
         <span class="ident">header::LOCATION</span>,
         <span class="ident">uri</span>.<span class="ident">header_value</span>(),
-    )</span>
+    )
 }
 
 <span class="doccomment">/// A simple `303` redirect to a different location.</span>
@@ -108,7 +108,7 @@
 <span class="doccomment">///     });</span>
 <span class="doccomment">/// ```</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">see_other</span>(<span class="ident">uri</span>: <span class="kw">impl</span> <span class="ident">AsLocation</span>) -&gt; <span class="kw">impl</span> <span class="ident">Reply</span> {
-    <span class="highlight"><span class="ident">reply::with_header</span>(<span class="ident">StatusCode::SEE_OTHER</span>, <span class="ident">header::LOCATION</span>, <span class="ident">uri</span>.<span class="ident">header_value</span>())</span>
+    <span class="highlight"><span class="ident">reply::with_header</span></span>(<span class="ident">StatusCode::SEE_OTHER</span>, <span class="ident">header::LOCATION</span>, <span class="ident">uri</span>.<span class="ident">header_value</span>())
 }
 
 <span class="doccomment">/// A simple `307` temporary redirect to a different location.</span>
@@ -127,11 +127,11 @@
 <span class="doccomment">///     });</span>
 <span class="doccomment">/// ```</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">temporary</span>(<span class="ident">uri</span>: <span class="kw">impl</span> <span class="ident">AsLocation</span>) -&gt; <span class="kw">impl</span> <span class="ident">Reply</span> {
-    <span class="highlight"><span class="ident">reply::with_header</span>(
+    <span class="highlight"><span class="ident">reply::with_header</span></span>(
         <span class="ident">StatusCode::TEMPORARY_REDIRECT</span>,
         <span class="ident">header::LOCATION</span>,
         <span class="ident">uri</span>.<span class="ident">header_value</span>(),
-    )</span>
+    )
 }
 
 <span class="doccomment">/// A simple `308` permanent redirect to a different location.</span>
@@ -150,11 +150,11 @@
 <span class="doccomment">///     });</span>
 <span class="doccomment">/// ```</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">permanent</span>(<span class="ident">uri</span>: <span class="kw">impl</span> <span class="ident">AsLocation</span>) -&gt; <span class="kw">impl</span> <span class="ident">Reply</span> {
-    <span class="highlight"><span class="ident">reply::with_header</span>(
+    <span class="highlight"><span class="ident">reply::with_header</span></span>(
         <span class="ident">StatusCode::PERMANENT_REDIRECT</span>,
         <span class="ident">header::LOCATION</span>,
         <span class="ident">uri</span>.<span class="ident">header_value</span>(),
-    )</span>
+    )
 }</code></pre></div>
-</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

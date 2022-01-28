@@ -12,7 +12,7 @@ successful, the filter yields <code>Some(T)</code>.</p>
 <h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Grab the `authorization` header if it exists.</span>
 <span class="kw">let</span> <span class="ident">opt_auth</span> <span class="op">=</span> <span class="ident">warp::header::optional</span>::<span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>(<span class="string">&quot;authorization&quot;</span>);</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[4,4],&quot;../../../src/warp/filters/sse.rs.html#232&quot;,&quot;line 232&quot;]]"><div class="scraped-example-title">src/filters/sse.rs (<a href="../../../src/warp/filters/sse.rs.html#232">line 232</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>228</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[4,4],&quot;../../../src/warp/filters/sse.rs.html#232&quot;,&quot;line 232&quot;]]"><div class="scraped-example-title">src/filters/sse.rs (<a href="../../../src/warp/filters/sse.rs.html#232">line 232</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>228</span>
 <span>229</span>
 <span>230</span>
 <span>231</span>
@@ -22,7 +22,7 @@ successful, the filter yields <code>Some(T)</code>.</p>
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">FromStr</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
-    <span class="highlight focus"><span class="ident">header::optional</span>(<span class="string">&quot;last-event-id&quot;</span>)</span>
+    <span class="highlight focus"><span class="ident">header::optional</span></span>(<span class="string">&quot;last-event-id&quot;</span>)
 }</code></pre></div>
-</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

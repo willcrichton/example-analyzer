@@ -10,7 +10,7 @@
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
 <span class="kw">let</span> <span class="ident">get_only</span> <span class="op">=</span> <span class="ident">warp::get</span>().<span class="ident">map</span>(<span class="ident">warp::reply</span>);</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[2,2],&quot;../../../src/warp/filters/fs.rs.html#83&quot;,&quot;line 83&quot;]]"><div class="scraped-example-title">src/filters/fs.rs (<a href="../../../src/warp/filters/fs.rs.html#83">line 83</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>81</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[2,2],&quot;../../../src/warp/filters/fs.rs.html#83&quot;,&quot;line 83&quot;]]"><div class="scraped-example-title">src/filters/fs.rs (<a href="../../../src/warp/filters/fs.rs.html#83">line 83</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>81</span>
 <span>82</span>
 <span>83</span>
 <span>84</span>
@@ -19,12 +19,12 @@
 <span>87</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dir</span>(<span class="ident">path</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span>) -&gt; <span class="kw">impl</span> <span class="ident">FilterClone</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="ident">One</span><span class="op">&lt;</span><span class="ident">File</span><span class="op">&gt;</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">base</span> <span class="op">=</span> <span class="ident">Arc::new</span>(<span class="ident">path</span>.<span class="ident">into</span>());
-    <span class="highlight focus"><span class="ident"><span class="kw">crate</span>::get</span>()</span>
+    <span class="highlight focus"><span class="ident"><span class="kw">crate</span>::get</span></span>()
         .<span class="ident">and</span>(<span class="ident">path_from_tail</span>(<span class="ident">base</span>))
         .<span class="ident">and</span>(<span class="ident">conditionals</span>())
         .<span class="ident">and_then</span>(<span class="ident">file_reply</span>)
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[4,4],&quot;../../../src/todos/todos.rs.html#53&quot;,&quot;line 53&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#53">line 53</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>49</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[4,4],&quot;../../../src/todos/todos.rs.html#53&quot;,&quot;line 53&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#53">line 53</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>49</span>
 <span>50</span>
 <span>51</span>
 <span>52</span>
@@ -37,7 +37,7 @@
         <span class="ident">db</span>: <span class="ident">Db</span>,
     ) -&gt; <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span> {
         <span class="macro">warp::path!</span>(<span class="string">&quot;todos&quot;</span>)
-            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::get</span>()</span>)
+            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::get</span></span>())
             .<span class="ident">and</span>(<span class="ident">warp::query</span>::<span class="op">&lt;</span><span class="ident">ListOptions</span><span class="op">&gt;</span>())
             .<span class="ident">and</span>(<span class="ident">with_db</span>(<span class="ident">db</span>))
             .<span class="ident">and_then</span>(<span class="ident">handlers::list_todos</span>)
@@ -61,7 +61,7 @@
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
-    <span class="kw">let</span> <span class="ident">readme</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::get</span>()</span>
+    <span class="kw">let</span> <span class="ident">readme</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::get</span></span>()
         .<span class="ident">and</span>(<span class="ident">warp::path::end</span>())
         .<span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>));
 
@@ -95,7 +95,7 @@
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
-    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ticks&quot;</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::get</span>()</span>).<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ticks&quot;</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::get</span></span>()).<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">counter</span>: <span class="ident">u64</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="comment">// create server event source</span>
         <span class="kw">let</span> <span class="ident">interval</span> <span class="op">=</span> <span class="ident">interval</span>(<span class="ident">Duration::from_secs</span>(<span class="number">1</span>));
@@ -139,7 +139,7 @@
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="ident">math</span> <span class="op">=</span> <span class="macro">warp::path!</span>(<span class="string">&quot;math&quot;</span> <span class="op">/</span> <span class="ident">u16</span>);
     <span class="kw">let</span> <span class="ident">div_with_header</span> <span class="op">=</span> <span class="ident">math</span>
-        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::get</span>()</span>)
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::get</span></span>())
         .<span class="ident">and</span>(<span class="ident">div_by</span>())
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">num</span>: <span class="ident">u16</span>, <span class="ident">denom</span>: <span class="ident">NonZeroU16</span><span class="op">|</span> {
             <span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">Math</span> {
@@ -200,7 +200,7 @@
         })
         .<span class="ident">untuple_one</span>();
 
-    <span class="highlight focus"><span class="ident"><span class="kw">crate</span>::get</span>()</span>
+    <span class="highlight focus"><span class="ident"><span class="kw">crate</span>::get</span></span>()
         .<span class="ident">and</span>(<span class="ident">connection_has_upgrade</span>)
         .<span class="ident">and</span>(<span class="ident">header::exact_ignore_case</span>(<span class="string">&quot;upgrade&quot;</span>, <span class="string">&quot;websocket&quot;</span>))
         .<span class="ident">and</span>(<span class="ident">header::exact</span>(<span class="string">&quot;sec-websocket-version&quot;</span>, <span class="string">&quot;13&quot;</span>))
@@ -216,5 +216,5 @@
             },
         )
 }</code></pre></div>
-</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../../../src/handlebars_template/handlebars_template.rs.html#49">examples/handlebars_template.rs</a></li><li><a href="../../../src/sse_chat/sse_chat.rs.html#40">examples/sse_chat.rs</a></li><li><a href="../../../src/query_string/query_string.rs.html#20">examples/query_string.rs</a></li><li><a href="../../../src/tracing/tracing.rs.html#30">examples/tracing.rs</a></li><li><a href="../../../src/routing/routing.rs.html#89">examples/routing.rs</a></li></ul></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div><div class="example-links">Additional examples can be found in:<br><ul><li><a href="../../../src/handlebars_template/handlebars_template.rs.html#49">examples/handlebars_template.rs</a></li><li><a href="../../../src/sse_chat/sse_chat.rs.html#40">examples/sse_chat.rs</a></li><li><a href="../../../src/query_string/query_string.rs.html#20">examples/query_string.rs</a></li><li><a href="../../../src/tracing/tracing.rs.html#30">examples/tracing.rs</a></li><li><a href="../../../src/routing/routing.rs.html#89">examples/routing.rs</a></li></ul></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

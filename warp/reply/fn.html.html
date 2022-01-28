@@ -24,7 +24,7 @@
     .<span class="ident">map</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
         <span class="ident">warp::reply::html</span>(<span class="ident">body</span>)
     });</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[7,7],&quot;../../src/handlebars_template/handlebars_template.rs.html#21&quot;,&quot;line 21&quot;]]"><div class="scraped-example-title">examples/handlebars_template.rs (<a href="../../src/handlebars_template/handlebars_template.rs.html#21">line 21</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[7,7],&quot;../../src/handlebars_template/handlebars_template.rs.html#21&quot;,&quot;line 21&quot;]]"><div class="scraped-example-title">examples/handlebars_template.rs (<a href="../../src/handlebars_template/handlebars_template.rs.html#21">line 21</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -40,9 +40,9 @@
     <span class="kw">let</span> <span class="ident">render</span> <span class="op">=</span> <span class="ident">hbs</span>
         .<span class="ident">render</span>(<span class="ident">template</span>.<span class="ident">name</span>, <span class="kw-2">&amp;</span><span class="ident">template</span>.<span class="ident">value</span>)
         .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> <span class="ident">err</span>.<span class="ident">to_string</span>());
-    <span class="highlight focus"><span class="ident">warp::reply::html</span>(<span class="ident">render</span>)</span>
+    <span class="highlight focus"><span class="ident">warp::reply::html</span></span>(<span class="ident">render</span>)
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[20,20],&quot;../../src/websockets_chat/websockets_chat.rs.html#44&quot;,&quot;line 44&quot;]]"><div class="scraped-example-title">examples/websockets_chat.rs (<a href="../../src/websockets_chat/websockets_chat.rs.html#44">line 44</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>24</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[20,20],&quot;../../src/websockets_chat/websockets_chat.rs.html#44&quot;,&quot;line 44&quot;]]"><div class="scraped-example-title">examples/websockets_chat.rs (<a href="../../src/websockets_chat/websockets_chat.rs.html#44">line 44</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>24</span>
 <span>25</span>
 <span>26</span>
 <span>27</span>
@@ -88,11 +88,11 @@
         });
 
     <span class="comment">// GET / -&gt; index html</span>
-    <span class="kw">let</span> <span class="ident">index</span> <span class="op">=</span> <span class="ident">warp::path::end</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="highlight focus"><span class="ident">warp::reply::html</span>(<span class="ident">INDEX_HTML</span>)</span>);
+    <span class="kw">let</span> <span class="ident">index</span> <span class="op">=</span> <span class="ident">warp::path::end</span>().<span class="ident">map</span>(<span class="op">|</span><span class="op">|</span> <span class="highlight focus"><span class="ident">warp::reply::html</span></span>(<span class="ident">INDEX_HTML</span>));
 
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">index</span>.<span class="ident">or</span>(<span class="ident">chat</span>);
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

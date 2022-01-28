@@ -19,7 +19,7 @@ parse to a <code>T</code>, otherwise rejects the request.</p>
 
 <span class="comment">// Parse `foo: bar` into a `String`</span>
 <span class="kw">let</span> <span class="ident">foo</span> <span class="op">=</span> <span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>(<span class="string">&quot;foo&quot;</span>);</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../../../src/rejections/rejections.rs.html#43&quot;,&quot;line 43&quot;]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#43">line 43</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>42</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../../../src/rejections/rejections.rs.html#43&quot;,&quot;line 43&quot;]]"><div class="scraped-example-title">examples/rejections.rs (<a href="../../../src/rejections/rejections.rs.html#43">line 43</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>42</span>
 <span>43</span>
 <span>44</span>
 <span>45</span>
@@ -29,7 +29,7 @@ parse to a <code>T</code>, otherwise rejects the request.</p>
 <span>49</span>
 <span>50</span>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">div_by</span>() -&gt; <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">NonZeroU16</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
-    <span class="highlight focus"><span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>(<span class="string">&quot;div-by&quot;</span>)</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">n</span>: <span class="ident">u16</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
+    <span class="highlight focus"><span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span></span>(<span class="string">&quot;div-by&quot;</span>).<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">n</span>: <span class="ident">u16</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">denom</span>) <span class="op">=</span> <span class="ident">NonZeroU16::new</span>(<span class="ident">n</span>) {
             <span class="prelude-val">Ok</span>(<span class="ident">denom</span>)
         } <span class="kw">else</span> {
@@ -37,7 +37,7 @@ parse to a <code>T</code>, otherwise rejects the request.</p>
         }
     })
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[5,5],&quot;../../../src/headers/headers.rs.html#17&quot;,&quot;line 17&quot;]]"><div class="scraped-example-title">examples/headers.rs (<a href="../../../src/headers/headers.rs.html#17">line 17</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[5,5],&quot;../../../src/headers/headers.rs.html#17&quot;,&quot;line 17&quot;]]"><div class="scraped-example-title">examples/headers.rs (<a href="../../../src/headers/headers.rs.html#17">line 17</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>12</span>
 <span>13</span>
 <span>14</span>
 <span>15</span>
@@ -58,7 +58,7 @@ parse to a <code>T</code>, otherwise rejects the request.</p>
 
     <span class="comment">// For this example, we assume no DNS was used,</span>
     <span class="comment">// so the Host header should be an address.</span>
-    <span class="kw">let</span> <span class="ident">host</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">SocketAddr</span><span class="op">&gt;</span>(<span class="string">&quot;host&quot;</span>)</span>;
+    <span class="kw">let</span> <span class="ident">host</span> <span class="op">=</span> <span class="highlight focus"><span class="ident">warp::header</span>::<span class="op">&lt;</span><span class="ident">SocketAddr</span><span class="op">&gt;</span></span>(<span class="string">&quot;host&quot;</span>);
 
     <span class="comment">// Match when we get `accept: */*` exactly.</span>
     <span class="kw">let</span> <span class="ident">accept_stars</span> <span class="op">=</span> <span class="ident">warp::header::exact</span>(<span class="string">&quot;accept&quot;</span>, <span class="string">&quot;*/*&quot;</span>);
@@ -69,5 +69,5 @@ parse to a <code>T</code>, otherwise rejects the request.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

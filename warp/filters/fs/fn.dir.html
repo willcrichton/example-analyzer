@@ -22,13 +22,13 @@ filter automatically includes a <code>GET</code> check.</p>
 <span class="comment">// For example:</span>
 <span class="comment">// - `GET /static/app.js` would serve the file `/www/static/app.js`</span>
 <span class="comment">// - `GET /static/css/app.css` would serve the file `/www/static/css/app.css`</span></code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../../../src/returning/returning.rs.html#8&quot;,&quot;line 8&quot;]]"><div class="scraped-example-title">examples/returning.rs (<a href="../../../src/returning/returning.rs.html#8">line 8</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>7</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../../../src/returning/returning.rs.html#8&quot;,&quot;line 8&quot;]]"><div class="scraped-example-title">examples/returning.rs (<a href="../../../src/returning/returning.rs.html#8">line 8</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>7</span>
 <span>8</span>
 <span>9</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">assets_filter</span>() -&gt; <span class="ident">BoxedFilter</span><span class="op">&lt;</span>(<span class="kw">impl</span> <span class="ident">Reply</span>,)<span class="op">&gt;</span> {
-    <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;./assets&quot;</span>)</span>).<span class="ident">boxed</span>()
+    <span class="ident">warp::path</span>(<span class="string">&quot;assets&quot;</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::fs::dir</span></span>(<span class="string">&quot;./assets&quot;</span>)).<span class="ident">boxed</span>()
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[3,3],&quot;../../../src/dir/dir.rs.html#7&quot;,&quot;line 7&quot;]]"><div class="scraped-example-title">examples/dir.rs (<a href="../../../src/dir/dir.rs.html#7">line 7</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>4</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example expanded" data-locs="[[[3,3],&quot;../../../src/dir/dir.rs.html#7&quot;,&quot;line 7&quot;]]"><div class="scraped-example-title">examples/dir.rs (<a href="../../../src/dir/dir.rs.html#7">line 7</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>4</span>
 <span>5</span>
 <span>6</span>
 <span>7</span>
@@ -38,7 +38,7 @@ filter automatically includes a <code>GET</code> check.</p>
 </pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
-    <span class="ident">warp::serve</span>(<span class="highlight focus"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;examples/dir&quot;</span>)</span>)
+    <span class="ident">warp::serve</span>(<span class="highlight focus"><span class="ident">warp::fs::dir</span></span>(<span class="string">&quot;examples/dir&quot;</span>))
         .<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>))
         .<span class="kw">await</span>;
 }</code></pre></div>
@@ -56,7 +56,7 @@ filter automatically includes a <code>GET</code> check.</p>
 
     <span class="kw">let</span> <span class="ident">listener</span> <span class="op">=</span> <span class="ident">UnixListener::bind</span>(<span class="string">&quot;/tmp/warp.sock&quot;</span>).<span class="ident">unwrap</span>();
     <span class="kw">let</span> <span class="ident">incoming</span> <span class="op">=</span> <span class="ident">UnixListenerStream::new</span>(<span class="ident">listener</span>);
-    <span class="ident">warp::serve</span>(<span class="highlight focus"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;examples/dir&quot;</span>)</span>)
+    <span class="ident">warp::serve</span>(<span class="highlight focus"><span class="ident">warp::fs::dir</span></span>(<span class="string">&quot;examples/dir&quot;</span>))
         .<span class="ident">run_incoming</span>(<span class="ident">incoming</span>)
         .<span class="kw">await</span>;
 }</code></pre></div>
@@ -84,7 +84,7 @@ filter automatically includes a <code>GET</code> check.</p>
         .<span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>));
 
     <span class="comment">// dir already requires GET...</span>
-    <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::fs::dir</span>(<span class="string">&quot;./examples/&quot;</span>)</span>);
+    <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::fs::dir</span></span>(<span class="string">&quot;./examples/&quot;</span>));
 
     <span class="comment">// GET / =&gt; README.md</span>
     <span class="comment">// GET /ex/... =&gt; ./examples/..</span>
@@ -92,5 +92,5 @@ filter automatically includes a <code>GET</code> check.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

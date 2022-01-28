@@ -10,7 +10,7 @@
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
 
 <span class="kw">let</span> <span class="ident">delete_only</span> <span class="op">=</span> <span class="ident">warp::delete</span>().<span class="ident">map</span>(<span class="ident">warp::reply</span>);</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example " data-locs="[[[12,12],&quot;../../../src/todos/todos.rs.html#94&quot;,&quot;line 94&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#94">line 94</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>82</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example " data-locs="[[[12,12],&quot;../../../src/todos/todos.rs.html#94&quot;,&quot;line 94&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../../src/todos/todos.rs.html#94">line 94</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>82</span>
 <span>83</span>
 <span>84</span>
 <span>85</span>
@@ -38,9 +38,9 @@
             <span class="comment">// would try this filter and reject because the authorization header doesn&#39;t match,</span>
             <span class="comment">// rather because the param is wrong for that other path.</span>
             .<span class="ident">and</span>(<span class="ident">admin_only</span>)
-            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::delete</span>()</span>)
+            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::delete</span></span>())
             .<span class="ident">and</span>(<span class="ident">with_db</span>(<span class="ident">db</span>))
             .<span class="ident">and_then</span>(<span class="ident">handlers::delete_todo</span>)
     }</code></pre></div>
-</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

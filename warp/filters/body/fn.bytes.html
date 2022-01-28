@@ -21,7 +21,7 @@ prevent a overly large request from using too much memory.</p>
     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">bytes</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> {
         <span class="macro">println!</span>(<span class="string">&quot;bytes = {:?}&quot;</span>, <span class="ident">bytes</span>);
     });</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[2,2],&quot;../../../src/warp/filters/body.rs.html#175&quot;,&quot;line 175&quot;]]"><div class="scraped-example-title">src/filters/body.rs (<a href="../../../src/warp/filters/body.rs.html#175">line 175</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>173</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[2,2],&quot;../../../src/warp/filters/body.rs.html#175&quot;,&quot;line 175&quot;]]"><div class="scraped-example-title">src/filters/body.rs (<a href="../../../src/warp/filters/body.rs.html#175">line 175</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>173</span>
 <span>174</span>
 <span>175</span>
 <span>176</span>
@@ -33,7 +33,7 @@ prevent a overly large request from using too much memory.</p>
 <span>182</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">json</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">DeserializeOwned</span> <span class="op">+</span> <span class="ident">Send</span><span class="op">&gt;</span>() -&gt; <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> (<span class="ident">T</span>,), <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
     <span class="ident">is_content_type</span>::<span class="op">&lt;</span><span class="ident">Json</span><span class="op">&gt;</span>()
-        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">bytes</span>()</span>)
+        .<span class="ident">and</span>(<span class="highlight focus"><span class="ident">bytes</span></span>())
         .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">buf</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
             <span class="ident">Json::decode</span>(<span class="ident">buf</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> {
                 <span class="macro">tracing::debug!</span>(<span class="string">&quot;request json body error: {}&quot;</span>, <span class="ident">err</span>);
@@ -41,7 +41,7 @@ prevent a overly large request from using too much memory.</p>
             })
         })
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[12,12],&quot;../../../src/warp/filters/multipart.rs.html#89&quot;,&quot;line 89&quot;]]"><div class="scraped-example-title">src/filters/multipart.rs (<a href="../../../src/warp/filters/multipart.rs.html#89">line 89</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>77</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[12,12],&quot;../../../src/warp/filters/multipart.rs.html#89&quot;,&quot;line 89&quot;]]"><div class="scraped-example-title">src/filters/multipart.rs (<a href="../../../src/warp/filters/multipart.rs.html#89">line 89</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>77</span>
 <span>78</span>
 <span>79</span>
 <span>80</span>
@@ -74,7 +74,7 @@ prevent a overly large request from using too much memory.</p>
 
         <span class="kw">let</span> <span class="ident">filt</span> <span class="op">=</span> <span class="ident"><span class="kw">super</span>::body::content_length_limit</span>(<span class="self">self</span>.<span class="ident">max_length</span>)
             .<span class="ident">and</span>(<span class="ident">boundary</span>)
-            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident"><span class="kw">super</span>::body::bytes</span>()</span>)
+            .<span class="ident">and</span>(<span class="highlight focus"><span class="ident"><span class="kw">super</span>::body::bytes</span></span>())
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">boundary</span>, <span class="ident">body</span><span class="op">|</span> <span class="ident">FormData</span> {
                 <span class="ident">inner</span>: <span class="ident">Multipart::with_body</span>(<span class="ident">Cursor::new</span>(<span class="ident">body</span>), <span class="ident">boundary</span>),
             });
@@ -143,7 +143,7 @@ prevent a overly large request from using too much memory.</p>
         .<span class="ident">and</span>(<span class="ident">warp::path::param</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>())
         .<span class="ident">and</span>(<span class="ident">warp::body::content_length_limit</span>(<span class="number">500</span>))
         .<span class="ident">and</span>(
-            <span class="highlight focus"><span class="ident">warp::body::bytes</span>()</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
+            <span class="highlight focus"><span class="ident">warp::body::bytes</span></span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">body</span>: <span class="ident">bytes::Bytes</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
                 <span class="ident">std::str::from_utf8</span>(<span class="kw-2">&amp;</span><span class="ident">body</span>)
                     .<span class="ident">map</span>(<span class="ident">String::from</span>)
                     .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">_e</span><span class="op">|</span> <span class="ident">warp::reject::custom</span>(<span class="ident">NotUtf8</span>))
@@ -173,5 +173,5 @@ prevent a overly large request from using too much memory.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

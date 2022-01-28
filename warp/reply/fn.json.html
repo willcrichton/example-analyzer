@@ -22,7 +22,7 @@ collections do, and custom domain types can have <code>Serialize</code> derived.
 <p>If a type fails to be serialized into JSON, the error is logged at the
 <code>error</code> level, and the returned <code>impl Reply</code> will be an empty
 <code>500 Internal Server Error</code> response.</p>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[9,9],&quot;../../src/todos/todos.rs.html#128&quot;,&quot;line 128&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../src/todos/todos.rs.html#128">line 128</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>119</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[9,9],&quot;../../src/todos/todos.rs.html#128&quot;,&quot;line 128&quot;]]"><div class="scraped-example-title">examples/todos.rs (<a href="../../src/todos/todos.rs.html#128">line 128</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>119</span>
 <span>120</span>
 <span>121</span>
 <span>122</span>
@@ -42,9 +42,9 @@ collections do, and custom domain types can have <code>Serialize</code> derived.
             .<span class="ident">skip</span>(<span class="ident">opts</span>.<span class="ident">offset</span>.<span class="ident">unwrap_or</span>(<span class="number">0</span>))
             .<span class="ident">take</span>(<span class="ident">opts</span>.<span class="ident">limit</span>.<span class="ident">unwrap_or</span>(<span class="ident">std::usize::MAX</span>))
             .<span class="ident">collect</span>();
-        <span class="prelude-val">Ok</span>(<span class="highlight focus"><span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">todos</span>)</span>)
+        <span class="prelude-val">Ok</span>(<span class="highlight focus"><span class="ident">warp::reply::json</span></span>(<span class="kw-2">&amp;</span><span class="ident">todos</span>))
     }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[12,12],&quot;../../src/body/body.rs.html#26&quot;,&quot;line 26&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../../src/body/body.rs.html#26">line 26</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[12,12],&quot;../../src/body/body.rs.html#26&quot;,&quot;line 26&quot;]]"><div class="scraped-example-title">examples/body.rs (<a href="../../src/body/body.rs.html#26">line 26</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>14</span>
 <span>15</span>
 <span>16</span>
 <span>17</span>
@@ -73,7 +73,7 @@ collections do, and custom domain types can have <code>Serialize</code> derived.
         .<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">rate</span>, <span class="kw-2">mut</span> <span class="ident">employee</span>: <span class="ident">Employee</span><span class="op">|</span> {
             <span class="ident">employee</span>.<span class="ident">rate</span> <span class="op">=</span> <span class="ident">rate</span>;
-            <span class="highlight focus"><span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">employee</span>)</span>
+            <span class="highlight focus"><span class="ident">warp::reply::json</span></span>(<span class="kw-2">&amp;</span><span class="ident">employee</span>)
         });
 
     <span class="ident">warp::serve</span>(<span class="ident">promote</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>
@@ -193,20 +193,20 @@ collections do, and custom domain types can have <code>Serialize</code> derived.
         .<span class="ident">and</span>(<span class="ident">warp::get</span>())
         .<span class="ident">and</span>(<span class="ident">div_by</span>())
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">num</span>: <span class="ident">u16</span>, <span class="ident">denom</span>: <span class="ident">NonZeroU16</span><span class="op">|</span> {
-            <span class="highlight focus"><span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">Math</span> {
+            <span class="highlight focus"><span class="ident">warp::reply::json</span></span>(<span class="kw-2">&amp;</span><span class="ident">Math</span> {
                 <span class="ident">op</span>: <span class="macro">format!</span>(<span class="string">&quot;{} / {}&quot;</span>, <span class="ident">num</span>, <span class="ident">denom</span>),
                 <span class="ident">output</span>: <span class="ident">num</span> <span class="op">/</span> <span class="ident">denom</span>.<span class="ident">get</span>(),
-            })</span>
+            })
         });
 
     <span class="kw">let</span> <span class="ident">div_with_body</span> <span class="op">=</span>
         <span class="ident">math</span>.<span class="ident">and</span>(<span class="ident">warp::post</span>())
             .<span class="ident">and</span>(<span class="ident">warp::body::json</span>())
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">num</span>: <span class="ident">u16</span>, <span class="ident">body</span>: <span class="ident">DenomRequest</span><span class="op">|</span> {
-                <span class="highlight"><span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">Math</span> {
+                <span class="highlight"><span class="ident">warp::reply::json</span></span>(<span class="kw-2">&amp;</span><span class="ident">Math</span> {
                     <span class="ident">op</span>: <span class="macro">format!</span>(<span class="string">&quot;{} / {}&quot;</span>, <span class="ident">num</span>, <span class="ident">body</span>.<span class="ident">denom</span>),
                     <span class="ident">output</span>: <span class="ident">num</span> <span class="op">/</span> <span class="ident">body</span>.<span class="ident">denom</span>.<span class="ident">get</span>(),
-                })</span>
+                })
             });
 
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">div_with_header</span>.<span class="ident">or</span>(<span class="ident">div_with_body</span>).<span class="ident">recover</span>(<span class="ident">handle_rejection</span>);
@@ -289,12 +289,12 @@ collections do, and custom domain types can have <code>Serialize</code> derived.
         <span class="ident">message</span> <span class="op">=</span> <span class="string">&quot;UNHANDLED_REJECTION&quot;</span>;
     }
 
-    <span class="kw">let</span> <span class="ident">json</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::reply::json</span>(<span class="kw-2">&amp;</span><span class="ident">ErrorMessage</span> {
+    <span class="kw">let</span> <span class="ident">json</span> <span class="op">=</span> <span class="highlight"><span class="ident">warp::reply::json</span></span>(<span class="kw-2">&amp;</span><span class="ident">ErrorMessage</span> {
         <span class="ident">code</span>: <span class="ident">code</span>.<span class="ident">as_u16</span>(),
         <span class="ident">message</span>: <span class="ident">message</span>.<span class="ident">into</span>(),
-    })</span>;
+    });
 
     <span class="prelude-val">Ok</span>(<span class="ident">warp::reply::with_status</span>(<span class="ident">json</span>, <span class="ident">code</span>))
 }</code></pre></div>
-</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

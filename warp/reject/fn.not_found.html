@@ -6,13 +6,13 @@
         </a><div class="sidebar-elems"><h2 class="location">In <a href="../index.html">warp</a>::<wbr><a href="index.html">reject</a></h2><div id="sidebar-vars" data-name="not_found" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../warp/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div>
                                 <input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
     <h1 class="fqn"><span class="in-band">Function <a href="../index.html">warp</a>::<wbr><a href="index.html">reject</a>::<wbr><a class="fn" href="#">not_found</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../src/warp/reject.rs.html#52-56" title="goto source code">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn not_found() -&gt; <a class="struct" href="struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a></code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Rejects a request with <code>404 Not Found</code>.</p>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../../src/warp/reject.rs.html#47&quot;,&quot;line 47&quot;]]"><div class="scraped-example-title">src/reject.rs (<a href="../../src/warp/reject.rs.html#47">line 47</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>46</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a className="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../../src/warp/reject.rs.html#47&quot;,&quot;line 47&quot;]]"><div class="scraped-example-title">src/reject.rs (<a href="../../src/warp/reject.rs.html#47">line 47</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>46</span>
 <span>47</span>
 <span>48</span>
 </pre><pre class="rust"><code><span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reject</span>() -&gt; <span class="ident">Rejection</span> {
-    <span class="highlight focus"><span class="ident">not_found</span>()</span>
+    <span class="highlight focus"><span class="ident">not_found</span></span>()
 }</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[9,9],&quot;../../src/warp/filters/path.rs.html#217&quot;,&quot;line 217&quot;],[[35,35],&quot;../../src/warp/filters/path.rs.html#243&quot;,&quot;line 243&quot;],[[63,63],&quot;../../src/warp/filters/path.rs.html#271&quot;,&quot;line 271&quot;],[[65,65],&quot;../../src/warp/filters/path.rs.html#273&quot;,&quot;line 273&quot;]]"><div class="scraped-example-title">src/filters/path.rs (<a href="../../src/warp/filters/path.rs.html#217">line 217</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>208</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[9,9],&quot;../../src/warp/filters/path.rs.html#217&quot;,&quot;line 217&quot;],[[35,35],&quot;../../src/warp/filters/path.rs.html#243&quot;,&quot;line 243&quot;],[[63,63],&quot;../../src/warp/filters/path.rs.html#271&quot;,&quot;line 271&quot;],[[65,65],&quot;../../src/warp/filters/path.rs.html#273&quot;,&quot;line 273&quot;]]"><div class="scraped-example-title">src/filters/path.rs (<a href="../../src/warp/filters/path.rs.html#217">line 217</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>208</span>
 <span>209</span>
 <span>210</span>
 <span>211</span>
@@ -89,7 +89,7 @@
                 <span class="kw">if</span> <span class="ident">seg</span> <span class="op">==</span> <span class="ident">p</span> {
                     <span class="prelude-val">Ok</span>(())
                 } <span class="kw">else</span> {
-                    <span class="prelude-val">Err</span>(<span class="highlight focus"><span class="ident">reject::not_found</span>()</span>)
+                    <span class="prelude-val">Err</span>(<span class="highlight focus"><span class="ident">reject::not_found</span></span>())
                 }
             }))
         })
@@ -115,7 +115,7 @@
         <span class="kw">if</span> <span class="ident">route</span>.<span class="ident">path</span>().<span class="ident">is_empty</span>() {
             <span class="ident">future::ok</span>(())
         } <span class="kw">else</span> {
-            <span class="ident">future::err</span>(<span class="highlight"><span class="ident">reject::not_found</span>()</span>)
+            <span class="ident">future::err</span>(<span class="highlight"><span class="ident">reject::not_found</span></span>())
         }
     })
 }
@@ -143,9 +143,9 @@
     <span class="ident">filter_segment</span>(<span class="op">|</span><span class="ident">seg</span><span class="op">|</span> {
         <span class="macro">tracing::trace!</span>(<span class="string">&quot;param?: {:?}&quot;</span>, <span class="ident">seg</span>);
         <span class="kw">if</span> <span class="ident">seg</span>.<span class="ident">is_empty</span>() {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::not_found</span>()</span>);
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::not_found</span></span>());
         }
-        <span class="ident">T::from_str</span>(<span class="ident">seg</span>).<span class="ident">map</span>(<span class="ident">one</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="highlight"><span class="ident">reject::not_found</span>()</span>)
+        <span class="ident">T::from_str</span>(<span class="ident">seg</span>).<span class="ident">map</span>(<span class="ident">one</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="highlight"><span class="ident">reject::not_found</span></span>())
     })
 }</code></pre></div>
 </div></div><div class="scraped-example expanded" data-locs="[[[5,5],&quot;../../src/warp/filters/host.rs.html#28&quot;,&quot;line 28&quot;]]"><div class="scraped-example-title">src/filters/host.rs (<a href="../../src/warp/filters/host.rs.html#28">line 28</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>23</span>
@@ -162,7 +162,7 @@
     <span class="ident">optional</span>()
         .<span class="ident">and_then</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">option</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Authority</span><span class="op">&gt;</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">option</span> {
             <span class="prelude-val">Some</span>(<span class="ident">authority</span>) <span class="kw">if</span> <span class="ident">authority</span> <span class="op">==</span> <span class="ident">expected</span> =&gt; <span class="ident">future::ok</span>(()),
-            <span class="kw">_</span> =&gt; <span class="ident">future::err</span>(<span class="highlight focus"><span class="ident">reject::not_found</span>()</span>),
+            <span class="kw">_</span> =&gt; <span class="ident">future::err</span>(<span class="highlight focus"><span class="ident">reject::not_found</span></span>()),
         })
         .<span class="ident">untuple_one</span>()
 }</code></pre></div>
@@ -361,17 +361,17 @@
         <span class="prelude-val">Ok</span>(<span class="ident">p</span>) =&gt; <span class="ident">p</span>,
         <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; {
             <span class="macro">tracing::debug!</span>(<span class="string">&quot;dir: failed to decode route={:?}: {:?}&quot;</span>, <span class="ident">tail</span>, <span class="ident">err</span>);
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="highlight focus"><span class="ident">reject::not_found</span>()</span>);
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="highlight focus"><span class="ident">reject::not_found</span></span>());
         }
     };
     <span class="macro">tracing::trace!</span>(<span class="string">&quot;dir? base={:?}, route={:?}&quot;</span>, <span class="ident">base</span>.<span class="ident">as_ref</span>(), <span class="ident">p</span>);
     <span class="kw">for</span> <span class="ident">seg</span> <span class="kw">in</span> <span class="ident">p</span>.<span class="ident">split</span>(<span class="string">&#39;/&#39;</span>) {
         <span class="kw">if</span> <span class="ident">seg</span>.<span class="ident">starts_with</span>(<span class="string">&quot;..&quot;</span>) {
             <span class="macro">tracing::warn!</span>(<span class="string">&quot;dir: rejecting segment starting with &#39;..&#39;&quot;</span>);
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::not_found</span>()</span>);
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::not_found</span></span>());
         } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">seg</span>.<span class="ident">contains</span>(<span class="string">&#39;\\&#39;</span>) {
             <span class="macro">tracing::warn!</span>(<span class="string">&quot;dir: rejecting segment containing with backslash (\\)&quot;</span>);
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::not_found</span>()</span>);
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::not_found</span></span>());
         } <span class="kw">else</span> {
             <span class="ident">buf</span>.<span class="ident">push</span>(<span class="ident">seg</span>);
         }
@@ -515,7 +515,7 @@
             <span class="kw">let</span> <span class="ident">rej</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">err</span>.<span class="ident">kind</span>() {
                 <span class="ident">io::ErrorKind::NotFound</span> =&gt; {
                     <span class="macro">tracing::debug!</span>(<span class="string">&quot;file not found: {:?}&quot;</span>, <span class="ident">path</span>.<span class="ident">as_ref</span>().<span class="ident">display</span>());
-                    <span class="highlight"><span class="ident">reject::not_found</span>()</span>
+                    <span class="highlight"><span class="ident">reject::not_found</span></span>()
                 }
                 <span class="ident">io::ErrorKind::PermissionDenied</span> =&gt; {
                     <span class="macro">tracing::warn!</span>(<span class="string">&quot;file permission denied: {:?}&quot;</span>, <span class="ident">path</span>.<span class="ident">as_ref</span>().<span class="ident">display</span>());
@@ -540,9 +540,9 @@
         <span class="prelude-val">Ok</span>(<span class="ident">meta</span>) =&gt; <span class="prelude-val">Ok</span>((<span class="ident">f</span>, <span class="ident">meta</span>)),
         <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; {
             <span class="macro">tracing::debug!</span>(<span class="string">&quot;file metadata error: {}&quot;</span>, <span class="ident">err</span>);
-            <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::not_found</span>()</span>)
+            <span class="prelude-val">Err</span>(<span class="highlight"><span class="ident">reject::not_found</span></span>())
         }
     }
 }</code></pre></div>
-</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (17d29dcdc 2022-01-21)" ></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>
