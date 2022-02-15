@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Create a wrapping filter that compresses the Body of a `Response` using deflate, adding `content-encoding: deflate` to the Response’s `HeaderMap`"><meta name="keywords" content="rust, rustlang, rust-lang, deflate"><title>deflate in warp::filters::compression - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../scrape-examples.js"></script>
+    <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../warp/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"></h2>
+    </nav>
+    <nav class="sidebar"><a class="sidebar-logo" href="../../../warp/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div>
+        </a><div class="sidebar-elems"><h2 class="location"><a href="index.html">In warp::filters::compression</a></h2><div id="sidebar-vars" data-name="deflate" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../warp/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
+    <h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">compression</a>::<wbr><a class="fn" href="#">deflate</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../../src/warp/filters/compression.rs.html#86-99">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn deflate() -&gt; <a class="struct" href="struct.Compression.html" title="struct warp::filters::compression::Compression">Compression</a>&lt;impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(CompressionProps) -&gt; <a class="type" href="../../reply/type.Response.html" title="type warp::reply::Response">Response</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>&gt;</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Create a wrapping filter that compresses the Body of a <a href="../../reply/type.Response.html"><code>Response</code></a>
+using deflate, adding <code>content-encoding: deflate</code> to the Response’s <a href="https://docs.rs/http/0.2.4/http/header/map/struct.HeaderMap.html"><code>HeaderMap</code></a></p>
+<h2 id="example"><a href="#example">Example</a></h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">warp::Filter</span>;
+
+<span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">warp::get</span>()
+    .<span class="ident">and</span>(<span class="ident">warp::path::end</span>())
+    .<span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./README.md&quot;</span>))
+    .<span class="ident">with</span>(<span class="ident">warp::compression::deflate</span>());</code></pre></div>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples"><a href="#scraped-examples">Examples found in repository</a><a class="scrape-help" href="../../../scrape-examples-help.html">?</a></h5><div class="scraped-example " data-locs="[[[20,20],&quot;../../../src/compression/compression.rs.html#26&quot;,&quot;line 26&quot;]]"><div class="scraped-example-title">examples/compression.rs (<a href="../../../src/compression/compression.rs.html#26">line 26</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
+<span> 7</span>
+<span> 8</span>
+<span> 9</span>
+<span>10</span>
+<span>11</span>
+<span>12</span>
+<span>13</span>
+<span>14</span>
+<span>15</span>
+<span>16</span>
+<span>17</span>
+<span>18</span>
+<span>19</span>
+<span>20</span>
+<span>21</span>
+<span>22</span>
+<span>23</span>
+<span>24</span>
+<span>25</span>
+<span>26</span>
+<span>27</span>
+<span>28</span>
+<span>29</span>
+<span>30</span>
+<span>31</span>
+<span>32</span>
+<span>33</span>
+<span>34</span>
+</pre><pre class="rust"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;todos&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./examples/todos.rs&quot;</span>));
+    <span class="comment">// NOTE: You could double compress something by adding a compression</span>
+    <span class="comment">// filter here, a la</span>
+    <span class="comment">// ```</span>
+    <span class="comment">// let file = warp::path(&quot;todos&quot;)</span>
+    <span class="comment">//     .and(warp::fs::file(&quot;./examples/todos.rs&quot;))</span>
+    <span class="comment">//     .with(warp::compression::brotli());</span>
+    <span class="comment">// ```</span>
+    <span class="comment">// This would result in a browser error, or downloading a file whose contents</span>
+    <span class="comment">// are compressed</span>
+
+    <span class="kw">let</span> <span class="ident">dir</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ws_chat&quot;</span>).<span class="ident">and</span>(<span class="ident">warp::fs::file</span>(<span class="string">&quot;./examples/websockets_chat.rs&quot;</span>));
+
+    <span class="kw">let</span> <span class="ident">file_and_dir</span> <span class="op">=</span> <span class="ident">warp::get</span>()
+        .<span class="ident">and</span>(<span class="ident">file</span>.<span class="ident">or</span>(<span class="ident">dir</span>))
+        .<span class="ident">with</span>(<span class="ident">warp::compression::gzip</span>());
+
+    <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./examples/&quot;</span>))
+        .<span class="ident">with</span>(<span class="highlight focus"><span class="ident">warp::compression::deflate</span></span>());
+
+    <span class="comment">// GET /todos =&gt; gzip -&gt; toods.rs</span>
+    <span class="comment">// GET /ws_chat =&gt; gzip -&gt; ws_chat.rs</span>
+    <span class="comment">// GET /ex/... =&gt; deflate -&gt; ./examples/...</span>
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">file_and_dir</span>.<span class="ident">or</span>(<span class="ident">examples</span>);
+
+    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
+}</code></pre></div>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
+</body></html>

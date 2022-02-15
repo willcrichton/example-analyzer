@@ -3,19 +3,18 @@
         </a><h2 class="location"></h2>
     </nav>
     <nav class="sidebar"><a class="sidebar-logo" href="../../../warp/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div>
-        </a><div class="sidebar-elems"><h2 class="location">In <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">fs</a></h2><div id="sidebar-vars" data-name="file" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../warp/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div>
-                                <input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
-    <h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">fs</a>::<wbr><a class="fn" href="#">file</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../../src/warp/filters/fs.rs.html#48-57" title="goto source code">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn file(<br>&nbsp;&nbsp;&nbsp;&nbsp;path: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>&gt;<br>) -&gt; impl FilterClone&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.File.html" title="struct warp::filters::fs::File">File</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt;</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Creates a <code>Filter</code> that serves a File at the <code>path</code>.</p>
+        </a><div class="sidebar-elems"><h2 class="location"><a href="index.html">In warp::filters::fs</a></h2><div id="sidebar-vars" data-name="file" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../warp/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
+    <h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">fs</a>::<wbr><a class="fn" href="#">file</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../../src/warp/filters/fs.rs.html#48-57">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn file(<br>&nbsp;&nbsp;&nbsp;&nbsp;path: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>&gt;<br>) -&gt; impl FilterClone&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.File.html" title="struct warp::filters::fs::File">File</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt;</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Creates a <code>Filter</code> that serves a File at the <code>path</code>.</p>
 <p>Does not filter out based on any information of the request. Always serves
 the file at the exact <code>path</code> provided. Thus, this can be used to serve a
 single file with <code>GET</code>s, but could also be used in combination with other
 filters, such as after validating in <code>POST</code> request, wanting to return a
 specific file as the body.</p>
 <p>For serving a directory, see <a href="fn.dir.html">dir</a>.</p>
-<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
+<h2 id="example"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Always serves this file from the file system.</span>
 <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">warp::fs::file</span>(<span class="string">&quot;/www/static/app.js&quot;</span>);</code></pre></div>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a class="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example " data-locs="[[[5,5],&quot;../../../src/file/file.rs.html#11&quot;,&quot;line 11&quot;]]"><div class="scraped-example-title">examples/file.rs (<a href="../../../src/file/file.rs.html#11">line 11</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples"><a href="#scraped-examples">Examples found in repository</a><a class="scrape-help" href="../../../scrape-examples-help.html">?</a></h5><div class="scraped-example " data-locs="[[[5,5],&quot;../../../src/file/file.rs.html#11&quot;,&quot;line 11&quot;]]"><div class="scraped-example-title">examples/file.rs (<a href="../../../src/file/file.rs.html#11">line 11</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
 <span> 7</span>
 <span> 8</span>
 <span> 9</span>
@@ -31,7 +30,7 @@ specific file as the body.</p>
 <span>19</span>
 <span>20</span>
 <span>21</span>
-</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
+</pre><pre class="rust"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
     <span class="kw">let</span> <span class="ident">readme</span> <span class="op">=</span> <span class="ident">warp::get</span>()
@@ -47,5 +46,63 @@ specific file as the body.</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[1,1],&quot;../../../src/compression/compression.rs.html#7&quot;,&quot;line 7&quot;],[[12,12],&quot;../../../src/compression/compression.rs.html#18&quot;,&quot;line 18&quot;]]"><div class="scraped-example-title">examples/compression.rs (<a href="../../../src/compression/compression.rs.html#7">line 7</a>)</div><div class="code-wrapper"><span class="prev">&pr;</span> <span class="next">&sc;</span><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 6</span>
+<span> 7</span>
+<span> 8</span>
+<span> 9</span>
+<span>10</span>
+<span>11</span>
+<span>12</span>
+<span>13</span>
+<span>14</span>
+<span>15</span>
+<span>16</span>
+<span>17</span>
+<span>18</span>
+<span>19</span>
+<span>20</span>
+<span>21</span>
+<span>22</span>
+<span>23</span>
+<span>24</span>
+<span>25</span>
+<span>26</span>
+<span>27</span>
+<span>28</span>
+<span>29</span>
+<span>30</span>
+<span>31</span>
+<span>32</span>
+<span>33</span>
+<span>34</span>
+</pre><pre class="rust"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;todos&quot;</span>).<span class="ident">and</span>(<span class="highlight focus"><span class="ident">warp::fs::file</span></span>(<span class="string">&quot;./examples/todos.rs&quot;</span>));
+    <span class="comment">// NOTE: You could double compress something by adding a compression</span>
+    <span class="comment">// filter here, a la</span>
+    <span class="comment">// ```</span>
+    <span class="comment">// let file = warp::path(&quot;todos&quot;)</span>
+    <span class="comment">//     .and(warp::fs::file(&quot;./examples/todos.rs&quot;))</span>
+    <span class="comment">//     .with(warp::compression::brotli());</span>
+    <span class="comment">// ```</span>
+    <span class="comment">// This would result in a browser error, or downloading a file whose contents</span>
+    <span class="comment">// are compressed</span>
+
+    <span class="kw">let</span> <span class="ident">dir</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ws_chat&quot;</span>).<span class="ident">and</span>(<span class="highlight"><span class="ident">warp::fs::file</span></span>(<span class="string">&quot;./examples/websockets_chat.rs&quot;</span>));
+
+    <span class="kw">let</span> <span class="ident">file_and_dir</span> <span class="op">=</span> <span class="ident">warp::get</span>()
+        .<span class="ident">and</span>(<span class="ident">file</span>.<span class="ident">or</span>(<span class="ident">dir</span>))
+        .<span class="ident">with</span>(<span class="ident">warp::compression::gzip</span>());
+
+    <span class="kw">let</span> <span class="ident">examples</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;ex&quot;</span>)
+        .<span class="ident">and</span>(<span class="ident">warp::fs::dir</span>(<span class="string">&quot;./examples/&quot;</span>))
+        .<span class="ident">with</span>(<span class="ident">warp::compression::deflate</span>());
+
+    <span class="comment">// GET /todos =&gt; gzip -&gt; toods.rs</span>
+    <span class="comment">// GET /ws_chat =&gt; gzip -&gt; ws_chat.rs</span>
+    <span class="comment">// GET /ex/... =&gt; deflate -&gt; ./examples/...</span>
+    <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">file_and_dir</span>.<span class="ident">or</span>(<span class="ident">examples</span>);
+
+    <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
+}</code></pre></div>
+</div></div></div></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="warp" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-dev" ></div>
 </body></html>

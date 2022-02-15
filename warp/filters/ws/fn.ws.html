@@ -3,11 +3,10 @@
         </a><h2 class="location"></h2>
     </nav>
     <nav class="sidebar"><a class="sidebar-logo" href="../../../warp/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div>
-        </a><div class="sidebar-elems"><h2 class="location">In <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">ws</a></h2><div id="sidebar-vars" data-name="ws" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../warp/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div>
-                                <input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
-    <h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">ws</a>::<wbr><a class="fn" href="#">ws</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../../src/warp/filters/ws.rs.html#43-69" title="goto source code">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn ws() -&gt; impl <a class="trait" href="../../trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Ws.html" title="struct warp::filters::ws::Ws">Ws</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a></code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Creates a Websocket Filter.</p>
+        </a><div class="sidebar-elems"><h2 class="location"><a href="index.html">In warp::filters::ws</a></h2><div id="sidebar-vars" data-name="ws" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../warp/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
+    <h1 class="fqn"><span class="in-band">Function <a href="../../index.html">warp</a>::<wbr><a href="../index.html">filters</a>::<wbr><a href="index.html">ws</a>::<wbr><a class="fn" href="#">ws</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../../src/warp/filters/ws.rs.html#43-69">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn ws() -&gt; impl <a class="trait" href="../../trait.Filter.html" title="trait warp::Filter">Filter</a>&lt;Extract = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Ws.html" title="struct warp::filters::ws::Ws">Ws</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a>, Error = <a class="struct" href="../../reject/struct.Rejection.html" title="struct warp::reject::Rejection">Rejection</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a></code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Creates a Websocket Filter.</p>
 <p>The yielded <code>Ws</code> is used to finish the websocket upgrade.</p>
-<h2 id="note" class="section-header"><a href="#note">Note</a></h2>
+<h2 id="note"><a href="#note">Note</a></h2>
 <p>This filter combines multiple filters internally, so you don’t need them:</p>
 <ul>
 <li>Method must be <code>GET</code></li>
@@ -24,29 +23,7 @@ return a reply with:</p>
 <li>Header <code>upgrade: websocket</code></li>
 <li>Header <code>sec-websocket-accept</code> with the hash value of the received key.</li>
 </ul>
-</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples" class="section-header"><a href="#scraped-examples">Examples found in repository</a><a class="scrape-help" href="https://doc.rust-lang.org/rustdoc/scraped-examples.html" target="_blank">?</a></h5><div class="scraped-example expanded" data-locs="[[[1,1],&quot;../../../src/ws/ws.rs.html#264&quot;,&quot;line 264&quot;]]"><div class="scraped-example-title">tests/ws.rs (<a href="../../../src/ws/ws.rs.html#264">line 264</a>)</div><div class="code-wrapper"><div class="example-wrap"><pre class="line-numbers"><span>263</span>
-<span>264</span>
-<span>265</span>
-<span>266</span>
-<span>267</span>
-<span>268</span>
-<span>269</span>
-<span>270</span>
-<span>271</span>
-<span>272</span>
-<span>273</span>
-</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">ws_echo</span>() -&gt; <span class="kw">impl</span> <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">Extract</span> <span class="op">=</span> <span class="kw">impl</span> <span class="ident">warp::Reply</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">warp::Rejection</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> {
-    <span class="highlight focus"><span class="ident">warp::ws</span></span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">ws</span>: <span class="ident">warp::ws::Ws</span><span class="op">|</span> {
-        <span class="ident">ws</span>.<span class="ident">on_upgrade</span>(<span class="op">|</span><span class="ident">websocket</span><span class="op">|</span> {
-            <span class="comment">// Just echo all messages back...</span>
-            <span class="kw">let</span> (<span class="ident">tx</span>, <span class="ident">rx</span>) <span class="op">=</span> <span class="ident">websocket</span>.<span class="ident">split</span>();
-            <span class="ident">rx</span>.<span class="ident">inspect</span>(<span class="op">|</span><span class="ident">i</span><span class="op">|</span> <span class="macro">log::debug!</span>(<span class="string">&quot;ws recv: {:?}&quot;</span>, <span class="ident">i</span>))
-                .<span class="ident">forward</span>(<span class="ident">tx</span>)
-                .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
-        })
-    })
-}</code></pre></div>
-</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[5,5],&quot;../../../src/websockets/websockets.rs.html#12&quot;,&quot;line 12&quot;]]"><div class="scraped-example-title">examples/websockets.rs (<a href="../../../src/websockets/websockets.rs.html#12">line 12</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 7</span>
+</div></details><div class="docblock scraped-example-list"><span></span><h5 id="scraped-examples"><a href="#scraped-examples">Examples found in repository</a><a class="scrape-help" href="../../../scrape-examples-help.html">?</a></h5><div class="scraped-example " data-locs="[[[5,5],&quot;../../../src/websockets/websockets.rs.html#12&quot;,&quot;line 12&quot;]]"><div class="scraped-example-title">examples/websockets.rs (<a href="../../../src/websockets/websockets.rs.html#12">line 12</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span> 7</span>
 <span> 8</span>
 <span> 9</span>
 <span>10</span>
@@ -67,7 +44,7 @@ return a reply with:</p>
 <span>25</span>
 <span>26</span>
 <span>27</span>
-</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
+</pre><pre class="rust"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
     <span class="kw">let</span> <span class="ident">routes</span> <span class="op">=</span> <span class="ident">warp::path</span>(<span class="string">&quot;echo&quot;</span>)
@@ -88,7 +65,7 @@ return a reply with:</p>
 
     <span class="ident">warp::serve</span>(<span class="ident">routes</span>).<span class="ident">run</span>(([<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], <span class="number">3030</span>)).<span class="kw">await</span>;
 }</code></pre></div>
-</div></div><div class="scraped-example " data-locs="[[[12,12],&quot;../../../src/websockets_chat/websockets_chat.rs.html#36&quot;,&quot;line 36&quot;]]"><div class="scraped-example-title">examples/websockets_chat.rs (<a href="../../../src/websockets_chat/websockets_chat.rs.html#36">line 36</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>24</span>
+</div></div><details class="rustdoc-toggle more-examples-toggle"><summary class="hideme"><span>More examples</span></summary><div class="hide-more">Hide additional examples</div><div class="more-scraped-examples"><div class="toggle-line"><div class="toggle-line-inner"></div></div><div class="more-scraped-examples-inner"><div class="scraped-example " data-locs="[[[12,12],&quot;../../../src/websockets_chat/websockets_chat.rs.html#36&quot;,&quot;line 36&quot;]]"><div class="scraped-example-title">examples/websockets_chat.rs (<a href="../../../src/websockets_chat/websockets_chat.rs.html#36">line 36</a>)</div><div class="code-wrapper"><span class="expand">&varr;</span><div class="example-wrap"><pre class="line-numbers"><span>24</span>
 <span>25</span>
 <span>26</span>
 <span>27</span>
@@ -114,7 +91,7 @@ return a reply with:</p>
 <span>47</span>
 <span>48</span>
 <span>49</span>
-</pre><pre class="rust"><code><span class="kw">fn</span> <span class="ident">main</span>() {
+</pre><pre class="rust"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="ident">pretty_env_logger::init</span>();
 
     <span class="comment">// Keep track of all connected users, key is usize, value</span>
